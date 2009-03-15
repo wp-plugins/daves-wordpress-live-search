@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: csixty4.com
 Donate link: http://catguardians.org
-Tags: search
+Tags: search, AJAX
 Requires at least: 2.0
 Tested up to: 2.7
 Stable tag: trunk
