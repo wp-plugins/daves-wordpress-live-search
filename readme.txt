@@ -1,5 +1,5 @@
 === Plugin Name ===
-Contributors: csixty4.com
+Contributors: csixty4
 Donate link: http://catguardians.org
 Tags: search, AJAX
 Requires at least: 2.0
