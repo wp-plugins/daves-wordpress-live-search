@@ -33,3 +33,4 @@ e.g.
 
 1. There must only be one search box per page. If there is more than one search box, the plugin gets confused. This may be fixed in a future release.
 1. In the HTML, your search box must be named "s". This is the name the standard search widget uses, so this is only an issue for themers who include their own search box.
+1. This plugin will not work on PHP 4.x
