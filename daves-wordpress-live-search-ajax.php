@@ -90,6 +90,13 @@ foreach($wp_query->posts as $index=>$post)
 	unset($post->post_content);
 }
 
+$maxResults = intval(get_option('daves-wordpress-live-search_max_results'));
+if($maxResults > 0)
+{
+	$wp_query->posts = array_slice($wp_query->posts, 0, $maxResults);
+}
+
+// TODO don't send all of $wp_query back
 $json = json_encode($wp_query);
 
 print $json;
