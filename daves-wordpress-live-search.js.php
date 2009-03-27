@@ -103,8 +103,8 @@ LiveSearch.handleAJAXResults = function(e) {
 		LiveSearch.showResults();
 
 		for(var post in e.posts) {
-			if(post.post_title !== undefined) {
-				var searchResult = e.posts[post];
+			var searchResult = e.posts[post];
+			if(searchResult.post_title !== undefined) {
 				searchResultsList.append('<li><a href="' + searchResult.guid + '">' + searchResult.post_title + '</a><p id="daves-wordpress-live-search_author">Posted by ' + searchResult.post_author_nicename + '</p><p id="daves-wordpress-live-search_date">' + searchResult.post_date + '</p></li>');
 			}
 		}
