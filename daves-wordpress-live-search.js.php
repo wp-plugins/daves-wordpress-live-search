@@ -31,16 +31,17 @@ function LiveSearch() {}
  * Initialization for the live search plugin.
  * Sets up the key handler and creates the search results list.
  */
-LiveSearch.init = function()
-{
+LiveSearch.init = function() {
+	
 	// Add a ul for the results
 	jQuery("body").append('<ul class="search_results"></ul>');
 	jQuery("body").children("ul.search_results").hide();
 
 	// Look for the search box. Exit if there isn't one.
 	var searchBox = jQuery("input[name='s']");
-	if(searchBox.size() == 0)
+	if(searchBox.size() === 0) {
 		return false;
+	}
 		
 	// Position the ul right under the search box	
 	var searchBoxPosition = searchBox.offset();
@@ -57,59 +58,60 @@ LiveSearch.init = function()
 	// Hide the search results when the search box loses focus
 	jQuery("*").click(LiveSearch.handleClicks);
 
-}
+};
 
-LiveSearch.handleClicks = function(e)
-{
+LiveSearch.handleClicks = function(e) {
+	
 	var target = jQuery(this);
 	
-	if(this.tagName == "INPUT" && target.attr('name') == "s")
+	if(this.tagName == "INPUT" && target.attr('name') == "s") {
 		e.stopPropagation();
+	}
 	
-	if(this.tagName == "UL" && target.hasClass('search_results'))
+	if(this.tagName == "UL" && target.hasClass('search_results')) {
 		e.stopPropagation();
+	}
 			
-	if(this.tagName == "HTML")
-	{
+	if(this.tagName == "HTML") {
 		// If this is executing, the event has propagated all the way
 		// to the <html> tag itself without being stopped,
 		// so it must not have been the search box or the results that
 		// were clicked.
 		LiveSearch.hideResults();	
 	}
-}
+};
 
 /**
  * Process the search results that came back from the AJAX call
  */
-LiveSearch.handleAJAXResults = function(e)
-{
+LiveSearch.handleAJAXResults = function(e) {
+	
 	resultsSearchTerm = e.query_vars.s;
-	if(resultsSearchTerm != jQuery("input[name='s']").val())
+	if(resultsSearchTerm != jQuery("input[name='s']").val()) {
 		return;
+	}
 	
 	var searchResultsList = jQuery("ul.search_results");
 	searchResultsList.empty();
 
-	if(e.post_count == 0)
-	{
+	if(e.post_count === 0) {
 		// Hide the search results, no results to show
 		LiveSearch.hideResults();
 	}
-	else
-	{
+	else {
 		// Show the search results
 		LiveSearch.showResults();
 
-		for(var post in e.posts)
-		{
-			var searchResult = e.posts[post];
-			searchResultsList.append('<li><a href="' + searchResult.guid + '">' + searchResult.post_title + '</a><p id="daves-wordpress-live-search_author">Posted by ' + searchResult.post_author_nicename + '</p><p id="daves-wordpress-live-search_date">' + searchResult.post_date + '</p></li>');
+		for(var post in e.posts) {
+			if(post.post_title !== undefined) {
+				var searchResult = e.posts[post];
+				searchResultsList.append('<li><a href="' + searchResult.guid + '">' + searchResult.post_title + '</a><p id="daves-wordpress-live-search_author">Posted by ' + searchResult.post_author_nicename + '</p><p id="daves-wordpress-live-search_date">' + searchResult.post_date + '</p></li>');
+			}
 		}
 	}
 	
 	LiveSearch.removeIndicator();
-}
+};
 
 /**
  * Keypress handler. Sets up a 1 sec. timeout which then
@@ -122,28 +124,25 @@ LiveSearch.handleAJAXResults = function(e)
  * of the input box's value by the time we want to do something
  * with it.
  */
-LiveSearch.handleKeypress = function(e)
-{
+LiveSearch.handleKeypress = function(e) {
 	var delayTime = 1000;
 	setTimeout("LiveSearch.runQuery(" + e.which + ")", delayTime);
-}
+};
 
 /**
  * Do the AJAX request for search results, or hide the search results
  * if the search box is empty.
  */
-LiveSearch.runQuery = function(keyPressed)
-{
+LiveSearch.runQuery = function(keyPressed) {
+	
 	var searchResultsList = jQuery("ul.search_results");
 	
-	if(jQuery("input[name='s']").val() == "")
-	{
+	if(jQuery("input[name='s']").val() === "") {
 		// Nothing entered. Hide the autocomplete.
 		LiveSearch.hideResults();
 		LiveSearch.removeIndicator();
 	}
-	else
-	{
+	else {
 		// Do an autocomplete lookup
 		LiveSearch.displayIndicator();
 		
@@ -152,35 +151,30 @@ LiveSearch.runQuery = function(keyPressed)
 
 		jQuery.getJSON( "<?php print $pluginPath; ?>/daves-wordpress-live-search-ajax.php", {s: currentSearch}, LiveSearch.handleAJAXResults); 	
 	}
-}
+};
 
-LiveSearch.hideResults = function()
-{
+LiveSearch.hideResults = function() {
 	var searchResultsList = jQuery("ul.search_results");
 	
-	if(searchResultsList.css('display') == 'block')
-	{
+	if(searchResultsList.css('display') == 'block') {
 		searchResultsList.slideUp();	
 	}
-}
+};
 
-LiveSearch.showResults = function()
-{
+LiveSearch.showResults = function() {
 	var searchResultsList = jQuery("ul.search_results");
 	
-	if(searchResultsList.css('display') != 'block')
-	{
+	if(searchResultsList.css('display') != 'block') {
 		searchResultsList.slideDown();	
 	}
-}
+};
 
 /**
  * Display the "spinning wheel" AJAX activity indicator
  */
-LiveSearch.displayIndicator = function()
-{
-	if(jQuery("#search_results_activity_indicator").size() == 0)
-	{
+LiveSearch.displayIndicator = function() {
+	
+	if(jQuery("#search_results_activity_indicator").size() === 0) {
 
 		jQuery("body").append('<img id="search_results_activity_indicator" src="<?php print $pluginPath; ?>indicator.gif" />');
 		
@@ -198,15 +192,14 @@ LiveSearch.displayIndicator = function()
 						
 		jQuery("#search_results_activity_indicator").css('left', indicatorX);
 	}
-}
+};
 
 /**
  * Hide the "spinning wheel" AJAX activity indicator
  */
-LiveSearch.removeIndicator = function()
-{
+LiveSearch.removeIndicator = function() {
 	jQuery("#search_results_activity_indicator").remove();
-}
+};
 
 ///////////////////
 // Initialization
