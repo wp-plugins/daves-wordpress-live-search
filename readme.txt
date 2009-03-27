@@ -3,7 +3,7 @@ Contributors: csixty4
 Donate link: http://catguardians.org
 Tags: search, AJAX
 Requires at least: 2.0
-Tested up to: 2.7
+Tested up to: 2.7.1
 Stable tag: 1.0
 
 Adds "live search" functionality to your WordPress site. Uses the built-in search and jQuery.
@@ -17,10 +17,6 @@ The [live search](http://ajaxpatterns.org/Live_Search) technique means that most
 This functionality requires Javascript, but the search box still works normally if Javascript is not available.
 
 == Installation ==
-
-This section describes how to install the plugin and get it working.
-
-e.g.
 
 1. Upload the `daves-wordpress-live-search` directory to your site's `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
