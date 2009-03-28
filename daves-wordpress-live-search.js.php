@@ -46,9 +46,7 @@ LiveSearch.init = function() {
 	// Position the ul right under the search box	
 	var searchBoxPosition = searchBox.offset();
 	jQuery("body").children("ul.search_results").css('top', searchBoxPosition.top+searchBox.outerHeight()).css('left', searchBoxPosition.left);
-	//jQuery("body").children("ul.search_results").css('top', getOffsetTop(searchBox.get()) + searchBox.outerHeight()).css('left', getOffsetLeft(searchBox.get()));
-	
-	
+		
 	// Add the keypress handler
 	// Using keyup because keypress doesn't recognize the backspace key
 	// and that's kind of important.
@@ -149,8 +147,8 @@ LiveSearch.runQuery = function(keyPressed) {
 		LiveSearch.displayIndicator();
 		
 		// do AJAX query
-		var currentSearch = jQuery("input[name='s']").val();// + String.fromCharCode(keyPressed);
-
+		var currentSearch = jQuery("input[name='s']").val();
+		
 		jQuery.getJSON( "<?php print $pluginPath; ?>/daves-wordpress-live-search-ajax.php", {s: currentSearch}, LiveSearch.handleAJAXResults); 	
 	}
 };
@@ -210,42 +208,3 @@ LiveSearch.removeIndicator = function() {
 jQuery(document).ready( function() {
 	LiveSearch.init();
 });
-
-/////////////
-// Utilities
-/////////////
-
-/**
- * Cross-browser offsetTop alternative. In IE, it takes the element's parents' offsetTops into account.
- * I didn't want to include the jQuery dimensions plugin just for this functionality.
- * @param Element el
- * @return integer offsetTop in pixels
- */
-function getOffsetTop(el)
-{
-	if(el.tagName == "HTML") {
-		return 0;
-	} else if (jQuery.browser.msie && jQuery.browser.version < 8) {
-		return el.offsetTop + getOffsetTop(el.parentNode);
-	} else {
-		return el.offsetTop;
-	}	
-}
-
-/**
- * Cross-browser offsetLeft alternative. In IE, it takes the element's parents' offsetLefts into account.
- * I didn't want to include the jQuery dimensions plugin just for this functionality.
- * @param Element el
- * @return integer offsetLeft in pixels
- */
-function getOffsetLeft(el)
-{
-	if(el.tagName == "HTML") {
-		return 0;
-	} else if (jQuery.browser.msie && jQuery.browser.version < 8) {
-		return el.offsetLeft + getOffsetLeft(el.parentNode);
-	} else {
-		return el.offsetLeft;
-	}	
-}
-
