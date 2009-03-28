@@ -29,6 +29,9 @@ Plugin URI: http://wordpress.org/extend/plugins/daves-wordpress-live-search/
 // Register hooks
 add_action('init', array('DavesWordPressLiveSearch', 'advanced_search_init'));
 add_action('admin_menu', array('DavesWordPressLiveSearch', 'admin_menu'));
+add_action('wp_head', array('DavesWordPressLiveSearch', 'head'));
+
+
 
 class DavesWordPressLiveSearch
 {
@@ -42,9 +45,14 @@ class DavesWordPressLiveSearch
 		
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('jquery_dimensions', $pluginPath.'jquery.dimensions.pack.js', 'jquery');
-		wp_enqueue_script('daves-wordpress-live-search', $pluginPath.'daves-wordpress-live-search.js.php', 'jquery_dimensions');
-		
+		wp_enqueue_script('daves-wordpress-live-search', $pluginPath.'daves-wordpress-live-search.js.php', 'jquery_dimensions');	
+	}
+	
+	public static function head()
+	{
+		$pluginPath = WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__));		
 		wp_enqueue_style( 'daves-wordpress-live-search', $pluginPath.'daves-wordpress-live-search.css');
+		wp_print_styles(array('daves-wordpress-live-search'));
 	}
 	
 	///////////////
