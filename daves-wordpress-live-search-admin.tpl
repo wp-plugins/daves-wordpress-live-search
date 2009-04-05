@@ -9,4 +9,8 @@
 <div><small>Enter "0" to display all matching results</small></div>
 
 <div style="border-top: 1px solid #333;margin-top: 15px;padding: 5px;"><input type="submit" name="daves-wordpress-live-search_submit" id="daves-wordpress-live-search_submit" value="Save Changes" /></div>
-</form>
+</form>12
+
+<div class="note">
+Please Note: For slightly faster loading times, please consider installing the <a href="http://wordpress.org/extend/plugins/use-google-libraries">Use Google Libraries</a> plugin.
+</div>
