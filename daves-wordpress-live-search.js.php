@@ -1,23 +1,10 @@
-/**
- * Copyright (c) 2009 Dave Ross <dave@csixty4.com>
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
- * documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
- * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit
- * persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- *   The above copyright notice and this permission notice shall be included in all copies or substantial portions of the
- * Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
- * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR 
- * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
- * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- **/
- 
+?>
+<!-- Dave's WordPress Live Search JS -->
+<script type="text/javascript"> 
 <?php
 
-$pluginPath = str_replace($_SERVER['DOCUMENT_ROOT'], '', dirname(__FILE__)).'/';
+//$pluginPath = str_replace($_SERVER['DOCUMENT_ROOT'], '', dirname(__FILE__)).'/';
+$resultsDirection = stripslashes(get_option('daves-wordpress-live-search_results_direction'));
 
 ?>
 
@@ -33,20 +20,9 @@ function LiveSearch() {}
  */
 LiveSearch.init = function() {
 	
-	// Add a ul for the results
 	jQuery("body").append('<ul class="search_results"></ul>');
 	jQuery("body").children("ul.search_results").hide();
-
-	// Look for the search box. Exit if there isn't one.
-	var searchBox = jQuery("input[name='s']");
-	if(searchBox.size() === 0) {
-		return false;
-	}
-		
-	// Position the ul right under the search box	
-	var searchBoxPosition = searchBox.offset();
-	jQuery("body").children("ul.search_results").css('top', searchBoxPosition.top+searchBox.outerHeight()).css('left', searchBoxPosition.left);
-		
+	
 	// Add the keypress handler
 	// Using keyup because keypress doesn't recognize the backspace key
 	// and that's kind of important.
@@ -57,7 +33,34 @@ LiveSearch.init = function() {
 	
 	// Hide the search results when the search box loses focus
 	jQuery("*").click(LiveSearch.handleClicks);
+}
 
+LiveSearch.positionResults = function() {
+	
+	// Look for the search box. Exit if there isn't one.
+	var searchBox = jQuery("input[name='s']");
+	if(searchBox.size() === 0) {
+		return false;
+	}
+		
+	// Position the ul right under the search box	
+	var searchBoxPosition = searchBox.offset();
+	jQuery("body").children("ul.search_results").css('left', searchBoxPosition.left);
+
+	jQuery("body").children("ul.search_results").css('display', 'block');
+	var topOffset = <?php
+		switch($resultsDirection)
+		{
+			case 'up':
+				echo 'searchBoxPosition.top - jQuery("ul.search_results").height();';
+				break;
+			case 'down':
+			default:
+				echo "searchBoxPosition.top + searchBox.outerHeight();";
+		}
+	?>
+	jQuery("body").children("ul.search_results").css('display', 'none');
+	jQuery("body").children("ul.search_results").css('top', topOffset + 'px');
 };
 
 LiveSearch.handleClicks = function(e) {
@@ -99,15 +102,18 @@ LiveSearch.handleAJAXResults = function(e) {
 		LiveSearch.hideResults();
 	}
 	else {
-		// Show the search results
-		LiveSearch.showResults();
-
 		for(var postIndex = 0; postIndex < e.posts.length; postIndex++) {
 			var searchResult = e.posts[postIndex];
 			if(searchResult.post_title !== undefined) {
 				searchResultsList.append('<li><a href="' + searchResult.guid + '">' + searchResult.post_title + '</a><p id="daves-wordpress-live-search_author">Posted by ' + searchResult.post_author_nicename + '</p><p id="daves-wordpress-live-search_date">' + searchResult.post_date + '</p></li>');
+				
 			}
+
 		}
+		
+		// Show the search results
+		LiveSearch.showResults();
+
 	}
 	
 	LiveSearch.removeIndicator();
@@ -157,15 +163,35 @@ LiveSearch.hideResults = function() {
 	var searchResultsList = jQuery("ul.search_results");
 	
 	if(searchResultsList.css('display') == 'block') {
-		searchResultsList.slideUp();	
+		switch('<?php echo $resultsDirection; ?>')
+		{
+			case 'up':
+				searchResultsList.fadeOut();
+				break;
+			case 'down':
+			default:
+				searchResultsList.slideUp();
+		}
 	}
 };
 
 LiveSearch.showResults = function() {
+
+	this.positionResults();
+	
 	var searchResultsList = jQuery("ul.search_results");
 	
 	if(searchResultsList.css('display') != 'block') {
-		searchResultsList.slideDown();	
+		switch('<?php echo $resultsDirection; ?>')
+		{
+			case 'up':
+				searchResultsList.fadeIn();
+				break;
+			case 'down':
+			default:
+				searchResultsList.slideDown();	
+		}
+		
 	}
 };
 
@@ -188,7 +214,7 @@ LiveSearch.displayIndicator = function() {
 		
 		jQuery("#search_results_activity_indicator").css('top', indicatorY);
 
-		var indicatorX = (searchBoxPosition.left + searchBox.outerWidth() - <?php $dimensions = getimagesize("indicator.gif"); print $dimensions[0]; ?> - 2) + 'px';
+		var indicatorX = (searchBoxPosition.left + searchBox.outerWidth() - <?php $dimensions = getimagesize("$pluginPath/indicator.gif"); print $dimensions[0]; ?> - 2) + 'px';
 						
 		jQuery("#search_results_activity_indicator").css('left', indicatorX);
 	}
@@ -208,3 +234,5 @@ LiveSearch.removeIndicator = function() {
 jQuery(document).ready( function() {
 	LiveSearch.init();
 });
+</script>
+<!-- END:Dave's WordPress Live Search JS -->

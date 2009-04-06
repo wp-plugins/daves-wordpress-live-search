@@ -45,7 +45,6 @@ class DavesWordPressLiveSearch
 		
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('jquery_dimensions', $pluginPath.'jquery.dimensions.pack.js', 'jquery');
-		wp_enqueue_script('daves-wordpress-live-search', $pluginPath.'daves-wordpress-live-search.js.php', 'jquery_dimensions');	
 	}
 	
 	public static function head()
@@ -56,6 +55,12 @@ class DavesWordPressLiveSearch
 		$css = file_get_contents($thisPluginsDirectory.'/daves-wordpress-live-search.css.tpl');
 		$css = str_replace("\n", "", $css);
 		echo $css;
+
+		$js = file_get_contents($thisPluginsDirectory.'/daves-wordpress-live-search.js.php');
+		$js = str_replace("\n", "", eval($js));
+		//$js = eval($js);
+		echo $js;
+		
 	}
 	
 	///////////////
@@ -75,9 +80,11 @@ class DavesWordPressLiveSearch
 		{
 			// Read their posted value
 	        $maxResults = max(intval($_POST['daves-wordpress-live-search_max_results']), 0);
+	        $resultsDirection = $_POST['daves-wordpress-live-search_results_direction'];
 
 	        // Save the posted value in the database
 	        update_option('daves-wordpress-live-search_max_results', $maxResults );	
+	        update_option('daves-wordpress-live-search_results_direction', $resultsDirection);
 	        
 	        // Translate the "Options saved" message...just in case.
 	        // You know...the code I was copying for this does it, thought it might be a good idea to leave it
@@ -88,12 +95,20 @@ class DavesWordPressLiveSearch
 		else
 		{
 			$maxResults = intval(get_option('daves-wordpress-live-search_max_results'));
+			$resultsDirection = stripslashes(get_option('daves-wordpress-live-search_results_direction'));
 		}
+	        
+	    if(!in_array($resultsDirection, array('up', 'down')))
+	        	$resultsDirection = 'down';
+	        	
+		//$template = file_get_contents("$thisPluginsDirectory/daves-wordpress-live-search-admin.tpl");
+		//$template = str_replace('{MAX_RESULTS}', stripslashes($maxResults), $template);
 		
-		$template = file_get_contents("$thisPluginsDirectory/daves-wordpress-live-search-admin.tpl");
-		$template = str_replace('{MAX_RESULTS}', stripslashes($maxResults), $template);
+		//$template = str_replace('{DIRECTION}', stripslashes($resultsDirection), $template);
 		
-		echo $template;
+		//echo $template;
+		
+		include("$thisPluginsDirectory/daves-wordpress-live-search-admin.tpl");
 	}
 }
 ?>
