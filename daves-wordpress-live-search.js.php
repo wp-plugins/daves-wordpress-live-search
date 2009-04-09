@@ -3,7 +3,6 @@
 <script type="text/javascript"> 
 <?php
 
-//$pluginPath = str_replace($_SERVER['DOCUMENT_ROOT'], '', dirname(__FILE__)).'/';
 $resultsDirection = stripslashes(get_option('daves-wordpress-live-search_results_direction'));
 
 ?>
@@ -155,7 +154,7 @@ LiveSearch.runQuery = function(keyPressed) {
 		// do AJAX query
 		var currentSearch = jQuery("input[name='s']").val();
 		
-		jQuery.getJSON( "<?php print $pluginPath; ?>/daves-wordpress-live-search-ajax.php", {s: currentSearch}, LiveSearch.handleAJAXResults); 	
+		jQuery.getJSON( "<?php print $pluginPath; ?>daves-wordpress-live-search-ajax.php", {s: currentSearch}, LiveSearch.handleAJAXResults); 	
 	}
 };
 
