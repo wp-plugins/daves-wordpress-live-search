@@ -3,7 +3,7 @@
 /*
 Plugin Name: Dave's WordPress Live Search
 Description: Adds "live search" functionality to your WordPress? site. Uses the built-in search and jQuery.
-Version: 1.1
+Version: 1.2
 Author: Dave Ross
 Author URI: http://csixty4.com/
 Plugin URI: http://wordpress.org/extend/plugins/daves-wordpress-live-search/
