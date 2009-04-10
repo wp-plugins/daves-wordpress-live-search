@@ -1,4 +1,3 @@
-?>
 <!-- Dave's WordPress Live Search JS -->
 <script type="text/javascript"> 
 <?php
@@ -159,16 +158,16 @@ LiveSearch.runQuery = function(keyPressed) {
 };
 
 LiveSearch.hideResults = function() {
-	var searchResultsList = jQuery("ul.search_results");
 	
 	switch('<?php echo $resultsDirection; ?>')
 	{
 		case 'up':
-			searchResultsList.fadeOut();
-			break;
+			jQuery("ul.search_results:visible").fadeOut();
+			return;
 		case 'down':
 		default:
-			searchResultsList.slideUp();
+			jQuery("ul.search_results:visible").slideUp();
+			return;
 	}
 };
 
@@ -176,16 +175,15 @@ LiveSearch.showResults = function() {
 
 	this.positionResults();
 	
-	var searchResultsList = jQuery("ul.search_results");
-	
 	switch('<?php echo $resultsDirection; ?>')
 	{
 		case 'up':
-			searchResultsList.fadeIn();
-			break;
+			jQuery("ul.search_results:hidden").fadeIn();
+			return;
 		case 'down':
 		default:
-			searchResultsList.slideDown();	
+			jQuery("ul.search_results:hidden").slideDown();	
+			return;
 	}
 };
 

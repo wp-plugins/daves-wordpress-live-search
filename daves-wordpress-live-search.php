@@ -52,14 +52,12 @@ class DavesWordPressLiveSearch
 		$pluginPath = WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__));		
 		$thisPluginsDirectory = dirname(__FILE__);
 		
-		$css = file_get_contents($thisPluginsDirectory.'/daves-wordpress-live-search.css.tpl');
-		$css = str_replace("\n", "", $css);
-		echo $css;
+		//$css = file_get_contents($thisPluginsDirectory.'/daves-wordpress-live-search.css.tpl');
+		//$css = str_replace("\n", "", $css);
+		//echo $css;
+		include($thisPluginsDirectory.'/daves-wordpress-live-search.css.tpl');
 
-		$js = file_get_contents($thisPluginsDirectory.'/daves-wordpress-live-search.js.php');
-		$js = str_replace("\n", "", eval($js));
-
-		echo $js;
+		include($thisPluginsDirectory.'/daves-wordpress-live-search.js.php');
 		
 	}
 	
