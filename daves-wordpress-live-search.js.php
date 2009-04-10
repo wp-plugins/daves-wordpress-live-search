@@ -161,16 +161,14 @@ LiveSearch.runQuery = function(keyPressed) {
 LiveSearch.hideResults = function() {
 	var searchResultsList = jQuery("ul.search_results");
 	
-	if(searchResultsList.css('display') == 'block') {
-		switch('<?php echo $resultsDirection; ?>')
-		{
-			case 'up':
-				searchResultsList.fadeOut();
-				break;
-			case 'down':
-			default:
-				searchResultsList.slideUp();
-		}
+	switch('<?php echo $resultsDirection; ?>')
+	{
+		case 'up':
+			searchResultsList.fadeOut();
+			break;
+		case 'down':
+		default:
+			searchResultsList.slideUp();
 	}
 };
 
@@ -180,17 +178,14 @@ LiveSearch.showResults = function() {
 	
 	var searchResultsList = jQuery("ul.search_results");
 	
-	if(searchResultsList.css('display') != 'block') {
-		switch('<?php echo $resultsDirection; ?>')
-		{
-			case 'up':
-				searchResultsList.fadeIn();
-				break;
-			case 'down':
-			default:
-				searchResultsList.slideDown();	
-		}
-		
+	switch('<?php echo $resultsDirection; ?>')
+	{
+		case 'up':
+			searchResultsList.fadeIn();
+			break;
+		case 'down':
+		default:
+			searchResultsList.slideDown();	
 	}
 };
 
