@@ -58,7 +58,7 @@ class DavesWordPressLiveSearch
 
 		$js = file_get_contents($thisPluginsDirectory.'/daves-wordpress-live-search.js.php');
 		$js = str_replace("\n", "", eval($js));
-		//$js = eval($js);
+
 		echo $js;
 		
 	}
@@ -100,14 +100,7 @@ class DavesWordPressLiveSearch
 	        
 	    if(!in_array($resultsDirection, array('up', 'down')))
 	        	$resultsDirection = 'down';
-	        	
-		//$template = file_get_contents("$thisPluginsDirectory/daves-wordpress-live-search-admin.tpl");
-		//$template = str_replace('{MAX_RESULTS}', stripslashes($maxResults), $template);
-		
-		//$template = str_replace('{DIRECTION}', stripslashes($resultsDirection), $template);
-		
-		//echo $template;
-		
+	        		
 		include("$thisPluginsDirectory/daves-wordpress-live-search-admin.tpl");
 	}
 }
