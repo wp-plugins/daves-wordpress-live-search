@@ -3,7 +3,7 @@
 /*
 Plugin Name: Dave's WordPress Live Search
 Description: Adds "live search" functionality to your WordPress? site. Uses the built-in search and jQuery.
-Version: 1.2
+Version: 1.3
 Author: Dave Ross
 Author URI: http://csixty4.com/
 Plugin URI: http://wordpress.org/extend/plugins/daves-wordpress-live-search/
@@ -31,7 +31,16 @@ add_action('init', array('DavesWordPressLiveSearch', 'advanced_search_init'));
 add_action('admin_menu', array('DavesWordPressLiveSearch', 'admin_menu'));
 add_action('wp_head', array('DavesWordPressLiveSearch', 'head'));
 
-
+// Pre-2.6 compatibility
+// See http://codex.wordpress.org/Determining_Plugin_and_Content_Directories
+if ( ! defined( 'WP_CONTENT_URL' ) )
+      define( 'WP_CONTENT_URL', get_option( 'siteurl' ) . '/wp-content' );
+if ( ! defined( 'WP_CONTENT_DIR' ) )
+      define( 'WP_CONTENT_DIR', ABSPATH . 'wp-content' );
+if ( ! defined( 'WP_PLUGIN_URL' ) )
+      define( 'WP_PLUGIN_URL', WP_CONTENT_URL. '/plugins' );
+if ( ! defined( 'WP_PLUGIN_DIR' ) )
+      define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR . '/plugins' );
 
 class DavesWordPressLiveSearch
 {
