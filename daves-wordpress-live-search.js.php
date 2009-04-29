@@ -92,8 +92,13 @@ LiveSearch.handleAJAXResults = function(e) {
 		return;
 	}
 	
+	var resultsShownFor = jQuery("ul.search_results").children("input[name=query]").val();
+	if(resultsShownFor != "" && resultsSearchTerm == resultsShownFor)
+		return;
+
 	var searchResultsList = jQuery("ul.search_results");
 	searchResultsList.empty();
+	searchResultsList.append('<input type="hidden" name="query" value="' + resultsSearchTerm + '" />');
 
 	if(e.post_count === 0) {
 		// Hide the search results, no results to show
@@ -118,28 +123,21 @@ LiveSearch.handleAJAXResults = function(e) {
 };
 
 /**
- * Keypress handler. Sets up a 1 sec. timeout which then
- * kicks off the actual query. The AJAX result handler checks
- * the search terms on the results and throws away anything
- * that doesn't match what's currently in the search field.
- * This way, we know that what's in the search box has been
- * there at least a second. The second delay also pretty much
- * guarantees that the key pressed has been added to the end
- * of the input box's value by the time we want to do something
- * with it.
+ * Keypress handler. Sets up a 0 sec. timeout which then
+ * kicks off the actual query.s
  */
 LiveSearch.handleKeypress = function(e) {
-	var delayTime = 1000;
-	setTimeout("LiveSearch.runQuery(" + e.which + ")", delayTime);
+	var delayTime = 0;
+	var term = jQuery("input[name='s']").val();
+	var func = "LiveSearch.runQuery(" + e.which + ", '" + term + "')";
+	setTimeout(func, delayTime);
 };
 
 /**
  * Do the AJAX request for search results, or hide the search results
  * if the search box is empty.
  */
-LiveSearch.runQuery = function(keyPressed) {
-	
-	//var searchResultsList = jQuery("ul.search_results");
+LiveSearch.runQuery = function(keyPressed, terms) {
 	
 	if(jQuery("input[name='s']").val() === "") {
 		// Nothing entered. Hide the autocomplete.
@@ -151,7 +149,8 @@ LiveSearch.runQuery = function(keyPressed) {
 		LiveSearch.displayIndicator();
 		
 		// do AJAX query
-		var currentSearch = jQuery("input[name='s']").val();
+		//var currentSearch = jQuery("input[name='s']").val();
+		var currentSearch = terms;
 		
 		jQuery.getJSON( "<?php print $pluginPath; ?>daves-wordpress-live-search-ajax.php", {s: currentSearch}, LiveSearch.handleAJAXResults); 	
 	}
