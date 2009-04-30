@@ -86,8 +86,8 @@ LiveSearch.handleClicks = function(e) {
  * Process the search results that came back from the AJAX call
  */
 LiveSearch.handleAJAXResults = function(e) {
-	
-	resultsSearchTerm = e.query_vars.s;
+
+	resultsSearchTerm = e.searchTerms;
 	if(resultsSearchTerm != jQuery("input[name='s']").val()) {
 		return;
 	}
@@ -105,11 +105,10 @@ LiveSearch.handleAJAXResults = function(e) {
 		LiveSearch.hideResults();
 	}
 	else {
-		for(var postIndex = 0; postIndex < e.posts.length; postIndex++) {
-			var searchResult = e.posts[postIndex];
+		for(var postIndex = 0; postIndex < e.results.length; postIndex++) {
+			var searchResult = e.results[postIndex];
 			if(searchResult.post_title !== undefined) {
-				searchResultsList.append('<li><a href="' + searchResult.guid + '">' + searchResult.post_title + '</a><p id="daves-wordpress-live-search_author">Posted by ' + searchResult.post_author_nicename + '</p><p id="daves-wordpress-live-search_date">' + searchResult.post_date + '</p></li>');
-				
+				searchResultsList.append('<li><a href="' + searchResult.guid + '">' + searchResult.post_title + '</a><p id="daves-wordpress-live-search_author">Posted by ' + searchResult.post_author_nicename + '</p><p id="daves-wordpress-live-search_date">' + searchResult.post_date + '</p></li>');				
 			}
 
 		}

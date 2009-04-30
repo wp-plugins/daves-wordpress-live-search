@@ -66,6 +66,32 @@ if (!function_exists('json_encode'))
 
 include_once("../../../wp-config.php");
 
+/**
+ * Value object class
+ */
+class DavesWordPressLiveSearchResults {
+	public $searchTerms;
+	public $results;
+	
+	function DavesWordPressLiveSearchResults($wpQueryResults) {
+		$this->results = array();
+		$this->populate($wpQueryResults);
+	}
+	
+	private function populate($wpQueryResults) {
+		$this->searchTerms = $wpQueryResults->query_vars['s'];
+		foreach($wpQueryResults->posts as $result)
+		{
+			$this->addResult($result);	
+		}
+	}
+	
+	private function addResult($result) {
+		$this->results[] = $result;
+	}
+		
+}
+
 $wp_query = new WP_Query(array('s' => $_GET['s'], 'showposts' => 100));
 
 // Add author names
@@ -96,8 +122,11 @@ if($maxResults > 0)
 	$wp_query->posts = array_slice($wp_query->posts, 0, $maxResults);
 }
 
+$results = new DavesWordPressLiveSearchResults($wp_query);
+
 // TODO don't send all of $wp_query back
-$json = json_encode($wp_query);
+//$json = json_encode($wp_query);
+$json = json_encode($results);
 
 print $json;
 
