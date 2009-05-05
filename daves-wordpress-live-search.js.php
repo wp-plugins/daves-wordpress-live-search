@@ -12,6 +12,8 @@ $resultsDirection = stripslashes(get_option('daves-wordpress-live-search_results
 
 function LiveSearch() {}
 
+LiveSearch.activeRequests = new Array();
+
 /**
  * Initialization for the live search plugin.
  * Sets up the key handler and creates the search results list.
@@ -147,11 +149,20 @@ LiveSearch.runQuery = function(keyPressed, terms) {
 		// Do an autocomplete lookup
 		LiveSearch.displayIndicator();
 		
+		// Clear out the old requests in the queue
+		while(this.activeRequests.length > 0)
+		{
+			var req = this.activeRequests.pop();
+			req.abort();
+		}
 		// do AJAX query
 		//var currentSearch = jQuery("input[name='s']").val();
 		var currentSearch = terms;
 		
-		jQuery.getJSON( "<?php print $pluginPath; ?>daves-wordpress-live-search-ajax.php", {s: currentSearch}, LiveSearch.handleAJAXResults); 	
+		var req = jQuery.getJSON( "<?php print $pluginPath; ?>daves-wordpress-live-search-ajax.php", {s: currentSearch}, LiveSearch.handleAJAXResults);
+		
+		// Add this request to the queue
+		this.activeRequests.push(req);
 	}
 };
 
