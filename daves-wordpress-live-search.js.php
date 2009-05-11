@@ -88,15 +88,25 @@ LiveSearch.handleClicks = function(e) {
  * Process the search results that came back from the AJAX call
  */
 LiveSearch.handleAJAXResults = function(e) {
+	LiveSearch.activeRequests.pop();
 
 	resultsSearchTerm = e.searchTerms;
 	if(resultsSearchTerm != jQuery("input[name='s']").val()) {
+		
+		if(LiveSearch.activeRequests.length == 0)
+			LiveSearch.removeIndicator();
+
 		return;
 	}
 	
 	var resultsShownFor = jQuery("ul.search_results").children("input[name=query]").val();
 	if(resultsShownFor != "" && resultsSearchTerm == resultsShownFor)
+	{
+		if(LiveSearch.activeRequests.length == 0)
+			LiveSearch.removeIndicator();
+
 		return;
+	}
 
 	var searchResultsList = jQuery("ul.search_results");
 	searchResultsList.empty();
@@ -120,7 +130,8 @@ LiveSearch.handleAJAXResults = function(e) {
 
 	}
 	
-	LiveSearch.removeIndicator();
+	if(LiveSearch.activeRequests.length == 0)
+		LiveSearch.removeIndicator();
 };
 
 /**
