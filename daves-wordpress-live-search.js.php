@@ -130,7 +130,7 @@ LiveSearch.handleAJAXResults = function(e) {
 LiveSearch.handleKeypress = function(e) {
 	var delayTime = 0;
 	var term = jQuery("input[name='s']").val();
-	var func = "LiveSearch.runQuery(" + e.which + ", '" + term + "')";
+	var func = "LiveSearch.runQuery('" + term + "')";
 	setTimeout(func, delayTime);
 };
 
@@ -138,7 +138,7 @@ LiveSearch.handleKeypress = function(e) {
  * Do the AJAX request for search results, or hide the search results
  * if the search box is empty.
  */
-LiveSearch.runQuery = function(keyPressed, terms) {
+LiveSearch.runQuery = function(terms) {
 	
 	if(jQuery("input[name='s']").val() === "") {
 		// Nothing entered. Hide the autocomplete.
