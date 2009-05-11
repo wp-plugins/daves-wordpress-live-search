@@ -150,9 +150,9 @@ LiveSearch.runQuery = function(terms) {
 		LiveSearch.displayIndicator();
 		
 		// Clear out the old requests in the queue
-		while(this.activeRequests.length > 0)
+		while(LiveSearch.activeRequests.length > 0)
 		{
-			var req = this.activeRequests.pop();
+			var req = LiveSearch.activeRequests.pop();
 			req.abort();
 		}
 		// do AJAX query
@@ -162,7 +162,7 @@ LiveSearch.runQuery = function(terms) {
 		var req = jQuery.getJSON( "<?php print $pluginPath; ?>daves-wordpress-live-search-ajax.php", {s: currentSearch}, LiveSearch.handleAJAXResults);
 		
 		// Add this request to the queue
-		this.activeRequests.push(req);
+		LiveSearch.activeRequests.push(req);
 	}
 };
 
