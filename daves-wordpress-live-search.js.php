@@ -167,7 +167,6 @@ LiveSearch.runQuery = function(terms) {
 };
 
 LiveSearch.hideResults = function() {
-	
 	switch('<?php echo $resultsDirection; ?>')
 	{
 		case 'up':
