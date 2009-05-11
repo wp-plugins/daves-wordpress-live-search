@@ -59,7 +59,7 @@ LiveSearch.positionResults = function() {
 				echo "searchBoxPosition.top + searchBox.outerHeight();";
 		}
 	?>
-	jQuery("body").children("ul.search_results").css('display', 'none');
+
 	jQuery("body").children("ul.search_results").css('top', topOffset + 'px');
 };
 
