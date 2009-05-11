@@ -112,7 +112,7 @@ LiveSearch.handleAJAXResults = function(e) {
 	searchResultsList.empty();
 	searchResultsList.append('<input type="hidden" name="query" value="' + resultsSearchTerm + '" />');
 
-	if(e.post_count === 0) {
+	if(e.results.length == 0) {
 		// Hide the search results, no results to show
 		LiveSearch.hideResults();
 	}
