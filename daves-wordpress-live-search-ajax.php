@@ -100,7 +100,9 @@ class DavesWordPressLiveSearchResults {
 	}
 }
 
-$wp_query = new WP_Query(array('s' => $_GET['s'], 'showposts' => 100));
+$maxResults = intval(get_option('daves-wordpress-live-search_max_results'));
+if($maxResults === 0) $maxResults = -1;
+$wp_query = new WP_Query(array('s' => $_GET['s'], 'showposts' => $maxResults));
 
 $displayPostMeta = (bool)get_option('daves-wordpress-live-search_display_post_meta');
 
@@ -128,11 +130,7 @@ if($displayPostMeta)
 	}
 }
 
-$maxResults = intval(get_option('daves-wordpress-live-search_max_results'));
-if($maxResults > 0)
-{
-	$wp_query->posts = array_slice($wp_query->posts, 0, $maxResults);
-}
+
 
 $results = new DavesWordPressLiveSearchResults($wp_query, $displayPostMeta);
 
