@@ -25,7 +25,9 @@ This functionality requires Javascript, but the search box still works normally 
 
 1. Demonstration of Dave's WordPress Live Search
 
-== Known Issues ==
+== Frequently Asked Questions ==
+
+I don't get asked a lot of questions about this plugin, so here's the "known issues":
 
 1. There must only be one search box per page. If there is more than one search box, the plugin gets confused. This may be fixed in a future release.
 1. In the HTML, your search box must be named "s". This is the name the standard search widget uses, so this is only an issue for themers who include their own search box.
