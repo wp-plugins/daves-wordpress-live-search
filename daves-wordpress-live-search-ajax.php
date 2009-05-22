@@ -102,26 +102,30 @@ class DavesWordPressLiveSearchResults {
 
 $wp_query = new WP_Query(array('s' => $_GET['s'], 'showposts' => 100));
 
-// Add author names
+$displayPostMeta = (bool)get_option('daves-wordpress-live-search_display_post_meta');
 
-$authorCache = array();
-foreach($wp_query->posts as $index=>$post)
+// Add author names
+if($displayPostMeta)
 {
-	$authorID = $post->post_author;
-	if(array_key_exists($authorID, $authorCache))
+	$authorCache = array();
+	foreach($wp_query->posts as $index=>$post)
 	{
-		$authorName = $authorCache[$authorID];
+		$authorID = $post->post_author;
+		if(array_key_exists($authorID, $authorCache))
+		{
+			$authorName = $authorCache[$authorID];
+		}
+		else
+		{
+			$authorData = get_userdata($authorID);
+			$authorName = $authorData->user_nicename;
+			$authorCache[$authorID] = $authorData->user_nicename;
+		}
+		
+		$post->post_author_nicename = $authorName;
+		
+		unset($post->post_content);
 	}
-	else
-	{
-		$authorData = get_userdata($authorID);
-		$authorName = $authorData->user_nicename;
-		$authorCache[$authorID] = $authorData->user_nicename;
-	}
-	
-	$post->post_author_nicename = $authorName;
-	
-	unset($post->post_content);
 }
 
 $maxResults = intval(get_option('daves-wordpress-live-search_max_results'));
@@ -130,7 +134,7 @@ if($maxResults > 0)
 	$wp_query->posts = array_slice($wp_query->posts, 0, $maxResults);
 }
 
-$results = new DavesWordPressLiveSearchResults($wp_query, (bool)get_option('daves-wordpress-live-search_display_post_meta'));
+$results = new DavesWordPressLiveSearchResults($wp_query, $displayPostMeta);
 
 $json = json_encode($results);
 
