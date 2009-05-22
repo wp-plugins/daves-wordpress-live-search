@@ -88,14 +88,9 @@ class DavesWordPressLiveSearchResults {
 		$this->searchTerms = $wpQueryResults->query_vars['s'];
 		foreach($wpQueryResults->posts as $result)
 		{
-			$this->addResult($result);	
+			$this->results[] = $result;	
 		}
 	}
-	
-	private function addResult($result) {
-		$this->results[] = $result;
-	}
-		
 }
 
 $wp_query = new WP_Query(array('s' => $_GET['s'], 'showposts' => 100));
