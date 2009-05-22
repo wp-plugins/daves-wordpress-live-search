@@ -17,8 +17,15 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  **/
 
+// Provide a json_encode implementation if none exists (PHP < 5.2.0)
 if (!function_exists('json_encode'))
 {
+	/**
+	 * json_encode implementation for PHP 4.x by "Steve". Serializes data into JSON.
+	 * @see http://www.php.net/manual/en/function.json-encode.php#82904
+	 * @param mixed $a data to serialize
+	 * @return mixed serialized data|scalar
+	 */
 	function json_encode($a=false)
 	{
 		if (is_null($a)) return 'null';
