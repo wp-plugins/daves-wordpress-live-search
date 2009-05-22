@@ -125,8 +125,6 @@ if($maxResults > 0)
 
 $results = new DavesWordPressLiveSearchResults($wp_query, (bool)get_option('daves-wordpress-live-search_display_post_meta'));
 
-// TODO don't send all of $wp_query back
-//$json = json_encode($wp_query);
 $json = json_encode($results);
 
 print $json;
