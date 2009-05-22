@@ -72,10 +72,16 @@ include_once("../../../wp-config.php");
 class DavesWordPressLiveSearchResults {
 	public $searchTerms;
 	public $results;
+	public $displayPostMeta;
 	
-	function DavesWordPressLiveSearchResults($wpQueryResults) {
+	/**
+	 * @param WP_Query $wpQueryResults
+	 * @param boolean $displayPostMeta Show author & date for each post. Defaults to TRUE to keep original bahavior from before I added this flag
+	 */
+	function DavesWordPressLiveSearchResults(WP_Query $wpQueryResults, $displayPostMeta = true) {
 		$this->results = array();
 		$this->populate($wpQueryResults);
+		$this->displayPostMeta = $displayPostMeta;
 	}
 	
 	private function populate($wpQueryResults) {
@@ -122,7 +128,7 @@ if($maxResults > 0)
 	$wp_query->posts = array_slice($wp_query->posts, 0, $maxResults);
 }
 
-$results = new DavesWordPressLiveSearchResults($wp_query);
+$results = new DavesWordPressLiveSearchResults($wp_query, (bool)get_option('daves-wordpress-live-search_display_post_meta'));
 
 // TODO don't send all of $wp_query back
 //$json = json_encode($wp_query);

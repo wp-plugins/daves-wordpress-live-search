@@ -45,10 +45,12 @@ class DavesWordPressLiveSearch
 			// Read their posted value
 	        $maxResults = max(intval($_POST['daves-wordpress-live-search_max_results']), 0);
 	        $resultsDirection = $_POST['daves-wordpress-live-search_results_direction'];
+	        $displayPostMeta = ($_POST['daves-wordpress-live-search_display_post_meta'] == "true");
 
 	        // Save the posted value in the database
 	        update_option('daves-wordpress-live-search_max_results', $maxResults );	
 	        update_option('daves-wordpress-live-search_results_direction', $resultsDirection);
+	        update_option('daves-wordpress-live-search_display_post_meta', (string)$displayPostMeta);
 	        
 	        // Translate the "Options saved" message...just in case.
 	        // You know...the code I was copying for this does it, thought it might be a good idea to leave it
@@ -60,6 +62,7 @@ class DavesWordPressLiveSearch
 		{
 			$maxResults = intval(get_option('daves-wordpress-live-search_max_results'));
 			$resultsDirection = stripslashes(get_option('daves-wordpress-live-search_results_direction'));
+			$displayPostMeta = (bool)get_option('daves-wordpress-live-search_display_post_meta');
 		}
 	        
 	    if(!in_array($resultsDirection, array('up', 'down')))

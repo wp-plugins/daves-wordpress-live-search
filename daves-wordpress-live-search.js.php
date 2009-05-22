@@ -120,9 +120,15 @@ LiveSearch.handleAJAXResults = function(e) {
 		for(var postIndex = 0; postIndex < e.results.length; postIndex++) {
 			var searchResult = e.results[postIndex];
 			if(searchResult.post_title !== undefined) {
-				searchResultsList.append('<li><a href="' + searchResult.guid + '">' + searchResult.post_title + '</a><p id="daves-wordpress-live-search_author">Posted by ' + searchResult.post_author_nicename + '</p><p id="daves-wordpress-live-search_date">' + searchResult.post_date + '</p></li>');				
-			}
+				var renderedResult = '';
+				renderedResult += '<li><a href="' + searchResult.guid + '">' + searchResult.post_title + '</a>';
 
+				if(e.displayPostMeta) {
+					renderedResult += '<p id="daves-wordpress-live-search_author">Posted by ' + searchResult.post_author_nicename + '</p><p id="daves-wordpress-live-search_date">' + searchResult.post_date + '</p>';
+				}
+				renderedResult += '</li>';
+				searchResultsList.append(renderedResult);
+			}
 		}
 		
 		// Show the search results
