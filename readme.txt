@@ -35,34 +35,34 @@ This functionality requires Javascript, but the search box still works normally 
 
 v1.3 2009-05-22  Dave Ross  <dave@csixty4.com>
      
-     * Fixed an annoying bug where the search results div collapsed and expanded again every time an AJAX request completed
+* Fixed an annoying bug where the search results div collapsed and expanded again every time an AJAX request completed
      
-     * Cancel any existing AJAX requests before sending a new one
+* Cancel any existing AJAX requests before sending a new one
      
-     * Check for PHP 5.x. Displays an error when you try to activate the plugin on PHP < 5
+* Check for PHP 5.x. Displays an error when you try to activate the plugin on PHP < 5
      
-     * No longer sends the entire WP_Query object to the browser. This was a potential information disclosure issue, plus it was a lot to serialize on the server and parse in the brower
+* No longer sends the entire WP_Query object to the browser. This was a potential information disclosure issue, plus it was a lot to serialize on the server and parse in the brower
      
-     * Minor code cleanup & optimizations
+* Minor code cleanup & optimizations
      
 v1.2 2009-04-10  Dave Ross  <dave@csixty4.com>
 
-	 * Code cleanup & optimizations
+* Code cleanup & optimizations
 	 
-	 * Styled the admin screen to fit in with WordPress better
+* Styled the admin screen to fit in with WordPress better
 	 
-	 * New option: display the results above or below the search box
+* New option: display the results above or below the search box
 	 
-	 * Included a note on the admin screen recommending the Google Libraries plugin
+* Included a note on the admin screen recommending the Google Libraries plugin
 	 
 v1.1 2009-03-30  Dave Ross  <dave@csixty4.com>
 
-	 * Code cleanup & optimizations
+* Code cleanup & optimizations
 	 
-	 * Fixed compatibility issues with PHP < 5.2.0 and PHP < 5.1.2
+* Fixed compatibility issues with PHP < 5.2.0 and PHP < 5.1.2
 	 
-	 * New option: limit the number of results to display
+* New option: limit the number of results to display
 	 
 v1.0 2009-03-13  Dave Ross  <dave@csixty4.com>
 
-	 * Initial release
+* Initial release
