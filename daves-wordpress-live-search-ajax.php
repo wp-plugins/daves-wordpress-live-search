@@ -87,32 +87,34 @@ class DavesWordPressLiveSearchResults {
 	 */
 	function DavesWordPressLiveSearchResults(WP_Query $wpQueryResults, $displayPostMeta = true) {
 		$this->results = array();
-		$this->populate($wpQueryResults);
+		$this->populate($wpQueryResults, $displayPostMeta);
 		$this->displayPostMeta = $displayPostMeta;
 	}
 	
-	private function populate($wpQueryResults) {
+	private function populate($wpQueryResults, $displayPostMeta) {
 		$this->searchTerms = $wpQueryResults->query_vars['s'];
+		
 		foreach($wpQueryResults->posts as $result)
 		{
+			// Add author names & permalinks
+			if($displayPostMeta)
+				$result->post_author_nicename = $this->authorName($result->post_author);
+				
+			$result->permalink = get_permalink($result->ID);
+			
+			// We don't want to send all this content to the browser
+			unset($result->post_content);
+			
 			$this->results[] = $result;	
 		}
 	}
-}
-
-$maxResults = intval(get_option('daves-wordpress-live-search_max_results'));
-if($maxResults === 0) $maxResults = -1;
-$wp_query = new WP_Query(array('s' => $_GET['s'], 'showposts' => $maxResults));
-
-$displayPostMeta = (bool)get_option('daves-wordpress-live-search_display_post_meta');
-
-// Add author names
-if($displayPostMeta)
-{
-	$authorCache = array();
-	foreach($wp_query->posts as $index=>$post)
-	{
-		$authorID = $post->post_author;
+	
+	/**
+	 * @return string
+	 */
+	private function authorName($authorID) {
+		static $authorCache = array();
+		
 		if(array_key_exists($authorID, $authorCache))
 		{
 			$authorName = $authorCache[$authorID];
@@ -124,14 +126,15 @@ if($displayPostMeta)
 			$authorCache[$authorID] = $authorData->user_nicename;
 		}
 		
-		$post->post_author_nicename = $authorName;
-		
-		unset($post->post_content);
+		return $authorName;
 	}
 }
 
+$maxResults = intval(get_option('daves-wordpress-live-search_max_results'));
+if($maxResults === 0) $maxResults = -1;
+$wp_query = new WP_Query(array('s' => $_GET['s'], 'showposts' => $maxResults));
 
-
+$displayPostMeta = (bool)get_option('daves-wordpress-live-search_display_post_meta');
 $results = new DavesWordPressLiveSearchResults($wp_query, $displayPostMeta);
 
 $json = json_encode($results);

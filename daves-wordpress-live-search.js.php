@@ -121,7 +121,7 @@ LiveSearch.handleAJAXResults = function(e) {
 			var searchResult = e.results[postIndex];
 			if(searchResult.post_title !== undefined) {
 				var renderedResult = '';
-				renderedResult += '<li><a href="' + searchResult.guid + '">' + searchResult.post_title + '</a>';
+				renderedResult += '<li><a href="' + searchResult.permalink + '">' + searchResult.post_title + '</a>';
 
 				if(e.displayPostMeta) {
 					renderedResult += '<p id="daves-wordpress-live-search_author">Posted by ' + searchResult.post_author_nicename + '</p><p id="daves-wordpress-live-search_date">' + searchResult.post_date + '</p>';
