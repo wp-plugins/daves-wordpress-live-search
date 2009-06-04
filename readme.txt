@@ -4,7 +4,7 @@ Donate link: http://catguardians.org
 Tags: search, AJAX
 Requires at least: 2.0
 Tested up to: 2.7.1
-Stable tag: 1.3.1
+Stable tag: 1.4
 
 Adds "live search" functionality to your WordPress site. Uses the built-in search and jQuery.
 
@@ -35,7 +35,10 @@ I don't get asked a lot of questions about this plugin, so here's the "known iss
 
 == Changelog ==
 
+v1.4 2009-06-03  Dave Ross  <dave@csixty4.com>
 v1.3.1 2009-06-03  Dave Ross  <dave@csixty4.com>
+
+* Renamed release to 1.4 because WordPress.org doesn't seem to like 1.3.1. Seems like kind of a waste to do a full point release for this
 
 * Building permalinks instead of using post guid (problem with posts imported from another blogß)
 
