@@ -132,7 +132,14 @@ class DavesWordPressLiveSearchResults {
 
 $maxResults = intval(get_option('daves-wordpress-live-search_max_results'));
 if($maxResults === 0) $maxResults = -1;
-$wp_query = new WP_Query(array('s' => $_GET['s'], 'showposts' => $maxResults));
+
+// This used to be one line, with the search parameters passed to the
+// WP_Query constructor. But, the Search Everything plugin reliest on having
+// $wp_query available in the global scope when WP_Query calls it. So, I had
+// to split this line up and call WP_Query::query manually in order to be
+// compatible with plugins that hook into the search engine.
+$wp_query = new WP_Query();
+$wp_query->query(array('s' => $_GET['s'], 'showposts' => $maxResults));
 
 $displayPostMeta = (bool)get_option('daves-wordpress-live-search_display_post_meta');
 $results = new DavesWordPressLiveSearchResults($wp_query, $displayPostMeta);
