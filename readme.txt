@@ -4,7 +4,7 @@ Donate link: http://catguardians.org
 Tags: search, AJAX
 Requires at least: 2.0
 Tested up to: 2.8
-Stable tag: 1.4
+Stable tag: 1.5
 
 Adds "live search" functionality to your WordPress site. Uses the built-in search and jQuery.
 
@@ -34,6 +34,10 @@ I don't get asked a lot of questions about this plugin, so here's the "known iss
 1. This plugin will not work on PHP 4.x
 
 == Changelog ==
+
+=v1.5=
+* 2009-07-08 Dave Ross  <dave@csixty4.com>
+* Fixed compatibility with Search Everything plugin, possibly others
 
 =v1.4=
 * 2009-06-03 Dave Ross  <dave@csixty4.com>
