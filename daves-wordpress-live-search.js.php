@@ -147,8 +147,7 @@ LiveSearch.handleAJAXResults = function(e) {
 LiveSearch.handleKeypress = function(e) {
 	var delayTime = 0;
 	var term = jQuery("input[name='s']").val();
-	var func = "LiveSearch.runQuery('" + term + "')";
-	setTimeout(func, delayTime);
+	setTimeout( function() { LiveSearch.runQuery(term); }, delayTime);
 };
 
 /**
