@@ -18,10 +18,12 @@ class DavesWordPressLiveSearch
 				
 		$cssOption = get_option('daves-wordpress-live-search_css_option');
 
+		$themeDir = get_bloginfo("template_url");
+		
 		switch($cssOption)
 		{
 			case 'theme':
-				wp_enqueue_style('daves-wordpress-live-search', bloginfo(‘template_directory’).'/daves-wordpress-live-search.css');
+				wp_enqueue_style('daves-wordpress-live-search', $themeDir.'/daves-wordpress-live-search.css');
 				break;
 			case 'default_red':
 				wp_enqueue_style('daves-wordpress-live-search', $pluginPath.'/daves-wordpress-live-search_default_red.css');
