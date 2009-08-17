@@ -48,9 +48,6 @@
 <input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_default_blue" value="default_blue" <?php if('default_blue' == $css): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_css_default_blue">Default Blue</label><br /><span class="setting-description">Default style in blue</span>
 <br /><br />
 <input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_theme" value="theme" <?php if('theme' == $css): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_css_theme">Theme-specific</label><br /><span class="setting-description">Theme must include a CSS file named daves-wordpress-live-search.css</span>
-<br /><br />
-<input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_custom" value="custom" <?php if('custom' == $css): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_css_custom">Custom</label><br /><span class="setting-description">Enter your CSS below</span>
-
 </td> 
 </tr>
 
