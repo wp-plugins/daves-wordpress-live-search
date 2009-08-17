@@ -15,7 +15,6 @@ list-style-type: none;
 list-style-image: none;
 list-style-position: inside;
 
-border: 1px solid #000;
 padding: 0px;
 margin: 0px;
 }
@@ -23,9 +22,10 @@ margin: 0px;
 ul.search_results li
 {
 display: block;
-padding: 5px 10px 0px 10px;
+padding: 5px 10px 5px 10px;
 margin: 0px 0px 0px 0px;
-border-bottom: 1px solid #000;
+border-top: 1px solid #eee;
+border-bottom: 1px solid #aaa;
 text-align: left;	
 
 color: #000;
@@ -43,10 +43,9 @@ ul.search_results li a, ul.search_results li a:visited
 {
 display: block;
 color: #000;
-font-weight: bold;
-font-size: 110%;
 margin-left: 0px;
 padding-left: 0px;
+text-decoration: none;
 }
 
 ul.search_results li a:hover
