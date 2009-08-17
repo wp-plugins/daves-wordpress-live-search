@@ -1,5 +1,4 @@
-<!-- Dave's WordPress Live Search CSS -->
-<style type="text/css">
+/** Dave's WordPress Live Search CSS **/
 ul.search_results
 {
 display: block;
@@ -60,5 +59,3 @@ ul.search_results p#daves-wordpress-live-search_date
 margin: 0px;
 font-size: 90%;
 }
-</style>
-<!-- END: Dave's WordPress Live Search CSS -->

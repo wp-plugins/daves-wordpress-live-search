@@ -15,6 +15,25 @@ class DavesWordPressLiveSearch
 		
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('jquery_dimensions', $pluginPath.'jquery.dimensions.pack.js', 'jquery');
+				
+		$cssOption = get_option('daves-wordpress-live-search_css_option');
+
+		switch($cssOption)
+		{
+			case 'theme':
+				wp_enqueue_style('daves-wordpress-live-search', bloginfo(‘template_directory’).'/daves-wordpress-live-search.css');
+				break;
+			case 'default_red':
+				wp_enqueue_style('daves-wordpress-live-search', $pluginPath.'/daves-wordpress-live-search_default_red.css');
+				break;
+			case 'default_blue':
+				wp_enqueue_style('daves-wordpress-live-search', $pluginPath.'/daves-wordpress-live-search_default_blue.css');
+				break;				
+			case 'default_gray':
+			default:
+				wp_enqueue_style('daves-wordpress-live-search', $pluginPath.'/daves-wordpress-live-search_default_gray.css');
+					
+		}
 	}
 	
 	/**
@@ -28,9 +47,12 @@ class DavesWordPressLiveSearch
 		// $pluginPath is used in the Javascript
 		$pluginPath = WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__));
 		
-		include($thisPluginsDirectory.'/daves-wordpress-live-search_default_gray.css.tpl');
+
+			
 		include($thisPluginsDirectory.'/daves-wordpress-live-search.js.php');
 	}
+	
+
 	
 	///////////////
 	// Admin Pages
@@ -59,11 +81,13 @@ class DavesWordPressLiveSearch
 	        $maxResults = max(intval($_POST['daves-wordpress-live-search_max_results']), 0);
 	        $resultsDirection = $_POST['daves-wordpress-live-search_results_direction'];
 	        $displayPostMeta = ("true" == $_POST['daves-wordpress-live-search_display_post_meta']);
+	        $cssOption = $_POST['daves-wordpress-live-search_css'];
 
 	        // Save the posted value in the database
 	        update_option('daves-wordpress-live-search_max_results', $maxResults );	
 	        update_option('daves-wordpress-live-search_results_direction', $resultsDirection);
 	        update_option('daves-wordpress-live-search_display_post_meta', (string)$displayPostMeta);
+	        update_option('daves-wordpress-live-search_css_option', $cssOption );	
 	        
 	        // Translate the "Options saved" message...just in case.
 	        // You know...the code I was copying for this does it, thought it might be a good idea to leave it
@@ -76,11 +100,28 @@ class DavesWordPressLiveSearch
 			$maxResults = intval(get_option('daves-wordpress-live-search_max_results'));
 			$resultsDirection = stripslashes(get_option('daves-wordpress-live-search_results_direction'));
 			$displayPostMeta = (bool)get_option('daves-wordpress-live-search_display_post_meta');
+			$cssOption = get_option('daves-wordpress-live-search_css_option');
 		}
 	        
 	    if(!in_array($resultsDirection, array('up', 'down')))
 	        	$resultsDirection = 'down';
-	        		
+
+	    switch($cssOption)
+	    {
+	    	case 'theme':
+	    		$css = 'theme';
+	    		break;
+	    	case 'default_red':
+	    		$css = 'default_red';
+	    		break;
+	    	case 'default_blue':
+	    		$css = 'default_blue';
+	    		break;
+	    	case 'default_gray':
+	    	default:
+	    		$css = 'default_gray';
+	    }
+
 		include("$thisPluginsDirectory/daves-wordpress-live-search-admin.tpl");
 	}
 }

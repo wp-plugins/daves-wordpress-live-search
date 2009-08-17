@@ -32,6 +32,33 @@
 <td colspan="2"><div style="border-top: 1px solid #333;margin-top: 15px;padding: 5px;"><input type="submit" name="daves-wordpress-live-search_submit" id="daves-wordpress-live-search_submit" value="Save Changes" /></div></td>
 </tr>
 
+<!-- CSS styles -->
+<tr valign="top">
+<td colspan="2"><h3>Styles</h3></td>
+</tr>
+
+<tr valign="top">
+<th scope="row"> </th>
+<td>
+
+<input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_default_gray" value="default_gray" <?php if('default_gray' == $css): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_css_default_gray">Default Gray</label><br /><span class="setting-description">The default boring gray</span>
+<br /><br />
+<input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_default_red" value="default_red" <?php if('default_red' == $css): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_css_default_red">Default Red</label><br /><span class="setting-description">Default style in red</span>
+<br /><br />
+<input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_default_blue" value="default_blue" <?php if('default_blue' == $css): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_css_default_blue">Default Blue</label><br /><span class="setting-description">Default style in blue</span>
+<br /><br />
+<input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_theme" value="theme" <?php if('theme' == $css): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_css_theme">Theme-specific</label><br /><span class="setting-description">Theme must include a CSS file named daves-wordpress-live-search.css</span>
+<br /><br />
+<input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_custom" value="custom" <?php if('custom' == $css): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_css_custom">Custom</label><br /><span class="setting-description">Enter your CSS below</span>
+
+</td> 
+</tr>
+
+<!-- Submit buttons -->
+<tr valign="top">
+<td colspan="2"><div style="border-top: 1px solid #333;margin-top: 15px;padding: 5px;"><input type="submit" name="daves-wordpress-live-search_submit" id="daves-wordpress-live-search_submit" value="Save Changes" /></div></td>
+</tr>
+
 </tbody></table>
 
 </form>

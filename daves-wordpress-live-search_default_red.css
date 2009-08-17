@@ -1,5 +1,4 @@
-<!-- Dave's WordPress Live Search CSS -->
-<style type="text/css">
+/** Dave's WordPress Live Search CSS **/
 ul.search_results
 {
 display: block;
@@ -24,19 +23,19 @@ ul.search_results li
 display: block;
 padding: 5px 10px 5px 10px;
 margin: 0px 0px 0px 0px;
-border-top: 1px solid #557;
-border-bottom: 1px solid #112;
+border-top: 1px solid #755;
+border-bottom: 1px solid #211;
 text-align: left;	
 
-color: #335;
-background-color: #113;
+color: #533;
+background-color: #311;
 text-decoration: none;
 
 }
 
 ul.search_results li:hover
 {
-background-color: #447;	
+background-color: #744;	
 }
 
 ul.search_results li a, ul.search_results li a:visited
@@ -60,5 +59,3 @@ ul.search_results p#daves-wordpress-live-search_date
 margin: 0px;
 font-size: 90%;
 }
-</style>
-<!-- END: Dave's WordPress Live Search CSS -->
