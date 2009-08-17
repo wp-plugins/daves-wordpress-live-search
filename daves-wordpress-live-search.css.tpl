@@ -48,11 +48,6 @@ padding-left: 0px;
 text-decoration: none;
 }
 
-ul.search_results li a:hover
-{
-text-decoration: underline;
-}
-
 ul.search_results p#daves-wordpress-live-search_author
 {
 margin: 0px;
