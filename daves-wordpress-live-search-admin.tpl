@@ -42,4 +42,5 @@
 Please Note: For faster page loading times, consider installing the <a href="http://wordpress.org/extend/plugins/use-google-libraries">Use Google Libraries</a> plugin.
 </p>
 
+<p>Want better search results? Dave recommends installing <a href="http://wordpress.org/extend/plugins/search-unleashed/">Search Unleashed</a> or <a href="http://wordpress.org/extend/plugins/search-everything/">Search Everything</a> to make WordPress search comments and metadata, too!</p>
 </div>
