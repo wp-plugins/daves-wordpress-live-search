@@ -28,7 +28,7 @@ class DavesWordPressLiveSearch
 		// $pluginPath is used in the Javascript
 		$pluginPath = WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__));
 		
-		include($thisPluginsDirectory.'/daves-wordpress-live-search.css.tpl');
+		include($thisPluginsDirectory.'/daves-wordpress-live-search_default_gray.css.tpl');
 		include($thisPluginsDirectory.'/daves-wordpress-live-search.js.php');
 	}
 	
