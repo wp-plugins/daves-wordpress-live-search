@@ -36,13 +36,13 @@
 <th scope="row"> </th>
 <td>
 
-<input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_default_gray" value="default_gray" <?php if('default_gray' == $css): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_css_default_gray">Default Gray</label><br /><span class="setting-description">The default boring gray</span>
+<input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_default_gray" value="default_gray" <?php if('default_gray' == $css): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_css_default_gray">Default Gray</label><br /><span class="setting-description">Default style in gray.</span>
 <br /><br />
 <input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_default_red" value="default_red" <?php if('default_red' == $css): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_css_default_red">Default Red</label><br /><span class="setting-description">Default style in red</span>
 <br /><br />
 <input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_default_blue" value="default_blue" <?php if('default_blue' == $css): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_css_default_blue">Default Blue</label><br /><span class="setting-description">Default style in blue</span>
 <br /><br />
-<input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_theme" value="theme" <?php if('theme' == $css): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_css_theme">Theme-specific</label><br /><span class="setting-description">Theme must include a CSS file named daves-wordpress-live-search.css. If your theme does not have one, copy daves-wordpress-live-search_default_gray.css from this plugin's directory into your theme's directory and modify as desired.</span>
+<input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_theme" value="theme" <?php if('theme' == $css): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_css_theme">Theme-specific</label><br /><span class="setting-description"><strong>For advanced users:</strong> Theme must include a CSS file named daves-wordpress-live-search.css. If your theme does not have one, copy daves-wordpress-live-search_default_gray.css from this plugin's directory into your theme's directory and modify as desired.</span>
 </td> 
 </tr>
 
