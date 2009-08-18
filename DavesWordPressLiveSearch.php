@@ -48,8 +48,6 @@ class DavesWordPressLiveSearch
 		
 		// $pluginPath is used in the Javascript
 		$pluginPath = WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__));
-		
-
 			
 		include($thisPluginsDirectory.'/daves-wordpress-live-search.js.php');
 	}
@@ -95,7 +93,7 @@ class DavesWordPressLiveSearch
 	        // You know...the code I was copying for this does it, thought it might be a good idea to leave it
 	        $updateMessage = __('Options saved.', 'mt_trans_domain' );
 	        
-	        echo "<div class=\"updated\"><p><strong>$updateMessage</strong></p></div>";
+	        echo "<div class=\"updated fade\"><p><strong>$updateMessage</strong></p></div>";
 		}
 		else
 		{
@@ -125,6 +123,21 @@ class DavesWordPressLiveSearch
 	    }
 
 		include("$thisPluginsDirectory/daves-wordpress-live-search-admin.tpl");
+	}
+	
+	public function admin_notices()
+	{
+		$cssOption = get_option('daves-wordpress-live-search_css_option');
+		if('theme' == $cssOption)
+		{
+			// Make sure there's a daves-wordpress-live-search.css file in the theme
+			if(!file_exists(TEMPLATEPATH."/daves-wordpress-live-search.css"))
+			{
+				$alertMessage = __("The <em>Dave's WordPress Live Search</em> plugin is configured to use a theme-specific CSS file, but the current theme does not contain a daves-wordpress-live-search.css file.");
+				echo "<div class=\"updated fade\"><p><strong>$alertMessage</strong></p></div>";
+	
+			}
+		}
 	}
 }
 ?>

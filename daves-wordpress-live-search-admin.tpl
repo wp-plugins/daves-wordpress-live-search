@@ -27,11 +27,6 @@
 <td><input type="checkbox" name="daves-wordpress-live-search_display_post_meta" id="daves-wordpress-live-search_display_post_meta" value="true" <?php if($displayPostMeta): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_display_post_meta">Display author & date for every search result</label></td> 
 </tr>
 
-<!-- Submit buttons -->
-<tr valign="top">
-<td colspan="2"><div style="border-top: 1px solid #333;margin-top: 15px;padding: 5px;"><input type="submit" name="daves-wordpress-live-search_submit" id="daves-wordpress-live-search_submit" value="Save Changes" /></div></td>
-</tr>
-
 <!-- CSS styles -->
 <tr valign="top">
 <td colspan="2"><h3>Styles</h3></td>
@@ -47,7 +42,7 @@
 <br /><br />
 <input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_default_blue" value="default_blue" <?php if('default_blue' == $css): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_css_default_blue">Default Blue</label><br /><span class="setting-description">Default style in blue</span>
 <br /><br />
-<input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_theme" value="theme" <?php if('theme' == $css): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_css_theme">Theme-specific</label><br /><span class="setting-description">Theme must include a CSS file named daves-wordpress-live-search.css</span>
+<input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_theme" value="theme" <?php if('theme' == $css): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_css_theme">Theme-specific</label><br /><span class="setting-description">Theme must include a CSS file named daves-wordpress-live-search.css. If your theme does not have one, copy daves-wordpress-live-search_default_gray.css from this plugin's directory into your theme's directory and modify as desired.</span>
 </td> 
 </tr>
 
