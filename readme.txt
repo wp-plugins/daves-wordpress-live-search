@@ -3,8 +3,8 @@ Contributors: csixty4
 Donate link: http://catguardians.org
 Tags: search, AJAX
 Requires at least: 2.0
-Tested up to: 2.8
-Stable tag: 1.5
+Tested up to: 2.8.4
+Stable tag: 1.6
 
 Adds "live search" functionality to your WordPress site. Uses the built-in search and jQuery.
 
@@ -33,7 +33,18 @@ I don't get asked a lot of questions about this plugin, so here's the "known iss
 1. In the HTML, your search box must be named "s". This is the name the standard search widget uses, so this is only an issue for themers who include their own search box.
 1. This plugin will not work on PHP 4.x
 
+== Wish List ==
+
+Features I want to implement in future releases:
+
+1. Modify the CSS directly on the admin screen (so it's not tied to a theme)
+
 == Changelog ==
+
+=v1.6=
+* 2009-08-17 Dave Ross <dave@csixty4.com>
+* Implemented selectable CSS files
+* Fixed a bug that broke live searches containing ' characters
 
 =v1.5=
 * 2009-07-08 Dave Ross  <dave@csixty4.com>
