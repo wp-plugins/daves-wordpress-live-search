@@ -27,6 +27,13 @@
 <td><input type="checkbox" name="daves-wordpress-live-search_display_post_meta" id="daves-wordpress-live-search_display_post_meta" value="true" <?php if($displayPostMeta): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_display_post_meta">Display author & date for every search result</label></td> 
 </tr>
 
+<!-- Display post thumbnail -->
+<tr valign="top">
+<th scope="row">Display Post Thumbnail</th>
+
+<td><input type="checkbox" name="daves-wordpress-live-search_thumbs" id="daves-wordpress-live-search_thumbs" value="true" <?php if($showThumbs): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_thumbs">Display thumbnail images for every search result with at least one image</label></td> 
+</tr>
+
 <!-- CSS styles -->
 <tr valign="top">
 <td colspan="2"><h3>Styles</h3></td>

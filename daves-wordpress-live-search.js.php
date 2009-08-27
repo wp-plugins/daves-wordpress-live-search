@@ -3,6 +3,7 @@
 <?php
 
 $resultsDirection = stripslashes(get_option('daves-wordpress-live-search_results_direction'));
+$showThumbs = ("true" == get_option('daves-wordpress-live-search_thumbs'));
 
 ?>
 
@@ -88,13 +89,17 @@ LiveSearch.handleClicks = function(e) {
  * Process the search results that came back from the AJAX call
  */
 LiveSearch.handleAJAXResults = function(e) {
+	
+	var showThumbs = <?php if($showThumbs) : ?>true<?php else : ?>false<?php endif; ?>;
+	
 	LiveSearch.activeRequests.pop();
 
 	resultsSearchTerm = e.searchTerms;
 	if(resultsSearchTerm != jQuery("input[name='s']").val()) {
 		
-		if(LiveSearch.activeRequests.length == 0)
+		if(LiveSearch.activeRequests.length == 0) {
 			LiveSearch.removeIndicator();
+		}
 
 		return;
 	}
@@ -102,8 +107,9 @@ LiveSearch.handleAJAXResults = function(e) {
 	var resultsShownFor = jQuery("ul.search_results").children("input[name=query]").val();
 	if(resultsShownFor != "" && resultsSearchTerm == resultsShownFor)
 	{
-		if(LiveSearch.activeRequests.length == 0)
+		if(LiveSearch.activeRequests.length == 0) {
 			LiveSearch.removeIndicator();
+		}
 
 		return;
 	}
@@ -120,13 +126,32 @@ LiveSearch.handleAJAXResults = function(e) {
 		for(var postIndex = 0; postIndex < e.results.length; postIndex++) {
 			var searchResult = e.results[postIndex];
 			if(searchResult.post_title !== undefined) {
+				
+
+
 				var renderedResult = '';
-				renderedResult += '<li><a href="' + searchResult.permalink + '">' + searchResult.post_title + '</a>';
+				
+				// Thumbnails
+				if(showThumbs && searchResult.attachment_thumbnail) {
+					var liClass = "post_with_thumb";
+				}
+				else {
+					var liClass = "";
+				}
+				
+				renderedResult += '<li class="' + liClass + '">';
+				
+				// Render thumbnail
+				if(showThumbs && searchResult.attachment_thumbnail) {
+					renderedResult += '<img src="' + searchResult.attachment_thumbnail + '" class="post_thumb" />';
+				}
+				
+				renderedResult += '<a href="' + searchResult.permalink + '">' + searchResult.post_title + '</a>';
 
 				if(e.displayPostMeta) {
 					renderedResult += '<p id="daves-wordpress-live-search_author">Posted by ' + searchResult.post_author_nicename + '</p><p id="daves-wordpress-live-search_date">' + searchResult.post_date + '</p>';
 				}
-				renderedResult += '</li>';
+				renderedResult += '<div class="clearfix"></div></li>';
 				searchResultsList.append(renderedResult);
 			}
 		}
@@ -136,8 +161,9 @@ LiveSearch.handleAJAXResults = function(e) {
 
 	}
 	
-	if(LiveSearch.activeRequests.length == 0)
+	if(LiveSearch.activeRequests.length == 0) {
 		LiveSearch.removeIndicator();
+	}
 };
 
 /**

@@ -40,7 +40,6 @@ background-color: #fff;
 
 ul.search_results li a, ul.search_results li a:visited
 {
-display: block;
 color: #000;
 margin-left: 0px;
 padding-left: 0px;
@@ -58,4 +57,31 @@ ul.search_results p#daves-wordpress-live-search_date
 {
 margin: 0px;
 font-size: 90%;
+}
+
+/* BEGIN post thumbnails */
+/* @see http://ghettocooler.net/2005/11/13/image-floats-without-the-text-wrap/ */
+ul.search_results li.post_with_thumb * {
+width:135px;
+float:right;
+}
+
+ul.search_results li.post_with_thumb * * {
+width:auto;
+float:none;
+}
+
+ul.search_results li.post_with_thumb img.post_thumb
+{
+float: left;
+margin-right: 10px;
+height: 32px;
+width: 32px;
+}
+/* END post thumbnails */
+
+ul.search_results .clearfix
+{
+float: none !important;
+clear: both !important;
 }
