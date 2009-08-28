@@ -38,7 +38,7 @@
 <tr valign="top">
 <th scope="row">Display Post Excerpt</th>
 
-<td><input type="checkbox" name="daves-wordpress-live-search_excerpt" id="daves-wordpress-live-search_excerpt" value="true" <?php if($showExcerpt): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_excerpt">Display excerpts for every search result. If the post doesn't have one, the first 100 characters are used.</label></td> 
+<td><input type="checkbox" name="daves-wordpress-live-search_excerpt" id="daves-wordpress-live-search_excerpt" value="true" <?php if($showExcerpt): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_excerpt">Display an excerpt for every search result. If the post doesn't have one, the first 100 characters are used.</label></td> 
 </tr>
 
 <!-- CSS styles -->
