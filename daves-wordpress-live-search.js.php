@@ -151,11 +151,11 @@ LiveSearch.handleAJAXResults = function(e) {
 				renderedResult += '<a href="' + searchResult.permalink + '">' + searchResult.post_title + '</a>';
 
 				if(showExcerpt && searchResult.post_excerpt) {
-					renderedResult += '<p class="excerpt">' + searchResult.post_excerpt + '</p>';
+					renderedResult += '<p class="excerpt clearfix">' + searchResult.post_excerpt + '</p>';
 				}
 				
 				if(e.displayPostMeta) {
-					renderedResult += '<p class="meta" id="daves-wordpress-live-search_author">Posted by ' + searchResult.post_author_nicename + '</p><p id="daves-wordpress-live-search_date" class="meta">' + searchResult.post_date + '</p>';
+					renderedResult += '<p class="meta clearfix" id="daves-wordpress-live-search_author">Posted by ' + searchResult.post_author_nicename + '</p><p id="daves-wordpress-live-search_date" class="meta clearfix">' + searchResult.post_date + '</p>';
 				}
 				renderedResult += '<div class="clearfix"></div></li>';
 				searchResultsList.append(renderedResult);
