@@ -41,6 +41,11 @@ Features I want to implement in future releases:
 
 == Changelog ==
 
+=v1.7=
+* 2009-08-27 Dave Ross <dave@csixty4.com>
+* Thumbnails in the search results
+* Excerpts in the search results
+
 =v1.6=
 * 2009-08-17 Dave Ross <dave@csixty4.com>
 * Implemented selectable CSS files
