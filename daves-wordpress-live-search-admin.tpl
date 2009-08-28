@@ -34,6 +34,13 @@
 <td><input type="checkbox" name="daves-wordpress-live-search_thumbs" id="daves-wordpress-live-search_thumbs" value="true" <?php if($showThumbs): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_thumbs">Display thumbnail images for every search result with at least one image</label></td> 
 </tr>
 
+<!-- Display post excerpt -->
+<tr valign="top">
+<th scope="row">Display Post Excerpt</th>
+
+<td><input type="checkbox" name="daves-wordpress-live-search_excerpt" id="daves-wordpress-live-search_excerpt" value="true" <?php if($showExcerpt): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_excerpt">Display excerpts for every search result. If the post doesn't have one, the first 100 characters are used.</label></td> 
+</tr>
+
 <!-- CSS styles -->
 <tr valign="top">
 <td colspan="2"><h3>Styles</h3></td>

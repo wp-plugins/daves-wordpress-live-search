@@ -83,13 +83,15 @@ class DavesWordPressLiveSearch
 	        $displayPostMeta = ("true" == $_POST['daves-wordpress-live-search_display_post_meta']);
 	        $cssOption = $_POST['daves-wordpress-live-search_css'];
 	        $showThumbs = $_POST['daves-wordpress-live-search_thumbs'];
+	        $showExcerpt = $_POST['daves-wordpress-live-search_excerpt'];
 
 	        // Save the posted value in the database
 	        update_option('daves-wordpress-live-search_max_results', $maxResults );	
 	        update_option('daves-wordpress-live-search_results_direction', $resultsDirection);
 	        update_option('daves-wordpress-live-search_display_post_meta', (string)$displayPostMeta);
 	        update_option('daves-wordpress-live-search_css_option', $cssOption );
-	        update_option('daves-wordpress-live-search_thumbs', $showThumbs);
+	        update_option('daves-wordpress-live-search_thumbs', $showThumbs);	
+	        update_option('daves-wordpress-live-search_excerpt', $showExcerpt);
 	        
 	        // Translate the "Options saved" message...just in case.
 	        // You know...the code I was copying for this does it, thought it might be a good idea to leave it
@@ -104,6 +106,7 @@ class DavesWordPressLiveSearch
 			$displayPostMeta = (bool)get_option('daves-wordpress-live-search_display_post_meta');
 			$cssOption = get_option('daves-wordpress-live-search_css_option');
 			$showThumbs = (bool) get_option('daves-wordpress-live-search_thumbs');
+			$showExcerpt = (bool) get_option('daves-wordpress-live-search_excerpt');
 		}
 	        
 	    if(!in_array($resultsDirection, array('up', 'down')))

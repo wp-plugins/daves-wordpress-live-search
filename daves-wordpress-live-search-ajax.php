@@ -103,12 +103,27 @@ class DavesWordPressLiveSearchResults {
 			$result->permalink = get_permalink($result->ID);
 			
 			$result->attachment_thumbnail = $this->firstImageThumb($result->ID);
+
+			$result->post_excerpt = $this->excerpt($result);
 			
 			// We don't want to send all this content to the browser
 			unset($result->post_content);
 			
 			$this->results[] = $result;	
 		}
+	}
+	
+	private function excerpt($result) {
+		if (empty($result->post_excerpt)) {
+			 $excerpt = explode(" ",strrev(substr(strip_tags($result->post_content), 0, 100)),2);
+			 $excerpt = strrev($excerpt[1]);
+			 $excerpt .= " [...]";
+		}
+		else {
+			$excerpt = $result->post_excerpt;
+		}
+		
+		return $excerpt;
 	}
 	
 	/**

@@ -62,7 +62,7 @@ font-size: 90%;
 /* BEGIN post thumbnails */
 /* @see http://ghettocooler.net/2005/11/13/image-floats-without-the-text-wrap/ */
 ul.search_results li.post_with_thumb * {
-width:135px;
+width:120px;
 float:right;
 }
 
@@ -79,6 +79,14 @@ height: 32px;
 width: 32px;
 }
 /* END post thumbnails */
+
+/* BEGIN post excerpt */
+ul.search_results .excerpt
+{
+font-size: 75%;
+width: 100% !important;
+}
+/* END post excerpt */
 
 ul.search_results .clearfix
 {

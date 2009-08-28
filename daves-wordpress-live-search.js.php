@@ -4,6 +4,7 @@
 
 $resultsDirection = stripslashes(get_option('daves-wordpress-live-search_results_direction'));
 $showThumbs = ("true" == get_option('daves-wordpress-live-search_thumbs'));
+$showExcerpt = ("true" == get_option('daves-wordpress-live-search_excerpt'));
 
 ?>
 
@@ -91,6 +92,7 @@ LiveSearch.handleClicks = function(e) {
 LiveSearch.handleAJAXResults = function(e) {
 	
 	var showThumbs = <?php if($showThumbs) : ?>true<?php else : ?>false<?php endif; ?>;
+	var showExcerpt = <?php if($showExcerpt) : ?>true<?php else : ?>false<?php endif; ?>;
 	
 	LiveSearch.activeRequests.pop();
 
@@ -148,6 +150,10 @@ LiveSearch.handleAJAXResults = function(e) {
 				
 				renderedResult += '<a href="' + searchResult.permalink + '">' + searchResult.post_title + '</a>';
 
+				if(showExcerpt && searchResult.post_excerpt) {
+					renderedResult += '<p class="excerpt">' + searchResult.post_excerpt + '</p>';
+				}
+				
 				if(e.displayPostMeta) {
 					renderedResult += '<p id="daves-wordpress-live-search_author">Posted by ' + searchResult.post_author_nicename + '</p><p id="daves-wordpress-live-search_date">' + searchResult.post_date + '</p>';
 				}
