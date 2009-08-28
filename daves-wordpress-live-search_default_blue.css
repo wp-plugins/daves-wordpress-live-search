@@ -81,7 +81,7 @@ width: 32px;
 /* END post thumbnails */
 
 /* BEGIN post excerpt */
-ul.search_results .excerpt
+ul.search_results .excerpt, ul.search_results .meta
 {
 font-size: 75%;
 width: 100% !important;
