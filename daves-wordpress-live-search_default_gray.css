@@ -3,7 +3,7 @@ ul.search_results
 {
 display: block;
 background-color:#fff;
-width:200px;
+width:250px;
 max-height: 500px;
 position:absolute;
 top:20px;
@@ -67,7 +67,7 @@ font-size: 90%;
 
 /* BEGIN post thumbnails */
 ul.search_results li.post_with_thumb a {
-width:100px;
+width:155px;
 float:right;
 margin-bottom: 5px;
 }
@@ -75,7 +75,7 @@ margin-bottom: 5px;
 ul.search_results li.post_with_thumb img.post_thumb
 {
 float: left;
-margin-right: 10px;
+margin: 5px 10px 10px 0px;
 height: 48px;
 width: 48px;
 border: 1px solid #888;
