@@ -67,8 +67,8 @@ font-size: 90%;
 
 /* BEGIN post thumbnails */
 ul.search_results li.post_with_thumb a {
-width:155px;
-float:right;
+width:150px;
+float:left;
 margin-bottom: 5px;
 }
 
