@@ -7,7 +7,7 @@ Tested up to: 2.8.4
 Stable tag: 1.7
  
 Adds "live search" functionality to your WordPress site. Uses the built-in search and jQuery.
-*
+
 == Description ==
 
 Dave's WordPress Live Search adds "live search" functionality to your WordPress site. As visitors type words into your WordPress site's search box, the plugin continually queries WordPress, looking for search results that match what the user has typed so far.
