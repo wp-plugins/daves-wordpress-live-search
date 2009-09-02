@@ -20,6 +20,7 @@ This functionality requires Javascript, but the search box still works normally 
 
 1. Upload the `daves-wordpress-live-search` directory to your site's `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
+1. Configure it! Go to the 'Settings' menu and pick 'Live Search'. Here, you'll find options to control the look of your search results. By default, they're pretty plain, but you can change the color scheme or even tell it to display an excerpt of each post.
 
 == Screenshots ==
 
