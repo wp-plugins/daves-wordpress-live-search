@@ -80,6 +80,8 @@ class DavesWordPressLiveSearch
 		
 		if("Save Changes" == $_POST['daves-wordpress-live-search_submit'] && current_user_can('manage_options'))
 		{
+			check_admin_referer('daves-wordpress-live-search-config');
+			
 			// Read their posted value
 	        $maxResults = max(intval($_POST['daves-wordpress-live-search_max_results']), 0);
 	        $resultsDirection = $_POST['daves-wordpress-live-search_results_direction'];
