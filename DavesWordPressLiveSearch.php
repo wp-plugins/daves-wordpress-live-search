@@ -64,7 +64,10 @@ class DavesWordPressLiveSearch
 	 */
 	public function admin_menu()
 	{
-		add_options_page("Dave's WordPress Live Search Options", __('Live Search', 'mt_trans_domain'), 8, __FILE__, array('DavesWordPressLiveSearch', 'plugin_options'));	
+		if(current_user_can('manage_options'))
+		{
+			add_options_page("Dave's WordPress Live Search Options", __('Live Search', 'mt_trans_domain'), 8, __FILE__, array('DavesWordPressLiveSearch', 'plugin_options'));
+		}
 	}
 	
 	/**
@@ -75,7 +78,7 @@ class DavesWordPressLiveSearch
 	{
 		$thisPluginsDirectory = dirname(__FILE__);
 		
-		if("Save Changes" == $_POST['daves-wordpress-live-search_submit'])
+		if("Save Changes" == $_POST['daves-wordpress-live-search_submit'] && current_user_can('manage_options'))
 		{
 			// Read their posted value
 	        $maxResults = max(intval($_POST['daves-wordpress-live-search_max_results']), 0);
