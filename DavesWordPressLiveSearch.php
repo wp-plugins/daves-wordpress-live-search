@@ -15,6 +15,7 @@ class DavesWordPressLiveSearch
 		
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('jquery_dimensions', $pluginPath.'jquery.dimensions.pack.js', 'jquery');
+		wp_enqueue_script('daves-wordpress-live-search', $pluginPath.'daves-wordpress-live-search.js.php', 'jquery_dimensions');
 				
 		$cssOption = get_option('daves-wordpress-live-search_css_option');
 
@@ -26,34 +27,18 @@ class DavesWordPressLiveSearch
 				wp_enqueue_style('daves-wordpress-live-search', $themeDir.'/daves-wordpress-live-search.css');
 				break;
 			case 'default_red':
-				wp_enqueue_style('daves-wordpress-live-search', $pluginPath.'/daves-wordpress-live-search_default_red.css');
+				wp_enqueue_style('daves-wordpress-live-search', $pluginPath.'daves-wordpress-live-search_default_red.css');
 				break;
 			case 'default_blue':
-				wp_enqueue_style('daves-wordpress-live-search', $pluginPath.'/daves-wordpress-live-search_default_blue.css');
+				wp_enqueue_style('daves-wordpress-live-search', $pluginPath.'daves-wordpress-live-search_default_blue.css');
 				break;				
 			case 'default_gray':
 			default:
-				wp_enqueue_style('daves-wordpress-live-search', $pluginPath.'/daves-wordpress-live-search_default_gray.css');
+				wp_enqueue_style('daves-wordpress-live-search', $pluginPath.'daves-wordpress-live-search_default_gray.css');
 					
 		}
 	}
-	
-	/**
-	 * Output the plugin's CSS & Javascript into the page's <head>
-	 * @return void 
-	 */
-	public static function head()
-	{		
-		$thisPluginsDirectory = dirname(__FILE__);
 		
-		// $pluginPath is used in the Javascript
-		$pluginPath = WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__));
-			
-		include($thisPluginsDirectory.'/daves-wordpress-live-search.js.php');
-	}
-	
-
-	
 	///////////////
 	// Admin Pages
 	///////////////

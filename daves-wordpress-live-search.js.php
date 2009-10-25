@@ -1,11 +1,14 @@
-<!-- Dave's WordPress Live Search JS -->
-<script type="text/javascript"> 
 <?php
+ob_start();
+header('Content-type: text/javascript');
+
+include("../../../wp-config.php");
+
+$pluginPath = WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__));
 
 $resultsDirection = stripslashes(get_option('daves-wordpress-live-search_results_direction'));
 $showThumbs = ("true" == get_option('daves-wordpress-live-search_thumbs'));
 $showExcerpt = ("true" == get_option('daves-wordpress-live-search_excerpt'));
-
 ?>
 
 ///////////////////////
@@ -282,5 +285,3 @@ LiveSearch.removeIndicator = function() {
 jQuery(document).ready( function() {
 	LiveSearch.init();
 });
-</script>
-<!-- END:Dave's WordPress Live Search JS -->
