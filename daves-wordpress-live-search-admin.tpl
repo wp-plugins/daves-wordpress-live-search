@@ -3,6 +3,11 @@
 
 <form method="post" action="">
 
+<?php
+if ( function_exists('wp_nonce_field') )
+	wp_nonce_field('daves-wordpress-live-search-config');
+?>
+
 <table class="form-table"><tbody>
 
 <!-- Maximum results -->
