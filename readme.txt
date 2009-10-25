@@ -4,7 +4,7 @@ Donate link: http://catguardians.org
 Tags: search, AJAX
 Requires at least: 2.0
 Tested up to: 2.8.5
-Stable tag: 1.7
+Stable tag: 1.8
  
 Adds "live search" functionality to your WordPress site. Uses the built-in search and jQuery.
 
@@ -42,6 +42,15 @@ Features I want to implement in future releases:
 
 == Changelog ==
 
+=v1.8=
+* 2009-10-25 Dave Ross <dave@csixty4.com>
+* Added note about WP-Minify
+* Tested with WordPress 2.8.5
+* Moved JavaScript to an external file
+* Security - nonce checking on admin screen
+* Security - check "manage_options" security setting
+* Notes on configuration in readme.txt
+
 =v1.7=
 * 2009-08-27 Dave Ross <dave@csixty4.com>
 * Thumbnails in the search results
@@ -59,7 +68,7 @@ Features I want to implement in future releases:
 =v1.4=
 * 2009-06-03 Dave Ross  <dave@csixty4.com>
 * Renamed release 1.3.1 to 1.4 because WordPress.org doesn't seem to like 1.3.1. Seems like kind of a waste to do a full point release for this
-* Building permalinks instead of using post guid (problem with posts imported from another blogß)
+* Building permalinks instead of using post guid (problem with posts imported from another blog)
 
 =v1.3=
 * 2009-05-22  Dave Ross  <dave@csixty4.com>   
