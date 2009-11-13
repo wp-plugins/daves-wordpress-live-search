@@ -11,7 +11,7 @@ class DavesWordPressLiveSearch
 	 */
 	public static function advanced_search_init()
 	{
-		if(!is_admin()) {
+		if(self::isSearchablePage()) {
 			$pluginPath = WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__));
 		
 			wp_enqueue_script('jquery');
@@ -75,6 +75,7 @@ class DavesWordPressLiveSearch
 	        $cssOption = $_POST['daves-wordpress-live-search_css'];
 	        $showThumbs = $_POST['daves-wordpress-live-search_thumbs'];
 	        $showExcerpt = $_POST['daves-wordpress-live-search_excerpt'];
+	        $exceptions = $_POST['daves-wordpress-live-search_exceptions'];
 
 	        // Save the posted value in the database
 	        update_option('daves-wordpress-live-search_max_results', $maxResults );	
@@ -83,6 +84,7 @@ class DavesWordPressLiveSearch
 	        update_option('daves-wordpress-live-search_css_option', $cssOption );
 	        update_option('daves-wordpress-live-search_thumbs', $showThumbs);	
 	        update_option('daves-wordpress-live-search_excerpt', $showExcerpt);
+	        update_option('daves-wordpress-live-search_exceptions', $exceptions);
 	        
 	        // Translate the "Options saved" message...just in case.
 	        // You know...the code I was copying for this does it, thought it might be a good idea to leave it
@@ -98,6 +100,7 @@ class DavesWordPressLiveSearch
 			$cssOption = get_option('daves-wordpress-live-search_css_option');
 			$showThumbs = (bool) get_option('daves-wordpress-live-search_thumbs');
 			$showExcerpt = (bool) get_option('daves-wordpress-live-search_excerpt');
+			$exceptions = get_option('daves-wordpress-live-search_exceptions');
 		}
 	        
 	    if(!in_array($resultsDirection, array('up', 'down')))
@@ -135,6 +138,44 @@ class DavesWordPressLiveSearch
 	
 			}
 		}
+	}
+	
+	private function isSearchablePage() {
+		if(is_admin()) return false;
+
+		$searchable = true;
+		$exceptions = explode("\n", get_option('daves-wordpress-live-search_exceptions'));
+
+		foreach($exceptions as $exception) {
+			$regexp = trim($exception);
+			if('<front>' == $regexp) {
+				$regexp = '';	
+			}
+			
+			// These checks can probably be turned into regexps themselves,
+			// but it's too early in the morning to be writing regexps
+			if('*' == substr($regexp, 0, 1)) {
+				$regexp = substr($regexp, 1);
+			}
+			else {
+				$regexp = '^'.$regexp;
+			}
+
+			if('*' == substr($regexp, -1)) {
+				$regexp = substr($regexp, 0, -1);
+			}
+			else {
+				$regexp = $regexp.'$';
+			}
+			
+			$regexp = '|'.$regexp.'|';
+			if(preg_match($regexp, substr($_SERVER['REQUEST_URI'], 1)) > 0) {
+				return false;
+			}	
+		}
+
+		// Fall-through, search everything by default
+		return true;
 	}
 }
 ?>

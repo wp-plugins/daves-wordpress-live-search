@@ -65,6 +65,14 @@ if ( function_exists('wp_nonce_field') )
 </td> 
 </tr>
 
+<tr valign="top">
+<th scope="row">Exceptions</th>
+
+<td>
+<div><span class="setting-description">Enter the URLs of pages which should not have an autocompleting search box, one per line. The * wildcard can be used at the start or end of a line, for example: http://example.com/wp-admin*</span></div>
+<textarea name="daves-wordpress-live-search_exceptions" id="daves-wordpress-live-search_exceptions" rows="5" cols="60"><?php echo $exceptions; ?></textarea></td> 
+</tr>
+
 <!-- Submit buttons -->
 <tr valign="top">
 <td colspan="2"><div style="border-top: 1px solid #333;margin-top: 15px;padding: 5px;"><input type="submit" name="daves-wordpress-live-search_submit" id="daves-wordpress-live-search_submit" value="Save Changes" /></div></td>
