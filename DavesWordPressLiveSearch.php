@@ -11,31 +11,32 @@ class DavesWordPressLiveSearch
 	 */
 	public static function advanced_search_init()
 	{
-		$pluginPath = WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__));
+		if(!is_admin()) {
+			$pluginPath = WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__));
 		
-		wp_enqueue_script('jquery');
-		wp_enqueue_script('jquery_dimensions', $pluginPath.'jquery.dimensions.pack.js', 'jquery');
-		wp_enqueue_script('daves-wordpress-live-search', $pluginPath.'daves-wordpress-live-search.js.php', 'jquery_dimensions');
+			wp_enqueue_script('jquery');
+			wp_enqueue_script('jquery_dimensions', $pluginPath.'jquery.dimensions.pack.js', 'jquery');
+			wp_enqueue_script('daves-wordpress-live-search', $pluginPath.'daves-wordpress-live-search.js.php', 'jquery_dimensions');
 				
-		$cssOption = get_option('daves-wordpress-live-search_css_option');
+			$cssOption = get_option('daves-wordpress-live-search_css_option');
 
-		$themeDir = get_bloginfo("template_url");
+			$themeDir = get_bloginfo("template_url");
 		
-		switch($cssOption)
-		{
-			case 'theme':
-				wp_enqueue_style('daves-wordpress-live-search', $themeDir.'/daves-wordpress-live-search.css');
-				break;
-			case 'default_red':
-				wp_enqueue_style('daves-wordpress-live-search', $pluginPath.'daves-wordpress-live-search_default_red.css');
-				break;
-			case 'default_blue':
-				wp_enqueue_style('daves-wordpress-live-search', $pluginPath.'daves-wordpress-live-search_default_blue.css');
-				break;				
-			case 'default_gray':
-			default:
-				wp_enqueue_style('daves-wordpress-live-search', $pluginPath.'daves-wordpress-live-search_default_gray.css');
-					
+			switch($cssOption)
+			{
+				case 'theme':
+					wp_enqueue_style('daves-wordpress-live-search', $themeDir.'/daves-wordpress-live-search.css');
+					break;
+				case 'default_red':
+					wp_enqueue_style('daves-wordpress-live-search', $pluginPath.'daves-wordpress-live-search_default_red.css');
+					break;
+				case 'default_blue':
+					wp_enqueue_style('daves-wordpress-live-search', $pluginPath.'daves-wordpress-live-search_default_blue.css');
+					break;				
+				case 'default_gray':
+				default:
+					wp_enqueue_style('daves-wordpress-live-search', $pluginPath.'daves-wordpress-live-search_default_gray.css');
+			}		
 		}
 	}
 		
