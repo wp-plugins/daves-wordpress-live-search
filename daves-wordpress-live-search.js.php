@@ -31,13 +31,15 @@ LiveSearch.init = function() {
 	// Add the keypress handler
 	// Using keyup because keypress doesn't recognize the backspace key
 	// and that's kind of important.
-	jQuery("input[name='s']").keyup(LiveSearch.handleKeypress);
+	var searchBoxes = jQuery("input[name='s']");
+	searchBoxes.keyup(LiveSearch.handleKeypress);
 	
 	// Prevent browsers from doing autocomplete on the search field
-	jQuery("input[name='s']").attr('autocomplete', 'off');
+	searchBoxes.attr('autocomplete', 'off');
 	
 	// Hide the search results when the search box loses focus
-	jQuery("*").click(LiveSearch.handleClicks);
+	jQuery("html").click(LiveSearch.hideResults);
+	searchBoxes.add("ul.search_results").click(LiveSearch.handleClicks);
 }
 
 LiveSearch.positionResults = function() {
@@ -69,24 +71,7 @@ LiveSearch.positionResults = function() {
 };
 
 LiveSearch.handleClicks = function(e) {
-	
-	var target = jQuery(this);
-	
-	if(this.tagName == "INPUT" && target.attr('name') == "s") {
-		e.stopPropagation();
-	}
-	
-	if(this.tagName == "UL" && target.hasClass('search_results')) {
-		e.stopPropagation();
-	}
-			
-	if(this.tagName == "HTML") {
-		// If this is executing, the event has propagated all the way
-		// to the <html> tag itself without being stopped,
-		// so it must not have been the search box or the results that
-		// were clicked.
-		LiveSearch.hideResults();	
-	}
+	e.stopPropagation();
 };
 
 /**
