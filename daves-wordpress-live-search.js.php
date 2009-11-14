@@ -15,7 +15,10 @@ $showExcerpt = ("true" == get_option('daves-wordpress-live-search_excerpt'));
 // LiveSearch
 ///////////////////////
 
-function LiveSearch() {}
+function LiveSearch() {
+	var resultsElement = '';
+	var searchBoxes = '';
+}
 
 LiveSearch.activeRequests = new Array();
 
@@ -26,53 +29,52 @@ LiveSearch.activeRequests = new Array();
 LiveSearch.init = function() {
 	
 	jQuery("body").append('<ul class="search_results"></ul>');
-	jQuery("body").children("ul.search_results").hide();
+	this.resultsElement = jQuery('ul.search_results');
+	this.resultsElement.hide();
 	
 	// Add the keypress handler
 	// Using keyup because keypress doesn't recognize the backspace key
 	// and that's kind of important.
-	var searchBoxes = jQuery("input[name='s']");
-	searchBoxes.keyup(LiveSearch.handleKeypress);
+	LiveSearch.searchBoxes = jQuery("input[name='s']");
+	LiveSearch.searchBoxes.keyup(LiveSearch.handleKeypress);
 	
 	// Prevent browsers from doing autocomplete on the search field
-	searchBoxes.attr('autocomplete', 'off');
+	LiveSearch.searchBoxes.attr('autocomplete', 'off');
 	
 	// Hide the search results when the search box loses focus
 	jQuery("html").click(LiveSearch.hideResults);
-	searchBoxes.add("ul.search_results").click(LiveSearch.handleClicks);
+	LiveSearch.searchBoxes.add(this.resultsElement).click(function(e) { e.stopPropagation(); });
+	
 }
 
 LiveSearch.positionResults = function() {
 	
 	// Look for the search box. Exit if there isn't one.
-	var searchBox = jQuery("input[name='s']");
-	if(searchBox.size() === 0) {
+	if(LiveSearch.searchBoxes.size() === 0) {
 		return false;
 	}
 		
 	// Position the ul right under the search box	
-	var searchBoxPosition = searchBox.offset();
-	jQuery("body").children("ul.search_results").css('left', searchBoxPosition.left);
+	var searchBoxPosition = LiveSearch.searchBoxes.offset();
+	this.resultsElement.css('left', searchBoxPosition.left);
 
-	jQuery("body").children("ul.search_results").css('display', 'block');
+	this.resultsElement.css('display', 'block');
 	var topOffset = <?php
 		switch($resultsDirection)
 		{
 			case 'up':
-				echo 'searchBoxPosition.top - jQuery("ul.search_results").height();';
+				echo 'searchBoxPosition.top - this.resultsElement.height();';
 				break;
 			case 'down':
 			default:
-				echo "searchBoxPosition.top + searchBox.outerHeight();";
+				echo "searchBoxPosition.top + LiveSearch.searchBoxes.outerHeight();";
 		}
 	?>
 
-	jQuery("body").children("ul.search_results").css('top', topOffset + 'px');
+	this.resultsElement.css('top', topOffset + 'px');
 };
 
-LiveSearch.handleClicks = function(e) {
-	e.stopPropagation();
-};
+//LiveSearch.handleClicks = 
 
 /**
  * Process the search results that came back from the AJAX call
@@ -85,7 +87,7 @@ LiveSearch.handleAJAXResults = function(e) {
 	LiveSearch.activeRequests.pop();
 
 	resultsSearchTerm = e.searchTerms;
-	if(resultsSearchTerm != jQuery("input[name='s']").val()) {
+	if(resultsSearchTerm != LiveSearch.searchBoxes.val()) {
 		
 		if(LiveSearch.activeRequests.length == 0) {
 			LiveSearch.removeIndicator();
@@ -170,7 +172,7 @@ LiveSearch.handleAJAXResults = function(e) {
  */
 LiveSearch.handleKeypress = function(e) {
 	var delayTime = 0;
-	var term = jQuery("input[name='s']").val();
+	var term = LiveSearch.searchBoxes.val();
 	setTimeout( function() { LiveSearch.runQuery(term); }, delayTime);
 };
 
@@ -180,7 +182,7 @@ LiveSearch.handleKeypress = function(e) {
  */
 LiveSearch.runQuery = function(terms) {
 	
-	if(jQuery("input[name='s']").val() === "") {
+	if(LiveSearch.searchBoxes.val() === "") {
 		// Nothing entered. Hide the autocomplete.
 		LiveSearch.hideResults();
 		LiveSearch.removeIndicator();
@@ -243,18 +245,16 @@ LiveSearch.displayIndicator = function() {
 	if(jQuery("#search_results_activity_indicator").size() === 0) {
 
 		jQuery("body").append('<img id="search_results_activity_indicator" src="<?php print $pluginPath; ?>indicator.gif" />');
-		
-		var searchBox = jQuery("input[name='s']");
 
-		var searchBoxPosition = searchBox.offset();
+		var searchBoxPosition = LiveSearch.searchBoxes.offset();
 
 		jQuery("#search_results_activity_indicator").css('position', 'absolute');
 		
-		var indicatorY = (searchBoxPosition.top + ((searchBox.outerHeight() - searchBox.innerHeight()) / 2) + 'px');
+		var indicatorY = (searchBoxPosition.top + ((LiveSearch.searchBoxes.outerHeight() - LiveSearch.searchBoxes.innerHeight()) / 2) + 'px');
 		
 		jQuery("#search_results_activity_indicator").css('top', indicatorY);
 
-		var indicatorX = (searchBoxPosition.left + searchBox.outerWidth() - <?php $dimensions = getimagesize("$pluginPath/indicator.gif"); print $dimensions[0]; ?> - 2) + 'px';
+		var indicatorX = (searchBoxPosition.left + LiveSearch.searchBoxes.outerWidth() - <?php $dimensions = getimagesize("$pluginPath/indicator.gif"); print $dimensions[0]; ?> - 2) + 'px';
 						
 		jQuery("#search_results_activity_indicator").css('left', indicatorX);
 	}
@@ -271,6 +271,6 @@ LiveSearch.removeIndicator = function() {
 // Initialization
 ///////////////////
 
-jQuery(document).ready( function() {
+jQuery(function() {
 	LiveSearch.init();
 });
