@@ -74,8 +74,6 @@ LiveSearch.positionResults = function() {
 	this.resultsElement.css('top', topOffset + 'px');
 };
 
-//LiveSearch.handleClicks = 
-
 /**
  * Process the search results that came back from the AJAX call
  */
