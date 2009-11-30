@@ -139,8 +139,8 @@ class DavesWordPressLiveSearchResults {
 		else
 		{
 			$authorData = get_userdata($authorID);
-			$authorName = $authorData->user_nicename;
-			$authorCache[$authorID] = $authorData->user_nicename;
+			$authorName = $authorData->display_name;
+			$authorCache[$authorID] = $authorName;
 		}
 		
 		return $authorName;
