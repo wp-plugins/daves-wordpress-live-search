@@ -147,7 +147,12 @@ class DavesWordPressLiveSearch
 		$exceptions = explode("\n", get_option('daves-wordpress-live-search_exceptions'));
 
 		foreach($exceptions as $exception) {
+			
 			$regexp = trim($exception);
+			
+			// Blank paths were slipping through. Ignore them.
+			if(empty($regexp)) { continue; }
+			
 			if('<front>' == $regexp) {
 				$regexp = '';	
 			}
