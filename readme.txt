@@ -16,6 +16,8 @@ The [live search](http://ajaxpatterns.org/Live_Search) technique means that most
 
 This functionality requires Javascript, but the search box still works normally if Javascript is not available.
 
+This plugin has been tested with WordPress 2.9, and will support WordPress 2.9's "post thumbnail" feature in the next release.
+
 == Installation ==
 
 1. Upload the `daves-wordpress-live-search` directory to your site's `/wp-content/plugins/` directory
