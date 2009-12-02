@@ -69,7 +69,8 @@ if ( function_exists('wp_nonce_field') )
 <th scope="row">Exceptions</th>
 
 <td>
-<div><span class="setting-description">Enter the URLs of pages which should not have an autocompleting search box, one per line. The * wildcard can be used at the start or end of a line, for example: http://example.com/wp-admin*</span></div>
+<?php $permalinkFormat = get_option('permalink_structure'); ?>
+<div><span class="setting-description">Enter the <?php echo empty($permalinkFormat) ? 'paths' : 'permalinks'; ?> of pages which should not have live searching, one per line. The * wildcard can be used at the start or end of a line. For example: <ul style="list-style-type:disc;margin-left: 3em;"><?php echo empty($permalinkFormat) ? '<li>?page_id=123</li><li>page_id=1*</li>' : '<li>about</li><li>employee-*</li>';?></ul></span></div>
 <textarea name="daves-wordpress-live-search_exceptions" id="daves-wordpress-live-search_exceptions" rows="5" cols="60"><?php echo $exceptions; ?></textarea></td> 
 </tr>
 
