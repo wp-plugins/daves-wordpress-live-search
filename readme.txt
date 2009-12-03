@@ -2,9 +2,9 @@
 Contributors: csixty4
 Donate link: http://catguardians.org
 Tags: search, AJAX
-Requires at least: 2.0
-Tested up to: 2.8.5
-Stable tag: 1.8
+Requires at least: 2.6
+Tested up to: 2.8.6
+Stable tag: 1.9
  
 Adds "live search" functionality to your WordPress site. Uses the built-in search and jQuery.
 
@@ -41,6 +41,18 @@ Features I want to implement in future releases:
 1. Modify the CSS directly on the admin screen (so it's not tied to a theme).
 
 == Changelog ==
+
+=v1.9=
+* 2009-12-02 Dave Ross <dave@csixty4.com>
+* Tested compatibility with WordPress 2.3-2.9 beta 2
+* Fixed stylesheet issue with WordPress 2.5.x
+* Set minimum WordPress version to 2.6. Admin page doesn't appear in 2.5.
+* Added support for WordPress 2.9 "post thumbnails"
+* Put autocomplete="off" on the form instead of the search box (fix for Firefox issue?)
+* Use "Display Name" instead of "username"
+* Javascript performance improvements
+* Added page exception list
+* Live search no longer tries to add itself to admin pages
 
 =v1.8=
 * 2009-10-25 Dave Ross <dave@csixty4.com>
