@@ -17,26 +17,43 @@ class DavesWordPressLiveSearch
 			wp_enqueue_script('jquery');
 			wp_enqueue_script('jquery_dimensions', $pluginPath.'jquery.dimensions.pack.js', 'jquery');
 			wp_enqueue_script('daves-wordpress-live-search', $pluginPath.'daves-wordpress-live-search.js.php', 'jquery_dimensions');
-				
-			$cssOption = get_option('daves-wordpress-live-search_css_option');
+		}
+	}
+	
+	public function head() {
 
+		if(self::isSearchablePage()) {
+			$cssOption = get_option('daves-wordpress-live-search_css_option');
+	
 			$themeDir = get_bloginfo("template_url");
+			$pluginPath = WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__));
 		
 			switch($cssOption)
 			{
 				case 'theme':
-					wp_enqueue_style('daves-wordpress-live-search', $themeDir.'/daves-wordpress-live-search.css');
+					$style = $themeDir.'/daves-wordpress-live-search.css';
 					break;
 				case 'default_red':
-					wp_enqueue_style('daves-wordpress-live-search', $pluginPath.'daves-wordpress-live-search_default_red.css');
+					$style = $pluginPath.'daves-wordpress-live-search_default_red.css';
 					break;
 				case 'default_blue':
-					wp_enqueue_style('daves-wordpress-live-search', $pluginPath.'daves-wordpress-live-search_default_blue.css');
+					$style = $pluginPath.'daves-wordpress-live-search_default_blue.css';
 					break;				
 				case 'default_gray':
 				default:
-					wp_enqueue_style('daves-wordpress-live-search', $pluginPath.'daves-wordpress-live-search_default_gray.css');
-			}		
+					$style = $pluginPath.'daves-wordpress-live-search_default_gray.css';
+			}
+
+			if(function_exists('wp_register_style') && function_exists('wp_enqueue_style')) {
+				// WordPress >= 2.6
+				wp_register_style('daves-wordpress-live-search', $style);
+				wp_enqueue_style('daves-wordpress-live-search');	
+				wp_print_styles();
+			}
+			else {
+				// WordPress < 2.6
+				echo('<link rel="stylesheet" href="'.$style.'" type="text/css" media="screen" />');
+			}
 		}
 	}
 		

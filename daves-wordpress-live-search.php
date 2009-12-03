@@ -30,6 +30,7 @@ Plugin URI: http://wordpress.org/extend/plugins/daves-wordpress-live-search/
 add_action('init', array('DavesWordPressLiveSearch', 'advanced_search_init'));
 add_action('admin_menu', array('DavesWordPressLiveSearch', 'admin_menu'));
 add_action('admin_notices', array('DavesWordPressLiveSearch', 'admin_notices'));
+add_action('wp_head', array('DavesWordPressLiveSearch', 'head'));
 
 if(5.0 > floatval(phpversion()))
 	die("Dave's WordPress Live Search requires PHP 5.0 or higher");
