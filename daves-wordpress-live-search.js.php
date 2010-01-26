@@ -9,6 +9,7 @@ $pluginPath = WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basenam
 $resultsDirection = stripslashes(get_option('daves-wordpress-live-search_results_direction'));
 $showThumbs = ("true" == get_option('daves-wordpress-live-search_thumbs'));
 $showExcerpt = ("true" == get_option('daves-wordpress-live-search_excerpt'));
+$minCharsToSearch = intval(get_option('daves-wordpress-live-search_minchars'));
 ?>
 
 ///////////////////////
@@ -180,7 +181,8 @@ LiveSearch.handleKeypress = function(e) {
  */
 LiveSearch.runQuery = function(terms) {
 	
-	if(LiveSearch.searchBoxes.val() === "") {
+	var srch=LiveSearch.searchBoxes.val();
+	if(srch === "" || srch.length < <?php echo $minCharsToSearch; ?>) {
 		// Nothing entered. Hide the autocomplete.
 		LiveSearch.hideResults();
 		LiveSearch.removeIndicator();

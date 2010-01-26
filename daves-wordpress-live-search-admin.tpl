@@ -18,6 +18,20 @@ if ( function_exists('wp_nonce_field') )
 </tr>
 
 <tr valign="top">
+<th scope="row">Minimum characters before searching</th>
+
+<td>
+<select name="daves-wordpress-live-search_minchars">
+<option value="1" <?php if($minCharsToSearch == 1) echo 'selected="selected"'; ?>>Search right away</option>
+<option value="2" <?php if($minCharsToSearch == 2) echo 'selected="selected"'; ?>>Wait for two characters</option>
+<option value="3" <?php if($minCharsToSearch == 3) echo 'selected="selected"'; ?>>Wait for three characters</option>
+<option value="4" <?php if($minCharsToSearch == 4) echo 'selected="selected"'; ?>>Wait for four characters</option>
+</select>
+</td>
+</tr>
+
+
+<tr valign="top">
 <th scope="row">Results Direction</th>
 
 <td><input type="radio" name="daves-wordpress-live-search_results_direction" id="daves-wordpress-live-search_results_direction_down" value="down" <?php if($resultsDirection == 'down'): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_results_direction_down">Down</input></label>
