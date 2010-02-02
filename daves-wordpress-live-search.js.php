@@ -2,6 +2,14 @@
 ob_start();
 header('Content-type: text/javascript');
 
+// Borrowed from wp-load.php
+// PHP 5.3 with E_STRICT throws a bunch of warnings when we get to
+// wp-settings.php (included by wp-config.php)
+if ( defined('E_RECOVERABLE_ERROR') )
+	error_reporting(E_ERROR | E_WARNING | E_PARSE | E_USER_ERROR | E_USER_WARNING | E_RECOVERABLE_ERROR);
+else
+	error_reporting(E_ERROR | E_WARNING | E_PARSE | E_USER_ERROR | E_USER_WARNING);
+	
 include("../../../wp-config.php");
 
 $pluginPath = WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__));
