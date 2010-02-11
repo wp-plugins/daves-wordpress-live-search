@@ -210,6 +210,14 @@ class DavesWordPressLiveSearchResults {
 $maxResults = intval(get_option('daves-wordpress-live-search_max_results'));
 if($maxResults === 0) $maxResults = -1;
 
+// Initialize the $wp global object
+// See class WP in classes.php
+// The Relevanssi plugin is using this instead of
+// the global $wp_query object
+$wp =& new WP();
+$wp->init();  // Sets up current user.
+$wp->parse_request();
+
 // This used to be one line, with the search parameters passed to the
 // WP_Query constructor. But, the Search Everything plugin reliest on having
 // $wp_query available in the global scope when WP_Query calls it. So, I had
