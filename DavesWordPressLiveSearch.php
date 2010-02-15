@@ -25,7 +25,7 @@ class DavesWordPressLiveSearch
 		if(self::isSearchablePage()) {
 			$cssOption = get_option('daves-wordpress-live-search_css_option');
 	
-			$themeDir = get_bloginfo("template_url");
+			$themeDir = get_bloginfo("stylesheet_directory");
 			$pluginPath = WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__));
 		
 			switch($cssOption)
