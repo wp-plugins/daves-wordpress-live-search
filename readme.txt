@@ -16,6 +16,8 @@ The [live search](http://ajaxpatterns.org/Live_Search) technique means that most
 
 This functionality requires Javascript, but the search box still works normally if Javascript is not available.
 
+NOTE: Dave's WordPress Live Search requires PHP 5.0 or higher.
+
 == Installation ==
 
 1. Upload the `daves-wordpress-live-search` directory to your site's `/wp-content/plugins/` directory
