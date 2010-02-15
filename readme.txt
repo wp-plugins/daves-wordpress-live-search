@@ -3,8 +3,8 @@ Contributors: csixty4
 Donate link: http://catguardians.org
 Tags: search, AJAX
 Requires at least: 2.6
-Tested up to: 2.8.6
-Stable tag: 1.9
+Tested up to: 2.9.1
+Stable tag: 1.10
  
 Adds "live search" functionality to your WordPress site. Uses the built-in search and jQuery.
 
@@ -41,6 +41,15 @@ Features I want to implement in future releases:
 1. Modify the CSS directly on the admin screen (so it's not tied to a theme).
 
 == Changelog ==
+
+=v1.10=
+* 2010-02-14 Dave Ross <dave@csixty4.com>
+* Added option for minimum number of characters that need to be entered before triggering a search
+* More graceful failure message in PHP4
+* Added code to ignore E_STRICT warnings when E_STRICT enabled on PHP 5.3
+* Possible fix for compatibility with Relevanssi plugin (some concern this isn't working yet)
+* Fix for compatibility with child themes
+* Added MIT license to DavesWordPressLiveSearch.php class
 
 =v1.9=
 * 2009-12-02 Dave Ross <dave@csixty4.com>
