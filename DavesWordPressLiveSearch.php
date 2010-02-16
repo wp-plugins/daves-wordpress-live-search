@@ -168,8 +168,10 @@ class DavesWordPressLiveSearch
 		$cssOption = get_option('daves-wordpress-live-search_css_option');
 		if('theme' == $cssOption)
 		{
+			$themeDir = get_bloginfo("stylesheet_directory");
+			
 			// Make sure there's a daves-wordpress-live-search.css file in the theme
-			if(!file_exists(TEMPLATEPATH."/daves-wordpress-live-search.css"))
+			if(!file_exists($themeDir."/daves-wordpress-live-search.css"))
 			{
 				$alertMessage = __("The <em>Dave's WordPress Live Search</em> plugin is configured to use a theme-specific CSS file, but the current theme does not contain a daves-wordpress-live-search.css file.");
 				echo "<div class=\"updated fade\"><p><strong>$alertMessage</strong></p></div>";
