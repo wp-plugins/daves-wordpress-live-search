@@ -41,6 +41,9 @@ I don't get asked a lot of questions about this plugin, so here's the "known iss
 Features I want to implement in future releases:
 
 1. Modify the CSS directly on the admin screen (so it's not tied to a theme).
+1. "No results found" message (optional)
+1. Internationalization
+1. Better organized admin screen (collapsible panels?)
 
 == Changelog ==
 
