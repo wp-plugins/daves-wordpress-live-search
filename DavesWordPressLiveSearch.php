@@ -168,7 +168,7 @@ class DavesWordPressLiveSearch
 		$cssOption = get_option('daves-wordpress-live-search_css_option');
 		if('theme' == $cssOption)
 		{
-			$themeDir = get_bloginfo("stylesheet_directory");
+			$themeDir = get_theme_root().'/'.get_stylesheet();
 			
 			// Make sure there's a daves-wordpress-live-search.css file in the theme
 			if(!file_exists($themeDir."/daves-wordpress-live-search.css"))
