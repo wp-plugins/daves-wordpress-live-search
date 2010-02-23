@@ -161,7 +161,7 @@ LiveSearch.handleAJAXResults = function(e) {
 		}
 		
 		// "more" link
-		searchResultsList.append('<div class="clearfix search_footer"><a href="?s=' + resultsSearchTerm + '">View more results</a></div>');
+		searchResultsList.append('<div class="clearfix search_footer"><a href="<?php bloginfo('url'); ?>/?s=' + resultsSearchTerm + '">View more results</a></div>');
 
 		// Show the search results
 		LiveSearch.showResults();
