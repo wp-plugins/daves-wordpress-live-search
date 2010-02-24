@@ -10,7 +10,7 @@ if ( defined('E_RECOVERABLE_ERROR') )
 else
 	error_reporting(E_ERROR | E_WARNING | E_PARSE | E_USER_ERROR | E_USER_WARNING);
 	
-include("../../../wp-config.php");
+include "daves-wordpress-live-search-bootstrap.php";
 
 $pluginPath = WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__));
 

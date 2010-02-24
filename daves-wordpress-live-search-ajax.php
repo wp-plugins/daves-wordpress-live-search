@@ -71,7 +71,7 @@ if (!function_exists('json_encode'))
 	}
 }
 
-include_once("../../../wp-config.php");
+include "daves-wordpress-live-search-bootstrap.php";
 
 /**
  * Value object class
