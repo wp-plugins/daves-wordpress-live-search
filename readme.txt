@@ -3,7 +3,7 @@ Contributors: csixty4
 Donate link: http://catguardians.org
 Tags: search, AJAX
 Requires at least: 2.6
-Tested up to: 2.9.1
+Tested up to: 2.9.2
 Stable tag: 1.11
  
 Adds "live search" functionality to your WordPress site. Uses the built-in search and jQuery.
