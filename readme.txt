@@ -47,6 +47,13 @@ Features I want to implement in future releases:
 
 == Changelog ==
 
+=v1.11=
+* 2010-02-24 Dave Ross <dave@csixty4.com>
+* Support for wp-config.php outside main WordPress directory (2.6+)
+* Fix to make "view more results" link work on pages other than home
+* Fix path to stylesheet directory
+* Fix compatibility with child themes
+
 =v1.10=
 * 2010-02-14 Dave Ross <dave@csixty4.com>
 * Added option for minimum number of characters that need to be entered before triggering a search
