@@ -92,6 +92,10 @@ class DavesWordPressLiveSearchResults {
 	}
 	
 	private function populate($wpQueryResults, $displayPostMeta) {
+		
+		global $wp_locale;
+		$dateFormat = get_option('date_format');
+		
 		$this->searchTerms = $wpQueryResults->query_vars['s'];
 		
 		foreach($wpQueryResults->posts as $result)
@@ -114,6 +118,8 @@ class DavesWordPressLiveSearchResults {
 			}
 
 			$result->post_excerpt = $this->excerpt($result);
+			
+			$result->post_date = date_i18n($dateFormat, strtotime($result->post_date));
 			
 			// We don't want to send all this content to the browser
 			unset($result->post_content);
