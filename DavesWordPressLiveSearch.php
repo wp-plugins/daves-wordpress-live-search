@@ -248,4 +248,3 @@ class DavesWordPressLiveSearch
 		return $pluginPath;		
 	}	
 }
-?>
