@@ -11,8 +11,9 @@ else
 	error_reporting(E_ERROR | E_WARNING | E_PARSE | E_USER_ERROR | E_USER_WARNING);
 	
 include "daves-wordpress-live-search-bootstrap.php";
+include "DavesWordPressLiveSearch.php";
 
-$pluginPath = WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__));
+$pluginPath = DavesWordPressLiveSearch::getPluginPath();
 
 $resultsDirection = stripslashes(get_option('daves-wordpress-live-search_results_direction'));
 $showThumbs = ("true" == get_option('daves-wordpress-live-search_thumbs'));

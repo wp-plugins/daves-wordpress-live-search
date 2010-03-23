@@ -30,8 +30,8 @@ class DavesWordPressLiveSearch
 	public static function advanced_search_init()
 	{
 		if(self::isSearchablePage()) {
-			$pluginPath = WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__));
-		
+			$pluginPath = DavesWordPressLiveSearch::getPluginPath();
+	
 			wp_enqueue_script('jquery');
 			wp_enqueue_script('jquery_dimensions', $pluginPath.'jquery.dimensions.pack.js', 'jquery');
 			wp_enqueue_script('daves-wordpress-live-search', $pluginPath.'daves-wordpress-live-search.js.php', 'jquery_dimensions');
@@ -44,7 +44,7 @@ class DavesWordPressLiveSearch
 			$cssOption = get_option('daves-wordpress-live-search_css_option');
 	
 			$themeDir = get_bloginfo("stylesheet_directory");
-			$pluginPath = WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__));
+			$pluginPath = DavesWordPressLiveSearch::getPluginPath();
 		
 			switch($cssOption)
 			{
@@ -222,5 +222,30 @@ class DavesWordPressLiveSearch
 		// Fall-through, search everything by default
 		return true;
 	}
+	
+	/**
+	 * Modify plugin path as needed for compatiblity with WP-Subdomains
+	 * @return string
+	 */
+	public static function getPluginPath() {
+		
+		$pluginPath = WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__));
+		
+		if(defined('WPS_VERSION')) {
+
+			//--- Create the SubDomains Object
+			$wps_subdomains = new WpsSubDomains( );
+		
+			//--- Grab This Subdomain object (if we're on one)
+			$wps_this_subdomain = $wps_subdomains->getThisSubdomain();
+
+			// WP Subdomains is running
+			if ( $wps_this_subdomain ) {
+				$pluginPath = $wps_this_subdomain->changeGeneralLink( $pluginPath );
+			}
+		}
+		
+		return $pluginPath;		
+	}	
 }
 ?>
