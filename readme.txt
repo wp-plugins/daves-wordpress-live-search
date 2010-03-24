@@ -4,7 +4,7 @@ Donate link: http://catguardians.org
 Tags: search, AJAX
 Requires at least: 2.6
 Tested up to: 2.9.2
-Stable tag: 1.11
+Stable tag: 1.12
  
 Adds "live search" functionality to your WordPress site. Uses the built-in search and jQuery.
 
@@ -46,6 +46,12 @@ Features I want to implement in future releases:
 1. Better organized admin screen (collapsible panels?)
 
 == Changelog ==
+
+=v1.12=
+* 2010-03-23 Dave Ross <dave@csixty4.com>
+* Now compatible with WP-Subdomains plugin
+* Format dates using WordPress date setting
+* Added MIT license text to daves-wordpress-live-search.js.php and daves-wordpress-live-search-bootstrap.php files
 
 =v1.11=
 * 2010-02-24 Dave Ross <dave@csixty4.com>
