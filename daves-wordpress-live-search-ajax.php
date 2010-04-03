@@ -237,6 +237,7 @@ $results = new DavesWordPressLiveSearchResults($wp_query, $displayPostMeta);
 
 $json = json_encode($results);
 
+header('Content-type: text/javascript');
 print $json;
 
 ?>
