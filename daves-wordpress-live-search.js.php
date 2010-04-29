@@ -70,7 +70,8 @@ LiveSearch.init = function() {
 	// Hide the search results when the search box loses focus
 	jQuery("html").click(LiveSearch.hideResults);
 	LiveSearch.searchBoxes.add(this.resultsElement).click(function(e) { e.stopPropagation(); });
-	
+
+	jQuery(window).resize(function() {LiveSearch.positionResults(this);});	
 }
 
 LiveSearch.positionResults = function() {
