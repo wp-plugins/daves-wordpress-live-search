@@ -47,20 +47,20 @@ Features I want to implement in future releases:
 
 == Changelog ==
 
-=v1.12=
+= 1.12 =
 * 2010-03-23 Dave Ross <dave@csixty4.com>
 * Now compatible with WP-Subdomains plugin
 * Format dates using WordPress date setting
 * Added MIT license text to daves-wordpress-live-search.js.php and daves-wordpress-live-search-bootstrap.php files
 
-=v1.11=
+= 1.11 =
 * 2010-02-24 Dave Ross <dave@csixty4.com>
 * Support for wp-config.php outside main WordPress directory (2.6+)
 * Fix to make "view more results" link work on pages other than home
 * Fix path to stylesheet directory
 * Fix compatibility with child themes
 
-=v1.10=
+= 1.10 =
 * 2010-02-14 Dave Ross <dave@csixty4.com>
 * Added option for minimum number of characters that need to be entered before triggering a search
 * More graceful failure message in PHP4
@@ -69,7 +69,7 @@ Features I want to implement in future releases:
 * Fix for compatibility with child themes
 * Added MIT license to DavesWordPressLiveSearch.php class
 
-=v1.9=
+= 1.9 =
 * 2009-12-02 Dave Ross <dave@csixty4.com>
 * Tested compatibility with WordPress 2.3-2.9 beta 2
 * Fixed stylesheet issue with WordPress 2.5.x
@@ -81,7 +81,7 @@ Features I want to implement in future releases:
 * Added page exception list
 * Live search no longer tries to add itself to admin pages
 
-=v1.8=
+= 1.8 =
 * 2009-10-25 Dave Ross <dave@csixty4.com>
 * Added note about WP-Minify
 * Tested with WordPress 2.8.5
@@ -90,26 +90,26 @@ Features I want to implement in future releases:
 * Security - check "manage_options" security setting
 * Notes on configuration in readme.txt
 
-=v1.7=
+= 1.7 =
 * 2009-08-27 Dave Ross <dave@csixty4.com>
 * Thumbnails in the search results
 * Excerpts in the search results
 
-=v1.6=
+= 1.6 =
 * 2009-08-17 Dave Ross <dave@csixty4.com>
 * Implemented selectable CSS files
 * Fixed a bug that broke live searches containing ' characters
 
-=v1.5=
+= 1.5 =
 * 2009-07-08 Dave Ross  <dave@csixty4.com>
 * Fixed compatibility with Search Everything plugin, possibly others
 
-=v1.4=
+= 1.4 =
 * 2009-06-03 Dave Ross  <dave@csixty4.com>
 * Renamed release 1.3.1 to 1.4 because WordPress.org doesn't seem to like 1.3.1. Seems like kind of a waste to do a full point release for this
 * Building permalinks instead of using post guid (problem with posts imported from another blog)
 
-=v1.3=
+= 1.3 =
 * 2009-05-22  Dave Ross  <dave@csixty4.com>   
 * Fixed an annoying bug where the search results div collapsed and expanded again every time an AJAX request completed
 * Cancel any existing AJAX requests before sending a new one
@@ -117,19 +117,19 @@ Features I want to implement in future releases:
 * No longer sends the entire WP_Query object to the browser. This was a potential information disclosure issue, plus it was a lot to serialize on the server and parse in the brower
 * Minor code cleanup & optimizations
      
-=v1.2=
+= 1.2 =
 * 2009-04-10  Dave Ross  <dave@csixty4.com>
 * Code cleanup & optimizations 
 * Styled the admin screen to fit in with WordPress better 
 * New option: display the results above or below the search box 
 * Included a note on the admin screen recommending the Google Libraries plugin
 	 
-=v1.1=
+= 1.1 =
 * 2009-03-30  Dave Ross  <dave@csixty4.com>
 * Code cleanup & optimizations
 * Fixed compatibility issues with PHP < 5.2.0 and PHP < 5.1.2
 * New option: limit the number of results to display
 	 
-=v1.0=
+= 1.0 =
 * 2009-03-13  Dave Ross  <dave@csixty4.com>
 * Initial release
