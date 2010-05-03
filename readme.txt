@@ -1,10 +1,10 @@
 === Plugin Name ===
 Contributors: csixty4
 Donate link: http://catguardians.org
-Tags: search, AJAX
+Tags: search, AJAX, live search
 Requires at least: 2.6
 Tested up to: 2.9.2
-Stable tag: 1.12
+Stable tag: 1.13
  
 Adds "live search" functionality to your WordPress site. Uses the built-in search and jQuery.
 
@@ -46,6 +46,12 @@ Features I want to implement in future releases:
 1. Better organized admin screen (collapsible panels?)
 
 == Changelog ==
+
+= 1.13 =
+* 2010-05-02 Dave Ross <dave@csixty4.com>
+* Fixed changelog formatting
+* Reposition the search results popup when the window is resized
+* Send AJAX results with a test/javascript content-type
 
 = 1.12 =
 * 2010-03-23 Dave Ross <dave@csixty4.com>
