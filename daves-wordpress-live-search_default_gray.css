@@ -8,7 +8,8 @@ max-height: 500px;
 position:absolute;
 top:20px;
 left:0px;
-overflow:auto;	
+overflow:auto;
+z-index: 9999;	
 
 list-style-type: none;
 list-style-image: none;
