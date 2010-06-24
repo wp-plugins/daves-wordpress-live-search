@@ -71,7 +71,14 @@ LiveSearch.init = function() {
 	jQuery("html").click(LiveSearch.hideResults);
 	LiveSearch.searchBoxes.add(this.resultsElement).click(function(e) { e.stopPropagation(); });
 
-	jQuery(window).resize(function() {LiveSearch.positionResults(this);});	
+	jQuery(window).resize(function() {
+		var wasVisible = LiveSearch.resultsElement.is(':visible');
+		LiveSearch.positionResults(this); 
+		// Resizing the window was making the results visible again
+		if(!wasVisible) {
+			LiveSearch.resultsElement.hide(); 
+		}
+	});	
 }
 
 LiveSearch.positionResults = function() {
