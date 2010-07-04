@@ -47,6 +47,11 @@ Features I want to implement in future releases:
 
 == Changelog ==
 
+= 1.14 =
+* 2010-07-03 Dave Ross <dave@csixty4.com>
+* z-index:9999 for cadbloke to keep search results above all other content (that doesn't already have a z-index of 9999 or higher)
+* Hidden results display when resizing window http://wordpress.org/support/topic/410612
+
 = 1.13 =
 * 2010-05-02 Dave Ross <dave@csixty4.com>
 * Fixed changelog formatting
