@@ -4,7 +4,7 @@ Donate link: http://catguardians.org
 Tags: search, AJAX, live search
 Requires at least: 2.6
 Tested up to: 2.9.2
-Stable tag: 1.13
+Stable tag: 1.14
  
 Adds "live search" functionality to your WordPress site. Uses the built-in search and jQuery.
 
@@ -46,6 +46,11 @@ Features I want to implement in future releases:
 1. Better organized admin screen (collapsible panels?)
 
 == Changelog ==
+
+= 1.14 =
+* 2010-07-03 Dave Ross <dave@csixty4.com>
+* z-index:9999 for cadbloke to keep search results above all other content (that doesn't already have a z-index of 9999 or higher)
+* Hidden results display when resizing window http://wordpress.org/support/topic/410612
 
 = 1.13 =
 * 2010-05-02 Dave Ross <dave@csixty4.com>
