@@ -123,6 +123,9 @@ class DavesWordPressLiveSearchResults {
 			
 			// We don't want to send all this content to the browser
 			unset($result->post_content);
+
+			// xLocalization
+			$result->post_title = apply_filters("localization", $result->post_title); 
 			
 			$this->results[] = $result;	
 		}
@@ -130,12 +133,13 @@ class DavesWordPressLiveSearchResults {
 	
 	private function excerpt($result) {
 		if (empty($result->post_excerpt)) {
-			 $excerpt = explode(" ",strrev(substr(strip_tags($result->post_content), 0, 100)),2);
+			 $content = apply_filters("localization", $result->post_content);
+			 $excerpt = explode(" ",strrev(substr(strip_tags($content), 0, 100)),2);
 			 $excerpt = strrev($excerpt[1]);
 			 $excerpt .= " [...]";
 		}
 		else {
-			$excerpt = $result->post_excerpt;
+			$excerpt = apply_filters("localization", $result->post_excerpt);
 		}
 		
 		return $excerpt;
