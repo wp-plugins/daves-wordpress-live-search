@@ -178,9 +178,8 @@ LiveSearch.handleAJAXResults = function(e) {
 				
 				if(e.displayPostMeta) {
 					renderedResult += '<p class="meta clearfix" id="daves-wordpress-live-search_author">Posted by ' + searchResult.post_author_nicename + '</p><p id="daves-wordpress-live-search_date" class="meta clearfix">' + searchResult.post_date + '</p>';
-					renderedResult += '<div class="clearfix"></div></li>';
-
 				}
+                                renderedResult += '<div class="clearfix"></div></li>';
 				searchResultsList.append(renderedResult);
 			}
 		}
