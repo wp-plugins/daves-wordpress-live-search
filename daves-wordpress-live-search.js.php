@@ -112,89 +112,90 @@ LiveSearch.positionResults = function() {
  * Process the search results that came back from the AJAX call
  */
 LiveSearch.handleAJAXResults = function(e) {
-	
-	var showThumbs = <?php if($showThumbs) : ?>true<?php else : ?>false<?php endif; ?>;
-	var showExcerpt = <?php if($showExcerpt) : ?>true<?php else : ?>false<?php endif; ?>;
-	
-	LiveSearch.activeRequests.pop();
+    var showThumbs = <?php if($showThumbs) : ?>true<?php else : ?>false<?php endif; ?>;
+    var showExcerpt = <?php if($showExcerpt) : ?>true<?php else : ?>false<?php endif; ?>;
 
-	resultsSearchTerm = e.searchTerms;
-	if(resultsSearchTerm != LiveSearch.searchBoxes.val()) {
-		
-		if(LiveSearch.activeRequests.length == 0) {
-			LiveSearch.removeIndicator();
-		}
+    LiveSearch.activeRequests.pop();
 
-		return;
-	}
-	
-	var resultsShownFor = jQuery("ul.search_results").children("input[name=query]").val();
-	if(resultsShownFor != "" && resultsSearchTerm == resultsShownFor)
-	{
-		if(LiveSearch.activeRequests.length == 0) {
-			LiveSearch.removeIndicator();
-		}
+    if(e) {
+        resultsSearchTerm = e.searchTerms;
+        if(resultsSearchTerm != LiveSearch.searchBoxes.val()) {
 
-		return;
-	}
+                if(LiveSearch.activeRequests.length == 0) {
+                        LiveSearch.removeIndicator();
+                }
 
-	var searchResultsList = jQuery("ul.search_results");
-	searchResultsList.empty();
-	searchResultsList.append('<input type="hidden" name="query" value="' + resultsSearchTerm + '" />');
+                return;
+        }
 
-	if(e.results.length == 0) {
-		// Hide the search results, no results to show
-		LiveSearch.hideResults();
-	}
-	else {
-		for(var postIndex = 0; postIndex < e.results.length; postIndex++) {
-			var searchResult = e.results[postIndex];
-			if(searchResult.post_title !== undefined) {
-				
+        var resultsShownFor = jQuery("ul.search_results").children("input[name=query]").val();
+        if(resultsShownFor != "" && resultsSearchTerm == resultsShownFor)
+        {
+                if(LiveSearch.activeRequests.length == 0) {
+                        LiveSearch.removeIndicator();
+                }
+
+                return;
+        }
+
+        var searchResultsList = jQuery("ul.search_results");
+        searchResultsList.empty();
+        searchResultsList.append('<input type="hidden" name="query" value="' + resultsSearchTerm + '" />');
+
+        if(e.results.length == 0) {
+                // Hide the search results, no results to show
+                LiveSearch.hideResults();
+        }
+        else {
+                for(var postIndex = 0; postIndex < e.results.length; postIndex++) {
+                        var searchResult = e.results[postIndex];
+                        if(searchResult.post_title !== undefined) {
 
 
-				var renderedResult = '';
-				
-				// Thumbnails
-				if(showThumbs && searchResult.attachment_thumbnail) {
-					var liClass = "post_with_thumb";
-				}
-				else {
-					var liClass = "";
-				}
-				
-				renderedResult += '<li class="' + liClass + '">';
-				
-				// Render thumbnail
-				if(showThumbs && searchResult.attachment_thumbnail) {
-					renderedResult += '<img src="' + searchResult.attachment_thumbnail + '" class="post_thumb" />';
-				}
-				
-				renderedResult += '<a href="' + searchResult.permalink + '">' + searchResult.post_title + '</a>';
 
-				if(showExcerpt && searchResult.post_excerpt) {
-					renderedResult += '<p class="excerpt clearfix">' + searchResult.post_excerpt + '</p>';
-				}
-				
-				if(e.displayPostMeta) {
-					renderedResult += '<p class="meta clearfix" id="daves-wordpress-live-search_author">Posted by ' + searchResult.post_author_nicename + '</p><p id="daves-wordpress-live-search_date" class="meta clearfix">' + searchResult.post_date + '</p>';
-				}
+                                var renderedResult = '';
+
+                                // Thumbnails
+                                if(showThumbs && searchResult.attachment_thumbnail) {
+                                        var liClass = "post_with_thumb";
+                                }
+                                else {
+                                        var liClass = "";
+                                }
+
+                                renderedResult += '<li class="' + liClass + '">';
+
+                                // Render thumbnail
+                                if(showThumbs && searchResult.attachment_thumbnail) {
+                                        renderedResult += '<img src="' + searchResult.attachment_thumbnail + '" class="post_thumb" />';
+                                }
+
+                                renderedResult += '<a href="' + searchResult.permalink + '">' + searchResult.post_title + '</a>';
+
+                                if(showExcerpt && searchResult.post_excerpt) {
+                                        renderedResult += '<p class="excerpt clearfix">' + searchResult.post_excerpt + '</p>';
+                                }
+
+                                if(e.displayPostMeta) {
+                                        renderedResult += '<p class="meta clearfix" id="daves-wordpress-live-search_author">Posted by ' + searchResult.post_author_nicename + '</p><p id="daves-wordpress-live-search_date" class="meta clearfix">' + searchResult.post_date + '</p>';
+                                }
                                 renderedResult += '<div class="clearfix"></div></li>';
-				searchResultsList.append(renderedResult);
-			}
-		}
-		
-		// "more" link
-		searchResultsList.append('<div class="clearfix search_footer"><a href="<?php bloginfo('url'); ?>/?s=' + resultsSearchTerm + '">View more results</a></div>');
+                                searchResultsList.append(renderedResult);
+                        }
+                }
 
-		// Show the search results
-		LiveSearch.showResults();
+                // "more" link
+                searchResultsList.append('<div class="clearfix search_footer"><a href="<?php bloginfo('url'); ?>/?s=' + resultsSearchTerm + '">View more results</a></div>');
 
-	}
-	
-	if(LiveSearch.activeRequests.length == 0) {
-		LiveSearch.removeIndicator();
-	}
+                // Show the search results
+                LiveSearch.showResults();
+
+        }
+
+        if(LiveSearch.activeRequests.length == 0) {
+                LiveSearch.removeIndicator();
+        }
+    }
 };
 
 /**
@@ -232,8 +233,13 @@ LiveSearch.runQuery = function(terms) {
 		// do AJAX query
 		//var currentSearch = jQuery("input[name='s']").val();
 		var currentSearch = terms;
-		
-		var req = jQuery.getJSON( "<?php print $pluginPath; ?>daves-wordpress-live-search-ajax.php", {s: currentSearch}, LiveSearch.handleAJAXResults);
+		var parameters = {s: currentSearch};
+                var searchSource = jQuery("input[name='search_source']").val();
+                if(searchSource != undefined) {
+                    parameters.search_source = searchSource;
+                }
+
+		var req = jQuery.getJSON( "<?php print $pluginPath; ?>daves-wordpress-live-search-ajax.php", parameters, LiveSearch.handleAJAXResults);
 		
 		// Add this request to the queue
 		LiveSearch.activeRequests.push(req);
