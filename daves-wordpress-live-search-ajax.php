@@ -79,8 +79,8 @@ include "daves-wordpress-live-search-bootstrap.php";
 class DavesWordPressLiveSearchResults {
 
         // Search sources
-        const SEARCH_CONTENT = 1;
-        const SEARCH_WPCOMMERCE = 2;
+        const SEARCH_CONTENT = 0;
+        const SEARCH_WPCOMMERCE = 1;
         
 	public $searchTerms;
 	public $results;
@@ -93,11 +93,12 @@ class DavesWordPressLiveSearchResults {
 	 */
 	function DavesWordPressLiveSearchResults($source, $searchTerms, $displayPostMeta = true) {
 		$this->results = array();
+
                 switch($source) {
-                    case SEARCH_CONTENT:
+                    case self::SEARCH_CONTENT:
                         $this->populate($searchTerms, $displayPostMeta);
                         break;
-                    case SEARCH_COMMERCE:
+                    case self::SEARCH_WPCOMMERCE:
                         $this->populateFromWPCommerce($searchTerms, $displayPostMeta);
                         break;
                     default:
@@ -156,7 +157,7 @@ class DavesWordPressLiveSearchResults {
 
         private function populateFromWPCommerce($wpQueryResults, $displayPostMeta) {
             global $wpdb;
-            
+
             $this->searchTerms = $_GET['s'];
 
             $sql="
@@ -289,7 +290,14 @@ $wp->init();  // Sets up current user.
 $wp->parse_request();
 
 $displayPostMeta = (bool)get_option('daves-wordpress-live-search_display_post_meta');
-$results = new DavesWordPressLiveSearchResults(SEARCH_CONTENT, $searchTerms, $displayPostMeta);
+if(array_key_exists('search_source', $_GET)) {
+    $searchSource = $_GET['search_source'];
+}
+else {
+    $searchSource = intval(get_option('daves-wordpress-live-search_source'));
+}
+
+$results = new DavesWordPressLiveSearchResults($searchSource, $searchTerms, $displayPostMeta);
 
 $json = json_encode($results);
 
