@@ -77,17 +77,32 @@ include "daves-wordpress-live-search-bootstrap.php";
  * Value object class
  */
 class DavesWordPressLiveSearchResults {
+
+        // Search sources
+        const SEARCH_CONTENT = 1;
+        const SEARCH_WPCOMMERCE = 2;
+        
 	public $searchTerms;
 	public $results;
 	public $displayPostMeta;
 	
 	/**
-	 * @param WP_Query $wpQueryResults
+         * @param int $source search source constant
+	 * @param string $searchTerms
 	 * @param boolean $displayPostMeta Show author & date for each post. Defaults to TRUE to keep original bahavior from before I added this flag
 	 */
-	function DavesWordPressLiveSearchResults(WP_Query $wpQueryResults, $displayPostMeta = true) {
+	function DavesWordPressLiveSearchResults($source, $searchTerms, $displayPostMeta = true) {
 		$this->results = array();
-		$this->populate($wpQueryResults, $displayPostMeta);
+                switch($source) {
+                    case SEARCH_CONTENT:
+                        $this->populate($searchTerms, $displayPostMeta);
+                        break;
+                    case SEARCH_COMMERCE:
+                        $this->populateFromWPCommerce($searchTerms, $displayPostMeta);
+                        break;
+                    default:
+                        // Unrecognized
+                }
 		$this->displayPostMeta = $displayPostMeta;
 	}
 	
@@ -95,7 +110,15 @@ class DavesWordPressLiveSearchResults {
 		
 		global $wp_locale;
 		$dateFormat = get_option('date_format');
-		
+
+                // This used to be one line, with the search parameters passed to the
+                // WP_Query constructor. But, the Search Everything plugin reliest on having
+                // $wp_query available in the global scope when WP_Query calls it. So, I had
+                // to split this line up and call WP_Query::query manually in order to be
+                // compatible with plugins that hook into the search engine.
+                $wpQueryResults = new WP_Query();
+                $wpQueryResults->query(array('s' => $_GET['s'], 'showposts' => $maxResults));
+
 		$this->searchTerms = $wpQueryResults->query_vars['s'];
 		
 		foreach($wpQueryResults->posts as $result)
@@ -130,7 +153,44 @@ class DavesWordPressLiveSearchResults {
 			$this->results[] = $result;	
 		}
 	}
-	
+
+        private function populateFromWPCommerce($wpQueryResults, $displayPostMeta) {
+            global $wpdb;
+            
+            $this->searchTerms = $_GET['s'];
+
+            $sql="
+             SELECT list.id,list.name,list.price,image.image,list.special,list.special_price,list.description
+             FROM ".$wpdb->prefix."wpsc_product_list AS list
+             LEFT JOIN ".$wpdb->prefix."wpsc_product_images AS image
+             ON list.image=image.id
+             WHERE (list.name LIKE '%".$s."%' OR list.description LIKE '%".$s."%')
+             AND list.publish=1 AND list.active=1
+            ";
+
+            $stmt = $wpdb->prepare($sql, $this->searchTerms, $this->searchTerms);
+            $results = $wpdb->get_results($stmt, OBJECT);
+
+            foreach($results as $result) {
+                $resultObj = new stdClass();
+                $resultObj->permalink = wpsc_product_url($result->id);
+                $resultObj->post_title = $result->name;
+                $resultObj->post_excerpt = $result->description;
+                $resultObj->post_excerpt = $this->excerpt($resultObj);
+
+                if(!empty($result->image)) {
+                    $resultObj->attachment_thumbnail = WPSC_THUMBNAIL_URL.$result->image;
+                }
+
+                // Fields that don't really apply here
+                //$resultObj->post_date =
+                //$resultObj->post_author_nicename =
+                
+                $this->results[] = $resultObj;
+            }
+
+        }
+
 	private function excerpt($result) {
 		if (empty($result->post_excerpt)) {
 			 $content = apply_filters("localization", $result->post_content);
@@ -228,16 +288,8 @@ $wp =& new WP();
 $wp->init();  // Sets up current user.
 $wp->parse_request();
 
-// This used to be one line, with the search parameters passed to the
-// WP_Query constructor. But, the Search Everything plugin reliest on having
-// $wp_query available in the global scope when WP_Query calls it. So, I had
-// to split this line up and call WP_Query::query manually in order to be
-// compatible with plugins that hook into the search engine.
-$wp_query = new WP_Query();
-$wp_query->query(array('s' => $_GET['s'], 'showposts' => $maxResults));
-
 $displayPostMeta = (bool)get_option('daves-wordpress-live-search_display_post_meta');
-$results = new DavesWordPressLiveSearchResults($wp_query, $displayPostMeta);
+$results = new DavesWordPressLiveSearchResults(SEARCH_CONTENT, $searchTerms, $displayPostMeta);
 
 $json = json_encode($results);
 
