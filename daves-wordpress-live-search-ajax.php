@@ -165,7 +165,7 @@ class DavesWordPressLiveSearchResults {
              FROM ".$wpdb->prefix."wpsc_product_list AS list
              LEFT JOIN ".$wpdb->prefix."wpsc_product_images AS image
              ON list.image=image.id
-             WHERE (list.name LIKE '%".$s."%' OR list.description LIKE '%".$s."%')
+             WHERE (list.name LIKE '%%%s%%' OR list.description LIKE '%%%s%%')
              AND list.publish=1 AND list.active=1
             ";
 
