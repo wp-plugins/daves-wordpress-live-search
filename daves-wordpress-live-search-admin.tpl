@@ -88,6 +88,27 @@ if ( function_exists('wp_nonce_field') )
 <textarea name="daves-wordpress-live-search_exceptions" id="daves-wordpress-live-search_exceptions" rows="5" cols="60"><?php echo $exceptions; ?></textarea></td> 
 </tr>
 
+<!-- WP E-Commerce -->
+<?php if(defined('WPSC_VERSION')) : ?>
+<tr valign="top">
+<td colspan="2"><h3>WP E-Commerce</h3></td>
+</tr>
+
+<tr valign="top">
+<th scope="row"> </th>
+<td>
+    <div><span class="setting-description">When used with the <a href="http://getshopped.org/">WP E-Commerce</a> plugin, Dave's WordPress Live Search can search your product catalog instead of posts & pages.</span></div>
+    <table>
+        <tr><td><input type="radio" id="daves-wordpress-live-search_source_1" name="daves-wordpress-live-search_source" value="0" <?php if(0 == $searchSource) : ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_source_1">Search posts &amp; pages</label></td></tr>
+        <tr><td><input type="radio" id="daves-wordpress-live-search_source_2" name="daves-wordpress-live-search_source" value="1" <?php if(1 == $searchSource) : ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_source_2">Search products</label></td></tr>
+    </table>
+
+</td>
+</tr>
+<?php else : ?>
+<input type="hidden" name="daves-wordpress-live-search_source" value="1" />
+<?php endif; ?>
+
 <!-- Submit buttons -->
 <tr valign="top">
 <td colspan="2"><div style="border-top: 1px solid #333;margin-top: 15px;padding: 5px;"><input type="submit" name="daves-wordpress-live-search_submit" id="daves-wordpress-live-search_submit" value="Save Changes" /></div></td>

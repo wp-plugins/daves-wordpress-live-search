@@ -112,6 +112,7 @@ class DavesWordPressLiveSearch
 	        $showExcerpt = $_POST['daves-wordpress-live-search_excerpt'];
 	        $exceptions = $_POST['daves-wordpress-live-search_exceptions'];
 	        $minCharsToSearch = intval($_POST['daves-wordpress-live-search_minchars']);
+                $searchSource = intval($_POST['daves-wordpress-live-search_source']);
 
 	        // Save the posted value in the database
 	        update_option('daves-wordpress-live-search_max_results', $maxResults );	
@@ -122,6 +123,7 @@ class DavesWordPressLiveSearch
 	        update_option('daves-wordpress-live-search_excerpt', $showExcerpt);
 	        update_option('daves-wordpress-live-search_exceptions', $exceptions);
 	        update_option('daves-wordpress-live-search_minchars', $minCharsToSearch);
+                update_option('daves-wordpress-live-search_source', $searchSource);
 	        
 	        // Translate the "Options saved" message...just in case.
 	        // You know...the code I was copying for this does it, thought it might be a good idea to leave it
@@ -139,6 +141,7 @@ class DavesWordPressLiveSearch
 			$showExcerpt = (bool) get_option('daves-wordpress-live-search_excerpt');
 			$exceptions = get_option('daves-wordpress-live-search_exceptions');
 			$minCharsToSearch = intval(get_option('daves-wordpress-live-search_minchars'));
+                        $searchSource = intval(get_option('daves-wordpress-live-search_source'));
 		}
 	        
 	    if(!in_array($resultsDirection, array('up', 'down')))
