@@ -175,7 +175,8 @@ class DavesWordPressLiveSearchResults {
             foreach($results as $result) {
                 $resultObj = new stdClass();
                 $resultObj->permalink = wpsc_product_url($result->id);
-                $resultObj->post_title = $result->name;
+                $resultObj->post_title = apply_filters("localization", $result->name); 
+                $resultObj->post_content = $result->description;
                 $resultObj->post_excerpt = $result->description;
                 $resultObj->post_excerpt = $this->excerpt($resultObj);
 
