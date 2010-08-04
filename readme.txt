@@ -51,6 +51,13 @@ Features I want to implement in future releases:
 
 == Changelog ==
 
+= 1.15 =
+* 2010-08-?? Dave Ross <dave@csixty4.com>
+* Option to not include any additional CSS file (thanks Andy Hall!)
+* Support for xLanguage plugin
+* Support for searching WP E-Commerce products
+* Replaced clearfix that was somehow lost
+
 = 1.14 =
 * 2010-07-03 Dave Ross <dave@csixty4.com>
 * z-index:9999 for cadbloke to keep search results above all other content (that doesn't already have a z-index of 9999 or higher)
