@@ -76,6 +76,8 @@ if ( function_exists('wp_nonce_field') )
 <input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_default_blue" value="default_blue" <?php if('default_blue' == $css): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_css_default_blue">Default Blue</label><br /><span class="setting-description">Default style in blue</span>
 <br /><br />
 <input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_theme" value="theme" <?php if('theme' == $css): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_css_theme">Theme-specific</label><br /><span class="setting-description"><strong>For advanced users:</strong> Theme must include a CSS file named daves-wordpress-live-search.css. If your theme does not have one, copy daves-wordpress-live-search_default_gray.css from this plugin's directory into your theme's directory and modify as desired.</span>
+<br /><br />
+<input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_existing_theme" value="notheme" <?php if('notheme' == $css): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_css_theme">Theme-specific (theme's own CSS file)</label><br /><span class="setting-description"><strong>For advanced users:</strong> Use the styles contained within your Theme's stylesheet. Don't include a separate stylesheet for Live Search.
 </td> 
 </tr>
 

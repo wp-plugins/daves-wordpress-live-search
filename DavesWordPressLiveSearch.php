@@ -56,21 +56,26 @@ class DavesWordPressLiveSearch
 					break;
 				case 'default_blue':
 					$style = $pluginPath.'daves-wordpress-live-search_default_blue.css';
-					break;				
+					break;
+				case 'notheme':
+				    $style = false;
+					break;					
 				case 'default_gray':
 				default:
 					$style = $pluginPath.'daves-wordpress-live-search_default_gray.css';
 			}
 
-			if(function_exists('wp_register_style') && function_exists('wp_enqueue_style')) {
-				// WordPress >= 2.6
-				wp_register_style('daves-wordpress-live-search', $style);
-				wp_enqueue_style('daves-wordpress-live-search');	
-				wp_print_styles();
-			}
-			else {
-				// WordPress < 2.6
-				echo('<link rel="stylesheet" href="'.$style.'" type="text/css" media="screen" />');
+			if($style) {
+				if(function_exists('wp_register_style') && function_exists('wp_enqueue_style')) {
+					// WordPress >= 2.6
+					wp_register_style('daves-wordpress-live-search', $style);
+					wp_enqueue_style('daves-wordpress-live-search');	
+					wp_print_styles();
+				}
+				else {
+					// WordPress < 2.6
+					echo('<link rel="stylesheet" href="'.$style.'" type="text/css" media="screen" />');
+				}
 			}
 		}
 	}
@@ -158,6 +163,9 @@ class DavesWordPressLiveSearch
 	    	case 'default_blue':
 	    		$css = 'default_blue';
 	    		break;
+	    	case 'notheme':
+    			$css = 'notheme';
+				break;
 	    	case 'default_gray':
 	    	default:
 	    		$css = 'default_gray';
