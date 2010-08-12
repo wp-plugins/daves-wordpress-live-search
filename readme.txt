@@ -52,7 +52,7 @@ Features I want to implement in future releases:
 == Changelog ==
 
 = 1.15 =
-* 2010-08-?? Dave Ross <dave@csixty4.com>
+* 2010-08-12 Dave Ross <dave@csixty4.com>
 * Option to not include any additional CSS file (thanks Andy Hall!)
 * Support for xLanguage plugin
 * Support for searching WP E-Commerce products
