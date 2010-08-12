@@ -151,6 +151,8 @@ class DavesWordPressLiveSearchResults {
 			// xLocalization
 			$result->post_title = apply_filters("localization", $result->post_title); 
 			
+            $result->show_more = true;
+			
 			$this->results[] = $result;	
 		}
 	}
@@ -179,6 +181,9 @@ class DavesWordPressLiveSearchResults {
                 $resultObj->post_content = $result->description;
                 $resultObj->post_excerpt = $result->description;
                 $resultObj->post_excerpt = $this->excerpt($resultObj);
+                
+                $resultObj->post_price = $result->price;
+                $resultObj->show_more = false;
 
                 if(!empty($result->image)) {
                     $resultObj->attachment_thumbnail = WPSC_THUMBNAIL_URL.$result->image;

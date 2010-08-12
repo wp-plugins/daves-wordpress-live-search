@@ -172,6 +172,8 @@ LiveSearch.handleAJAXResults = function(e) {
 
                                 renderedResult += '<a href="' + searchResult.permalink + '">' + searchResult.post_title + '</a>';
 
+                                if(searchResult.post_price != undefined) { renderedResult += '<p class="price">' + searchResult.post_price + '</p>'; }
+                                
                                 if(showExcerpt && searchResult.post_excerpt) {
                                         renderedResult += '<p class="excerpt clearfix">' + searchResult.post_excerpt + '</p>';
                                 }
@@ -184,8 +186,10 @@ LiveSearch.handleAJAXResults = function(e) {
                         }
                 }
 
-                // "more" link
-                searchResultsList.append('<div class="clearfix search_footer"><a href="<?php bloginfo('url'); ?>/?s=' + resultsSearchTerm + '">View more results</a></div>');
+				if(searchResult.show_more != undefined && searchResult.show_more) {
+	                // "more" link
+	                searchResultsList.append('<div class="clearfix search_footer"><a href="<?php bloginfo('url'); ?>/?s=' + resultsSearchTerm + '">View more results</a></div>');
+				}
 
                 // Show the search results
                 LiveSearch.showResults();
