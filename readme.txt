@@ -3,8 +3,8 @@ Contributors: csixty4
 Donate link: http://catguardians.org
 Tags: search, AJAX, live search
 Requires at least: 2.6
-Tested up to: 2.9.2
-Stable tag: 1.15
+Tested up to: 3.1.
+Stable tag: 1.15.1
  
 Adds "live search" functionality to your WordPress site. Uses the built-in search and jQuery.
 
@@ -50,6 +50,10 @@ Features I want to implement in future releases:
 1. Better organized admin screen (collapsible panels?)
 
 == Changelog ==
+
+= 1.15.1 =
+* 2010-08-17 Dave Ross <dave@csixty4.com>
+* Default hidden source option to 0 (search WP, not WP E-Commerce)
 
 = 1.15 =
 * 2010-08-12 Dave Ross <dave@csixty4.com>
