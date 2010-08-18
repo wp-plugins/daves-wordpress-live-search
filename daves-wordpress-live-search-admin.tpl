@@ -108,7 +108,7 @@ if ( function_exists('wp_nonce_field') )
 </td>
 </tr>
 <?php else : ?>
-<input type="hidden" name="daves-wordpress-live-search_source" value="1" />
+<input type="hidden" name="daves-wordpress-live-search_source" value="0" />
 <?php endif; ?>
 
 <!-- Submit buttons -->
