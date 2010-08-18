@@ -91,15 +91,16 @@ class DavesWordPressLiveSearchResults {
 	 * @param string $searchTerms
 	 * @param boolean $displayPostMeta Show author & date for each post. Defaults to TRUE to keep original bahavior from before I added this flag
 	 */
-	function DavesWordPressLiveSearchResults($source, $searchTerms, $displayPostMeta = true) {
+	function DavesWordPressLiveSearchResults($source, $searchTerms, $displayPostMeta = true, $maxResults = -1) {
+		
 		$this->results = array();
 
                 switch($source) {
                     case self::SEARCH_CONTENT:
-                        $this->populate($searchTerms, $displayPostMeta);
+                        $this->populate($searchTerms, $displayPostMeta, $maxResults);
                         break;
                     case self::SEARCH_WPCOMMERCE:
-                        $this->populateFromWPCommerce($searchTerms, $displayPostMeta);
+                        $this->populateFromWPCommerce($searchTerms, $displayPostMeta, $maxResults);
                         break;
                     default:
                         // Unrecognized
@@ -107,7 +108,7 @@ class DavesWordPressLiveSearchResults {
 		$this->displayPostMeta = $displayPostMeta;
 	}
 	
-	private function populate($wpQueryResults, $displayPostMeta) {
+	private function populate($wpQueryResults, $displayPostMeta, $maxResults) {
 		
 		global $wp_locale;
 		$dateFormat = get_option('date_format');
@@ -157,7 +158,7 @@ class DavesWordPressLiveSearchResults {
 		}
 	}
 
-        private function populateFromWPCommerce($wpQueryResults, $displayPostMeta) {
+        private function populateFromWPCommerce($wpQueryResults, $displayPostMeta, $maxResults) {
             global $wpdb;
 
             $this->searchTerms = $_GET['s'];
@@ -171,6 +172,10 @@ class DavesWordPressLiveSearchResults {
              AND list.publish=1 AND list.active=1
             ";
 
+			if($maxResults > 0) {
+				$sql .= " LIMIT ".intval($maxResults)." ";	
+			}
+			
             $stmt = $wpdb->prepare($sql, $this->searchTerms, $this->searchTerms);
             $results = $wpdb->get_results($stmt, OBJECT);
 
@@ -303,7 +308,7 @@ else {
     $searchSource = intval(get_option('daves-wordpress-live-search_source'));
 }
 
-$results = new DavesWordPressLiveSearchResults($searchSource, $searchTerms, $displayPostMeta);
+$results = new DavesWordPressLiveSearchResults($searchSource, $searchTerms, $displayPostMeta, $maxResults);
 
 $json = json_encode($results);
 
