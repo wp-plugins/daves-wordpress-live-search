@@ -296,7 +296,7 @@ LiveSearch.displayIndicator = function() {
 		
 		jQuery("#search_results_activity_indicator").css('top', indicatorY);
 
-		var indicatorX = (searchBoxPosition.left + LiveSearch.searchBoxes.outerWidth() - <?php $dimensions = getimagesize("$pluginPath/indicator.gif"); print $dimensions[0]; ?> - 2) + 'px';
+		var indicatorX = (searchBoxPosition.left + LiveSearch.searchBoxes.outerWidth() - <?php $dimensions = getimagesize(dirname(__FILE__)."/indicator.gif"); print $dimensions[0]; ?> - 2) + 'px';
 						
 		jQuery("#search_results_activity_indicator").css('left', indicatorX);
 	}
