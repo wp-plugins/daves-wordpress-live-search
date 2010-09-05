@@ -163,21 +163,73 @@ class DavesWordPressLiveSearchResults {
 
             $this->searchTerms = $_GET['s'];
 
-            $sql="
-             SELECT list.id,list.name,list.price,image.image,list.special,list.special_price,list.description
-             FROM ".$wpdb->prefix."wpsc_product_list AS list
-             LEFT JOIN ".$wpdb->prefix."wpsc_product_images AS image
-             ON list.image=image.id
-             WHERE (list.name LIKE '%%%s%%' OR list.description LIKE '%%%s%%')
-             AND list.publish=1 AND list.active=1
-            ";
+			$tagQuery = "SELECT * FROM `{$wpdb->terms}` WHERE slug LIKE '%{$this->searchTerms}%'";
+			$tagresults = $wpdb->get_results($tagQuery);
 
-			if($maxResults > 0) {
-				$sql .= " LIMIT ".intval($maxResults)." ";	
+			$metaQuery = "SELECT * FROM {$wpdb->prefix}wpsc_productmeta WHERE meta_value LIKE '%".$this->searchTerms."%'";
+			$metaresults = $wpdb->get_results($metaQuery);
+
+			if($tagresults){
+				  $term_id = $tagresults[0]->term_id;
+				  
+				  $tagresults = $wpdb->get_results("SELECT * FROM `{$wpdb->term_taxonomy}` WHERE term_id = '".$term_id."' AND taxonomy='product_tag'");
+				  $taxonomy_id = $tagresults[0]->term_taxonomy_id;	
+				  
+				  $tagresults = $wpdb->get_results("SELECT * FROM `{$wpdb->term_relationships}` WHERE term_taxonomy_id = '".$taxonomy_id."'");
+				  
+				  foreach ($tagresults as $result) {
+					$product_ids[] = $result->object_id; 
+				  }
+				  
+					$product_id = implode(",",$product_ids);
+					$sql = "SELECT list.id,list.name,list.description, list.price,image.image,list.special,list.special_price
+							FROM ".WPSC_TABLE_PRODUCT_LIST." AS list
+							LEFT JOIN ".$wpdb->prefix."wpsc_product_images AS image
+			        		ON list.image=image.id
+							WHERE list.id IN (".$product_id.") 
+							AND list.publish=1
+							AND list.active=1"; 
+							
+				$wp_query = new WP_Query();
+				
+				$wp_query->query(array('tag_slug__and' => $_GET['s'], 'showposts' => $maxResults));
+							
 			}
-			
-            $stmt = $wpdb->prepare($sql, $this->searchTerms, $this->searchTerms);
-            $results = $wpdb->get_results($stmt, OBJECT);
+			elseif($metaresults){
+				  foreach($metaresults as $result){
+						   $mprod_id = $result->product_id;
+					  }
+					  
+					 $sql = "SELECT list.id,list.name,list.description,list.price,image.image,list.special,list.special_price
+							FROM ".WPSC_TABLE_PRODUCT_LIST." AS list
+							LEFT JOIN ".$wpdb->prefix."wpsc_product_images AS image
+			        		ON list.image=image.id
+							WHERE list.id IN (".$mprod_id.") OR (list.name LIKE '%".$this->searchTerms."%' OR list.description LIKE '%".$this->searchTerms."%')
+							AND list.publish=1
+							AND list.active=1";  
+					
+				$wp_query = new WP_Query();
+				
+				$wp_query->query(array('s' => $_GET['s'], 'showposts' => $maxResults));
+							
+			}
+			else {
+				  $sql="SELECT list.id,list.name,list.description,list.price,image.image,list.special,list.special_price
+			        FROM ".$wpdb->prefix."wpsc_product_list AS list
+			        LEFT JOIN ".$wpdb->prefix."wpsc_product_images AS image
+			        ON list.image=image.id
+			        WHERE (list.name LIKE '%".$this->searchTerms."%' OR list.description LIKE '%".$this->searchTerms."%')
+			        AND list.publish=1
+			        AND list.active=1
+			       ";
+				   
+				$wp_query = new WP_Query();
+				
+				$wp_query->query(array('s' => $_GET['s'], 'showposts' => $maxResults));
+				    
+			}
+				  
+			$results = $wpdb->get_results($sql, OBJECT);
 
             foreach($results as $result) {
                 $resultObj = new stdClass();
