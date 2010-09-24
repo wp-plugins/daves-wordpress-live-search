@@ -166,7 +166,7 @@ class DavesWordPressLiveSearchResults {
 			$tagQuery = "SELECT * FROM `{$wpdb->terms}` WHERE slug LIKE '%{$this->searchTerms}%'";
 			$tagresults = $wpdb->get_results($tagQuery);
 
-			$metaQuery = "SELECT * FROM {$wpdb->prefix}wpsc_productmeta WHERE meta_value LIKE '%".$this->searchTerms."%'";
+			$metaQuery = "SELECT * FROM ".WPSC_TABLE_PRODUCTMETA." WHERE meta_value LIKE '%".$this->searchTerms."%'";
 			$metaresults = $wpdb->get_results($metaQuery);
 
 			if($tagresults){
@@ -184,7 +184,7 @@ class DavesWordPressLiveSearchResults {
 					$product_id = implode(",",$product_ids);
 					$sql = "SELECT list.id,list.name,list.description, list.price,image.image,list.special,list.special_price
 							FROM ".WPSC_TABLE_PRODUCT_LIST." AS list
-							LEFT JOIN ".$wpdb->prefix."wpsc_product_images AS image
+							LEFT JOIN ".WPSC_TABLE_PRODUCT_IMAGES." AS image
 			        		ON list.image=image.id
 							WHERE list.id IN (".$product_id.") 
 							AND list.publish=1
@@ -202,7 +202,7 @@ class DavesWordPressLiveSearchResults {
 					  
 					 $sql = "SELECT list.id,list.name,list.description,list.price,image.image,list.special,list.special_price
 							FROM ".WPSC_TABLE_PRODUCT_LIST." AS list
-							LEFT JOIN ".$wpdb->prefix."wpsc_product_images AS image
+							LEFT JOIN ".WPSC_TABLE_PRODUCT_IMAGES." AS image
 			        		ON list.image=image.id
 							WHERE list.id IN (".$mprod_id.") OR (list.name LIKE '%".$this->searchTerms."%' OR list.description LIKE '%".$this->searchTerms."%')
 							AND list.publish=1
@@ -215,8 +215,8 @@ class DavesWordPressLiveSearchResults {
 			}
 			else {
 				  $sql="SELECT list.id,list.name,list.description,list.price,image.image,list.special,list.special_price
-			        FROM ".$wpdb->prefix."wpsc_product_list AS list
-			        LEFT JOIN ".$wpdb->prefix."wpsc_product_images AS image
+			        FROM ".WPSC_TABLE_PRODUCT_LIST." AS list
+			        LEFT JOIN ".WPSC_TABLE_PRODUCT_IMAGES." AS image
 			        ON list.image=image.id
 			        WHERE (list.name LIKE '%".$this->searchTerms."%' OR list.description LIKE '%".$this->searchTerms."%')
 			        AND list.publish=1
