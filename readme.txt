@@ -3,8 +3,8 @@ Contributors: csixty4
 Donate link: http://catguardians.org
 Tags: search, AJAX, live search
 Requires at least: 2.6
-Tested up to: 3.1.
-Stable tag: 1.15.1
+Tested up to: 3.0.1
+Stable tag: 1.16
  
 Adds "live search" functionality to your WordPress site. Uses the built-in search and jQuery.
 
@@ -50,6 +50,14 @@ Features I want to implement in future releases:
 1. Better organized admin screen (collapsible panels?)
 
 == Changelog ==
+
+= 1.16 =
+* 2010-10-07 Dave Ross <dave@csixty4.com>
+* Fixed "max results" functionality lost when implementing WP E-Commerce compatibility
+* Compatibility w/servers that don't allow getimagesize() to use URLs
+* Merged in Ron Schirmacher's code for WP E-Commerce tag & meta search
+* Compatibility with WP E-Commerce when table names are used
+* Fix for autocomplete suppression
 
 = 1.15.1 =
 * 2010-08-17 Dave Ross <dave@csixty4.com>
