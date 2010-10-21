@@ -119,7 +119,11 @@ class DavesWordPressLiveSearchResults {
                 // to split this line up and call WP_Query::query manually in order to be
                 // compatible with plugins that hook into the search engine.
                 $wpQueryResults = new WP_Query();
-                $wpQueryResults->query(array('s' => $_GET['s'], 'showposts' => $maxResults));
+                $wpQueryResults->query(array(
+                    's' => $_GET['s'],
+                    'showposts' => $maxResults,
+                    'post_type' => array('post', 'page'),
+                ));
 
 		$this->searchTerms = $wpQueryResults->query_vars['s'];
 		
