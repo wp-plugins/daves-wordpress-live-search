@@ -111,6 +111,13 @@ if ( function_exists('wp_nonce_field') )
 <input type="hidden" name="daves-wordpress-live-search_source" value="0" />
 <?php endif; ?>
 
+<!-- X Offset -->
+<tr valign="top">
+<th scope="row">X Offset</th>
+
+<td><input type="text" name="daves-wordpress-live-search_xoffset" id="daves-wordpress-live-search_xoffset" value="<?php echo $xOffset; ?>"</td> 
+</tr>
+
 <!-- Submit buttons -->
 <tr valign="top">
 <td colspan="2"><div style="border-top: 1px solid #333;margin-top: 15px;padding: 5px;"><input type="submit" name="daves-wordpress-live-search_submit" id="daves-wordpress-live-search_submit" value="Save Changes" /></div></td>

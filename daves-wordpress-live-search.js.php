@@ -18,6 +18,7 @@ $resultsDirection = stripslashes(get_option('daves-wordpress-live-search_results
 $showThumbs = ("true" == get_option('daves-wordpress-live-search_thumbs'));
 $showExcerpt = ("true" == get_option('daves-wordpress-live-search_excerpt'));
 $minCharsToSearch = intval(get_option('daves-wordpress-live-search_minchars'));
+$xOffset = intval(get_option('daves-wordpress-live-search_xoffset'));
 ?>
 
 /**
@@ -90,6 +91,7 @@ LiveSearch.positionResults = function() {
 		
 	// Position the ul right under the search box	
 	var searchBoxPosition = LiveSearch.searchBoxes.offset();
+	searchBoxPosition.left += + <?php echo $xOffset; ?>;
 	this.resultsElement.css('left', searchBoxPosition.left);
 
 	this.resultsElement.css('display', 'block');
