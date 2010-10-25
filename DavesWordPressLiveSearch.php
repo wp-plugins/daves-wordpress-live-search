@@ -206,7 +206,12 @@ class DavesWordPressLiveSearch
 
 	        update_option('daves-wordpress-live-search_exceptions', $exceptions);
             update_option('daves-wordpress-live-search_xoffset', intval($xOffset));            
+
+	        // Translate the "Options saved" message...just in case.
+	        // You know...the code I was copying for this does it, thought it might be a good idea to leave it
+	        $updateMessage = __('Options saved.', 'mt_trans_domain' );
 	        
+	        echo "<div class=\"updated fade\"><p><strong>$updateMessage</strong></p></div>";	        
 		}
 		else
 		{
