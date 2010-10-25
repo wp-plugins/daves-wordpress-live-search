@@ -113,9 +113,19 @@ class DavesWordPressLiveSearch
 	 * @return void
 	 */
 	public function plugin_options()
-	{
+	{	
+		$tab = $_REQUEST['tab'];
+		switch($tab) {
+			case 'advanced':
+			  return self::plugin_options_advanced();
+			case 'settings':
+			default:
+			  return self::plugin_options_settings();
+		}
+	}
+	
+	private function plugin_options_settings() {
 		$thisPluginsDirectory = dirname(__FILE__);
-		
 		if("Save Changes" == $_POST['daves-wordpress-live-search_submit'] && current_user_can('manage_options'))
 		{
 			check_admin_referer('daves-wordpress-live-search-config');
@@ -130,8 +140,7 @@ class DavesWordPressLiveSearch
 	        $exceptions = $_POST['daves-wordpress-live-search_exceptions'];
 	        $minCharsToSearch = intval($_POST['daves-wordpress-live-search_minchars']);
             $searchSource = intval($_POST['daves-wordpress-live-search_source']);
-            $xOffset = intval($_POST['daves-wordpress-live-search_xoffset']);                
-
+ 
 	        // Save the posted value in the database
 	        update_option('daves-wordpress-live-search_max_results', $maxResults );	
 	        update_option('daves-wordpress-live-search_results_direction', $resultsDirection);
@@ -139,10 +148,8 @@ class DavesWordPressLiveSearch
 	        update_option('daves-wordpress-live-search_css_option', $cssOption );
 	        update_option('daves-wordpress-live-search_thumbs', $showThumbs);	
 	        update_option('daves-wordpress-live-search_excerpt', $showExcerpt);
-	        update_option('daves-wordpress-live-search_exceptions', $exceptions);
 	        update_option('daves-wordpress-live-search_minchars', $minCharsToSearch);
             update_option('daves-wordpress-live-search_source', $searchSource);
-            update_option('daves-wordpress-live-search_xoffset', intval($xOffset));            
 	        
 	        // Translate the "Options saved" message...just in case.
 	        // You know...the code I was copying for this does it, thought it might be a good idea to leave it
@@ -157,11 +164,9 @@ class DavesWordPressLiveSearch
 			$displayPostMeta = (bool)get_option('daves-wordpress-live-search_display_post_meta');
 			$cssOption = get_option('daves-wordpress-live-search_css_option');
 			$showThumbs = (bool) get_option('daves-wordpress-live-search_thumbs');
-			$showExcerpt = (bool) get_option('daves-wordpress-live-search_excerpt');
-			$exceptions = get_option('daves-wordpress-live-search_exceptions');
+			$showExcerpt = (bool) get_option('daves-wordpress-live-search_excerpt');		
 			$minCharsToSearch = intval(get_option('daves-wordpress-live-search_minchars'));
             $searchSource = intval(get_option('daves-wordpress-live-search_source'));
-            $xOffset = intval(get_option('daves-wordpress-live-search_xoffset'));
 		}
 	        
 	    if(!in_array($resultsDirection, array('up', 'down')))
@@ -188,6 +193,29 @@ class DavesWordPressLiveSearch
 
 		include("$thisPluginsDirectory/daves-wordpress-live-search-admin.tpl");
 	}
+	
+	private function plugin_options_advanced() {
+		$thisPluginsDirectory = dirname(__FILE__);
+		if("Save Changes" == $_POST['daves-wordpress-live-search_submit'] && current_user_can('manage_options'))
+		{
+			check_admin_referer('daves-wordpress-live-search-config');
+			
+			// Read their posted value
+            $xOffset = intval($_POST['daves-wordpress-live-search_xoffset']);                
+	        $exceptions = $_POST['daves-wordpress-live-search_exceptions'];
+
+	        update_option('daves-wordpress-live-search_exceptions', $exceptions);
+            update_option('daves-wordpress-live-search_xoffset', intval($xOffset));            
+	        
+		}
+		else
+		{
+			$exceptions = get_option('daves-wordpress-live-search_exceptions');
+            $xOffset = intval(get_option('daves-wordpress-live-search_xoffset'));
+		}
+		
+		include("$thisPluginsDirectory/daves-wordpress-live-search-admin-advanced.tpl");
+	}	
 	
 	public function admin_notices()
 	{

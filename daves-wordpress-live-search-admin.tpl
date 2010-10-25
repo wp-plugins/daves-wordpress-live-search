@@ -1,7 +1,19 @@
+<style type="text/css">
+/* Used on the built-in themes page to provide the line under the tabs */
+.settings_page_daves-wordpress-live-search-DavesWordPressLiveSearch .wrap h2 {
+border-bottom: 1px solid #ccc;
+padding-bottom: 0px;
+}
+</style>
+
 <div class="wrap">
 <h2>Dave's WordPress Live Search Options</h2>
-
+<h2>
+<a href="<?php echo $_SERVER['REQUEST_URI']."&tab=settings"; ?>" class="nav-tab nav-tab-active">Settings</a>
+<a href="<?php echo $_SERVER['REQUEST_URI']."&tab=advanced"; ?>" class="nav-tab">Advanced</a>
+</h2>
 <form method="post" action="">
+<input type="hidden" name="tab" value="<?php echo $_REQUEST['tab']; ?>" />
 
 <?php
 if ( function_exists('wp_nonce_field') )
@@ -81,15 +93,6 @@ if ( function_exists('wp_nonce_field') )
 </td> 
 </tr>
 
-<tr valign="top">
-<th scope="row">Exceptions</th>
-
-<td>
-<?php $permalinkFormat = get_option('permalink_structure'); ?>
-<div><span class="setting-description">Enter the <?php echo empty($permalinkFormat) ? 'paths' : 'permalinks'; ?> of pages which should not have live searching, one per line. The * wildcard can be used at the start or end of a line. For example: <ul style="list-style-type:disc;margin-left: 3em;"><?php echo empty($permalinkFormat) ? '<li>?page_id=123</li><li>page_id=1*</li>' : '<li>about</li><li>employee-*</li>';?></ul></span></div>
-<textarea name="daves-wordpress-live-search_exceptions" id="daves-wordpress-live-search_exceptions" rows="5" cols="60"><?php echo $exceptions; ?></textarea></td> 
-</tr>
-
 <!-- WP E-Commerce -->
 <?php if(defined('WPSC_VERSION')) : ?>
 <tr valign="top">
@@ -110,13 +113,6 @@ if ( function_exists('wp_nonce_field') )
 <?php else : ?>
 <input type="hidden" name="daves-wordpress-live-search_source" value="0" />
 <?php endif; ?>
-
-<!-- X Offset -->
-<tr valign="top">
-<th scope="row">X Offset</th>
-
-<td><input type="text" name="daves-wordpress-live-search_xoffset" id="daves-wordpress-live-search_xoffset" value="<?php echo $xOffset; ?>"</td> 
-</tr>
 
 <!-- Submit buttons -->
 <tr valign="top">
