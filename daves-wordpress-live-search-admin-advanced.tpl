@@ -33,9 +33,12 @@ if ( function_exists('wp_nonce_field') )
 
 <!-- X Offset -->
 <tr valign="top">
-<th scope="row">X Offset</th>
+<th scope="row">Search Results box X offset</th>
 
-<td><input type="text" name="daves-wordpress-live-search_xoffset" id="daves-wordpress-live-search_xoffset" value="<?php echo $xOffset; ?>"</td> 
+<td>
+<div><span class="setting-description">Use this setting to move the search results box left or right to align exactly with your theme's search field. Value is in pixels. Negative values move the box to the left, positive values move it to the right.</span></div>
+
+<input type="text" name="daves-wordpress-live-search_xoffset" id="daves-wordpress-live-search_xoffset" value="<?php echo $xOffset; ?>"</td> 
 </tr>
 
 <!-- Submit buttons -->
