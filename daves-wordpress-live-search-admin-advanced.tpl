@@ -52,11 +52,5 @@ if ( function_exists('wp_nonce_field') )
 
 <!-- Note -->
 
-<p>
-Please Note: For faster page loading times, consider installing the <a href="http://wordpress.org/extend/plugins/use-google-libraries">Use Google Libraries</a> plugin.
-</p>
-
-<p>Make another big improvement in your load times with <a href="http://wordpress.org/extend/plugins/wp-minify/">WP-Minify</a>.</p>
-
-<p>Want better search results? Dave recommends installing <a href="http://wordpress.org/extend/plugins/search-unleashed/">Search Unleashed</a> or <a href="http://wordpress.org/extend/plugins/search-everything/">Search Everything</a> to make WordPress search comments and metadata, too!</p>
+<p>Do you find this plugin useful? Consider a donation to <a href="http://catguardians.org">Cat Guardians</a>, a wonderful no-kill shelter where I volunteer.</p>
 </div>
