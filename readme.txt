@@ -2,7 +2,7 @@
 Contributors: csixty4
 Donate link: http://catguardians.org
 Tags: search, AJAX, live search
-Requires at least: 2.6
+Requires at least: 2.9
 Tested up to: 3.0.1
 Stable tag: 1.16
  
@@ -47,9 +47,15 @@ Features I want to implement in future releases:
 1. Modify the CSS directly on the admin screen (so it's not tied to a theme).
 1. "No results found" message (optional)
 1. Internationalization
-1. Better organized admin screen (collapsible panels?)
 
 == Changelog ==
+
+= 1.17 =
+* 2010-10-25 Dave Ross <dave@csixty4.com>
+* Split options into "Settings" and "Advanced" tabs
+* X Offset setting to position the results dropdown
+* Include pages (as well as posts) in search results
+* Raised minimum requirement to WP 2.9 (required for "Include pages" change)
 
 = 1.16 =
 * 2010-10-07 Dave Ross <dave@csixty4.com>
