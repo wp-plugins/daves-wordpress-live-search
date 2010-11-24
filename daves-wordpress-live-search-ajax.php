@@ -122,7 +122,7 @@ class DavesWordPressLiveSearchResults {
                 $wpQueryResults->query(array(
                     's' => $_GET['s'],
                     'showposts' => $maxResults,
-                    'post_type' => array('post', 'page'),
+                    'post_type' => 'any',
                 ));
 
 		$this->searchTerms = $wpQueryResults->query_vars['s'];
