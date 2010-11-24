@@ -111,6 +111,8 @@ class DavesWordPressLiveSearchResults {
 	private function populate($wpQueryResults, $displayPostMeta, $maxResults) {
 		
 		global $wp_locale;
+		global $wp_query;
+		
 		$dateFormat = get_option('date_format');
 
                 // This used to be one line, with the search parameters passed to the
@@ -118,7 +120,7 @@ class DavesWordPressLiveSearchResults {
                 // $wp_query available in the global scope when WP_Query calls it. So, I had
                 // to split this line up and call WP_Query::query manually in order to be
                 // compatible with plugins that hook into the search engine.
-                $wpQueryResults = new WP_Query();
+                $wp_query = $wpQueryResults = new WP_Query();
                 $wpQueryResults->query(array(
                     's' => $_GET['s'],
                     'showposts' => $maxResults,
