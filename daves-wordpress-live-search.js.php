@@ -56,13 +56,13 @@ LiveSearch.activeRequests = new Array();
 LiveSearch.init = function() {
 	
 	jQuery("body").append('<ul class="search_results"></ul>');
-	this.resultsElement = jQuery('ul.search_results');
+	this.resultsElement = jQuery('ul').filter('.search_results');
 	this.resultsElement.hide();
 	
 	// Add the keypress handler
 	// Using keyup because keypress doesn't recognize the backspace key
 	// and that's kind of important.
-	LiveSearch.searchBoxes = jQuery("input[name='s']");
+	LiveSearch.searchBoxes = jQuery("input").filter("[name='s']");
 	LiveSearch.searchBoxes.keyup(LiveSearch.handleKeypress);
 	
 	// Prevent browsers from doing autocomplete on the search field
@@ -130,7 +130,7 @@ LiveSearch.handleAJAXResults = function(e) {
                 return;
         }
 
-        var resultsShownFor = jQuery("ul.search_results").children("input[name=query]").val();
+        var resultsShownFor = jQuery("ul").filter(".search_results").children("input[name=query]").val();
         if(resultsShownFor != "" && resultsSearchTerm == resultsShownFor)
         {
                 if(LiveSearch.activeRequests.length == 0) {
@@ -140,7 +140,7 @@ LiveSearch.handleAJAXResults = function(e) {
                 return;
         }
 
-        var searchResultsList = jQuery("ul.search_results");
+        var searchResultsList = jQuery("ul").filter(".search_results");
         searchResultsList.empty();
         searchResultsList.append('<input type="hidden" name="query" value="' + resultsSearchTerm + '" />');
 
@@ -240,7 +240,7 @@ LiveSearch.runQuery = function(terms) {
 		//var currentSearch = jQuery("input[name='s']").val();
 		var currentSearch = terms;
 		var parameters = {s: currentSearch};
-                var searchSource = jQuery("input[name='search_source']").val();
+                var searchSource = jQuery("input").filter("[name='search_source']").val();
                 if(searchSource != undefined) {
                     parameters.search_source = searchSource;
                 }
@@ -256,11 +256,11 @@ LiveSearch.hideResults = function() {
 	switch('<?php echo $resultsDirection; ?>')
 	{
 		case 'up':
-			jQuery("ul.search_results:visible").fadeOut();
+			jQuery("ul").filter(".search_results:visible").fadeOut();
 			return;
 		case 'down':
 		default:
-			jQuery("ul.search_results:visible").slideUp();
+			jQuery("ul").filter(".search_results:visible").slideUp();
 			return;
 	}
 };
@@ -272,11 +272,11 @@ LiveSearch.showResults = function() {
 	switch('<?php echo $resultsDirection; ?>')
 	{
 		case 'up':
-			jQuery("ul.search_results:hidden").fadeIn();
+			jQuery("ul").filter(".search_results:hidden").fadeIn();
 			return;
 		case 'down':
 		default:
-			jQuery("ul.search_results:hidden").slideDown();	
+			jQuery("ul").filter(".search_results:hidden").slideDown();	
 			return;
 	}
 };
