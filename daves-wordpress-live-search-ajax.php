@@ -114,20 +114,28 @@ class DavesWordPressLiveSearchResults {
 		global $wp_query;
 		
 		$dateFormat = get_option('date_format');
-
-                // This used to be one line, with the search parameters passed to the
-                // WP_Query constructor. But, the Search Everything plugin reliest on having
-                // $wp_query available in the global scope when WP_Query calls it. So, I had
-                // to split this line up and call WP_Query::query manually in order to be
-                // compatible with plugins that hook into the search engine.
-                $wp_query = $wpQueryResults = new WP_Query();
-                $wpQueryResults->query(array(
-                    's' => $_GET['s'],
-                    'showposts' => $maxResults,
-                    'post_type' => 'any',
-                ));
-
-		$this->searchTerms = $wpQueryResults->query_vars['s'];
+		$wp_query = $wpQueryResults = new WP_Query();
+		
+        $wp_query = $wpQueryResults = new WP_Query();
+                      
+        $wpQueryResults->query(array(
+          's' => $_GET['s'],
+          'showposts' => $maxResults,
+          'post_type' => 'any',
+        ));
+        $this->searchTerms = $wpQueryResults->query_vars['s'];
+                  
+		if(function_exists(relevanssi_do_query)) {
+			// WP_Query::query() set everything up
+			// Now have Relevanssi do the query over again
+			// but do it in its own way
+			// Thanks Mikko!
+			relevanssi_do_query($wpQueryResults);  
+			
+			// Mikko says Relevanssi 2.5 doesn't handle limits
+			// when it queries, so I need to handle them on my own.
+			$wpQueryResults->posts = array_slice($wpQueryResults->posts, 0, $maxResults);
+		}
 		
 		foreach($wpQueryResults->posts as $result)
 		{
