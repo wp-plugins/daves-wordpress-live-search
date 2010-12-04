@@ -3,8 +3,8 @@ Contributors: csixty4
 Donate link: http://catguardians.org
 Tags: search, AJAX, live search
 Requires at least: 2.9
-Tested up to: 3.0.1
-Stable tag: 1.17
+Tested up to: 3.0.2
+Stable tag: 1.18
  
 Adds "live search" functionality to your WordPress site. Uses the built-in search and jQuery.
 
@@ -19,6 +19,8 @@ This functionality requires Javascript, but the search box still works normally 
 This plugin is compatible with the [xLanguage](http://wordpress.org/extend/plugins/xlanguage/) plugin for internationalization (i18n) of search results. This plugin uses WordPress's built-in search which searches against all languages, but results are displayed in the current language.
 
 This plugin can recognize when it's being used with [WP e-Commerce](http://getshopped.org/) and offer an option to search store products instead of posts/pages.
+
+It also works with the [Relevanssi](http://wordpress.org/extend/plugins/relevanssi/) plugin which enhances search results.
 
 NOTE: Dave's WordPress Live Search requires PHP 5.0 or higher.
 
@@ -49,6 +51,12 @@ Features I want to implement in future releases:
 1. Internationalization
 
 == Changelog ==
+
+= 1.18 =
+* 2010-12-04 Dave Ross <dave@csixty4.com>
+* Search "any" content (posts, pages, custom post types)
+* Better compatibility with Relevanssi plugin (worked with Mikko from that project)
+* Minor jQuery performance improvements
 
 = 1.17 =
 * 2010-10-25 Dave Ross <dave@csixty4.com>
