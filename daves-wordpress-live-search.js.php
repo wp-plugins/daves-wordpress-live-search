@@ -64,6 +64,10 @@ LiveSearch.init = function() {
 	// and that's kind of important.
 	LiveSearch.searchBoxes = jQuery("input").filter("[name='s']");
 	LiveSearch.searchBoxes.keyup(LiveSearch.handleKeypress);
+
+	if(!LiveSearch.searchBoxes.outerHeight) {
+		alert("Dave's WordPress Live Search requires jQuery 1.2.6 or higher. WordPress ships with current jQuery versions. But if you are seeing this message, it's likely that another plugin is including an earlier version.");
+	}
 	
 	// Prevent browsers from doing autocomplete on the search field
 	LiveSearch.searchBoxes.parents('form').attr('autocomplete', 'off');
@@ -91,7 +95,7 @@ LiveSearch.positionResults = function() {
 		
 	// Position the ul right under the search box	
 	var searchBoxPosition = LiveSearch.searchBoxes.offset();
-	searchBoxPosition.left += + <?php echo $xOffset; ?>;
+	searchBoxPosition.left += <?php echo $xOffset; ?>;
 	this.resultsElement.css('left', searchBoxPosition.left);
 
 	this.resultsElement.css('display', 'block');
