@@ -117,7 +117,17 @@ class DavesWordPressLiveSearchResults {
 		$wp_query = $wpQueryResults = new WP_Query();
 		
         $wp_query = $wpQueryResults = new WP_Query();
-                      
+                     
+		if(function_exists(relevanssi_do_query)) {
+			// Relevanssi isn't treating 0 as "unlimited" results
+			// like WordPress's native search does. So we'll replace
+			// $maxResults with a really big number, the biggest one
+			// PHP knows how to represent, if $maxResults == 0
+			if(0 == $maxResults) {
+				$maxResults = PHP_INT_MAX;
+			}
+		}
+	
         $wpQueryResults->query(array(
           's' => $_GET['s'],
           'showposts' => $maxResults,
