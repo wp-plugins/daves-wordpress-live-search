@@ -122,8 +122,9 @@ class DavesWordPressLiveSearchResults {
 			// Relevanssi isn't treating 0 as "unlimited" results
 			// like WordPress's native search does. So we'll replace
 			// $maxResults with a really big number, the biggest one
-			// PHP knows how to represent, if $maxResults == 0
-			if(0 == $maxResults) {
+			// PHP knows how to represent, if $maxResults == -1
+			// (unlimited)
+			if(-1 == $maxResults) {
 				$maxResults = PHP_INT_MAX;
 			}
 		}
