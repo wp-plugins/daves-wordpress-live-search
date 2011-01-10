@@ -4,7 +4,7 @@ Donate link: http://catguardians.org
 Tags: search, AJAX, live search
 Requires at least: 2.9
 Tested up to: 3.0.2
-Stable tag: 1.18
+Stable tag: 1.19
  
 Adds "live search" functionality to your WordPress site. Uses the built-in search and jQuery.
 
@@ -51,6 +51,11 @@ Features I want to implement in future releases:
 1. Internationalization
 
 == Changelog ==
+
+= 1.19 =
+* 2011-01-09 Dave Ross <dave@csixty4.com>
+* Fixed bug with Relevanssi and setting to display 0 (unlimited) posts
+* Display an alert if another plugin is loading jQuery < 1.2.6
 
 = 1.18 =
 * 2010-12-04 Dave Ross <dave@csixty4.com>
