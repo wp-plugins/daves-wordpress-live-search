@@ -78,16 +78,16 @@ include "daves-wordpress-live-search-bootstrap.php";
  */
 class DavesWordPressLiveSearchResults {
 
-        // Search sources
-        const SEARCH_CONTENT = 0;
-        const SEARCH_WPCOMMERCE = 1;
+	// Search sources
+	const SEARCH_CONTENT = 0;
+	const SEARCH_WPCOMMERCE = 1;
         
 	public $searchTerms;
 	public $results;
 	public $displayPostMeta;
 	
 	/**
-         * @param int $source search source constant
+	 * @param int $source search source constant
 	 * @param string $searchTerms
 	 * @param boolean $displayPostMeta Show author & date for each post. Defaults to TRUE to keep original bahavior from before I added this flag
 	 */
@@ -369,23 +369,47 @@ class DavesWordPressLiveSearchResults {
 $maxResults = intval(get_option('daves-wordpress-live-search_max_results'));
 if($maxResults === 0) $maxResults = -1;
 
-// Initialize the $wp global object
-// See class WP in classes.php
-// The Relevanssi plugin is using this instead of
-// the global $wp_query object
-$wp =& new WP();
-$wp->init();  // Sets up current user.
-$wp->parse_request();
-
-$displayPostMeta = (bool)get_option('daves-wordpress-live-search_display_post_meta');
-if(array_key_exists('search_source', $_GET)) {
-    $searchSource = $_GET['search_source'];
+$cacheLifetime = intval(get_option('daves-wordpress-live-search_cache_lifetime'));
+if(0 < $cacheLifetime) {
+	$doCache = TRUE;
 }
 else {
-    $searchSource = intval(get_option('daves-wordpress-live-search_source'));
+	$doCache = FALSE;
 }
 
-$results = new DavesWordPressLiveSearchResults($searchSource, $searchTerms, $displayPostMeta, $maxResults);
+if($doCache) {
+	$cacheID = "dwls_".md5($_GET['s']);
+	$cachedResults = get_transient($cacheID);
+}
+
+if((!$doCache) || (FALSE === $cachedResults)) {
+
+	// Initialize the $wp global object
+	// See class WP in classes.php
+	// The Relevanssi plugin is using this instead of
+	// the global $wp_query object
+	$wp =& new WP();
+	$wp->init();  // Sets up current user.
+	$wp->parse_request();
+
+	$displayPostMeta = (bool)get_option('daves-wordpress-live-search_display_post_meta');
+	if(array_key_exists('search_source', $_GET)) {
+		$searchSource = $_GET['search_source'];
+	}
+	else {
+    	$searchSource = intval(get_option('daves-wordpress-live-search_source'));
+	}
+
+	$results = new DavesWordPressLiveSearchResults($searchSource, $searchTerms, $displayPostMeta, $maxResults);
+
+	if($doCache) {
+		set_transient($cacheID, $results, $cacheLifetime);
+	}
+}
+else {
+	// Found it in the cache. Return the results.
+	$results = $cachedResults;
+}
 
 $json = json_encode($results);
 

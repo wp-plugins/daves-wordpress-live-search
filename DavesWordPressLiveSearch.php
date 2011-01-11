@@ -214,9 +214,11 @@ class DavesWordPressLiveSearch
 			// Read their posted value
             $xOffset = intval($_POST['daves-wordpress-live-search_xoffset']);                
 	        $exceptions = $_POST['daves-wordpress-live-search_exceptions'];
+	        $cacheLifetime = $_POST['daves-wordpress-live-search_cache_lifetime'];
 
 	        update_option('daves-wordpress-live-search_exceptions', $exceptions);
-            update_option('daves-wordpress-live-search_xoffset', intval($xOffset));            
+            update_option('daves-wordpress-live-search_xoffset', intval($xOffset));
+            update_option('daves-wordpress-live-search_cache_lifetime', intval($cacheLifetime));
 
 	        // Translate the "Options saved" message...just in case.
 	        // You know...the code I was copying for this does it, thought it might be a good idea to leave it
@@ -228,6 +230,7 @@ class DavesWordPressLiveSearch
 		{
 			$exceptions = get_option('daves-wordpress-live-search_exceptions');
             $xOffset = intval(get_option('daves-wordpress-live-search_xoffset'));
+            $cacheLifetime = intval(get_option('daves-wordpress-live-search_cache_lifetime'));
 		}
 		
 		include("$thisPluginsDirectory/daves-wordpress-live-search-admin-advanced.tpl");
