@@ -52,6 +52,10 @@ Features I want to implement in future releases:
 
 == Changelog ==
 
+= 1.20 =
+* 2011-01-10 Dave Ross <dave@csixty4.com>
+* Generate a static version of the Javascript file
+
 = 1.19 =
 * 2011-01-09 Dave Ross <dave@csixty4.com>
 * Fixed bug with Relevanssi and setting to display 0 (unlimited) posts
