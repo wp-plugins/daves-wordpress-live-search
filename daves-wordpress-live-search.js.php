@@ -1,6 +1,9 @@
 <?php
-ob_start();
-header('Content-type: text/javascript');
+
+if(!defined("DWLS_JS_GEN")) {
+	ob_start();
+	header('Content-type: text/javascript');
+}
 
 // Borrowed from wp-load.php
 // PHP 5.3 with E_STRICT throws a bunch of warnings when we get to
@@ -10,7 +13,9 @@ if ( defined('E_RECOVERABLE_ERROR') )
 else
 	error_reporting(E_ERROR | E_WARNING | E_PARSE | E_USER_ERROR | E_USER_WARNING);
 
-include "daves-wordpress-live-search-bootstrap.php";
+if(!defined("DWLS_JS_GEN")) {
+	include "daves-wordpress-live-search-bootstrap.php";
+}
 
 $pluginPath = DavesWordPressLiveSearch::getPluginPath();
 
@@ -322,3 +327,5 @@ LiveSearch.removeIndicator = function() {
 jQuery(function() {
 	LiveSearch.init();
 });
+
+// Generated <?php echo date("r"); ?>

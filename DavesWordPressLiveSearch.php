@@ -31,10 +31,19 @@ class DavesWordPressLiveSearch
 	{
 		if(self::isSearchablePage()) {
 			$pluginPath = DavesWordPressLiveSearch::getPluginPath();
+			$thisPluginsDirectory = dirname(__FILE__);
 	
 			wp_enqueue_script('jquery');
 			wp_enqueue_script('jquery_dimensions', $pluginPath.'jquery.dimensions.pack.js', 'jquery');
-			wp_enqueue_script('daves-wordpress-live-search', $pluginPath.'daves-wordpress-live-search.js.php', 'jquery_dimensions');
+			
+			// Dynamically include the generated static
+			// Javascript file if present.
+			if(file_exists($thisPluginsDirectory.'/daves-wordpress-live-search.js')) {
+				wp_enqueue_script('daves-wordpress-live-search', $pluginPath.'daves-wordpress-live-search.js', 'jquery_dimensions');
+			}
+			else {
+				wp_enqueue_script('daves-wordpress-live-search', $pluginPath.'daves-wordpress-live-search.js.php', 'jquery_dimensions');
+			}
 		}	
 				
 		// Repair settings in the absence of WP E-Commerce
@@ -150,6 +159,8 @@ class DavesWordPressLiveSearch
 	        update_option('daves-wordpress-live-search_excerpt', $showExcerpt);
 	        update_option('daves-wordpress-live-search_minchars', $minCharsToSearch);
             update_option('daves-wordpress-live-search_source', $searchSource);
+	        
+	        self::rebuildJavascript();
 	        
 	        // Translate the "Options saved" message...just in case.
 	        // You know...the code I was copying for this does it, thought it might be a good idea to leave it
@@ -305,5 +316,33 @@ class DavesWordPressLiveSearch
 		}
 		
 		return $pluginPath;		
-	}	
+	}
+	
+	/**
+	 * Generate a static version of the Javascript file
+	 * with configuration values already plugged in.
+	 */
+	private function rebuildJavascript() {
+		// This constant is used to tell the .js.php
+		// script we're generating the static file
+		// so no HTTP headers are sent or anything.
+		define("DWLS_JS_GEN", TRUE);
+		
+		$thisPluginsDirectory = dirname(__FILE__);
+		
+		// Generate the Javascript
+		ob_start();
+		$jsFile = $thisPluginsDirectory."/daves-wordpress-live-search.js.php";
+		include($thisPluginsDirectory."/daves-wordpress-live-search.js.php");
+		$js = ob_get_contents();
+		ob_end_clean();
+		
+		// Write the static Javascript file
+		$jsFile = $thisPluginsDirectory."/daves-wordpress-live-search.js";
+		if(FALSE === file_put_contents($jsFile, $js)) {
+			$alertMessage = __("<em>Dave's WordPress Live Search</em>  cannot write $jsFile. The plugin will continue to work, but page loads may be slowed.");
+			echo "<div class=\"updated fade\"><p><strong>$alertMessage</strong></p></div>";
+
+		}
+	}
 }
