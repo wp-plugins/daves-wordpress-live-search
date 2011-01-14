@@ -304,21 +304,7 @@ class DavesWordPressLiveSearch
 		
 		$pluginPath = WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__));
 		
-		if(defined('WPS_VERSION')) {
-
-			//--- Create the SubDomains Object
-			$wps_subdomains = new WpsSubDomains( );
-		
-			//--- Grab This Subdomain object (if we're on one)
-			$wps_this_subdomain = $wps_subdomains->getThisSubdomain();
-
-			// WP Subdomains is running
-			if ( $wps_this_subdomain ) {
-				$pluginPath = $wps_this_subdomain->changeGeneralLink( $pluginPath );
-			}
-		}
-		
-		return $pluginPath;		
+		return parse_url($pluginPath, PHP_URL_PATH);
 	}
 	
 	/**
