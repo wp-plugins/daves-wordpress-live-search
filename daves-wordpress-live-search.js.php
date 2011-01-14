@@ -17,8 +17,6 @@ if(!defined("DWLS_JS_GEN")) {
 	include "daves-wordpress-live-search-bootstrap.php";
 }
 
-$pluginPath = DavesWordPressLiveSearch::getPluginPath();
-
 $resultsDirection = stripslashes(get_option('daves-wordpress-live-search_results_direction'));
 $showThumbs = ("true" == get_option('daves-wordpress-live-search_thumbs'));
 $showExcerpt = ("true" == get_option('daves-wordpress-live-search_excerpt'));
@@ -254,7 +252,8 @@ LiveSearch.runQuery = function(terms) {
                     parameters.search_source = searchSource;
                 }
 
-		var req = jQuery.getJSON( "<?php print $pluginPath; ?>daves-wordpress-live-search-ajax.php", parameters, LiveSearch.handleAJAXResults);
+		var ajaxURL = LiveSearch.util.getthisscriptpath() + "/daves-wordpress-live-search-ajax.php";
+		var req = jQuery.getJSON( ajaxURL, parameters, LiveSearch.handleAJAXResults);
 		
 		// Add this request to the queue
 		LiveSearch.activeRequests.push(req);
@@ -297,7 +296,8 @@ LiveSearch.displayIndicator = function() {
 	
 	if(jQuery("#search_results_activity_indicator").size() === 0) {
 
-		jQuery("body").append('<img id="search_results_activity_indicator" src="<?php print $pluginPath; ?>indicator.gif" />');
+		var imgURL = LiveSearch.util.getthisscriptpath() + "/indicator.gif";
+		jQuery("body").append('<img id="search_results_activity_indicator" src="' + imgURL + '" />');
 
 		var searchBoxPosition = LiveSearch.searchBoxes.offset();
 
@@ -319,6 +319,69 @@ LiveSearch.displayIndicator = function() {
 LiveSearch.removeIndicator = function() {
 	jQuery("#search_results_activity_indicator").remove();
 };
+
+/////////////
+// Utilities
+/////////////
+LiveSearch.util = {};
+
+/**
+ * Returns the filename component of the path.
+ * Used here to help find this script's <script> tag
+ * @see http://phpjs.org/functions/basename
+ * @see http://www.experts-exchange.com/Programming/Languages/Scripting/JavaScript/Q_24662495.html
+ * @return string
+ */
+LiveSearch.util.basename = function(path, suffix) {
+    // Returns the filename component of the path  
+    // 
+    // version: 909.322
+    // discuss at: http://phpjs.org/functions/basename
+    // +   original by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+    // +   improved by: Ash Searle (http://hexmen.com/blog/)
+    // +   improved by: Lincoln Ramsay
+    // +   improved by: djmix
+    // *     example 1: basename('/www/site/home.htm', '.htm');
+    // *     returns 1: 'home'
+    var b = path.replace(/^.*[\/\\]/g, '');
+    
+    if (typeof(suffix) == 'string' && b.substr(b.length-suffix.length) == suffix) {
+        b = b.substr(0, b.length-suffix.length);
+    }
+    
+    return b;
+}
+
+/**
+ * Get the path from the src attr on the given script's <script> tag
+ * @see http://www.experts-exchange.com/Programming/Languages/Scripting/JavaScript/Q_24662495.html
+ * @return string
+ */
+LiveSearch.util.getscriptpath = function (scriptname){
+                // Check document for our script
+                scriptobjects = document.getElementsByTagName('script');
+                for (i=0; i<scriptobjects.length; i++) {
+						var script_basename = LiveSearch.util.basename(scriptobjects[i].src).split('?')[0];
+                        if(script_basename==scriptname){
+                                // we found our script.. lets get the path
+                                return scriptobjects[i].src.substring(0, scriptobjects[i].src.lastIndexOf('/'));
+                        };
+                }
+                return "";
+}
+
+/**
+ * Get the path to this script
+ * @retur string
+ */
+LiveSearch.util.getthisscriptpath = function() {
+	var path = LiveSearch.util.getscriptpath('daves-wordpress-live-search.js');
+	if("" == path) {
+		path = LiveSearch.util.getscriptpath('daves-wordpress-live-search.js.php');
+	}
+	
+	return path;
+}
 
 ///////////////////
 // Initialization

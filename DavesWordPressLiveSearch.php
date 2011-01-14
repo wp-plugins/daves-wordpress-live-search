@@ -35,7 +35,7 @@ class DavesWordPressLiveSearch
 	
 			wp_enqueue_script('jquery');
 			wp_enqueue_script('jquery_dimensions', $pluginPath.'jquery.dimensions.pack.js', 'jquery');
-			
+		
 			// Dynamically include the generated static
 			// Javascript file if present.
 			if(file_exists($thisPluginsDirectory.'/daves-wordpress-live-search.js')) {
@@ -303,8 +303,7 @@ class DavesWordPressLiveSearch
 	public static function getPluginPath() {
 		
 		$pluginPath = WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__));
-		
-		return parse_url($pluginPath, PHP_URL_PATH);
+		return $pluginPath;
 	}
 	
 	/**
