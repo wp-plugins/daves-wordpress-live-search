@@ -303,7 +303,7 @@ class DavesWordPressLiveSearch
 	public static function getPluginPath() {
 		
 		$pluginPath = WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__));
-		return $pluginPath;
+		return parse_url($pluginPath, PHP_URL_PATH);
 	}
 	
 	/**
