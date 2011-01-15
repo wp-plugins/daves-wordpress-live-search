@@ -98,7 +98,55 @@ class DavesWordPressLiveSearch
 					echo('<link rel="stylesheet" href="'.$style.'" type="text/css" media="screen" />');
 				}
 			}
+			
+			echo self::inlineSettings();
 		}
+	}
+	
+	function inlineSettings() {
+	    
+	    $resultsDirection = stripslashes(get_option('daves-wordpress-live-search_results_direction'));
+	    $showThumbs = ("true" == get_option('daves-wordpress-live-search_thumbs'));
+	    $showExcerpt = ("true" == get_option('daves-wordpress-live-search_excerpt'));
+	    $minCharsToSearch = intval(get_option('daves-wordpress-live-search_minchars'));
+	    $xOffset = intval(get_option('daves-wordpress-live-search_xoffset'));
+	    $blogURL = get_bloginfo('url');
+	    
+	    $indicatorWidth = getimagesize(dirname(__FILE__)."/indicator.gif");
+        $indicatorWidth = $indicatorWidth[0];
+	    
+	    /**
+	    
+	    <?php
+        switch($resultsDirection)
+        {
+        	case 'up':
+        		echo 'searchBoxPosition.top - this.resultsElement.height();';
+        		break;
+        	case 'down':
+        	default:
+        		echo "searchBoxPosition.top + LiveSearch.searchBoxes.outerHeight();";
+        }
+        ?>
+        
+        **/
+        
+      	$scriptMarkup = <<<SM
+
+	    <script type="text/javascript">
+	    DavesWordPressLiveSearchConfig = {
+            resultsDirection : '{$resultsDirection}',
+            showThumbs : ($showThumbs == 1),
+            showExcerpt : ($showExcerpt == 1),
+            minCharsToSearch : {$minCharsToSearch},        
+            xOffset : {$xOffset},
+        
+            blogURL : '{$blogURL}',
+            indicatorWidth : {$indicatorWidth}
+	    };
+        </script>      	
+SM;
+	    return $scriptMarkup;
 	}
 		
 	///////////////
