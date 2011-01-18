@@ -38,12 +38,7 @@ class DavesWordPressLiveSearch
 
 			// Dynamically include the generated static
 			// Javascript file if present.
-			if(file_exists($thisPluginsDirectory.'/daves-wordpress-live-search.js')) {
-				wp_enqueue_script('daves-wordpress-live-search', $pluginPath.'daves-wordpress-live-search.js', 'jquery_dimensions');
-			}
-			else {
-				wp_enqueue_script('daves-wordpress-live-search', $pluginPath.'daves-wordpress-live-search.js.php', 'jquery_dimensions');
-			}
+			wp_enqueue_script('daves-wordpress-live-search', $pluginPath.'daves-wordpress-live-search.js', 'jquery_dimensions');
 		}	
 				
 		// Repair settings in the absence of WP E-Commerce
@@ -192,8 +187,6 @@ SM;
 	        update_option('daves-wordpress-live-search_minchars', $minCharsToSearch);
             update_option('daves-wordpress-live-search_source', $searchSource);
 	        
-	        self::rebuildJavascript();
-	        
 	        // Translate the "Options saved" message...just in case.
 	        // You know...the code I was copying for this does it, thought it might be a good idea to leave it
 	        $updateMessage = __('Options saved.', 'mt_trans_domain' );
@@ -336,28 +329,5 @@ SM;
 		
 		$pluginPath = WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__));
 		return parse_url($pluginPath, PHP_URL_PATH);
-	}
-	
-	/**
-	 * Generate a static version of the Javascript file
-	 * with configuration values already plugged in.
-	 */
-	private function rebuildJavascript() {
-		$thisPluginsDirectory = dirname(__FILE__);
-		
-		// Generate the Javascript
-		ob_start();
-		$jsFile = $thisPluginsDirectory."/daves-wordpress-live-search.js.php";
-		include($thisPluginsDirectory."/daves-wordpress-live-search.js.php");
-		$js = ob_get_contents();
-		ob_end_clean();
-		
-		// Write the static Javascript file
-		$jsFile = $thisPluginsDirectory."/daves-wordpress-live-search.js";
-		if(FALSE === file_put_contents($jsFile, $js)) {
-			$alertMessage = __("<em>Dave's WordPress Live Search</em>  cannot write $jsFile. The plugin will continue to work, but page loads may be slowed.");
-			echo "<div class=\"updated fade\"><p><strong>$alertMessage</strong></p></div>";
-
-		}
 	}
 }
