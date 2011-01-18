@@ -221,9 +221,12 @@ LiveSearch.runQuery = function(terms) {
                 if(searchSource != undefined) {
                     parameters.search_source = searchSource;
                 }
-
-		var ajaxURL = LiveSearch.util.getthisscriptpath() + "/daves-wordpress-live-search-ajax.php";
-		var req = jQuery.getJSON( ajaxURL, parameters, LiveSearch.handleAJAXResults);
+        
+        // For wp_ajax
+		parameters.action = "dwls_search";
+		
+		var ajaxURL = DavesWordPressLiveSearchConfig.blogURL + "/wp-admin/admin-ajax.php";
+		var req = jQuery.get( ajaxURL, parameters, LiveSearch.handleAJAXResults, "json");
 		
 		// Add this request to the queue
 		LiveSearch.activeRequests.push(req);

@@ -26,7 +26,59 @@ Plugin URI: http://wordpress.org/extend/plugins/daves-wordpress-live-search/
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  **/
  
-
+// Provide a json_encode implementation if none exists (PHP < 5.2.0)
+if (!function_exists('json_encode'))
+{
+	/**
+	 * json_encode implementation for PHP 4.x by "Steve". Serializes data into JSON.
+	 * @see http://www.php.net/manual/en/function.json-encode.php#82904
+	 * @param mixed $a data to serialize
+	 * @return mixed serialized data|scalar
+	 */
+	function json_encode($a=false)
+	{
+		if (is_null($a)) return 'null';
+		if ($a === false) return 'false';
+		if ($a === true) return 'true';
+		if (is_scalar($a))
+		{
+			if (is_float($a))
+			{
+			  // Always use "." for floats.
+			  return floatval(str_replace(",", ".", strval($a)));
+			}
+		
+			if (is_string($a))
+			{
+				static $jsonReplaces = array(array("\\", "/", "\n", "\t", "\r", "\b", "\f", '"'), array('\\\\', '\\/', '\\n', '\\t', '\\r', '\\b', '\\f', '\"'));
+				return '"' . str_replace($jsonReplaces[0], $jsonReplaces[1], $a) . '"';
+			}
+			else
+				return $a;
+		}
+		
+		$isList = true;
+		for ($i = 0, reset($a); $i < count($a); $i++, next($a))
+		{
+			if (key($a) !== $i)
+			{
+				$isList = false;
+				break;
+			}
+		}
+		$result = array();
+		if ($isList)
+		{
+			foreach ($a as $v) $result[] = json_encode($v);
+			return '[' . join(',', $result) . ']';
+		}
+		else
+		{
+			foreach ($a as $k => $v) $result[] = json_encode($k).':'.json_encode($v);
+			return '{' . join(',', $result) . '}';
+		}
+	}
+}
 
 if(5.0 > floatval(phpversion())) {
 	// Call the special error handler that displays an error
@@ -51,7 +103,8 @@ else {
 	if ( ! defined( 'WP_PLUGIN_DIR' ) )
 	      define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR . '/plugins' );
 	
-	include_once("DavesWordPressLiveSearch.php");	
+	include_once("DavesWordPressLiveSearch.php");
+	include_once("DavesWordPressLiveSearchResults.php");
 }	
 
 function daves_wp_live_search_phpver_admin_notice() {
