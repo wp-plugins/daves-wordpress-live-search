@@ -35,7 +35,7 @@ class DavesWordPressLiveSearch
 	
 			wp_enqueue_script('jquery');
 			wp_enqueue_script('jquery_dimensions', $pluginPath.'jquery.dimensions.pack.js', 'jquery');
-		
+
 			// Dynamically include the generated static
 			// Javascript file if present.
 			if(file_exists($thisPluginsDirectory.'/daves-wordpress-live-search.js')) {
@@ -343,11 +343,6 @@ SM;
 	 * with configuration values already plugged in.
 	 */
 	private function rebuildJavascript() {
-		// This constant is used to tell the .js.php
-		// script we're generating the static file
-		// so no HTTP headers are sent or anything.
-		define("DWLS_JS_GEN", TRUE);
-		
 		$thisPluginsDirectory = dirname(__FILE__);
 		
 		// Generate the Javascript
