@@ -3,7 +3,7 @@ Contributors: csixty4
 Donate link: http://catguardians.org
 Tags: search, AJAX, live search
 Requires at least: 2.9
-Tested up to: 3.0.2
+Tested up to: 3.1
 Stable tag: 1.19
  
 Adds "live search" functionality to your WordPress site. Uses the built-in search and jQuery.
@@ -36,6 +36,11 @@ NOTE: Dave's WordPress Live Search requires PHP 5.0 or higher.
 
 == Frequently Asked Questions ==
 
+Q: It's not working!
+A: Check the following:
+1. This plugin wont work if you password-protected your wp-admin directory. If you want to protect this directory, see http://www.nkuttler.de/post/htaccess-protect-wordpress-admin/ for instructions on locking it down while still allowing AJAX
+1. Make sure no other plugin is including an earlier version of jQuery
+
 I don't get asked a lot of questions about this plugin, so here's the "known issues":
 
 1. There must only be one search box per page. If there is more than one search box, the plugin gets confused. This may be fixed in a future release.
@@ -51,6 +56,12 @@ Features I want to implement in future releases:
 1. Internationalization
 
 == Changelog ==
+
+= 2.0 =
+* 2011-??-?? Dave Ross <dave@csixty4.com>
+* Using wp_ajax actions now (deprecating my bootstrap on every AJAX call)
+* Static Javascript (not generated) and inline configuration
+* Cached search results for anonymous users
 
 = 1.20 =
 * 2011-01-10 Dave Ross <dave@csixty4.com>
