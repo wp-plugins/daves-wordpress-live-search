@@ -240,6 +240,9 @@ SM;
             $xOffset = intval($_POST['daves-wordpress-live-search_xoffset']);                
 	        $exceptions = $_POST['daves-wordpress-live-search_exceptions'];
 	        $cacheLifetime = $_POST['daves-wordpress-live-search_cache_lifetime'];
+	        if("" == trim($cacheLifetime)) {
+	        	$cacheLifetime = 3600;
+	        }
 
 	        update_option('daves-wordpress-live-search_exceptions', $exceptions);
             update_option('daves-wordpress-live-search_xoffset', intval($xOffset));
