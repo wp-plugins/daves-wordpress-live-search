@@ -368,6 +368,9 @@ class DWLSTransients {
 		$hash = md5($key);
 		$prefix = substr($hash, 0, 2);
 		$index = get_transient("dwls_index_{$prefix}");
+		if(!$index) {
+			$index = array();
+		}
 		if(!array_key_exists($hash, $index)) {
 			$index[$hash] = $hash;
 			set_transient("dwls_index_{$prefix}", $index);
@@ -379,6 +382,9 @@ class DWLSTransients {
 		$hash = md5($key);
 		$prefix = substr($hash, 0, 2);
 		$index = get_transient("dwls_index_{$prefix}");
+		if(!$index) {
+			$index = array();
+		}		
 		if(array_key_exists($hash, $index)) {
 			return get_transient("dwls_result_{$hash}");	
 		}
