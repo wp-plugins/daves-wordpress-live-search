@@ -154,6 +154,8 @@ SM;
 		switch($tab) {
 			case 'advanced':
 			  return self::plugin_options_advanced();
+			case 'debug':
+			  return self::plugin_options_debug();
 			case 'settings':
 			default:
 			  return self::plugin_options_settings();
@@ -162,6 +164,8 @@ SM;
 	
 	private function plugin_options_settings() {
 		$thisPluginsDirectory = dirname(__FILE__);
+		$enableDebugger = (bool) get_option('daves-wordpress-live-search_debug');
+		
 		if("Save Changes" == $_POST['daves-wordpress-live-search_submit'] && current_user_can('manage_options'))
 		{
 			check_admin_referer('daves-wordpress-live-search-config');
@@ -186,7 +190,7 @@ SM;
 	        update_option('daves-wordpress-live-search_excerpt', $showExcerpt);
 	        update_option('daves-wordpress-live-search_minchars', $minCharsToSearch);
             update_option('daves-wordpress-live-search_source', $searchSource);
-	        
+	        	        
 	        // Translate the "Options saved" message...just in case.
 	        // You know...the code I was copying for this does it, thought it might be a good idea to leave it
 	        $updateMessage = __('Options saved.', 'mt_trans_domain' );
@@ -243,10 +247,12 @@ SM;
 	        if("" == trim($cacheLifetime)) {
 	        	$cacheLifetime = 3600;
 	        }
+	        $enableDebugger = ("true" == $_POST['daves-wordpress-live-search_debug']);
 
 	        update_option('daves-wordpress-live-search_exceptions', $exceptions);
             update_option('daves-wordpress-live-search_xoffset', intval($xOffset));
             update_option('daves-wordpress-live-search_cache_lifetime', intval($cacheLifetime));
+            update_option('daves-wordpress-live-search_debug', $enableDebugger);
 
 	        // Translate the "Options saved" message...just in case.
 	        // You know...the code I was copying for this does it, thought it might be a good idea to leave it
@@ -256,12 +262,62 @@ SM;
 		}
 		else
 		{
+			if("Clear Cache" == $_POST['daves-wordpress-live-search_submit'] && current_user_can('manage_options')) {
+				// Clear the cache
+	    	    DWLSTransients::clear();
+		        $clearedMessage = __('Cache cleared.', 'mt_trans_domain' );
+	        
+	        	echo "<div class=\"updated fade\"><p><strong>$clearedMessage</strong></p></div>";
+			}
+		
 			$exceptions = get_option('daves-wordpress-live-search_exceptions');
             $xOffset = intval(get_option('daves-wordpress-live-search_xoffset'));
             $cacheLifetime = intval(get_option('daves-wordpress-live-search_cache_lifetime'));
+            $enableDebugger = (bool) get_option('daves-wordpress-live-search_debug');
 		}
 		
 		include("$thisPluginsDirectory/daves-wordpress-live-search-admin-advanced.tpl");
+	}	
+	
+	private function plugin_options_debug() {
+		$thisPluginsDirectory = dirname(__FILE__);
+		$enableDebugger = (bool) get_option('daves-wordpress-live-search_debug');
+
+		$debug_output = array();
+		
+		$debug_output[] = "Cache contents:";
+		$cache_indexes = DWLSTransients::indexes();
+
+		// Output the cache indexes
+		foreach($cache_indexes as $cache_index) {
+			$debug_output[] = $cache_index;
+		}
+
+		$debug_output[] = "----------";
+		
+		foreach($cache_indexes as $cache_index) {
+			$debug_output[] = "{$cache_index}:";
+			$hashes = get_transient($cache_index);
+			foreach($hashes as $hash) {
+			  $debug_output[] = $hash;	
+			}
+		}
+
+		$debug_output[] = "----------";
+				
+		// Output the cache contents for each index
+		foreach($cache_indexes as $cache_index) {
+			$hashes = get_transient($cache_index);
+			foreach($hashes as $hash) {
+				$contents = get_transient("dwls_result_{$hash}");
+				$debug_output[] = "dwls_result_{$hash}:";
+				$debug_output[] = var_export($contents, TRUE);
+			}
+		}
+
+		$debug_output = implode("<br><br>", $debug_output);
+		
+		include("$thisPluginsDirectory/daves-wordpress-live-search-admin-debug.tpl");
 	}	
 	
 	public function admin_notices()

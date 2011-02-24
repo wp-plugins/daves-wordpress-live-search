@@ -11,6 +11,7 @@ padding-bottom: 0px;
 <h2>
 <a href="<?php echo $_SERVER['REQUEST_URI']."&tab=settings"; ?>" class="nav-tab nav-tab-active">Settings</a>
 <a href="<?php echo $_SERVER['REQUEST_URI']."&tab=advanced"; ?>" class="nav-tab">Advanced</a>
+<?php if($enableDebugger) : ?><a href="<?php echo $_SERVER['REQUEST_URI']."&tab=debug"; ?>" class="nav-tab">Debug</a><?php endif; ?>
 </h2>
 <form method="post" action="">
 <input type="hidden" name="tab" value="<?php echo $_REQUEST['tab']; ?>" />

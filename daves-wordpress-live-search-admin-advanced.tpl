@@ -11,6 +11,7 @@ padding-bottom: 0px;
 <h2>
 <a href="<?php echo $_SERVER['REQUEST_URI']."&tab=settings"; ?>" class="nav-tab">Settings</a>
 <a href="<?php echo $_SERVER['REQUEST_URI']."&tab=advanced"; ?>" class="nav-tab nav-tab-active">Advanced</a>
+<?php if($enableDebugger) : ?><a href="<?php echo $_SERVER['REQUEST_URI']."&tab=debug"; ?>" class="nav-tab">Debug</a><?php endif; ?>
 </h2>
 <form method="post" action="">
 <input type="hidden" name="tab" value="<?php echo $_REQUEST['tab']; ?>" />
@@ -27,7 +28,7 @@ if ( function_exists('wp_nonce_field') )
 
 <td>
 <?php $permalinkFormat = get_option('permalink_structure'); ?>
-<div><span class="setting-description">Enter the <?php echo empty($permalinkFormat) ? 'paths' : 'permalinks'; ?> of pages which should not have live searching, one per line. The * wildcard can be used at the start or end of a line. For example: <ul style="list-style-type:disc;margin-left: 3em;"><?php echo empty($permalinkFormat) ? '<li>?page_id=123</li><li>page_id=1*</li>' : '<li>about</li><li>employee-*</li>';?></ul></span></div>
+<div><span class="setting-description">Enter the <?php echo empty($permalinkFormat) ? 'paths' : 'permalinks'; ?> of pages which should not have live searching, one per line. The * wildcard can be used at the start or end of a line. For example: <ul style="list-style-type:disc;margin-left: 3em;"><?php echo empty($permalinkFormat) ? '<li>?page_id=123</li><li>page_id=1*</li>' : '<li>about</li><li>employee-*</li>';?></ul><p><strong>NOTE:</strong> These pages will still be returned in search results. This only disables the Live Search feature for the search box on these pages.</p></span></div>
 <textarea name="daves-wordpress-live-search_exceptions" id="daves-wordpress-live-search_exceptions" rows="5" cols="60"><?php echo $exceptions; ?></textarea></td> 
 </tr>
 
@@ -46,6 +47,20 @@ if ( function_exists('wp_nonce_field') )
 <th scope="row">Cache Lifetime</th>
 
 <td><input type="text" name="daves-wordpress-live-search_cache_lifetime" id="daves-wordpress-live-search_cache_lifetime" value="<?php echo $cacheLifetime; ?>" class="regular-text code" /><span class="setting-description">Enter "0" to disable caching</span></td>
+</tr>
+
+<!-- Enable debugger -->
+<tr valign="top">
+<th scope="row">Enable debugger</th>
+
+<td><input type="checkbox" name="daves-wordpress-live-search_debug" id="daves-wordpress-live-search_debug" value="true" <?php if($enableDebugger): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_debug">Enable the Debug tab.</label></td> 
+</tr>
+
+<!-- Clear Cache -->
+<tr valign="top">
+<th scope="row">Clear Cache</th>
+
+<td><button type="submit" name="daves-wordpress-live-search_submit" id="daves-wordpress-live-search_submit_cache" value="Clear Cache">Clear Cache</button>&nbsp;<label for="daves-wordpress-live-search_submit">If you change settings or post/edit content, your cache will be cleared automatically. Use this button to clear the cache manually if needed.</label></td> 
 </tr>
 
 <!-- Submit buttons -->

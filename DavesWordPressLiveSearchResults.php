@@ -299,7 +299,7 @@ class DavesWordPressLiveSearchResults {
 		if($maxResults === 0) $maxResults = -1;
 		
 		$cacheLifetime = intval(get_option('daves-wordpress-live-search_cache_lifetime'));
-		if(0 < $cacheLifetime) {
+		if(!is_user_logged_in() && 0 < $cacheLifetime) {
 			$doCache = TRUE;
 		}
 		else {

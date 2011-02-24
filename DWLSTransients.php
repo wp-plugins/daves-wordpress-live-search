@@ -9,10 +9,12 @@ class DWLSTransients {
 		while($a > -1) {
 			$prefix = dechex($a);
 			$index = get_transient("dwls_index_{$prefix}");
-			foreach($index as $hash=>$value) {
-				delete_transient("dwls_result_{$hash}");
+			if($index) {
+				foreach($index as $hash=>$value) {
+					delete_transient("dwls_result_{$hash}");
+				}
+				delete_transient("dwls_index_{$prefix}");
 			}
-			delete_transient("dwls_index_{$prefix}");
 			$a -= 1;
 		}
 	}
@@ -37,11 +39,26 @@ class DWLSTransients {
 		$index = get_transient("dwls_index_{$prefix}");
 		if(!$index) {
 			$index = array();
-		}		
+		}
 		if(array_key_exists($hash, $index)) {
 			return get_transient("dwls_result_{$hash}");	
 		}
 		
 		return FALSE;
+	}
+	
+	static function indexes() {
+		$all_indexes = array();
+		
+		$a = 255;
+		while($a > -1) {
+			$prefix = dechex($a);
+			$index = get_transient("dwls_index_{$prefix}");
+			if($index) {
+				$all_indexes[] = "dwls_index_{$prefix}";
+			}
+			$a -= 1;
+		}
+		return array_reverse($all_indexes);
 	}
 }
