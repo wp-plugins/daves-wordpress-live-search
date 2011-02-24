@@ -202,3 +202,8 @@ Features I want to implement in future releases:
 = 1.0 =
 * 2009-03-13  Dave Ross  <dave@csixty4.com>
 * Initial release
+
+== Upgrade Notice ==
+
+= 2.0 =
+If you use a caching plugin, please clear your cache after upgrading. New: Performance & compatibility improvements. Works with WordPress 3.1! Debug feature for advanced users.
