@@ -58,7 +58,7 @@ Features I want to implement in future releases:
 == Changelog ==
 
 = 2.0 =
-* 2011-??-?? Dave Ross <dave@csixty4.com>
+* 2011-02-24 Dave Ross <dave@csixty4.com>
 * Using wp_ajax actions now (deprecating my bootstrap on every AJAX call)
 * Static Javascript (not generated) and inline configuration
 * Cached search results for anonymous users
