@@ -272,7 +272,14 @@ SM;
 		
 			$exceptions = get_option('daves-wordpress-live-search_exceptions');
             $xOffset = intval(get_option('daves-wordpress-live-search_xoffset'));
-            $cacheLifetime = intval(get_option('daves-wordpress-live-search_cache_lifetime'));
+            $cacheLifetime = get_option('daves-wordpress-live-search_cache_lifetime');
+            if("" == trim($cacheLifetime)) {
+	        	$cacheLifetime = 3600;
+	        }
+	        else {
+	        	$cacheLifetime = intval($cacheLifetime);
+	        }
+
             $enableDebugger = (bool) get_option('daves-wordpress-live-search_debug');
 		}
 		
