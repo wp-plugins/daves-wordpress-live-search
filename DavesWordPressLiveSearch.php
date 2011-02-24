@@ -390,3 +390,18 @@ SM;
 		return parse_url($pluginPath, PHP_URL_PATH);
 	}
 }
+
+// Set up hooks to clear the cache when a post is
+// created, deleted, or edited
+$dwls_update_hooks = array(
+'delete_post',
+'edit_post',
+'save_post',
+'trash_post',
+'untrash_post',
+'update_postmeta',
+'xmlrpc_publish_post',
+);
+foreach($dwls_update_hooks as $dwls_update_hook) {
+	add_action($dwls_update_hook, array("DWLSTransients", "clear"));
+}
