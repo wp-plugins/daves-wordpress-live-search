@@ -62,6 +62,7 @@ Features I want to implement in future releases:
 * Using wp_ajax actions now (deprecating my bootstrap on every AJAX call)
 * Static Javascript (not generated) and inline configuration
 * Cached search results for anonymous users
+* Debug tab for advanced users. Just shows cache dump for now.
 
 = 1.20 =
 * 2011-01-10 Dave Ross <dave@csixty4.com>
