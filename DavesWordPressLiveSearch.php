@@ -392,9 +392,16 @@ SM;
 	 * @return string
 	 */
 	public static function getPluginPath() {
-		
 		$pluginPath = WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__));
-		return parse_url($pluginPath, PHP_URL_PATH);
+
+		// From wp-includes/script-loader.php:wp_default_scripts()
+		if ( !$guessurl = site_url() ) {
+			$guessurl = wp_guess_url();
+		}
+
+		$pluginPath = $guessurl.str_replace($guessurl,"",$pluginPath);
+
+		return $pluginPath;
 	}
 }
 
