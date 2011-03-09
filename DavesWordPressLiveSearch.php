@@ -54,7 +54,7 @@ class DavesWordPressLiveSearch
 		}
 	}
 	
-	public function head() {
+	public static function head() {
 
 		if(self::isSearchablePage()) {
 			$cssOption = get_option('daves-wordpress-live-search_css_option');
@@ -98,7 +98,7 @@ class DavesWordPressLiveSearch
 		}
 	}
 	
-	function inlineSettings() {
+	private static function inlineSettings() {
 	    
 	    $resultsDirection = stripslashes(get_option('daves-wordpress-live-search_results_direction'));
 	    $showThumbs = intval(("true" == get_option('daves-wordpress-live-search_thumbs')));
@@ -344,7 +344,7 @@ SM;
 		}
 	}
 	
-	private function isSearchablePage() {
+	private static function isSearchablePage() {
 		if(is_admin()) return false;
 
 		$searchable = true;
