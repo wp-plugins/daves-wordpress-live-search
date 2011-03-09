@@ -4,7 +4,7 @@ Donate link: http://catguardians.org
 Tags: search, AJAX, live search
 Requires at least: 2.9
 Tested up to: 3.1
-Stable tag: 2.0.1
+Stable tag: 2.0.2
  
 Adds "live search" functionality to your WordPress site. Uses the built-in search and jQuery.
 
@@ -56,6 +56,12 @@ Features I want to implement in future releases:
 1. Internationalization
 
 == Changelog ==
+
+= 2.0.2 =
+* 2011-03-09 Dave Ross <dave@csixty4.com>
+* Fix for determining plugin URL when WordPress is installed in a subdirectory
+* Sprinkled in static declarations where needed
+* Better? fix for determining plugin URL when WP Subdomains is installed
 
 = 2.0.1 =
 * 2011-02-28 Dave Ross <dave@csixty4.com>
