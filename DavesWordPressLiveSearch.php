@@ -161,7 +161,7 @@ SM;
 	 * Include the Live Search options page in the admin menu
 	 * @return void
 	 */
-	public function admin_menu()
+	public static function admin_menu()
 	{
 		if(current_user_can('manage_options'))
 		{
@@ -352,7 +352,7 @@ SM;
 		include("$thisPluginsDirectory/daves-wordpress-live-search-admin-debug.tpl");
 	}	
 	
-	public function admin_notices()
+	public static function admin_notices()
 	{
 		$cssOption = get_option('daves-wordpress-live-search_css_option');
 		if('theme' == $cssOption)
