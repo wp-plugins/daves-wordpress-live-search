@@ -99,17 +99,25 @@ class DavesWordPressLiveSearch
 	}
 	
 	private static function inlineSettings() {
-	    
+            global $wps_subdomains;
+
 	    $resultsDirection = stripslashes(get_option('daves-wordpress-live-search_results_direction'));
 	    $showThumbs = intval(("true" == get_option('daves-wordpress-live-search_thumbs')));
 	    $showExcerpt = intval(("true" == get_option('daves-wordpress-live-search_excerpt')));
 	    $minCharsToSearch = intval(get_option('daves-wordpress-live-search_minchars'));
 	    $xOffset = intval(get_option('daves-wordpress-live-search_xoffset'));
 
-            if(defined('WPS_VERSION')) {
-                // WP Subdomains
-                global $wps_subdomains;
+            if(/* defined('WPS_VERSION') && */ isset($wps_subdomains)) {
+                // WP Subdomains is enabled
+                // See if we're on a subdomain
                 $subdomain = $wps_subdomains->getThisSubdomain();
+            }
+            else {
+                $subdomain = FALSE;
+            }
+
+            if($subdomain) {
+
                 $blogURL = $subdomain->getSubdomainLink();
 
                 // Remove trailing slash
