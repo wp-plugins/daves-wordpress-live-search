@@ -105,7 +105,24 @@ class DavesWordPressLiveSearch
 	    $showExcerpt = intval(("true" == get_option('daves-wordpress-live-search_excerpt')));
 	    $minCharsToSearch = intval(get_option('daves-wordpress-live-search_minchars'));
 	    $xOffset = intval(get_option('daves-wordpress-live-search_xoffset'));
-	    $blogURL = get_bloginfo('url');
+
+            if(defined('WPS_VERSION')) {
+                // WP Subdomains
+                global $wps_subdomains;
+                $subdomain = $wps_subdomains->getThisSubdomain();
+                $blogURL = $subdomain->getSubdomainLink();
+
+                // Remove trailing slash
+                $blogURL = rtrim($blogURL,"/");
+
+                if(80 != $_SERVER['SERVER_PORT']) {
+                    $blogURL .= ":".$_SERVER['SERVER_PORT'];
+                }
+            }
+            else {
+                // Normal
+                $blogURL = get_bloginfo('url');
+            }
 	    
 	    $indicatorWidth = getimagesize(dirname(__FILE__)."/indicator.gif");
         $indicatorWidth = $indicatorWidth[0];
