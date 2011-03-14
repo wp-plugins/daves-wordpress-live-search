@@ -68,7 +68,7 @@ class DavesWordPressLiveSearch {
                 case 'default_blue':
                 case 'default_gray':
                 default:
-                    $style = bloginfo('url') . "?" . DWLS_CSS_PARAM . "=1";
+                    $style = get_bloginfo('url') . "?" . DWLS_CSS_PARAM . "=1";
             }
 
             if ($style) {
