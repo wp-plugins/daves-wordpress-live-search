@@ -19,6 +19,7 @@
 
 define('DWLS_JS_PARAM', 'dwls_js');
 define('DWLS_CSS_PARAM', 'dwls_css');
+define('DWLS_IMG_PARAM', 'dwls_img');
 
 class DWLSResources {
 
@@ -67,6 +68,26 @@ if (array_key_exists(DWLS_JS_PARAM, $_GET) && !empty($_GET[DWLS_JS_PARAM])) {
 
     }
     header('Content-Type: text/javascript');
+    header('Content-Length: ' . filesize($file_path));
+    readfile($file_path);
+    exit;
+}
+
+// Image resources don't require database access either
+if (array_key_exists(DWLS_IMG_PARAM, $_GET) && !empty($_GET[DWLS_IMG_PARAM])) {
+    switch($_GET[DWLS_IMG_PARAM]) {
+        case 'indicator':
+            $file_path = dirname(__FILE__) . "/indicator.gif";
+            break;
+        default;
+            // unknown
+            exit;
+
+    }
+
+    $info = getimagesize($file_path);
+
+    header('Content-Type: '.image_type_to_mime_type($info[2]));
     header('Content-Length: ' . filesize($file_path));
     readfile($file_path);
     exit;

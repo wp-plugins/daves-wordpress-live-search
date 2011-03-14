@@ -269,7 +269,7 @@ LiveSearch.displayIndicator = function() {
 	
 	if(jQuery("#search_results_activity_indicator").size() === 0) {
 
-		var imgURL = LiveSearch.util.getthisscriptpath() + "/indicator.gif";
+                var imgURL = DavesWordPressLiveSearchConfig.blogURL + "?dwls_img=indicator";
 		jQuery("body").append('<img id="search_results_activity_indicator" src="' + imgURL + '" />');
 
 		var searchBoxPosition = LiveSearch.searchBoxes.offset();
@@ -323,37 +323,6 @@ LiveSearch.util.basename = function(path, suffix) {
     }
     
     return b;
-}
-
-/**
- * Get the path from the src attr on the given script's <script> tag
- * @see http://www.experts-exchange.com/Programming/Languages/Scripting/JavaScript/Q_24662495.html
- * @return string
- */
-LiveSearch.util.getscriptpath = function (scriptname){
-                // Check document for our script
-                scriptobjects = document.getElementsByTagName('script');
-                for (i=0; i<scriptobjects.length; i++) {
-						var script_basename = LiveSearch.util.basename(scriptobjects[i].src).split('?')[0];
-                        if(script_basename==scriptname){
-                                // we found our script.. lets get the path
-                                return scriptobjects[i].src.substring(0, scriptobjects[i].src.lastIndexOf('/'));
-                        };
-                }
-                return "";
-}
-
-/**
- * Get the path to this script
- * @retur string
- */
-LiveSearch.util.getthisscriptpath = function() {
-	var path = LiveSearch.util.getscriptpath('daves-wordpress-live-search.js');
-	if("" == path) {
-		path = LiveSearch.util.getscriptpath('daves-wordpress-live-search.js.php');
-	}
-	
-	return path;
 }
 
 ///////////////////
