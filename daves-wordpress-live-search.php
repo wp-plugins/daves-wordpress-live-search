@@ -102,8 +102,9 @@ else {
 	      define( 'WP_PLUGIN_URL', WP_CONTENT_URL. '/plugins' );
 	if ( ! defined( 'WP_PLUGIN_DIR' ) )
 	      define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR . '/plugins' );
-	
+
 	include_once("DavesWordPressLiveSearch.php");
+        include_once("DWLSResources.php");
 	include_once("DavesWordPressLiveSearchResults.php");
 }	
 
@@ -112,4 +113,3 @@ function daves_wp_live_search_phpver_admin_notice() {
 	echo "<div class=\"updated\"><p><strong>$alertMessage</strong></p></div>";
 	
 }
-?>
