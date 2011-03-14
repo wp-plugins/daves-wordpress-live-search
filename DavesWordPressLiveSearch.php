@@ -226,7 +226,7 @@ SM;
             $css = 'default_gray';
         }
 
-        include("$thisPluginsDirectory/daves-wordpress-live-search-admin.tpl");
+        include("$thisPluginsDirectory/admin/daves-wordpress-live-search-admin.tpl");
     }
 
     private function plugin_options_advanced() {
@@ -274,7 +274,7 @@ SM;
             $enableDebugger = (bool) get_option('daves-wordpress-live-search_debug');
         }
 
-        include("$thisPluginsDirectory/daves-wordpress-live-search-admin-advanced.tpl");
+        include("$thisPluginsDirectory/admin/daves-wordpress-live-search-admin-advanced.tpl");
     }
 
     private function plugin_options_debug() {
@@ -315,7 +315,7 @@ SM;
 
         $debug_output = implode("<br><br>", $debug_output);
 
-        include("$thisPluginsDirectory/daves-wordpress-live-search-admin-debug.tpl");
+        include("$thisPluginsDirectory/admin/daves-wordpress-live-search-admin-debug.tpl");
     }
 
     public static function admin_notices() {
