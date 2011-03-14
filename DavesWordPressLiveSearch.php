@@ -158,7 +158,7 @@ SM;
      * Display & process the Live Search admin options
      * @return void
      */
-    public function plugin_options() {
+    public static function plugin_options() {
         $tab = $_REQUEST['tab'];
         switch ($tab) {
             case 'advanced':
@@ -171,11 +171,11 @@ SM;
         }
     }
 
-    private function plugin_options_settings() {
+    private static function plugin_options_settings() {
         $thisPluginsDirectory = dirname(__FILE__);
         $enableDebugger = (bool) get_option('daves-wordpress-live-search_debug');
 
-        if ("Save Changes" == $_POST['daves-wordpress-live-search_submit'] && current_user_can('manage_options')) {
+        if (array_key_exists('daves-wordpress-live-search_submit', $_POST) && "Save Changes" == $_POST['daves-wordpress-live-search_submit'] && current_user_can('manage_options')) {
             check_admin_referer('daves-wordpress-live-search-config');
 
             // Read their posted value
@@ -229,9 +229,9 @@ SM;
         include("$thisPluginsDirectory/admin/daves-wordpress-live-search-admin.tpl");
     }
 
-    private function plugin_options_advanced() {
+    private static function plugin_options_advanced() {
         $thisPluginsDirectory = dirname(__FILE__);
-        if ("Save Changes" == $_POST['daves-wordpress-live-search_submit'] && current_user_can('manage_options')) {
+        if (array_key_exists('daves-wordpress-live-search_submit', $_POST) && "Save Changes" == $_POST['daves-wordpress-live-search_submit'] && current_user_can('manage_options')) {
             check_admin_referer('daves-wordpress-live-search-config');
 
             // Read their posted value
@@ -254,7 +254,7 @@ SM;
 
             echo "<div class=\"updated fade\"><p><strong>$updateMessage</strong></p></div>";
         } else {
-            if ("Clear Cache" == $_POST['daves-wordpress-live-search_submit'] && current_user_can('manage_options')) {
+            if (array_key_exists('daves-wordpress-live-search_submit', $_POST) && "Clear Cache" == $_POST['daves-wordpress-live-search_submit'] && current_user_can('manage_options')) {
                 // Clear the cache
                 DWLSTransients::clear();
                 $clearedMessage = __('Cache cleared.', 'mt_trans_domain');
@@ -277,7 +277,7 @@ SM;
         include("$thisPluginsDirectory/admin/daves-wordpress-live-search-admin-advanced.tpl");
     }
 
-    private function plugin_options_debug() {
+    private static function plugin_options_debug() {
         $thisPluginsDirectory = dirname(__FILE__);
         $enableDebugger = (bool) get_option('daves-wordpress-live-search_debug');
 
