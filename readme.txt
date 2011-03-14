@@ -65,6 +65,8 @@ Features I want to implement in future releases:
 * Removed deprecated AJAX & bootstrap scripts
 * Moved Javascript & CSS resources, admin templates into their own subdirectories
 * Removed now-deprecated scriptpath functions in JS file
+* Misc. code cleanup & simplifying, removal of unneeded code
+* Use json_encode from WordPress's version of compat.php, not my own
 
 = 2.0.2 =
 * 2011-03-09 Dave Ross <dave@csixty4.com>
