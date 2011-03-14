@@ -33,5 +33,3 @@ if(empty($siteURL))
 }
 
 wp_redirect($siteURL, 301);
-
-?>
