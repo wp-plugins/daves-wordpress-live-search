@@ -91,17 +91,6 @@ else {
 	add_action('init', array('DavesWordPressLiveSearch', 'advanced_search_init'));
 	add_action('admin_menu', array('DavesWordPressLiveSearch', 'admin_menu'));
 	add_action('wp_head', array('DavesWordPressLiveSearch', 'head'));
-	
-	// Pre-2.6 compatibility
-	// See http://codex.wordpress.org/Determining_Plugin_and_Content_Directories
-	if ( ! defined( 'WP_CONTENT_URL' ) )
-	      define( 'WP_CONTENT_URL', get_option( 'siteurl' ) . '/wp-content' );
-	if ( ! defined( 'WP_CONTENT_DIR' ) )
-	      define( 'WP_CONTENT_DIR', ABSPATH . 'wp-content' );
-	if ( ! defined( 'WP_PLUGIN_URL' ) )
-	      define( 'WP_PLUGIN_URL', WP_CONTENT_URL. '/plugins' );
-	if ( ! defined( 'WP_PLUGIN_DIR' ) )
-	      define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR . '/plugins' );
 
 	include_once("DavesWordPressLiveSearch.php");
         include_once("DWLSResources.php");
