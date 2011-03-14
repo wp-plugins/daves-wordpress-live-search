@@ -63,6 +63,7 @@ Features I want to implement in future releases:
 * Removed references to pluginPath & function to find it (see above)
 * Simplified validating & defaulting CSS selection on admin page
 * Removed deprecated AJAX & bootstrap scripts
+* Moved Javascript & CSS resources into their own subdirectories
 
 = 2.0.2 =
 * 2011-03-09 Dave Ross <dave@csixty4.com>
