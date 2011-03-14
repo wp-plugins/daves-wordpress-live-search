@@ -218,22 +218,12 @@ SM;
         if (!in_array($resultsDirection, array('up', 'down')))
             $resultsDirection = 'down';
 
-        switch ($cssOption) {
-            case 'theme':
-                $css = 'theme';
-                break;
-            case 'default_red':
-                $css = 'default_red';
-                break;
-            case 'default_blue':
-                $css = 'default_blue';
-                break;
-            case 'notheme':
-                $css = 'notheme';
-                break;
-            case 'default_gray':
-            default:
-                $css = 'default_gray';
+        $cssOptionWhitelist = array('theme', 'default_red', 'default_blue', 'notheme', 'default_gray');
+        if(in_array($cssOption, $cssOptionWhitelist)) {
+            $css = $cssOption;
+        }
+        else {
+            $css = 'default_gray';
         }
 
         include("$thisPluginsDirectory/daves-wordpress-live-search-admin.tpl");
