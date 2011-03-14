@@ -10,25 +10,6 @@ class DWLSResources {
 
     public static function parse_request($wp) {
 
-        // Javascript resources
-        if (array_key_exists(DWLS_JS_PARAM, $_GET) && !empty($_GET[DWLS_JS_PARAM])) {
-            switch($_GET[DWLS_JS_PARAM]) {
-                case 'livesearch':
-                    $file_path = dirname(__FILE__) . "/daves-wordpress-live-search.js";
-                    break;
-                case 'dimensions':
-                    $file_path = dirname(__FILE__) . "/jquery.dimensions.pack.js";
-                    break;
-                default;
-                    // unknown
-                    exit;
-
-            }
-            header('Content-Type: text/javascript');
-            header('Content-Length: ' . filesize($file_path));
-            readfile($file_path);
-            exit;
-        }
 
         // CSS resource
         if (array_key_exists(DWLS_CSS_PARAM, $_GET) && !empty($_GET[DWLS_CSS_PARAM])) {
@@ -56,3 +37,24 @@ class DWLSResources {
 }
 
 add_action('parse_request', array('DWLSResources', 'parse_request'));
+
+// Javascript resources don't require database access, so they can
+// be processed before WordPress is done spinning up
+if (array_key_exists(DWLS_JS_PARAM, $_GET) && !empty($_GET[DWLS_JS_PARAM])) {
+    switch($_GET[DWLS_JS_PARAM]) {
+        case 'livesearch':
+            $file_path = dirname(__FILE__) . "/daves-wordpress-live-search.js";
+            break;
+        case 'dimensions':
+            $file_path = dirname(__FILE__) . "/jquery.dimensions.pack.js";
+            break;
+        default;
+            // unknown
+            exit;
+
+    }
+    header('Content-Type: text/javascript');
+    header('Content-Length: ' . filesize($file_path));
+    readfile($file_path);
+    exit;
+}
