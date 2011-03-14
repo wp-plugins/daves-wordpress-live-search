@@ -20,13 +20,9 @@
 define('DWLS_JS_PARAM', 'dwls_js');
 define('DWLS_CSS_PARAM', 'dwls_css');
 
-/**
- * Description of DWLSResources
- */
 class DWLSResources {
 
     public static function parse_request($wp) {
-
 
         // CSS resource
         if (array_key_exists(DWLS_CSS_PARAM, $_GET) && !empty($_GET[DWLS_CSS_PARAM])) {
