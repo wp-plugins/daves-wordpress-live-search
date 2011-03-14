@@ -185,7 +185,6 @@ SM;
             $cssOption = $_POST['daves-wordpress-live-search_css'];
             $showThumbs = $_POST['daves-wordpress-live-search_thumbs'];
             $showExcerpt = $_POST['daves-wordpress-live-search_excerpt'];
-            $exceptions = $_POST['daves-wordpress-live-search_exceptions'];
             $minCharsToSearch = intval($_POST['daves-wordpress-live-search_minchars']);
             $searchSource = intval($_POST['daves-wordpress-live-search_source']);
 
