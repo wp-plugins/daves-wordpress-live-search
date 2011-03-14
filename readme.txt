@@ -57,6 +57,13 @@ Features I want to implement in future releases:
 
 == Changelog ==
 
+= 2.1 =
+* 2011-??-?? Dave Ross <dave@csixty4.com>
+* Load Javascript & CSS through WP's parse_request rather than direct URL
+* Removed references to pluginPath & function to find it (see above)
+* Simplified validating & defaulting CSS selection on admin page
+* Removed deprecated AJAX & bootstrap scripts
+
 = 2.0.2 =
 * 2011-03-09 Dave Ross <dave@csixty4.com>
 * Fix for determining plugin URL when WordPress is installed in a subdirectory

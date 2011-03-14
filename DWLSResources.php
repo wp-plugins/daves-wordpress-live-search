@@ -30,14 +30,14 @@ class DWLSResources {
 
             switch ($cssOption) {
                 case 'default_red':
-                    $file_path = dirname(__FILE__) . "/daves-wordpress-live-search_default_red.css";
+                $file_path = dirname(__FILE__) . "/css/daves-wordpress-live-search_default_red.css";
                     break;
                 case 'default_blue':
-                    $file_path = dirname(__FILE__) . "/daves-wordpress-live-search_default_blue.css";
+                    $file_path = dirname(__FILE__) . "/css/daves-wordpress-live-search_default_blue.css";
                     break;
                 case 'default_gray':
                 default:
-                    $file_path = dirname(__FILE__) . "/daves-wordpress-live-search_default_gray.css";
+                    $file_path = dirname(__FILE__) . "/css/daves-wordpress-live-search_default_gray.css";
             }
 
             header('Content-Type: text/css');
@@ -56,10 +56,10 @@ add_action('parse_request', array('DWLSResources', 'parse_request'));
 if (array_key_exists(DWLS_JS_PARAM, $_GET) && !empty($_GET[DWLS_JS_PARAM])) {
     switch($_GET[DWLS_JS_PARAM]) {
         case 'livesearch':
-            $file_path = dirname(__FILE__) . "/daves-wordpress-live-search.js";
+            $file_path = dirname(__FILE__) . "/js/daves-wordpress-live-search.js";
             break;
         case 'dimensions':
-            $file_path = dirname(__FILE__) . "/jquery.dimensions.pack.js";
+            $file_path = dirname(__FILE__) . "/js/jquery.dimensions.pack.js";
             break;
         default;
             // unknown
