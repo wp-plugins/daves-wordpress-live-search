@@ -30,7 +30,6 @@ class DavesWordPressLiveSearch
 	public static function advanced_search_init()
 	{
 		if(self::isSearchablePage()) {
-			$pluginPath = DavesWordPressLiveSearch::getPluginPath();
 			$thisPluginsDirectory = dirname(__FILE__);
 	
 			wp_enqueue_script('jquery');
@@ -60,7 +59,6 @@ class DavesWordPressLiveSearch
 			$cssOption = get_option('daves-wordpress-live-search_css_option');
 	
 			$themeDir = get_bloginfo("stylesheet_directory");
-			$pluginPath = DavesWordPressLiveSearch::getPluginPath();
 		
 			switch($cssOption)
 			{
@@ -406,23 +404,6 @@ SM;
 
 		// Fall-through, search everything by default
 		return true;
-	}
-	
-	/**
-	 * Modify plugin path as needed for compatiblity with WP-Subdomains
-	 * @return string
-	 */
-	public static function getPluginPath() {
-		$pluginPath = WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__));
-
-		// From wp-includes/script-loader.php:wp_default_scripts()
-		if ( !$guessurl = site_url() ) {
-			$guessurl = wp_guess_url();
-		}
-
-		$pluginPath = $guessurl.str_replace($guessurl,"",$pluginPath);
-
-		return $pluginPath;
 	}
 }
 
