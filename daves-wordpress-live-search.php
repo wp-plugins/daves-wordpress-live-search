@@ -39,7 +39,6 @@ else {
 	add_action('wp_head', array('DavesWordPressLiveSearch', 'head'));
 
 	include_once("DavesWordPressLiveSearch.php");
-        include_once("DWLSResources.php");
 	include_once("DavesWordPressLiveSearchResults.php");
 }
 

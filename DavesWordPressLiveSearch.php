@@ -27,14 +27,12 @@ class DavesWordPressLiveSearch {
      */
     public static function advanced_search_init() {
         if (self::isSearchablePage()) {
-            $thisPluginsDirectory = dirname(__FILE__);
-
             wp_enqueue_script('jquery');
-            wp_enqueue_script('jquery_dimensions', get_bloginfo('url') . "?" . DWLS_JS_PARAM . '=dimensions', 'jquery');
+            wp_enqueue_script('jquery_dimensions', plugin_dir_url(__FILE__).'js/jquery.dimensions.pack.js', 'jquery');
 
             // Dynamically include the generated static
             // Javascript file if present.
-            wp_enqueue_script('daves-wordpress-live-search', get_bloginfo('url') . "?" . DWLS_JS_PARAM . '=livesearch', 'jquery_dimensions');
+            wp_enqueue_script('daves-wordpress-live-search', plugin_dir_url(__FILE__).'js/daves-wordpress-live-search.js', 'jquery_dimensions');
         }
 
         // Repair settings in the absence of WP E-Commerce
@@ -61,14 +59,15 @@ class DavesWordPressLiveSearch {
                 case 'theme':
                     $style = $themeDir . '/daves-wordpress-live-search.css';
                     break;
-                case 'notheme':
-                    $style = false;
                     break;
                 case 'default_red':
                 case 'default_blue':
                 case 'default_gray':
+                    $style = plugin_dir_url(__FILE__).'css/daves-wordpress-live-search_'.$cssOption.'.css';
+                    break;
+                case 'notheme':
                 default:
-                    $style = get_bloginfo('url') . "?" . DWLS_CSS_PARAM . "=1";
+                    $style = false;
             }
 
             if ($style) {
