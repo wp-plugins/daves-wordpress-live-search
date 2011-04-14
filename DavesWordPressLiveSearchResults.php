@@ -43,8 +43,12 @@ class DavesWordPressLiveSearchResults {
 		global $wp_query;
 		
 		$dateFormat = get_option('date_format');
-		$wp_query = $wpQueryResults = new WP_Query();
 		
+		// Some other plugin threw a fit once if I didn't instantiate
+		// WP_Query once to initialize everything and then call it
+		// for real. I think there's a comment about it in an old
+		// version of DWLS.
+		$wp_query = $wpQueryResults = new WP_Query();
         $wp_query = $wpQueryResults = new WP_Query();
                      
 		if(function_exists(relevanssi_do_query)) {
@@ -58,12 +62,13 @@ class DavesWordPressLiveSearchResults {
 			}
 		}
 	
-        $wpQueryResults->query(array(
+        $posts = $wpQueryResults->query(array(
           's' => $_GET['s'],
           'showposts' => $maxResults,
           'post_type' => 'any',
           'post_status' => 'publish',
         ));
+        
         $this->searchTerms = $wpQueryResults->query_vars['s'];
                   
 		if(function_exists(relevanssi_do_query)) {
@@ -78,7 +83,8 @@ class DavesWordPressLiveSearchResults {
 			$wpQueryResults->posts = array_slice($wpQueryResults->posts, 0, $maxResults);
 		}
 		
-		foreach($wpQueryResults->posts as $result)
+		//foreach($wpQueryResults->posts as $result)
+		foreach($posts as $result)
 		{
 			// Add author names & permalinks
 			if($displayPostMeta)
