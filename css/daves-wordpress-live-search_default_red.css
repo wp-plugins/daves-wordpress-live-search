@@ -109,3 +109,7 @@ font-size: .9em;
 color: #fff;	
 margin-right: 1em;
 }
+
+#search_results_activity_indicator{
+z-index:999999;
+}
