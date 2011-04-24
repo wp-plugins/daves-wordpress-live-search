@@ -59,14 +59,8 @@ Features I want to implement in future releases:
 
 = 2.1 =
 * 2011-??-?? Dave Ross <dave@csixty4.com>
-* Load Javascript, CSS and indicator image through WP's parse_request rather than direct URL
-* Removed references to pluginPath & function to find it (see above)
-* Simplified validating & defaulting CSS selection on admin page
-* Removed deprecated AJAX & bootstrap scripts
-* Moved Javascript & CSS resources, admin templates into their own subdirectories
-* Removed now-deprecated scriptpath functions in JS file
-* Misc. code cleanup & simplifying, removal of unneeded code
-* Use json_encode from WordPress's version of compat.php, not my own
+* Major code cleanup & streamlining
+* Added z-index:999999 to all the default CSS files
 
 = 2.0.2 =
 * 2011-03-09 Dave Ross <dave@csixty4.com>
