@@ -269,8 +269,7 @@ LiveSearch.displayIndicator = function() {
 	
 	if(jQuery("#search_results_activity_indicator").size() === 0) {
 
-                var imgURL = DavesWordPressLiveSearchConfig.blogURL + "?dwls_img=indicator";
-		jQuery("body").append('<img id="search_results_activity_indicator" src="' + imgURL + '" />');
+		jQuery("body").append('<img id="search_results_activity_indicator" src="' + DavesWordPressLiveSearchConfig.indicatorURL + '" />');
 
 		var searchBoxPosition = LiveSearch.searchBoxes.offset();
 

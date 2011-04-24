@@ -118,6 +118,7 @@ class DavesWordPressLiveSearch {
             $blogURL = get_bloginfo('url');
         }
 
+        $indicatorURL = plugin_dir_url(__FILE__).'indicator.gif';
         $indicatorWidth = getimagesize(dirname(__FILE__) . "/indicator.gif");
         $indicatorWidth = $indicatorWidth[0];
 
@@ -132,6 +133,7 @@ class DavesWordPressLiveSearch {
             xOffset : {$xOffset},
         
             blogURL : '{$blogURL}',
+            indicatorURL : '{$indicatorURL}',
             indicatorWidth : {$indicatorWidth}
 	    };
         </script>      	
