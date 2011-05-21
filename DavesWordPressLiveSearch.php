@@ -31,7 +31,7 @@ class DavesWordPressLiveSearch {
             
             // Dynamically include the generated static
             // Javascript file if present.
-            wp_enqueue_script('daves-wordpress-live-search', plugin_dir_url(__FILE__).'js/daves-wordpress-live-search.js', 'jquery_dimensions');
+            wp_enqueue_script('daves-wordpress-live-search', plugin_dir_url(__FILE__).'js/daves-wordpress-live-search.js', 'jquery');
         }
 
         // Repair settings in the absence of WP E-Commerce
