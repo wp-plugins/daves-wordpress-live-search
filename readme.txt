@@ -4,7 +4,7 @@ Donate link: http://catguardians.org
 Tags: search, AJAX, live search
 Requires at least: 2.9
 Tested up to: 3.1
-Stable tag: 2.0.2
+Stable tag: 2.1
  
 Adds "live search" functionality to your WordPress site. Uses the built-in search and jQuery.
 
@@ -58,10 +58,11 @@ Features I want to implement in future releases:
 == Changelog ==
 
 = 2.1 =
-* 2011-??-?? Dave Ross <dave@csixty4.com>
+* 2011-05-20 Dave Ross <dave@csixty4.com>
 * Major code cleanup & streamlining
 * Added z-index:999999 to all the default CSS files
 * Removed jQuery Dimensions plugin. It's in jQuery core > 1.2.6 & recent WP releases include jQuery 1.4
+* (Hopefully) fixed IE8 hang issue (jQuery Dimensions)
 
 = 2.0.2 =
 * 2011-03-09 Dave Ross <dave@csixty4.com>
