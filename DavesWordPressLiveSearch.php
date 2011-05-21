@@ -28,8 +28,7 @@ class DavesWordPressLiveSearch {
     public static function advanced_search_init() {
         if (self::isSearchablePage()) {
             wp_enqueue_script('jquery');
-            wp_enqueue_script('jquery_dimensions', plugin_dir_url(__FILE__).'js/jquery.dimensions.pack.js', 'jquery');
-
+            
             // Dynamically include the generated static
             // Javascript file if present.
             wp_enqueue_script('daves-wordpress-live-search', plugin_dir_url(__FILE__).'js/daves-wordpress-live-search.js', 'jquery_dimensions');

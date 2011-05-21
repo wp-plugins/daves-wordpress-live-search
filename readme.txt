@@ -61,6 +61,7 @@ Features I want to implement in future releases:
 * 2011-??-?? Dave Ross <dave@csixty4.com>
 * Major code cleanup & streamlining
 * Added z-index:999999 to all the default CSS files
+* Removed jQuery Dimensions plugin. It's in jQuery core > 1.2.6 & recent WP releases include jQuery 1.4
 
 = 2.0.2 =
 * 2011-03-09 Dave Ross <dave@csixty4.com>
