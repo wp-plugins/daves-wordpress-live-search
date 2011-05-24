@@ -62,7 +62,7 @@ class DavesWordPressLiveSearchResults {
 			}
 		}
 	
-        $posts = $wpQueryResults->query(array(
+        $wpQueryResults->query(array(
           's' => $_GET['s'],
           'showposts' => $maxResults,
           'post_type' => 'any',
@@ -83,8 +83,8 @@ class DavesWordPressLiveSearchResults {
 			$wpQueryResults->posts = array_slice($wpQueryResults->posts, 0, $maxResults);
 		}
 		
-		//foreach($wpQueryResults->posts as $result)
-		foreach($posts as $result)
+		foreach($wpQueryResults->posts as $result)
+		//foreach($posts as $result)
 		{
 			// Add author names & permalinks
 			if($displayPostMeta)
