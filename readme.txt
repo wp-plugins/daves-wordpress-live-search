@@ -57,6 +57,11 @@ Features I want to implement in future releases:
 
 == Changelog ==
 
+= 2.2 =
+* 2011-07-?? Dave Ross <dave@csixty4.com>
+* Fix for Relevanssi issue
+* Passing correct $capability string to admin_menu() - thanks lag47!
+
 = 2.1 =
 * 2011-05-20 Dave Ross <dave@csixty4.com>
 * Major code cleanup & streamlining
