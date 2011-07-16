@@ -46,8 +46,8 @@ class DavesWordPressLiveSearchResults {
 		
 		// Some other plugin threw a fit once if I didn't instantiate
 		// WP_Query once to initialize everything and then call it
-		// for real. I think there's a comment about it in an old
-		// version of DWLS.
+		// for real. MIght have been "Search Everything". I think there's
+		// a comment about it in an old version of DWLS.
 		$wp_query = $wpQueryResults = new WP_Query();
         $wp_query = $wpQueryResults = new WP_Query();
                      
