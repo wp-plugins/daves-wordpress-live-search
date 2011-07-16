@@ -78,7 +78,7 @@ if ( function_exists('wp_nonce_field') )
 
 <td>
     <input type="hidden" name="daves-wordpress-live-search_excerpt" value="" />
-    <input type="checkbox" name="daves-wordpress-live-search_excerpt" id="daves-wordpress-live-search_excerpt" value="true" <?php if($showExcerpt): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_excerpt">Display an excerpt for every search result. If the post doesn't have one, the first 100 characters are used.</label>
+    <input type="checkbox" name="daves-wordpress-live-search_excerpt" id="daves-wordpress-live-search_excerpt" value="true" <?php if($showExcerpt): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_excerpt">Display an excerpt for every search result. If the post doesn't have one, use the first <input type="text" name="daves-wordpress-live-search_excerpt_length" id="daves-wordpress-live-search_excerpt_length" value="<?php echo $excerptLength; ?>" size="3" /> characters.</label>
 </td> 
 </tr>
 

@@ -183,6 +183,7 @@ SM;
             $cssOption = $_POST['daves-wordpress-live-search_css'];
             $showThumbs = $_POST['daves-wordpress-live-search_thumbs'];
             $showExcerpt = $_POST['daves-wordpress-live-search_excerpt'];
+            $excerptLength = $_POST['daves-wordpress-live-search_excerpt_length'];
             $minCharsToSearch = intval($_POST['daves-wordpress-live-search_minchars']);
             $searchSource = intval($_POST['daves-wordpress-live-search_source']);
 
@@ -193,6 +194,7 @@ SM;
             update_option('daves-wordpress-live-search_css_option', $cssOption);
             update_option('daves-wordpress-live-search_thumbs', $showThumbs);
             update_option('daves-wordpress-live-search_excerpt', $showExcerpt);
+            update_option('daves-wordpress-live-search_excerpt_length', $excerptLength);
             update_option('daves-wordpress-live-search_minchars', $minCharsToSearch);
             update_option('daves-wordpress-live-search_source', $searchSource);
 
@@ -208,12 +210,17 @@ SM;
             $cssOption = get_option('daves-wordpress-live-search_css_option');
             $showThumbs = (bool) get_option('daves-wordpress-live-search_thumbs');
             $showExcerpt = (bool) get_option('daves-wordpress-live-search_excerpt');
+            $excerptLength = intval(get_option('daves-wordpress-live-search_excerpt_length'));
             $minCharsToSearch = intval(get_option('daves-wordpress-live-search_minchars'));
             $searchSource = intval(get_option('daves-wordpress-live-search_source'));
         }
 
+		// Set defaults
+		
         if (!in_array($resultsDirection, array('up', 'down')))
+        {
             $resultsDirection = 'down';
+        }
 
         $cssOptionWhitelist = array('theme', 'default_red', 'default_blue', 'notheme', 'default_gray');
         if(in_array($cssOption, $cssOptionWhitelist)) {
@@ -221,6 +228,10 @@ SM;
         }
         else {
             $css = 'default_gray';
+        }
+        
+        if(0 == $excerptLength) {
+        	$excerptLength = 100;
         }
 
         include("$thisPluginsDirectory/admin/daves-wordpress-live-search-admin.tpl");

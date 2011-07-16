@@ -217,9 +217,20 @@ class DavesWordPressLiveSearchResults {
         }
 
 	private function excerpt($result) {
+		
+		static $excerptLength = null;
+		// Only grab this value once
+		if(null == $excerptLength) {
+			$excerptLength = intval(get_option('daves-wordpress-live-search_excerpt_length'));
+		}
+		// Default value
+		if(0 == $excerptLength) {
+			$excerptLength = 100;
+		}
+		
 		if (empty($result->post_excerpt)) {
 			 $content = apply_filters("localization", $result->post_content);
-			 $excerpt = explode(" ",strrev(substr(strip_tags($content), 0, 100)),2);
+			 $excerpt = explode(" ",strrev(substr(strip_tags($content), 0, $excerptLength)),2);
 			 $excerpt = strrev($excerpt[1]);
 			 $excerpt .= " [...]";
 		}
