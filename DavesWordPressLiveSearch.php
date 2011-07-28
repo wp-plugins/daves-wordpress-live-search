@@ -91,6 +91,7 @@ class DavesWordPressLiveSearch {
         $resultsDirection = stripslashes(get_option('daves-wordpress-live-search_results_direction'));
         $showThumbs = intval(("true" == get_option('daves-wordpress-live-search_thumbs')));
         $showExcerpt = intval(("true" == get_option('daves-wordpress-live-search_excerpt')));
+        $showMoreResultsLink = intval(("true" == get_option('daves-wordpress-live-search_more_results', true)));
         $minCharsToSearch = intval(get_option('daves-wordpress-live-search_minchars'));
         $xOffset = intval(get_option('daves-wordpress-live-search_xoffset'));
 
@@ -128,6 +129,7 @@ class DavesWordPressLiveSearch {
             resultsDirection : '{$resultsDirection}',
             showThumbs : ($showThumbs == 1),
             showExcerpt : ($showExcerpt == 1),
+            showMoreResultsLink : ($showMoreResultsLink == 1),
             minCharsToSearch : {$minCharsToSearch},        
             xOffset : {$xOffset},
         
@@ -184,6 +186,7 @@ SM;
             $showThumbs = $_POST['daves-wordpress-live-search_thumbs'];
             $showExcerpt = $_POST['daves-wordpress-live-search_excerpt'];
             $excerptLength = $_POST['daves-wordpress-live-search_excerpt_length'];
+            $showMoreResultsLink = $_POST['daves-wordpress-live-search_more_results'];
             $minCharsToSearch = intval($_POST['daves-wordpress-live-search_minchars']);
             $searchSource = intval($_POST['daves-wordpress-live-search_source']);
 
@@ -195,6 +198,7 @@ SM;
             update_option('daves-wordpress-live-search_thumbs', $showThumbs);
             update_option('daves-wordpress-live-search_excerpt', $showExcerpt);
             update_option('daves-wordpress-live-search_excerpt_length', $excerptLength);
+            update_option('daves-wordpress-live-search_more_results', $showMoreResultsLink);
             update_option('daves-wordpress-live-search_minchars', $minCharsToSearch);
             update_option('daves-wordpress-live-search_source', $searchSource);
 
@@ -211,6 +215,7 @@ SM;
             $showThumbs = (bool) get_option('daves-wordpress-live-search_thumbs');
             $showExcerpt = (bool) get_option('daves-wordpress-live-search_excerpt');
             $excerptLength = intval(get_option('daves-wordpress-live-search_excerpt_length'));
+            $showMoreResultsLink = intval(get_option('daves-wordpress-live-search_more_results', true));
             $minCharsToSearch = intval(get_option('daves-wordpress-live-search_minchars'));
             $searchSource = intval(get_option('daves-wordpress-live-search_source'));
         }

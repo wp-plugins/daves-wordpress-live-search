@@ -82,6 +82,16 @@ if ( function_exists('wp_nonce_field') )
 </td> 
 </tr>
 
+<!-- Display 'more results' -->
+<tr valign="top">
+<th scope="row">Display &quot;View more results&quot; link</th>
+
+<td>
+    <input type="hidden" name="daves-wordpress-live-search_more_results" value="" />
+    <input type="checkbox" name="daves-wordpress-live-search_more_results" id="daves-wordpress-live-search_more_results" value="true" <?php if($showMoreResultsLink): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_more_results">Display the &quot;View more results&quot; link after the search results.</label>
+</td> 
+</tr>
+
 <!-- CSS styles -->
 <tr valign="top">
 <td colspan="2"><h3>Styles</h3></td>

@@ -165,7 +165,7 @@ LiveSearch.handleAJAXResults = function(e) {
                         }
                 }
 
-				if(searchResult.show_more != undefined && searchResult.show_more) {
+				if(searchResult.show_more != undefined && searchResult.show_more && DavesWordPressLiveSearchConfig.showMoreResultsLink) {
 	                // "more" link
 	                searchResultsList.append('<div class="clearfix search_footer"><a href="' + DavesWordPressLiveSearchConfig.blogURL + '/?s=' + resultsSearchTerm + '">View more results</a></div>');
 				}
