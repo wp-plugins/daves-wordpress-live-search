@@ -70,18 +70,8 @@ class DavesWordPressLiveSearchResults {
         ));
         
         $this->searchTerms = $wpQueryResults->query_vars['s'];
-                  
-		if(function_exists(relevanssi_do_query)) {
-			// WP_Query::query() set everything up
-			// Now have Relevanssi do the query over again
-			// but do it in its own way
-			// Thanks Mikko!
-			relevanssi_do_query($wpQueryResults);  
-			
-			// Mikko says Relevanssi 2.5 doesn't handle limits
-			// when it queries, so I need to handle them on my own.
-			$wpQueryResults->posts = array_slice($wpQueryResults->posts, 0, $maxResults);
-		}
+        
+        $wpQueryResults = apply_filters('dwls_alter_results', $wpQueryResults, $maxResults);
 		
 		foreach($wpQueryResults->posts as $result)
 		//foreach($posts as $result)

@@ -45,6 +45,8 @@ class DavesWordPressLiveSearch {
                 update_option('daves-wordpress-live-search_source', 0);
             }
         }
+        
+        load_plugin_textdomain('dwls', false, dirname( plugin_basename( __FILE__ ) ) );
     }
 
     public static function head() {
@@ -122,6 +124,10 @@ class DavesWordPressLiveSearch {
         $indicatorWidth = getimagesize(dirname(__FILE__) . "/indicator.gif");
         $indicatorWidth = $indicatorWidth[0];
 
+		// Translations
+		$moreResultsText = __( 'View more results', 'dwls' );
+		$outdatedJQueryText = __( "Dave's WordPress Live Search requires jQuery 1.2.6 or higher. WordPress ships with current jQuery versions. But if you are seeing this message, it's likely that another plugin is including an earlier version.", 'dwls' );
+		
         $scriptMarkup = <<<SM
 
 	    <script type="text/javascript">
@@ -135,7 +141,10 @@ class DavesWordPressLiveSearch {
         
             blogURL : '{$blogURL}',
             indicatorURL : '{$indicatorURL}',
-            indicatorWidth : {$indicatorWidth}
+            indicatorWidth : {$indicatorWidth},
+            
+            viewMoreText : "{$moreResultsText}",
+            outdatedJQuery : "{$outdatedJQueryText}"
 	    };
         </script>      	
 SM;
@@ -338,7 +347,7 @@ SM;
 
             // Make sure there's a daves-wordpress-live-search.css file in the theme
             if (!file_exists($themeDir . "/daves-wordpress-live-search.css")) {
-                $alertMessage = __("The <em>Dave's WordPress Live Search</em> plugin is configured to use a theme-specific CSS file, but the current theme does not contain a daves-wordpress-live-search.css file.");
+                $alertMessage = sprintf(__("The %sDave's WordPress Live Search%s plugin is configured to use a theme-specific CSS file, but the current theme does not contain a daves-wordpress-live-search.css file."), '<em>', '</em>');
                 echo "<div class=\"updated fade\"><p><strong>$alertMessage</strong></p></div>";
             }
         }

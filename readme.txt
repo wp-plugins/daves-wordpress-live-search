@@ -20,7 +20,7 @@ This plugin is compatible with the [xLanguage](http://wordpress.org/extend/plugi
 
 This plugin can recognize when it's being used with [WP e-Commerce](http://getshopped.org/) and offer an option to search store products instead of posts/pages.
 
-It also works with the [Relevanssi](http://wordpress.org/extend/plugins/relevanssi/) plugin which enhances search results.
+Integration with the Relevanssi (http://wordpress.org/extend/plugins/relevanssi/) plugin is provided by the DWLS Relevanssi Bridge plugin
 
 NOTE: Dave's WordPress Live Search requires PHP 5.0 or higher.
 
@@ -56,6 +56,10 @@ Features I want to implement in future releases:
 1. Internationalization
 
 == Changelog ==
+
+= 2.3 =
+* 2011-??-?? Dave Ross <dave@csixty4.com>
+* Moved Relevanssi integration into a separate plugin to couple more loosely
 
 = 2.2 =
 * 2011-07-27 Dave Ross <dave@csixty4.com>

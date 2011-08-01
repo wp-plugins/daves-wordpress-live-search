@@ -43,7 +43,7 @@ LiveSearch.init = function() {
 	LiveSearch.searchBoxes.keyup(LiveSearch.handleKeypress);
 
 	if(!LiveSearch.searchBoxes.outerHeight) {
-		alert("Dave's WordPress Live Search requires jQuery 1.2.6 or higher. WordPress ships with current jQuery versions. But if you are seeing this message, it's likely that another plugin is including an earlier version.");
+		alert(DavesWordPressLiveSearchConfig.outdatedJQuery);
 	}
 	
 	// Prevent browsers from doing autocomplete on the search field
@@ -167,7 +167,7 @@ LiveSearch.handleAJAXResults = function(e) {
 
 				if(searchResult.show_more != undefined && searchResult.show_more && DavesWordPressLiveSearchConfig.showMoreResultsLink) {
 	                // "more" link
-	                searchResultsList.append('<div class="clearfix search_footer"><a href="' + DavesWordPressLiveSearchConfig.blogURL + '/?s=' + resultsSearchTerm + '">View more results</a></div>');
+	                searchResultsList.append('<div class="clearfix search_footer"><a href="' + DavesWordPressLiveSearchConfig.blogURL + '/?s=' + resultsSearchTerm + '">' + DavesWordPressLiveSearchConfig.viewMoreText + '</a></div>');
 				}
 
                 // Show the search results

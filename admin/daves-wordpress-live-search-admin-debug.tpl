@@ -7,11 +7,11 @@ padding-bottom: 0px;
 </style>
 
 <div class="wrap">
-<h2>Dave's WordPress Live Search Options</h2>
+<h2><?php _e("Dave's WordPress Live Search Options", 'dwls'); ?></h2>
 <h2>
-<a href="<?php echo $_SERVER['REQUEST_URI']."&tab=settings"; ?>" class="nav-tab">Settings</a>
-<a href="<?php echo $_SERVER['REQUEST_URI']."&tab=advanced"; ?>" class="nav-tab">Advanced</a>
-<?php if($enableDebugger) : ?><a href="<?php echo $_SERVER['REQUEST_URI']."&tab=debug"; ?>" class="nav-tab nav-tab-active">Debug</a><?php endif; ?>
+<a href="<?php echo $_SERVER['REQUEST_URI']."&tab=settings"; ?>" class="nav-tab"><?php _e("Settings", 'dwls'); ?></a>
+<a href="<?php echo $_SERVER['REQUEST_URI']."&tab=advanced"; ?>" class="nav-tab"><?php _e("Advanced", 'dwls'); ?></a>
+<?php if($enableDebugger) : ?><a href="<?php echo $_SERVER['REQUEST_URI']."&tab=debug"; ?>" class="nav-tab nav-tab-active"><?php _e("Debug", 'dwls'); ?></a><?php endif; ?>
 </h2>
 
 <!-- Debugger Body -->
@@ -19,5 +19,5 @@ padding-bottom: 0px;
 
 <!-- Note -->
 
-<p>Do you find this plugin useful? Consider a donation to <a href="http://catguardians.org">Cat Guardians</a>, a wonderful no-kill shelter where I volunteer.</p>
+<p><?php printf(__("Do you find this plugin useful? Consider a donation to %sCat Guardians%s, a wonderful no-kill shelter where I volunteer.", 'dwls'), '<a href="http://catguardians.org">', '</a>'); ?></p>
 </div>
