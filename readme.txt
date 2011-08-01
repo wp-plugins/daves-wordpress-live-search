@@ -53,13 +53,13 @@ Features I want to implement in future releases:
 
 1. Modify the CSS directly on the admin screen (so it's not tied to a theme).
 1. "No results found" message (optional)
-1. Internationalization
 
 == Changelog ==
 
 = 2.3 =
 * 2011-??-?? Dave Ross <dave@csixty4.com>
 * Moved Relevanssi integration into a separate plugin to couple more loosely
+* i18n for admin screens and user-facing text
 
 = 2.2 =
 * 2011-07-27 Dave Ross <dave@csixty4.com>
