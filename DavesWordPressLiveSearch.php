@@ -46,7 +46,7 @@ class DavesWordPressLiveSearch {
             }
         }
         
-        load_plugin_textdomain('dwls', false, dirname( plugin_basename( __FILE__ ) ) );
+        load_plugin_textdomain('dwls', false, dirname( plugin_basename( __FILE__ ) . '/languages/' ) );
     }
 
     public static function head() {
