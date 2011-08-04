@@ -3,7 +3,7 @@
 /*
 Plugin Name: Dave's WordPress Live Search
 Description: Adds "live search" functionality to your WordPress site. Uses the built-in search and jQuery.
-Version: 2.2
+Version: 2.3
 Author: Dave Ross
 Author URI: http://davidmichaelross.com/
 Plugin URI: http://wordpress.org/extend/plugins/daves-wordpress-live-search/
@@ -66,6 +66,7 @@ class DWLS_Relevanssi_Bridge {
 		// but do it in its own way
 		// Thanks Mikko!
 		relevanssi_do_query($wpQueryResults);
+		$wpQueryResults->relevanssi = true;
 				
 		// Mikko says Relevanssi 2.5 doesn't handle limits
 		// when it queries, so I need to handle them on my own.
