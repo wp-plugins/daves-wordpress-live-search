@@ -52,34 +52,26 @@ if(!function_exists('json_encode')) {
     require(ABSPATH."/wp-includes/compat.php");
 }
 
-/**
- * Test if a plugin is active, even if it hasn't been loaded yet
- * @param string $name path & filename of the plugin's main file
- * @return boolean
- */
-function dwls_plugin_active($name) {
-	$plugins = get_option('active_plugins');
-	return in_array($name, $plugins );
-}
-
 // Relevanssi "bridge" plugin
-
-if(dwls_plugin_active("relevanssi/relevanssi.php")) {
-	add_filter('dwls_alter_results', array('DWLS_Relevanssi_Bridge', 'dwls_alter_results'), 10, 2);
-
-	class DWLS_Relevanssi_Bridge {
-		function dwls_alter_results($wpQueryResults, $maxResults) {
-			// WP_Query::query() set everything up
-			// Now have Relevanssi do the query over again
-			// but do it in its own way
-			// Thanks Mikko!
-			relevanssi_do_query($wpQueryResults);
-				
-			// Mikko says Relevanssi 2.5 doesn't handle limits
-			// when it queries, so I need to handle them on my own.
-			$wpQueryResults->posts = array_slice($wpQueryResults->posts, 0, $maxResults);
-		
-			return $wpQueryResults;
+class DWLS_Relevanssi_Bridge {
+	function init() {
+		if(function_exists('relevanssi_do_query')) {
+			add_filter('dwls_alter_results', array('DWLS_Relevanssi_Bridge', 'dwls_alter_results'), 10, 2);
 		}
 	}
+	
+	function dwls_alter_results($wpQueryResults, $maxResults) {
+		// WP_Query::query() set everything up
+		// Now have Relevanssi do the query over again
+		// but do it in its own way
+		// Thanks Mikko!
+		relevanssi_do_query($wpQueryResults);
+				
+		// Mikko says Relevanssi 2.5 doesn't handle limits
+		// when it queries, so I need to handle them on my own.
+		$wpQueryResults->posts = array_slice($wpQueryResults->posts, 0, $maxResults);
+		
+		return $wpQueryResults;
+	}
 }
+add_action('init', array('DWLS_Relevanssi_Bridge', 'init'));
