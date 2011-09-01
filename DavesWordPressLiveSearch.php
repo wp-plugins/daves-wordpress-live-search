@@ -120,14 +120,18 @@ class DavesWordPressLiveSearch {
             $blogURL = get_bloginfo('url');
         }
 
+        // If $blogURL has a query string (WPML), split that off into
+        // its own config property
+        list($blogURL, $blogURLQuery) = explode('?', $blogURL, 2);
+
         $indicatorURL = plugin_dir_url(__FILE__).'indicator.gif';
         $indicatorWidth = getimagesize(dirname(__FILE__) . "/indicator.gif");
         $indicatorWidth = $indicatorWidth[0];
 
-		// Translations
-		$moreResultsText = __( 'View more results', 'dwls' );
-		$outdatedJQueryText = __( "Dave's WordPress Live Search requires jQuery 1.2.6 or higher. WordPress ships with current jQuery versions. But if you are seeing this message, it's likely that another plugin is including an earlier version.", 'dwls' );
-		
+        // Translations
+        $moreResultsText = __( 'View more results', 'dwls' );
+        $outdatedJQueryText = __( "Dave's WordPress Live Search requires jQuery 1.2.6 or higher. WordPress ships with current jQuery versions. But if you are seeing this message, it's likely that another plugin is including an earlier version.", 'dwls' );
+
         $scriptMarkup = <<<SM
 
 	    <script type="text/javascript">
@@ -140,6 +144,7 @@ class DavesWordPressLiveSearch {
             xOffset : {$xOffset},
         
             blogURL : '{$blogURL}',
+            blogURLQuery : '{$blogURLQuery}',
             indicatorURL : '{$indicatorURL}',
             indicatorWidth : {$indicatorWidth},
             
