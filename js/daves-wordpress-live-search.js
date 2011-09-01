@@ -135,7 +135,7 @@ LiveSearch.handleAJAXResults = function(e) {
                                 var renderedResult = '';
 
                                 // Thumbnails
-                                if(DavesWordPressLiveSearchConfig.showThumbs && searchResult.attachment_thumbnail) {
+                                if(DavesWordPressLiveSearchConfig.showThumbs == "true" && searchResult.attachment_thumbnail) {
                                         var liClass = "post_with_thumb";
                                 }
                                 else {
@@ -145,7 +145,7 @@ LiveSearch.handleAJAXResults = function(e) {
                                 renderedResult += '<li class="' + liClass + '">';
 
                                 // Render thumbnail
-                                if(DavesWordPressLiveSearchConfig.showThumbs && searchResult.attachment_thumbnail) {
+                                if(DavesWordPressLiveSearchConfig.showThumbs == "true" && searchResult.attachment_thumbnail) {
                                         renderedResult += '<img src="' + searchResult.attachment_thumbnail + '" class="post_thumb" />';
                                 }
 
@@ -153,7 +153,7 @@ LiveSearch.handleAJAXResults = function(e) {
 
                                 if(searchResult.post_price != undefined) { renderedResult += '<p class="price">' + searchResult.post_price + '</p>'; }
                                 
-                                if(DavesWordPressLiveSearchConfig.showExcerpt && searchResult.post_excerpt) {
+                                if(DavesWordPressLiveSearchConfig.showExcerpt == "true" && searchResult.post_excerpt) {
                                         renderedResult += '<p class="excerpt clearfix">' + searchResult.post_excerpt + '</p>';
                                 }
 
@@ -165,7 +165,7 @@ LiveSearch.handleAJAXResults = function(e) {
                         }
                 }
 
-				if(searchResult.show_more != undefined && searchResult.show_more && DavesWordPressLiveSearchConfig.showMoreResultsLink) {
+				if(searchResult.show_more != undefined && searchResult.show_more && DavesWordPressLiveSearchConfig.showMoreResultsLink == "true") {
 	                // "more" link
 	                searchResultsList.append('<div class="clearfix search_footer"><a href="' + DavesWordPressLiveSearchConfig.blogURL + '/?s=' + resultsSearchTerm + '">' + DavesWordPressLiveSearchConfig.viewMoreText + '</a></div>');
 				}
