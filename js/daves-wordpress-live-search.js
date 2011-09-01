@@ -219,6 +219,10 @@ LiveSearch.runQuery = function(terms) {
 		if(searchSource != undefined) {
 		  parameters.search_source = searchSource;
 		}
+		var lang = jQuery("input").filter("[name='lang']").val();
+		if(lang != undefined) {
+		  parameters.lang = lang;
+		}
         
 		// For wp_ajax
 		parameters.action = "dwls_search";
