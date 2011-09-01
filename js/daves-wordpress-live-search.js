@@ -225,19 +225,7 @@ LiveSearch.runQuery = function(terms) {
                 // For wp_ajax
 		parameters.action = "dwls_search";
 		
-		var ajaxURL = DavesWordPressLiveSearchConfig.blogURL + "/wp-admin/admin-ajax.php";
-
-                // Parse out the query parameters and add them to the "parameters" object
-                // This is pretty much just for WPML compatibility
-                if(DavesWordPressLiveSearchConfig.blogURLQuery != "") {
-                  var blogURLQueryParams = DavesWordPressLiveSearchConfig.blogURLQuery.split("&");
-                  for(var index in blogURLQueryParams) {
-                    var queryParam = blogURLQueryParams[index].split('=');
-                    parameters[queryParam[0]] = queryParam[1];
-                  }
-                }
-
-		var req = jQuery.get( ajaxURL, parameters, LiveSearch.handleAJAXResults, "json");
+		var req = jQuery.get( DavesWordPressLiveSearchConfig.ajaxURL, parameters, LiveSearch.handleAJAXResults, "json");
 		
 		// Add this request to the queue
 		LiveSearch.activeRequests.push(req);

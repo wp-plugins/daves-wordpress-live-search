@@ -94,33 +94,6 @@ class DavesWordPressLiveSearch {
         $minCharsToSearch = intval(get_option('daves-wordpress-live-search_minchars'));
         $xOffset = intval(get_option('daves-wordpress-live-search_xoffset'));
 
-        if (/* defined('WPS_VERSION') && */ isset($wps_subdomains)) {
-            // WP Subdomains is enabled
-            // See if we're on a subdomain
-            $subdomain = $wps_subdomains->getThisSubdomain();
-        } else {
-            $subdomain = FALSE;
-        }
-
-        if ($subdomain) {
-
-            $blogURL = $subdomain->getSubdomainLink();
-
-            // Remove trailing slash
-            $blogURL = rtrim($blogURL, "/");
-
-            if (80 != $_SERVER['SERVER_PORT']) {
-                $blogURL .= ":" . $_SERVER['SERVER_PORT'];
-            }
-        } else {
-            // Normal
-            $blogURL = get_bloginfo('url');
-        }
-
-        // If $blogURL has a query string (WPML), split that off into
-        // its own config property
-        list($blogURL, $blogURLQuery) = explode('?', $blogURL, 2);
-
         $indicatorURL = plugin_dir_url(__FILE__).'indicator.gif';
         $indicatorWidth = getimagesize(dirname(__FILE__) . "/indicator.gif");
         $indicatorWidth = $indicatorWidth[0];
@@ -140,9 +113,9 @@ class DavesWordPressLiveSearch {
             'showMoreResultsLink' => ($showMoreResultsLink == 1) ? 'true' : 'false',
             'minCharsToSearch' => $minCharsToSearch,        
             'xOffset' => $xOffset,
-        
-            'blogURL' => $blogURL,
-            'blogURLQuery' => $blogURLQuery,
+
+            'blogURL' => get_bloginfo('url'),
+            'ajaxURL' => admin_url('admin-ajax.php'),
             'indicatorURL' => $indicatorURL,
             'indicatorWidth' => $indicatorWidth,
             
