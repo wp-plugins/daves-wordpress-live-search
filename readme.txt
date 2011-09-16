@@ -4,7 +4,7 @@ Donate link: http://catguardians.org
 Tags: search, AJAX, live search
 Requires at least: 2.9
 Tested up to: 3.2.1
-Stable tag: 2.5
+Stable tag: 2.6
 
 Adds "live search" functionality to your WordPress site. Uses the built-in search and jQuery.
 
@@ -58,7 +58,11 @@ Features I want to implement in future releases:
 
 == Changelog ==
 
-=2.5=
+= 2.6 =
+* 2011-09-15 Dave Ross <dave@csixty4.com>
+* Fix for search results x positioning
+
+= 2.5 =
 * 2011-09-14 Dave Ross <dave@csixty4.com>
 * WPML compatibility (thanks for the license!)
 * Pruned some outdated code
@@ -248,6 +252,9 @@ Features I want to implement in future releases:
 * Initial release
 
 == Upgrade Notice ==
+
+= 2.6 =
+This release fixes the horizontal positioning bug in v2.5.
 
 = 2.5 =
 This plugin is now compatible with the WPML internationalization plugin.
