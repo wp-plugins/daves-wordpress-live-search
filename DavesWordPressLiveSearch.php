@@ -146,7 +146,7 @@ class DavesWordPressLiveSearch {
         $thisPluginsDirectory = dirname(__FILE__);
         $enableDebugger = (bool) get_option('daves-wordpress-live-search_debug');
 
-        if (array_key_exists('daves-wordpress-live-search_submit', $_POST) && "Save Changes" == $_POST['daves-wordpress-live-search_submit'] && current_user_can('manage_options')) {
+        if (array_key_exists('daves-wordpress-live-search_submit', $_POST) && current_user_can('manage_options')) {
             check_admin_referer('daves-wordpress-live-search-config');
 
             // Read their posted value
@@ -175,7 +175,7 @@ class DavesWordPressLiveSearch {
 
             // Translate the "Options saved" message...just in case.
             // You know...the code I was copying for this does it, thought it might be a good idea to leave it
-            $updateMessage = __('Options saved.', 'mt_trans_domain');
+            $updateMessage = __('Options saved.', 'dwls');
 
             echo "<div class=\"updated fade\"><p><strong>$updateMessage</strong></p></div>";
         } else {
@@ -215,7 +215,7 @@ class DavesWordPressLiveSearch {
 
     private static function plugin_options_advanced() {
         $thisPluginsDirectory = dirname(__FILE__);
-        if (array_key_exists('daves-wordpress-live-search_submit', $_POST) && "Save Changes" == $_POST['daves-wordpress-live-search_submit'] && current_user_can('manage_options')) {
+        if (array_key_exists('daves-wordpress-live-search_submit', $_POST) && current_user_can('manage_options')) {
             check_admin_referer('daves-wordpress-live-search-config');
 
             // Read their posted value
@@ -234,7 +234,7 @@ class DavesWordPressLiveSearch {
 
             // Translate the "Options saved" message...just in case.
             // You know...the code I was copying for this does it, thought it might be a good idea to leave it
-            $updateMessage = __('Options saved.', 'mt_trans_domain');
+            $updateMessage = __('Options saved.', 'dwls');
 
             echo "<div class=\"updated fade\"><p><strong>$updateMessage</strong></p></div>";
         } else {
