@@ -3,8 +3,8 @@ Contributors: csixty4
 Donate link: http://catguardians.org
 Tags: search, AJAX, live search
 Requires at least: 2.9
-Tested up to: 3.2.1
-Stable tag: 2.6
+Tested up to: 3.3
+Stable tag: 2.7
 
 Adds "live search" functionality to your WordPress site. Uses the built-in search and jQuery.
 
@@ -57,6 +57,12 @@ Features I want to implement in future releases:
 1. "No results found" message (optional)
 
 == Changelog ==
+
+= 2.7 =
+* 2011-11-10 Dave Ross <dave@csixty4.com>
+* Slovenian (sl_SI) trnaslation
+* Swedish (sv_SE) translation
+* Various i18N fixes now that I have translations to work with
 
 = 2.6 =
 * 2011-09-15 Dave Ross <dave@csixty4.com>
