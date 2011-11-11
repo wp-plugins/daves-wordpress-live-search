@@ -122,7 +122,7 @@ class DavesWordPressLiveSearch {
      * @return void
      */
     public static function admin_menu() {
-    	add_options_page("Dave's WordPress Live Search Options", __('Live Search', 'mt_trans_domain'), 'manage_options', __FILE__, array('DavesWordPressLiveSearch', 'plugin_options'));
+    	add_options_page("Dave's WordPress Live Search Options", __('Live Search', 'dwls'), 'manage_options', __FILE__, array('DavesWordPressLiveSearch', 'plugin_options'));
     }
 
     /**
