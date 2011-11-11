@@ -58,6 +58,10 @@ Features I want to implement in future releases:
 
 == Changelog ==
 
+= 2.8 =
+* 2011-??-?? Dave Ross <dave@csixty4.com>
+* Canvas/VML-based spinner eliminates the need for the transparent .gif
+
 = 2.7 =
 * 2011-11-10 Dave Ross <dave@csixty4.com>
 * Slovenian (sl_SI) trnaslation

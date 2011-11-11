@@ -267,12 +267,15 @@ LiveSearch.showResults = function() {
  * Display the "spinning wheel" AJAX activity indicator
  */
 LiveSearch.displayIndicator = function() {
-	
+
 	if(jQuery("#search_results_activity_indicator").size() === 0) {
 
-		jQuery("body").append('<img id="search_results_activity_indicator" src="' + DavesWordPressLiveSearchConfig.indicatorURL + '" />');
-
 		var searchBoxPosition = LiveSearch.searchBoxes.offset();
+
+		jQuery("body").append('<span id="search_results_activity_indicator"  />');
+
+		var spinnerRadius = {outer: Math.ceil((LiveSearch.searchBoxes.height() * 0.9) / 2)};
+		spinnerRadius.inner = Math.floor(spinnerRadius.outer * 0.29);  // 2:7 (0.29) ratio seems ideal
 
 		jQuery("#search_results_activity_indicator").css('position', 'absolute');
 		
@@ -280,10 +283,20 @@ LiveSearch.displayIndicator = function() {
 		
 		jQuery("#search_results_activity_indicator").css('top', indicatorY);
 
-		var indicatorX = (searchBoxPosition.left + LiveSearch.searchBoxes.outerWidth() - DavesWordPressLiveSearchConfig.indicatorWidth - 2) + 'px';
+		var indicatorX = (searchBoxPosition.left + LiveSearch.searchBoxes.outerWidth() - ((spinnerRadius.outer + spinnerRadius.inner) * 2) - 2)  + 'px';
 						
 		jQuery("#search_results_activity_indicator").css('left', indicatorX);
+		
+		Spinners.create('#search_results_activity_indicator', {
+			radii:     [spinnerRadius.inner, spinnerRadius.outer],
+			color:     '#888888',
+			dashWidth: 4,
+			dashes:    8,
+			opacity:   .8,
+			speed:     .7
+		}).play();
 	}
+
 };
 
 /**

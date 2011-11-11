@@ -30,6 +30,10 @@ class DavesWordPressLiveSearch {
             wp_enqueue_script('jquery');
             
             wp_enqueue_script('daves-wordpress-live-search', plugin_dir_url(__FILE__).'js/daves-wordpress-live-search.js', 'jquery');
+            wp_enqueue_script('excanvas', plugin_dir_url(__FILE__).'js/excanvas.compiled.js', 'jquery');
+
+            wp_enqueue_script('spinners', plugin_dir_url(__FILE__).'js/spinners.min.js', 'explorercanvas');
+
             self::inlineSettings();
         }
         
