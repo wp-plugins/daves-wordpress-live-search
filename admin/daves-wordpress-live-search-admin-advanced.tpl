@@ -45,6 +45,16 @@ if ( function_exists('wp_nonce_field') )
 <input type="text" name="daves-wordpress-live-search_xoffset" id="daves-wordpress-live-search_xoffset" value="<?php echo $xOffset; ?>"</td> 
 </tr>
 
+<!-- Y Offset -->
+<tr valign="top">
+<th scope="row"><?php _e("Search Results box Y offset", 'dwls'); ?></th>
+
+<td>
+<div><span class="setting-description"><?php _e("Use this setting to move the search results box up or down to align exactly with your theme's search field. Value is in pixels. Negative values move the box up, positive values move it down.", 'dwls'); ?></span></div>
+
+<input type="text" name="daves-wordpress-live-search_yoffset" id="daves-wordpress-live-search_yoffset" value="<?php echo $yOffset; ?>"</td> 
+</tr>
+
 <!-- Cache lifetime -->
 <tr valign="top">
 <th scope="row"><?php _e("Cache Lifetime", 'dwls'); ?></th>

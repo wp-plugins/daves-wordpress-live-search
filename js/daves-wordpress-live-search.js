@@ -73,7 +73,9 @@ LiveSearch.positionResults = function() {
 	// Position the ul right under the search box	
 	var searchBoxPosition = LiveSearch.searchBoxes.offset();
 	searchBoxPosition.left += parseInt(DavesWordPressLiveSearchConfig.xOffset, 10);
+	searchBoxPosition.top  += parseInt(DavesWordPressLiveSearchConfig.yOffset, 10);
 	this.resultsElement.css('left', searchBoxPosition.left);
+	this.resultsElement.css('top', searchBoxPosition.top);
 	this.resultsElement.css('display', 'block');
 	
     switch(DavesWordPressLiveSearchConfig.resultsDirection)

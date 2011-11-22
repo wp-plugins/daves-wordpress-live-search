@@ -85,6 +85,7 @@ class DavesWordPressLiveSearch {
         $showMoreResultsLink = intval(("true" == get_option('daves-wordpress-live-search_more_results', true)));
         $minCharsToSearch = intval(get_option('daves-wordpress-live-search_minchars'));
         $xOffset = intval(get_option('daves-wordpress-live-search_xoffset'));
+	$yOffset = intval(get_option('daves-wordpress-live-search_yoffset'));
 
         $indicatorURL = plugin_dir_url(__FILE__).'indicator.gif';
         $indicatorWidth = getimagesize(dirname(__FILE__) . "/indicator.gif");
@@ -105,6 +106,7 @@ class DavesWordPressLiveSearch {
             'showMoreResultsLink' => ($showMoreResultsLink == 1) ? 'true' : 'false',
             'minCharsToSearch' => $minCharsToSearch,        
             'xOffset' => $xOffset,
+	    'yOffset' => $yOffset,
 
             'blogURL' => get_bloginfo('url'),
             'ajaxURL' => admin_url('admin-ajax.php'),
@@ -224,6 +226,7 @@ class DavesWordPressLiveSearch {
 
             // Read their posted value
             $xOffset = intval($_POST['daves-wordpress-live-search_xoffset']);
+	    $yOffset = intval($_POST['daves-wordpress-live-search_yoffset']);
             $exceptions = $_POST['daves-wordpress-live-search_exceptions'];
             $cacheLifetime = $_POST['daves-wordpress-live-search_cache_lifetime'];
             if ("" == trim($cacheLifetime)) {
@@ -233,6 +236,7 @@ class DavesWordPressLiveSearch {
 
             update_option('daves-wordpress-live-search_exceptions', $exceptions);
             update_option('daves-wordpress-live-search_xoffset', intval($xOffset));
+	    update_option('daves-wordpress-live-search_yoffset', intval($yOffset));
             update_option('daves-wordpress-live-search_cache_lifetime', intval($cacheLifetime));
             update_option('daves-wordpress-live-search_debug', $enableDebugger);
 
@@ -252,6 +256,7 @@ class DavesWordPressLiveSearch {
 
             $exceptions = get_option('daves-wordpress-live-search_exceptions');
             $xOffset = intval(get_option('daves-wordpress-live-search_xoffset'));
+            $yOffset = intval(get_option('daves-wordpress-live-search_yoffset'));
             $cacheLifetime = get_option('daves-wordpress-live-search_cache_lifetime');
             if ("" == trim($cacheLifetime)) {
                 $cacheLifetime = 3600;
