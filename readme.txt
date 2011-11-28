@@ -49,6 +49,14 @@ I don't get asked a lot of questions about this plugin, so here's the "known iss
 1. In the HTML, your search box must be named "s". This is the name the standard search widget uses, so this is only an issue for themers who include their own search box.
 1. This plugin will not work on PHP 4.x
 
+== Filters ==
+
+1. dwls_alter_results
+1. dwls_attachment_thumbnail
+1. dwls_the_excerpt
+1. dwls_post_date
+1. dwls_author_name
+
 == Wish List ==
 
 Features I want to implement in future releases:
@@ -61,10 +69,12 @@ Features I want to implement in future releases:
 = 2.8 =
 * 2011-??-?? Dave Ross <dave@csixty4.com>
 * Canvas/VML-based spinner eliminates the need for the transparent .gif
+* Italian (it_IT) translation
+* Filters
 
 = 2.7 =
 * 2011-11-10 Dave Ross <dave@csixty4.com>
-* Slovenian (sl_SI) trnaslation
+* Slovenian (sl_SI) translation
 * Swedish (sv_SE) translation
 * Various i18N fixes now that I have translations to work with
 

@@ -85,8 +85,9 @@ class DavesWordPressLiveSearchResults {
 		//foreach($posts as $result)
 		{
 			// Add author names & permalinks
-			if($displayPostMeta)
+			if($displayPostMeta) {
 				$result->post_author_nicename = $this->authorName($result->post_author);
+			}
 				
 			$result->permalink = get_permalink($result->ID);
 			
@@ -103,9 +104,12 @@ class DavesWordPressLiveSearchResults {
 				$result->attachment_thumbnail = $this->firstImg($content);
 			}
 
+			$result->attachment_thumbnail = apply_filters('dwls_attachment_thumbnail', $result->attachment_thumbnail);
+
 			$result->post_excerpt = $this->excerpt($result);
 			
 			$result->post_date = date_i18n($dateFormat, strtotime($result->post_date));
+			$result->post_date = apply_filters('dwls_post_date', $result->post_date);
 			
 			// We don't want to send all this content to the browser
 			unset($result->post_content);
@@ -113,7 +117,7 @@ class DavesWordPressLiveSearchResults {
 			// xLocalization
 			$result->post_title = apply_filters("localization", $result->post_title); 
 			
-            $result->show_more = true;
+            		$result->show_more = true;
 			
 			$this->results[] = $result;	
 		}
@@ -239,6 +243,7 @@ class DavesWordPressLiveSearchResults {
 		}
 
 		$excerpt = apply_filters('the_excerpt', $excerpt);
+		$excerpt = apply_filters('dwls_the_excerpt', $excerpt);
 		
 		return $excerpt;
 	}
@@ -259,6 +264,8 @@ class DavesWordPressLiveSearchResults {
 			$authorName = $authorData->display_name;
 			$authorCache[$authorID] = $authorName;
 		}
+
+		$authorName = apply_filters('dwls_author_name', $authorName);
 		
 		return $authorName;
 	}
