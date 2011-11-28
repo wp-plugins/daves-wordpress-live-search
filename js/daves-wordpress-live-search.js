@@ -19,12 +19,28 @@
 // LiveSearch
 ///////////////////////
 
-function LiveSearch() {
-	var resultsElement = '';
-	var searchBoxes = '';
-}
+var LiveSearch = {
+	resultsElement : '',
+	searchBoxes : '',
+	activeRequests : [],
+	callbacks : [],
 
-LiveSearch.activeRequests = new Array();
+	addCallback : function(eventName, callback) {
+		if(this.callbacks[eventName] === undefined) {
+			this.callbacks[eventName] = [];
+		}
+
+		return this.callbacks[eventName].push(callback);
+	},
+
+	invokeCallbacks : function(eventName, params) {
+		if(this.callbacks[eventName] !== undefined) {
+			for(callbackIndex in this.callbacks[eventName]) {
+				params = this.callbacks[eventName][callbackIndex](params);
+			}
+		}
+	}
+};
 
 /**
  * Initialization for the live search plugin.
@@ -237,31 +253,39 @@ LiveSearch.runQuery = function(terms) {
 };
 
 LiveSearch.hideResults = function() {
-	switch(DavesWordPressLiveSearchConfig.resultsDirection)
-	{
-		case 'up':
-			jQuery("ul").filter(".search_results:visible").fadeOut();
-			return;
-		case 'down':
-		default:
-			jQuery("ul").filter(".search_results:visible").slideUp();
-			return;
+	var visibleResults = jQuery("ul").filter(".search_results:visible");
+	if(visibleResults.size() > 0) {
+		LiveSearch.invokeCallbacks('BeforeHideResults');
+		switch(DavesWordPressLiveSearchConfig.resultsDirection)
+		{
+			case 'up':
+				visibleResults.fadeOut();
+				break;
+			case 'down':
+			default:
+				visibleResults.slideUp();
+				break;
+		}
+		LiveSearch.invokeCallbacks('AfterHideResults');
 	}
 };
 
 LiveSearch.showResults = function() {
-
-	this.positionResults();
-	
-	switch(DavesWordPressLiveSearchConfig.resultsDirection)
-	{
-		case 'up':
-			jQuery("ul").filter(".search_results:hidden").fadeIn();
-			return;
-		case 'down':
-		default:
-			jQuery("ul").filter(".search_results:hidden").slideDown();	
-			return;
+	var hiddenResults = jQuery("ul").filter(".search_results:hidden");
+	if(hiddenResults.size() > 0) {
+		LiveSearch.invokeCallbacks('BeforeShowResults');
+		this.positionResults();
+		switch(DavesWordPressLiveSearchConfig.resultsDirection)
+		{
+			case 'up':
+				jQuery("ul").filter(".search_results:hidden").fadeIn();
+				break;
+			case 'down':
+			default:
+				jQuery("ul").filter(".search_results:hidden").slideDown();	
+				break;
+		}
+		LiveSearch.invokeCallbacks('AfterShowResults');
 	}
 };
 
@@ -315,3 +339,4 @@ LiveSearch.removeIndicator = function() {
 jQuery(function() {
 	LiveSearch.init();
 });
+
