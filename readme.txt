@@ -53,6 +53,7 @@ I don't get asked a lot of questions about this plugin, so here's the "known iss
 
 1. dwls_alter_results
 1. dwls_attachment_thumbnail
+1. dwls_post_title
 1. dwls_the_excerpt
 1. dwls_post_date
 1. dwls_author_name

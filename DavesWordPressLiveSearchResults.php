@@ -116,6 +116,8 @@ class DavesWordPressLiveSearchResults {
 
 			// xLocalization
 			$result->post_title = apply_filters("localization", $result->post_title); 
+
+			$result->post_title = apply_filters('dwls_post_title', $result->post_title);
 			
             		$result->show_more = true;
 			
