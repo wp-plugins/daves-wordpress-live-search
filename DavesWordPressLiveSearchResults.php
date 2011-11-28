@@ -237,6 +237,8 @@ class DavesWordPressLiveSearchResults {
 		else {
 			$excerpt = apply_filters("localization", $result->post_excerpt);
 		}
+
+		$excerpt = apply_filters('the_excerpt', $excerpt);
 		
 		return $excerpt;
 	}
