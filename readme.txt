@@ -69,6 +69,7 @@ Features I want to implement in future releases:
 
 = 2.8 =
 * 2011-??-?? Dave Ross <dave@csixty4.com>
+* Improved method of getting the first thumbnail
 * Canvas/VML-based spinner eliminates the need for the transparent .gif
 * Italian (it_IT) translation
 * Added hooks & filters for people to plug into DWLS
