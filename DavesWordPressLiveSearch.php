@@ -322,6 +322,8 @@ class DavesWordPressLiveSearch {
         $regexp = '';
       }
 
+      $regexp = str_replace('?', '\?', $regexp);
+
       // These checks can probably be turned into regexps themselves,
       // but it's too early in the morning to be writing regexps
       if ('*' == substr($regexp, 0, 1)) {

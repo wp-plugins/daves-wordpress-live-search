@@ -71,7 +71,8 @@ Features I want to implement in future releases:
 * 2011-??-?? Dave Ross <dave@csixty4.com>
 * Canvas/VML-based spinner eliminates the need for the transparent .gif
 * Italian (it_IT) translation
-* Filters
+* Added hooks & filters for people to plug into DWLS
+* Fixed regex parsing issue when permalinks aren't enabled
 
 = 2.7 =
 * 2011-11-10 Dave Ross <dave@csixty4.com>
