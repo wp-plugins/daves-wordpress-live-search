@@ -89,10 +89,18 @@ class DavesWordPressLiveSearchResults {
 
       $result->permalink = get_permalink($result->ID);
 
-      if (function_exists('get_post_image_id')) {
+      if (function_exists('get_post_thumbnail_id')) {
         // Support for WP 2.9 post thumbnails
-        $postImageID = get_post_image_id($result->ID);
+        $postImageID = get_post_thumbnail_id($result->ID);
         $postImageData = wp_get_attachment_image_src($postImageID, apply_filters('post_image_size', 'thumbnail'));
+	    $hasThumbnailSet = ($postImageData !== false);
+      }
+      else {
+      	// No support for post thumbnails
+        $hasThumbnailSet = false;
+      }
+
+      if($hasThumbnailSet) {
         $result->attachment_thumbnail = $postImageData[0];
       } else {
         // If no post thumbnail, grab the first image from the post
