@@ -72,6 +72,7 @@ Features I want to implement in future releases:
 * Improved method of getting the first thumbnail
 * Canvas/VML-based spinner eliminates the need for the transparent .gif
 * Italian (it_IT) translation
+* Spanish (es_ES) translation
 * Added hooks & filters for people to plug into DWLS
 * Fixed regex parsing issue when permalinks aren't enabled
 
