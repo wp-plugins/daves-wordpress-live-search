@@ -108,7 +108,7 @@ class DavesWordPressLiveSearch {
         'xOffset' => $xOffset,
         'yOffset' => $yOffset,
         'blogURL' => get_bloginfo('url'),
-        'ajaxURL' => admin_url('admin-ajax.php'),
+        'ajaxURL' => admin_url('admin-ajax.php', is_ssl()),
         'indicatorURL' => $indicatorURL,
         'indicatorWidth' => $indicatorWidth,
         'viewMoreText' => $moreResultsText,
