@@ -230,19 +230,13 @@ LiveSearch.runQuery = function(terms) {
 			req.abort();
 		}
 		// do AJAX query
-		var parameters = {s: terms};
-		var searchSource = jQuery("input").filter("[name='search_source']").val();
-		if(searchSource != undefined) {
-		  parameters.search_source = searchSource;
-		}
-		var lang = jQuery("input").filter("[name='lang']").val();
-		if(lang != undefined) {
-		  parameters.lang = lang;
-		}
-        
+		var parameters = {};
+		searchBox.parents('form').find('input:not(:submit),select,textarea').each(function() {
+			parameters[this.name] = jQuery(this).val();
+		});
+     
 		// For wp_ajax
 		parameters.action = "dwls_search";
-		
 		var req = jQuery.get( DavesWordPressLiveSearchConfig.ajaxURL, parameters, LiveSearch.handleAJAXResults, "json");
 		
 		// Add this request to the queue
