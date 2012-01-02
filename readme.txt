@@ -75,6 +75,7 @@ Features I want to implement in future releases:
 * Spanish (es_ES) translation
 * Added hooks & filters for people to plug into DWLS
 * Fixed regex parsing issue when permalinks aren't enabled
+* Support for multiple search boxes (finally!)
 
 = 2.7 =
 * 2011-11-10 Dave Ross <dave@csixty4.com>

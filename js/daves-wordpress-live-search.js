@@ -57,6 +57,7 @@ LiveSearch.init = function() {
 	// and that's kind of important.
 	LiveSearch.searchBoxes = jQuery("input").filter("[name='s']");
 	LiveSearch.searchBoxes.keyup(LiveSearch.handleKeypress);
+	LiveSearch.searchBoxes.focus(LiveSearch.hideResults);
 
 	if(!LiveSearch.searchBoxes.outerHeight) {
 		alert(DavesWordPressLiveSearchConfig.outdatedJQuery);
@@ -81,13 +82,10 @@ LiveSearch.init = function() {
 
 LiveSearch.positionResults = function() {
 	
-	// Look for the search box. Exit if there isn't one.
-	if(LiveSearch.searchBoxes.size() === 0) {
-		return false;
-	}
-		
+	var searchBox = jQuery('input:focus');
+
 	// Position the ul right under the search box	
-	var searchBoxPosition = LiveSearch.searchBoxes.offset();
+	var searchBoxPosition = searchBox.offset();
 	searchBoxPosition.left += parseInt(DavesWordPressLiveSearchConfig.xOffset, 10);
 	searchBoxPosition.top  += parseInt(DavesWordPressLiveSearchConfig.yOffset, 10);
 	this.resultsElement.css('left', searchBoxPosition.left);
@@ -214,8 +212,8 @@ LiveSearch.handleKeypress = function(e) {
  * if the search box is empty.
  */
 LiveSearch.runQuery = function(terms) {
-	
-	var srch=LiveSearch.searchBoxes.val();
+	var searchBox = jQuery('input:focus');
+	var srch=searchBox.val();
 	if(srch === "" || srch.length < DavesWordPressLiveSearchConfig.minCharsToSearch) {
 		// Nothing entered. Hide the autocomplete.
 		LiveSearch.hideResults();
@@ -296,20 +294,21 @@ LiveSearch.displayIndicator = function() {
 
 	if(jQuery("#search_results_activity_indicator").size() === 0) {
 
-		var searchBoxPosition = LiveSearch.searchBoxes.offset();
+		var searchBox = jQuery('input:focus');
+		var searchBoxPosition = searchBox.offset();
 
 		jQuery("body").append('<span id="search_results_activity_indicator"  />');
 
-		var spinnerRadius = {outer: Math.ceil((LiveSearch.searchBoxes.height() * 0.9) / 2)};
+		var spinnerRadius = {outer: Math.ceil((searchBox.height() * 0.9) / 2)};
 		spinnerRadius.inner = Math.floor(spinnerRadius.outer * 0.29);  // 2:7 (0.29) ratio seems ideal
 
 		jQuery("#search_results_activity_indicator").css('position', 'absolute');
 		
-		var indicatorY = (searchBoxPosition.top + ((LiveSearch.searchBoxes.outerHeight() - LiveSearch.searchBoxes.innerHeight()) / 2) + 'px');
+		var indicatorY = (searchBoxPosition.top + ((searchBox.outerHeight() - searchBox.innerHeight()) / 2) + 'px');
 		
 		jQuery("#search_results_activity_indicator").css('top', indicatorY);
 
-		var indicatorX = (searchBoxPosition.left + LiveSearch.searchBoxes.outerWidth() - ((spinnerRadius.outer + spinnerRadius.inner) * 2) - 2)  + 'px';
+		var indicatorX = (searchBoxPosition.left + searchBox.outerWidth() - ((spinnerRadius.outer + spinnerRadius.inner) * 2) - 2)  + 'px';
 						
 		jQuery("#search_results_activity_indicator").css('left', indicatorX);
 		
