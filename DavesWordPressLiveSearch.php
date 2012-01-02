@@ -87,10 +87,6 @@ class DavesWordPressLiveSearch {
     $xOffset = intval(get_option('daves-wordpress-live-search_xoffset'));
     $yOffset = intval(get_option('daves-wordpress-live-search_yoffset'));
 
-    $indicatorURL = plugin_dir_url(__FILE__) . 'indicator.gif';
-    $indicatorWidth = getimagesize(dirname(__FILE__) . "/indicator.gif");
-    $indicatorWidth = $indicatorWidth[0];
-
     // Translations
     $moreResultsText = __('View more results', 'dwls');
     $outdatedJQueryText = __("Dave's WordPress Live Search requires jQuery 1.2.6 or higher. WordPress ships with current jQuery versions. But if you are seeing this message, it's likely that another plugin is including an earlier version.", 'dwls');
@@ -109,8 +105,6 @@ class DavesWordPressLiveSearch {
         'yOffset' => $yOffset,
         'blogURL' => get_bloginfo('url'),
         'ajaxURL' => admin_url('admin-ajax.php', is_ssl()),
-        'indicatorURL' => $indicatorURL,
-        'indicatorWidth' => $indicatorWidth,
         'viewMoreText' => $moreResultsText,
         'outdatedJQuery' => $outdatedJQueryText,
     ));
