@@ -316,7 +316,8 @@ class DavesWordPressLiveSearch {
         $regexp = '';
       }
 
-      $regexp = str_replace('?', '\?', $regexp);
+      $regexp = str_replace('?', '[?]', $regexp);
+      $regexp = str_replace('|', '[|]', $regexp);
 
       // These checks can probably be turned into regexps themselves,
       // but it's too early in the morning to be writing regexps
@@ -333,6 +334,7 @@ class DavesWordPressLiveSearch {
       }
 
       $regexp = '|' . $regexp . '|';
+
       if (preg_match($regexp, substr($_SERVER['REQUEST_URI'], 1)) > 0) {
         return false;
       }
