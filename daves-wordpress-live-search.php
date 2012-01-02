@@ -55,13 +55,13 @@ if(!function_exists('json_encode')) {
 
 // Relevanssi "bridge" plugin
 class DWLS_Relevanssi_Bridge {
-	function init() {
+	static function init() {
 		if(function_exists('relevanssi_do_query')) {
 			add_filter('dwls_alter_results', array('DWLS_Relevanssi_Bridge', 'dwls_alter_results'), 10, 2);
 		}
 	}
 	
-	function dwls_alter_results($wpQueryResults, $maxResults) {
+	static function dwls_alter_results($wpQueryResults, $maxResults) {
 		// WP_Query::query() set everything up
 		// Now have Relevanssi do the query over again
 		// but do it in its own way
