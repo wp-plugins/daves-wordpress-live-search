@@ -67,7 +67,7 @@ Features I want to implement in future releases:
 
 == Changelog ==
 
-= 2.8 =
+= 3.0 =
 * 2011-??-?? Dave Ross <dave@csixty4.com>
 * Improved method of getting the first thumbnail
 * Canvas/VML-based spinner eliminates the need for the transparent .gif
