@@ -50,7 +50,7 @@ class DavesWordPressLiveSearchResults {
     $wp_query = $wpQueryResults = new WP_Query();
     $wp_query = $wpQueryResults = new WP_Query();
 
-    if (function_exists(relevanssi_do_query)) {
+    if (function_exists('relevanssi_do_query')) {
       // Relevanssi isn't treating 0 as "unlimited" results
       // like WordPress's native search does. So we'll replace
       // $maxResults with a really big number, the biggest one
@@ -61,27 +61,19 @@ class DavesWordPressLiveSearchResults {
       }
     }
 
-    $wpQueryParams = array(
-        's' => $_GET['s'],
-        'showposts' => $maxResults,
-        'post_type' => 'any',
-        'post_status' => 'publish',
-    );
+    $wpQueryParams = $_GET;
+    $wpQueryParams['showposts'] = $maxResults;
+    $wpQueryParams['post_type'] = 'any';
+    $wpQueryParams['post_status'] = 'publish';
+    $queryString = http_build_query($wpQueryParams);
 
-    // WPML compatibility
-    // see http://wpml.org/documentation/support/creating-multilingual-wordpress-themes/search-form/
-    if (isset($_GET['lang'])) {
-      $wpQueryParams['lang'] = $_GET['lang'];
-    }
-
-    $wpQueryResults->query($wpQueryParams);
+    $wpQueryResults->query($queryString);
 
     $this->searchTerms = $wpQueryResults->query_vars['s'];
 
     $wpQueryResults = apply_filters('dwls_alter_results', $wpQueryResults, $maxResults);
 
     foreach ($wpQueryResults->posts as $result) {
-    //foreach($posts as $result)
       // Add author names & permalinks
       if ($displayPostMeta) {
         $result->post_author_nicename = $this->authorName($result->post_author);
@@ -270,7 +262,9 @@ class DavesWordPressLiveSearchResults {
   public function firstImg($post_content) {
     $matches = array();
     $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post_content, $matches);
-    $first_img = $matches[1][0];
+    if(isset($matches[1][0])) {
+      $first_img = $matches[1][0];
+    }
 
     if (empty($first_img)) {
       return '';
@@ -311,7 +305,7 @@ class DavesWordPressLiveSearchResults {
         $searchSource = intval(get_option('daves-wordpress-live-search_source'));
       }
 
-      $results = new DavesWordPressLiveSearchResults($searchSource, $searchTerms, $displayPostMeta, $maxResults);
+      $results = new DavesWordPressLiveSearchResults($searchSource, $_GET['s'], $displayPostMeta, $maxResults);
 
       if ($doCache) {
         DWLSTransients::set($_REQUEST['s'], $results, $cacheLifetime);
