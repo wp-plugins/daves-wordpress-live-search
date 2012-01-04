@@ -68,7 +68,7 @@ LiveSearch.init = function() {
 	
 	// Hide the search results when the search box loses focus
 	jQuery("html").click(LiveSearch.hideResults);
-	LiveSearch.searchBoxes.add(this.resultsElement).click(function(e) { e.stopPropagation(); });
+	LiveSearch.searchBoxes.add(this.resultsElement).click(function(e) {e.stopPropagation();});
 
 	jQuery(window).resize(function() {
 		var wasVisible = LiveSearch.resultsElement.is(':visible');
@@ -167,7 +167,7 @@ LiveSearch.handleAJAXResults = function(e) {
 
                                 renderedResult += '<a href="' + searchResult.permalink + '">' + searchResult.post_title + '</a>';
 
-                                if(searchResult.post_price != undefined) { renderedResult += '<p class="price">' + searchResult.post_price + '</p>'; }
+                                if(searchResult.post_price != undefined) {renderedResult += '<p class="price">' + searchResult.post_price + '</p>';}
                                 
                                 if(DavesWordPressLiveSearchConfig.showExcerpt == "true" && searchResult.post_excerpt) {
                                         renderedResult += '<p class="excerpt clearfix">' + searchResult.post_excerpt + '</p>';
@@ -204,7 +204,7 @@ LiveSearch.handleAJAXResults = function(e) {
 LiveSearch.handleKeypress = function(e) {
 	var delayTime = 0;
 	var term = LiveSearch.searchBoxes.val();
-	setTimeout( function() { LiveSearch.runQuery(term); }, delayTime);
+	setTimeout( function() {LiveSearch.runQuery(term);}, delayTime);
 };
 
 /**
@@ -229,14 +229,21 @@ LiveSearch.runQuery = function(terms) {
 			var req = LiveSearch.activeRequests.pop();
 			req.abort();
 		}
-		// do AJAX query
+
+		// Marshall the parameters into an object
 		var parameters = {};
-		searchBox.parents('form').find('input:not(:submit),select,textarea').each(function() {
-			parameters[this.name] = jQuery(this).val();
-		});
+                var fields = searchBox.parents('form').find('input:not(:submit),select,textarea');
+                for(fieldIndex in fields) {
+                    if(fields.hasOwnProperty(fieldIndex) && /* test for integer */ fieldIndex % 1 == 0) {
+                        var field = jQuery(fields[fieldIndex]);
+                        parameters[field.attr('name')] = field.val();
+                    }
+                }
      
 		// For wp_ajax
 		parameters.action = "dwls_search";
+
+                // Do the AJAX call
 		var req = jQuery.get( DavesWordPressLiveSearchConfig.ajaxURL, parameters, LiveSearch.handleAJAXResults, "json");
 		
 		// Add this request to the queue
