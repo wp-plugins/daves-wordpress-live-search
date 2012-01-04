@@ -77,7 +77,7 @@ LiveSearch.init = function() {
 		if(!wasVisible) {
 			LiveSearch.resultsElement.hide(); 
 		}
-	});	
+	});
 }
 
 LiveSearch.positionResults = function() {
@@ -158,14 +158,14 @@ LiveSearch.handleAJAXResults = function(e) {
                                         var liClass = "";
                                 }
 
-                                renderedResult += '<li class="' + liClass + '">';
+                                renderedResult += '<li class="daves-wordpress-live-search_result ' + liClass + '">';
 
                                 // Render thumbnail
                                 if(DavesWordPressLiveSearchConfig.showThumbs == "true" && searchResult.attachment_thumbnail) {
                                         renderedResult += '<img src="' + searchResult.attachment_thumbnail + '" class="post_thumb" />';
                                 }
 
-                                renderedResult += '<a href="' + searchResult.permalink + '">' + searchResult.post_title + '</a>';
+                                renderedResult += '<a href="' + searchResult.permalink + '" class="daves-wordpress-live-search_title">' + searchResult.post_title + '</a>';
 
                                 if(searchResult.post_price != undefined) {renderedResult += '<p class="price">' + searchResult.post_price + '</p>';}
                                 
@@ -186,6 +186,13 @@ LiveSearch.handleAJAXResults = function(e) {
 	                searchResultsList.append('<div class="clearfix search_footer"><a href="' + DavesWordPressLiveSearchConfig.blogURL + '/?s=' + resultsSearchTerm + '">' + DavesWordPressLiveSearchConfig.viewMoreText + '</a></div>');
 				}
 
+                // I'm not comfortable changing the HTML for the results list yet
+                // so I'm using this click handler to make clicking the result li act the
+                // same as clicking the title link
+                searchResultsList.find('li.daves-wordpress-live-search_result').bind('click.dwls', function() {
+                   window.location.href = jQuery(this).find('a.daves-wordpress-live-search_title').attr('href');
+                });
+                
                 // Show the search results
                 LiveSearch.showResults();
 

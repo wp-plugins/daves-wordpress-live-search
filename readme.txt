@@ -68,7 +68,7 @@ Features I want to implement in future releases:
 == Changelog ==
 
 = 3.0 =
-* 2011-??-?? Dave Ross <dave@csixty4.com>
+* 2012-01-?? Dave Ross <dave@csixty4.com>
 * Improved method of getting the first thumbnail
 * Canvas/VML-based spinner eliminates the need for the transparent .gif
 * Italian (it_IT) translation
@@ -76,6 +76,7 @@ Features I want to implement in future releases:
 * Added hooks & filters for people to plug into DWLS
 * Fixed regex parsing issue when permalinks aren't enabled
 * Support for multiple search boxes (finally!)
+* You can now click anywhere in the result box to go to that result
 
 = 2.7 =
 * 2011-11-10 Dave Ross <dave@csixty4.com>
