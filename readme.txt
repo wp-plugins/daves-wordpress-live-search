@@ -77,6 +77,7 @@ Features I want to implement in future releases:
 * Fixed regex parsing issue when permalinks aren't enabled
 * Support for multiple search boxes (finally!)
 * You can now click anywhere in the result box to go to that result
+* WP E-Commerce is officially supported again
 
 = 2.7 =
 * 2011-11-10 Dave Ross <dave@csixty4.com>

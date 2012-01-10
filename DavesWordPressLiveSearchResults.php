@@ -22,22 +22,22 @@ class DavesWordPressLiveSearchResults {
   function DavesWordPressLiveSearchResults($source, $searchTerms, $displayPostMeta = true, $maxResults = -1) {
 
     $this->results = array();
-
-    switch ($source) {
-      case self::SEARCH_CONTENT:
-        $this->populate($searchTerms, $displayPostMeta, $maxResults);
-        break;
-      case self::SEARCH_WPCOMMERCE:
-        $this->populateFromWPCommerce($searchTerms, $displayPostMeta, $maxResults);
-        break;
-      default:
-      // Unrecognized
-    }
+    $this->populate($source, $searchTerms, $displayPostMeta, $maxResults);
     $this->displayPostMeta = $displayPostMeta;
+    
   }
 
-  private function populate($wpQueryResults, $displayPostMeta, $maxResults) {
-
+  /**
+   *
+   * @global type $wp_locale
+   * @global type $wp_query
+   * @param int $source SEARCH_ constant
+   * @param type $wpQueryResults
+   * @param type $displayPostMeta
+   * @param string $maxResults 
+   */
+  private function populate($source, $wpQueryResults, $displayPostMeta, $maxResults) {
+  
     global $wp_locale;
     global $wp_query;
 
@@ -63,7 +63,12 @@ class DavesWordPressLiveSearchResults {
 
     $wpQueryParams = $_GET;
     $wpQueryParams['showposts'] = $maxResults;
-    $wpQueryParams['post_type'] = 'any';
+    if(self::SEARCH_WPCOMMERCE === $source) {
+        $wpQueryParams['post_type'] = 'wpsc-product';
+    }
+    else {
+        $wpQueryParams['post_type'] = 'any';
+    }
     $wpQueryParams['post_status'] = 'publish';
     $queryString = http_build_query($wpQueryParams);
 
@@ -119,97 +124,6 @@ class DavesWordPressLiveSearchResults {
       $result->show_more = true;
 
       $this->results[] = $result;
-    }
-  }
-
-  private function populateFromWPCommerce($wpQueryResults, $displayPostMeta, $maxResults) {
-    global $wpdb;
-
-    $this->searchTerms = $_GET['s'];
-
-    $tagQuery = "SELECT * FROM `{$wpdb->terms}` WHERE slug LIKE '%{$this->searchTerms}%'";
-    $tagresults = $wpdb->get_results($tagQuery);
-
-    $metaQuery = "SELECT * FROM " . WPSC_TABLE_PRODUCTMETA . " WHERE meta_value LIKE '%" . $this->searchTerms . "%'";
-    $metaresults = $wpdb->get_results($metaQuery);
-
-    if ($tagresults) {
-      $term_id = $tagresults[0]->term_id;
-
-      $tagresults = $wpdb->get_results("SELECT * FROM `{$wpdb->term_taxonomy}` WHERE term_id = '" . $term_id . "' AND taxonomy='product_tag'");
-      $taxonomy_id = $tagresults[0]->term_taxonomy_id;
-
-      $tagresults = $wpdb->get_results("SELECT * FROM `{$wpdb->term_relationships}` WHERE term_taxonomy_id = '" . $taxonomy_id . "'");
-
-      foreach ($tagresults as $result) {
-        $product_ids[] = $result->object_id;
-      }
-
-      $product_id = implode(",", $product_ids);
-      $sql = "SELECT list.id,list.name,list.description, list.price,image.image,list.special,list.special_price
-							FROM " . WPSC_TABLE_PRODUCT_LIST . " AS list
-							LEFT JOIN " . WPSC_TABLE_PRODUCT_IMAGES . " AS image
-			        		ON list.image=image.id
-							WHERE list.id IN (" . $product_id . ") 
-							AND list.publish=1
-							AND list.active=1";
-
-      $wp_query = new WP_Query();
-
-      $wp_query->query(array('tag_slug__and' => $_GET['s'], 'showposts' => $maxResults));
-    } elseif ($metaresults) {
-      foreach ($metaresults as $result) {
-        $mprod_id = $result->product_id;
-      }
-
-      $sql = "SELECT list.id,list.name,list.description,list.price,image.image,list.special,list.special_price
-							FROM " . WPSC_TABLE_PRODUCT_LIST . " AS list
-							LEFT JOIN " . WPSC_TABLE_PRODUCT_IMAGES . " AS image
-			        		ON list.image=image.id
-							WHERE list.id IN (" . $mprod_id . ") OR (list.name LIKE '%" . $this->searchTerms . "%' OR list.description LIKE '%" . $this->searchTerms . "%')
-							AND list.publish=1
-							AND list.active=1";
-
-      $wp_query = new WP_Query();
-
-      $wp_query->query(array('s' => $_GET['s'], 'showposts' => $maxResults));
-    } else {
-      $sql = "SELECT list.id,list.name,list.description,list.price,image.image,list.special,list.special_price
-			        FROM " . WPSC_TABLE_PRODUCT_LIST . " AS list
-			        LEFT JOIN " . WPSC_TABLE_PRODUCT_IMAGES . " AS image
-			        ON list.image=image.id
-			        WHERE (list.name LIKE '%" . $this->searchTerms . "%' OR list.description LIKE '%" . $this->searchTerms . "%')
-			        AND list.publish=1
-			        AND list.active=1
-			       ";
-
-      $wp_query = new WP_Query();
-
-      $wp_query->query(array('s' => $_GET['s'], 'showposts' => $maxResults));
-    }
-
-    $results = $wpdb->get_results($sql, OBJECT);
-
-    foreach ($results as $result) {
-      $resultObj = new stdClass();
-      $resultObj->permalink = wpsc_product_url($result->id);
-      $resultObj->post_title = apply_filters("localization", $result->name);
-      $resultObj->post_content = $result->description;
-      $resultObj->post_excerpt = $result->description;
-      $resultObj->post_excerpt = $this->excerpt($resultObj);
-
-      $resultObj->post_price = $result->price;
-      $resultObj->show_more = false;
-
-      if (!empty($result->image)) {
-        $resultObj->attachment_thumbnail = WPSC_THUMBNAIL_URL . $result->image;
-      }
-
-      // Fields that don't really apply here
-      //$resultObj->post_date =
-      //$resultObj->post_author_nicename =
-
-      $this->results[] = $resultObj;
     }
   }
 
