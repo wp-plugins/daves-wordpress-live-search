@@ -204,12 +204,14 @@ class DavesWordPressLiveSearch {
       if ("" == trim($cacheLifetime)) {
         $cacheLifetime = 3600;
       }
+      $applyContentFilter = ("true" == $_POST['daves-wordpress-live-search_apply_content_filter']);
       $enableDebugger = ("true" == $_POST['daves-wordpress-live-search_debug']);
 
       update_option('daves-wordpress-live-search_exceptions', $exceptions);
       update_option('daves-wordpress-live-search_xoffset', intval($xOffset));
       update_option('daves-wordpress-live-search_yoffset', intval($yOffset));
       update_option('daves-wordpress-live-search_cache_lifetime', intval($cacheLifetime));
+      update_option('daves-wordpress-live-search_apply_content_filter', $applyContentFilter);
       update_option('daves-wordpress-live-search_debug', $enableDebugger);
 
       // Translate the "Options saved" message...just in case.
@@ -236,6 +238,7 @@ class DavesWordPressLiveSearch {
         $cacheLifetime = intval($cacheLifetime);
       }
 
+      $applyContentFilter = (bool) get_option('daves-wordpress-live-search_apply_content_filter');
       $enableDebugger = (bool) get_option('daves-wordpress-live-search_debug');
     }
 

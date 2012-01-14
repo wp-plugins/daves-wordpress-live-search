@@ -101,7 +101,11 @@ class DavesWordPressLiveSearchResults {
         $result->attachment_thumbnail = $postImageData[0];
       } else {
         // If no post thumbnail, grab the first image from the post
-        $content = apply_filters('the_content', $result->post_content);
+        $applyContentFilter = get_option('dwls_apply_the_content', false);
+        $content = $result->post_content;
+        if($applyContentFilter) {
+          $content = apply_filters('the_content', $content);
+        }
         $content = str_replace(']]>', ']]&gt;', $content);
         $result->attachment_thumbnail = $this->firstImg($content);
       }

@@ -62,6 +62,13 @@ if ( function_exists('wp_nonce_field') )
 <td><input type="text" name="daves-wordpress-live-search_cache_lifetime" id="daves-wordpress-live-search_cache_lifetime" value="<?php echo $cacheLifetime; ?>" class="regular-text code" /><span class="setting-description"><?php _e("Enter &quot;0&quot; to disable caching", 'dwls'); ?></span></td>
 </tr>
 
+<!-- Apply the_content filter -->
+<tr valign="top">
+<th scope="row"><?php _e("Enable content filter", 'dwls'); ?></th>
+
+<td><input type="checkbox" name="daves-wordpress-live-search_apply_content_filter" id="daves-wordpress-live-search_apply_content_filter" value="true" <?php if($applyContentFilter): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_apply_content_filter"><?php _e("Allow other plugins to filter the excerpt. This will likely affect Live Search performance, so only enable this if you really need it.", 'dwls'); ?></label></td> 
+</tr>
+
 <!-- Enable debugger -->
 <tr valign="top">
 <th scope="row"><?php _e("Enable debugger", 'dwls'); ?></th>
