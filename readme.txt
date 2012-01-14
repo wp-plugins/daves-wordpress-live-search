@@ -281,6 +281,23 @@ Features I want to implement in future releases:
 
 == Upgrade Notice ==
 
+= 3.0 =
+
+Thank you for upgrading to Dave's WordPress Live Search version 3.0.
+
+This release fixes bugs and adds some exciting new features I've been wanting
+for a long time.
+
+* A Canvas/VML-based spinner replaces the transparent .gif. Looks better, animates more smoothly
+* Italian and Spanish translations (WordPress translators rock!)
+* New hooks & filters for programmers to interface with this plugin
+* Fixed a regex parsing issue when permalinks aren't enabled
+* I improved the method of getting the first thumbnail when no "post thumbnail" is defined
+* There's a new checkbox on the "advanced" screen to enable/disable content filtering when finding thumbnails.
+* Support for multiple search boxes (finally!)
+* You can now click anywhere in the result box to go to that result
+* WP E-Commerce is officially supported again, thanks to it's developers adoption of custom post types!
+
 = 2.6 =
 This release fixes the horizontal positioning bug in v2.5.
 
