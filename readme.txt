@@ -20,6 +20,21 @@ This plugin is compatible with the [xLanguage](http://wordpress.org/extend/plugi
 
 This plugin also integrates with the Relevanssi plugin for improved search results.
 
+VERSION 3.0: A big new release is planned for the 1st quarter of 2012. Want to get a sneak peek? [Download the latest alpha release](http://wordpress.org/extend/plugins/daves-wordpress-live-search/download/) and try it out. It should be stable enough, but as it's an alpha there are no promises. Bug reports are always welcome.
+
+Features of v3.0 include:
+
+* Improved method of getting the first thumbnail
+* Canvas/VML-based spinner eliminates the need for the transparent .gif
+* Italian (it_IT) translation
+* Spanish (es_ES) translation
+* Added hooks & filters for people to plug into DWLS
+* Fixed regex parsing issue when permalinks aren't enabled
+* Support for multiple search boxes (finally!)
+* You can now click anywhere in the result box to go to that result
+* WP E-Commerce is officially supported again
+* Toggle to enable/disable the_content filter.
+
 TRANSLATORS WANTED: Since v2.3, Dave's WordPress Live Search supports multiple languages, but I need native speakers and translators to provide .po files for unsupported languages. [Email Dave if interested](mailto:dave@davidmichaelross.com).
 
 NOTE: Dave's WordPress Live Search requires PHP 5.0 or higher.
@@ -68,7 +83,7 @@ Features I want to implement in future releases:
 == Changelog ==
 
 = 3.0 =
-* 2012-01-?? Dave Ross <dave@csixty4.com>
+* 2012-0?-?? Dave Ross <dave@csixty4.com>
 * Improved method of getting the first thumbnail
 * Canvas/VML-based spinner eliminates the need for the transparent .gif
 * Italian (it_IT) translation
