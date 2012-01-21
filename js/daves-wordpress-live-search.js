@@ -82,7 +82,7 @@ LiveSearch.init = function() {
 
 LiveSearch.positionResults = function() {
 	
-	var searchBox = jQuery('input:focus');
+	var searchBox = jQuery('input:focus:first');
 
 	// Position the ul right under the search box	
 	var searchBoxPosition = searchBox.offset();
@@ -114,7 +114,7 @@ LiveSearch.handleAJAXResults = function(e) {
 
     if(e) {
         resultsSearchTerm = e.searchTerms;
-        if(resultsSearchTerm != LiveSearch.searchBoxes.val()) {
+        if(resultsSearchTerm != jQuery('input:focus:first').val()) {
 
                 if(LiveSearch.activeRequests.length == 0) {
                         LiveSearch.removeIndicator();
@@ -302,7 +302,7 @@ LiveSearch.displayIndicator = function() {
 
 	if(jQuery("#search_results_activity_indicator").size() === 0) {
 
-		var searchBox = jQuery('input:focus');
+		var searchBox = jQuery('input:focus:first');
 		var searchBoxPosition = searchBox.offset();
 
 		jQuery("body").append('<span id="search_results_activity_indicator"  />');
