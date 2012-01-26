@@ -14,6 +14,8 @@ Dave's WordPress Live Search adds "live search" functionality to your WordPress 
 
 The [live search](http://ajaxpatterns.org/Live_Search) technique means that most people will find the results they are looking for before they finish typing their query, and it saves them the step of having to click a submit button to get their search results.
 
+[youtube http://www.youtube.com/watch?v=7CGR2bJ1mLM]
+
 This functionality requires Javascript, but the search box still works normally if Javascript is not available.
 
 This plugin is compatible with the [xLanguage](http://wordpress.org/extend/plugins/xlanguage/) and [WPML](http://wpml.org/) plugins for internationalization (i18n) of search results.
