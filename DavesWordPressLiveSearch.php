@@ -186,28 +186,9 @@ class DavesWordPressLiveSearch {
             $showThumbs = (bool) get_option('daves-wordpress-live-search_thumbs');
             $showExcerpt = (bool) get_option('daves-wordpress-live-search_excerpt');
             $excerptLength = intval(get_option('daves-wordpress-live-search_excerpt_length'));
-            $showMoreResultsLink = intval(get_option('daves-wordpress-live-search_more_results', true));
+            $showMoreResultsLink = intval("true" == get_option('daves-wordpress-live-search_more_results'));
             $minCharsToSearch = intval(get_option('daves-wordpress-live-search_minchars'));
             $searchSource = intval(get_option('daves-wordpress-live-search_source'));
-        }
-
-		// Set defaults
-		
-        if (!in_array($resultsDirection, array('up', 'down')))
-        {
-            $resultsDirection = 'down';
-        }
-
-        $cssOptionWhitelist = array('theme', 'default_red', 'default_blue', 'notheme', 'default_gray');
-        if(in_array($cssOption, $cssOptionWhitelist)) {
-            $css = $cssOption;
-        }
-        else {
-            $css = 'default_gray';
-        }
-        
-        if(0 == $excerptLength) {
-        	$excerptLength = 100;
         }
 
         include("$thisPluginsDirectory/admin/daves-wordpress-live-search-admin.tpl");
@@ -357,6 +338,24 @@ class DavesWordPressLiveSearch {
 
         // Fall-through, search everything by default
         return true;
+    }
+
+    /**
+     * Set some decent defaults
+     */
+    public static function activate() {
+      
+      add_option('daves-wordpress-live-search_max_results', 10);
+      add_option('daves-wordpress-live-search_results_direction', 'down');
+      add_option('daves-wordpress-live-search_display_post_meta', 'true');
+      add_option('daves-wordpress-live-search_css_option', 'default_gray');
+      add_option('daves-wordpress-live-search_thumbs', 'true');
+      add_option('daves-wordpress-live-search_excerpt', 'true');
+      add_option('daves-wordpress-live-search_excerpt_length', 100);
+      add_option('daves-wordpress-live-search_more_results', 'true');
+      add_option('daves-wordpress-live-search_minchars', 3);
+      add_option('daves-wordpress-live-search_source', DavesWordPressLiveSearchResults::SEARCH_CONTENT);
+      
     }
 
 }
