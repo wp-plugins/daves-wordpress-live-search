@@ -3,8 +3,8 @@ Contributors: csixty4
 Donate link: http://catguardians.org
 Tags: search, AJAX, live search
 Requires at least: 2.9
-Tested up to: 3.3
-Stable tag: 2.7
+Tested up to: 3.4
+Stable tag: 2.8
 
 Adds "live search" functionality to your WordPress site. Uses the built-in search and jQuery.
 
@@ -96,6 +96,11 @@ Features I want to implement in future releases:
 * You can now click anywhere in the result box to go to that result
 * WP E-Commerce is officially supported again
 * Toggle to enable/disable the_content filter.
+
+= 2.8 =
+* 2012-04-29 Dave Ross <dave@csixty4.com>
+* Back-ported fix from 3.0 which sets defaults on activation
+* Tested for compatibility with WordPress 3.4
 
 = 2.7 =
 * 2011-11-10 Dave Ross <dave@csixty4.com>
