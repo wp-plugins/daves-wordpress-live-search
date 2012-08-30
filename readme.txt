@@ -85,7 +85,12 @@ Features I want to implement in future releases:
 == Changelog ==
 
 = 3.0 =
-* 2012-0?-?? Dave Ross <dave@csixty4.com>
+* 2012-0?-?? Dave Ross <dave@csixty4.com> and many awesome translators!
+* Turkish (tr_TR) translation
+* French (fr_FR) translation
+* Dutch (nl_NL) translation
+* Polish (pl_PL) translation
+* Portugese (pt_PT) translation
 * Improved method of getting the first thumbnail
 * Canvas/VML-based spinner eliminates the need for the transparent .gif
 * Italian (it_IT) translation
