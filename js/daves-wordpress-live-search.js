@@ -10,8 +10,8 @@
  * Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
- * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR 
- * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
+ * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  **/
  
@@ -34,6 +34,7 @@ var LiveSearch = {
 	},
 
 	invokeCallbacks : function(eventName, params) {
+		var callbackIndex;
 		if(this.callbacks[eventName] !== undefined) {
 			for(callbackIndex in this.callbacks[eventName]) {
 				params = this.callbacks[eventName][callbackIndex](params);
@@ -72,19 +73,20 @@ LiveSearch.init = function() {
 
 	jQuery(window).resize(function() {
 		var wasVisible = LiveSearch.resultsElement.is(':visible');
-		LiveSearch.positionResults(this); 
+		LiveSearch.positionResults(this);
 		// Resizing the window was making the results visible again
 		if(!wasVisible) {
-			LiveSearch.resultsElement.hide(); 
+			LiveSearch.resultsElement.hide();
 		}
 	});
 }
 
 LiveSearch.positionResults = function() {
 	
+	var topOffset;
 	var searchBox = jQuery('input:focus:first');
 
-	// Position the ul right under the search box	
+	// Position the ul right under the search box
 	var searchBoxPosition = searchBox.offset();
 	searchBoxPosition.left += parseInt(DavesWordPressLiveSearchConfig.xOffset, 10);
 	searchBoxPosition.top  += parseInt(DavesWordPressLiveSearchConfig.yOffset, 10);
@@ -94,12 +96,14 @@ LiveSearch.positionResults = function() {
 	
     switch(DavesWordPressLiveSearchConfig.resultsDirection)
     {
-    	case 'up':
-    		var topOffset = searchBoxPosition.top - this.resultsElement.height();
-    		break;
-    	case 'down':
-    	default:
-    		var topOffset = searchBoxPosition.top + LiveSearch.searchBoxes.outerHeight();
+      case 'up':
+        topOffset = searchBoxPosition.top - this.resultsElement.height();
+        break;
+      case 'down':
+        topOffset = searchBoxPosition.top + LiveSearch.searchBoxes.outerHeight();
+        break;
+      default:
+        topOffset = searchBoxPosition.top + LiveSearch.searchBoxes.outerHeight();
     }
 	
 	this.resultsElement.css('top', topOffset + 'px');
@@ -110,13 +114,14 @@ LiveSearch.positionResults = function() {
  */
 LiveSearch.handleAJAXResults = function(e) {
 
+	var searchResult;
     LiveSearch.activeRequests.pop();
 
     if(e) {
         resultsSearchTerm = e.searchTerms;
         if(resultsSearchTerm != jQuery('input:focus:first').val()) {
 
-                if(LiveSearch.activeRequests.length == 0) {
+                if(LiveSearch.activeRequests.length === 0) {
                         LiveSearch.removeIndicator();
                 }
 
@@ -124,9 +129,9 @@ LiveSearch.handleAJAXResults = function(e) {
         }
 
         var resultsShownFor = jQuery("ul").filter(".search_results").children("input[name=query]").val();
-        if(resultsShownFor != "" && resultsSearchTerm == resultsShownFor)
+        if(resultsShownFor !== "" && resultsSearchTerm == resultsShownFor)
         {
-                if(LiveSearch.activeRequests.length == 0) {
+                if(LiveSearch.activeRequests.length === 0) {
                         LiveSearch.removeIndicator();
                 }
 
@@ -137,25 +142,24 @@ LiveSearch.handleAJAXResults = function(e) {
         searchResultsList.empty();
         searchResultsList.append('<input type="hidden" name="query" value="' + resultsSearchTerm + '" />');
 
-        if(e.results.length == 0) {
+        if(e.results.length === 0) {
                 // Hide the search results, no results to show
                 LiveSearch.hideResults();
         }
         else {
                 for(var postIndex = 0; postIndex < e.results.length; postIndex++) {
-                        var searchResult = e.results[postIndex];
+                        searchResult = e.results[postIndex];
                         if(searchResult.post_title !== undefined) {
 
-
-
                                 var renderedResult = '';
+                                var liClass;
 
                                 // Thumbnails
                                 if(DavesWordPressLiveSearchConfig.showThumbs == "true" && searchResult.attachment_thumbnail) {
-                                        var liClass = "post_with_thumb";
+                                        liClass = "post_with_thumb";
                                 }
                                 else {
-                                        var liClass = "";
+                                        liClass = "";
                                 }
 
                                 renderedResult += '<li class="daves-wordpress-live-search_result ' + liClass + '">';
@@ -167,7 +171,7 @@ LiveSearch.handleAJAXResults = function(e) {
 
                                 renderedResult += '<a href="' + searchResult.permalink + '" class="daves-wordpress-live-search_title">' + searchResult.post_title + '</a>';
 
-                                if(searchResult.post_price != undefined) {renderedResult += '<p class="price">' + searchResult.post_price + '</p>';}
+                                if(searchResult.post_price !== undefined) {renderedResult += '<p class="price">' + searchResult.post_price + '</p>';}
                                 
                                 if(DavesWordPressLiveSearchConfig.showExcerpt == "true" && searchResult.post_excerpt) {
                                         renderedResult += '<p class="excerpt clearfix">' + searchResult.post_excerpt + '</p>';
@@ -181,9 +185,9 @@ LiveSearch.handleAJAXResults = function(e) {
                         }
                 }
 
-				if(searchResult.show_more != undefined && searchResult.show_more && DavesWordPressLiveSearchConfig.showMoreResultsLink == "true") {
-	                // "more" link
-	                searchResultsList.append('<div class="clearfix search_footer"><a href="' + DavesWordPressLiveSearchConfig.blogURL + '/?s=' + resultsSearchTerm + '">' + DavesWordPressLiveSearchConfig.viewMoreText + '</a></div>');
+				if(searchResult.show_more !== undefined && searchResult.show_more && DavesWordPressLiveSearchConfig.showMoreResultsLink == "true") {
+                    // "more" link
+                    searchResultsList.append('<div class="clearfix search_footer"><a href="' + DavesWordPressLiveSearchConfig.blogURL + '/?s=' + resultsSearchTerm + '">' + DavesWordPressLiveSearchConfig.viewMoreText + '</a></div>');
 				}
 
                 // I'm not comfortable changing the HTML for the results list yet
@@ -198,7 +202,7 @@ LiveSearch.handleAJAXResults = function(e) {
 
         }
 
-        if(LiveSearch.activeRequests.length == 0) {
+        if(LiveSearch.activeRequests.length === 0) {
                 LiveSearch.removeIndicator();
         }
     }
@@ -221,6 +225,9 @@ LiveSearch.handleKeypress = function(e) {
 LiveSearch.runQuery = function(terms) {
 	var searchBox = jQuery('input:focus');
 	var srch=searchBox.val();
+	var fieldIndex;
+	var req;
+
 	if(srch === "" || srch.length < DavesWordPressLiveSearchConfig.minCharsToSearch) {
 		// Nothing entered. Hide the autocomplete.
 		LiveSearch.hideResults();
@@ -233,7 +240,7 @@ LiveSearch.runQuery = function(terms) {
 		// Clear out the old requests in the queue
 		while(LiveSearch.activeRequests.length > 0)
 		{
-			var req = LiveSearch.activeRequests.pop();
+			req = LiveSearch.activeRequests.pop();
 			req.abort();
 		}
 
@@ -241,7 +248,7 @@ LiveSearch.runQuery = function(terms) {
 		var parameters = {};
                 var fields = searchBox.parents('form').find('input:not(:submit),select,textarea');
                 for(fieldIndex in fields) {
-                    if(fields.hasOwnProperty(fieldIndex) && /* test for integer */ fieldIndex % 1 == 0) {
+                    if(fields.hasOwnProperty(fieldIndex) && /* test for integer */ fieldIndex % 1 === 0) {
                         var field = jQuery(fields[fieldIndex]);
                         parameters[field.attr('name')] = field.val();
                     }
@@ -250,8 +257,8 @@ LiveSearch.runQuery = function(terms) {
 		// For wp_ajax
 		parameters.action = "dwls_search";
 
-                // Do the AJAX call
-		var req = jQuery.get( DavesWordPressLiveSearchConfig.ajaxURL, parameters, LiveSearch.handleAJAXResults, "json");
+        // Do the AJAX call
+		req = jQuery.get( DavesWordPressLiveSearchConfig.ajaxURL, parameters, LiveSearch.handleAJAXResults, "json");
 		
 		// Add this request to the queue
 		LiveSearch.activeRequests.push(req);
@@ -265,12 +272,14 @@ LiveSearch.hideResults = function() {
 		switch(DavesWordPressLiveSearchConfig.resultsDirection)
 		{
 			case 'up':
-				visibleResults.fadeOut();
-				break;
+              visibleResults.fadeOut();
+              break;
 			case 'down':
+              visibleResults.slideUp();
+              break;
 			default:
-				visibleResults.slideUp();
-				break;
+              visibleResults.slideUp();
+              break;
 		}
 		LiveSearch.invokeCallbacks('AfterHideResults');
 	}
@@ -284,12 +293,14 @@ LiveSearch.showResults = function() {
 		switch(DavesWordPressLiveSearchConfig.resultsDirection)
 		{
 			case 'up':
-				jQuery("ul").filter(".search_results:hidden").fadeIn();
-				break;
+              jQuery("ul").filter(".search_results:hidden").fadeIn();
+              break;
 			case 'down':
+              jQuery("ul").filter(".search_results:hidden").slideDown();
+              break;
 			default:
-				jQuery("ul").filter(".search_results:hidden").slideDown();	
-				break;
+              jQuery("ul").filter(".search_results:hidden").slideDown();
+              break;
 		}
 		LiveSearch.invokeCallbacks('AfterShowResults');
 	}
@@ -325,8 +336,8 @@ LiveSearch.displayIndicator = function() {
 			color:     '#888888',
 			dashWidth: 4,
 			dashes:    8,
-			opacity:   .8,
-			speed:     .7
+			opacity:   0.8,
+			speed:     0.7
 		}).play();
 	}
 
@@ -346,4 +357,3 @@ LiveSearch.removeIndicator = function() {
 jQuery(function() {
 	LiveSearch.init();
 });
-
