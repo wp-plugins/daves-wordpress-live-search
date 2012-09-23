@@ -60,12 +60,6 @@ A: Check the following:
 1. This plugin wont work if you password-protected your wp-admin directory. If you want to protect this directory, see http://www.nkuttler.de/post/htaccess-protect-wordpress-admin/ for instructions on locking it down while still allowing AJAX
 1. Make sure no other plugin is including an earlier version of jQuery
 
-I don't get asked a lot of questions about this plugin, so here's the "known issues":
-
-1. There must only be one search box per page. If there is more than one search box, the plugin gets confused. This may be fixed in a future release.
-1. In the HTML, your search box must be named "s". This is the name the standard search widget uses, so this is only an issue for themers who include their own search box.
-1. This plugin will not work on PHP 4.x
-
 == Filters ==
 
 1. dwls_alter_results
