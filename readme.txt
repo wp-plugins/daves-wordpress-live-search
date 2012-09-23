@@ -28,8 +28,8 @@ Features of v3.0 include:
 
 * Improved method of getting the first thumbnail
 * Canvas/VML-based spinner eliminates the need for the transparent .gif
-* Italian (it_IT) translation
-* Spanish (es_ES) translation
+* Lots of new translations
+* The "view more results" text is now translatable
 * Added hooks & filters for people to plug into DWLS
 * Fixed regex parsing issue when permalinks aren't enabled
 * Support for multiple search boxes (finally!)
@@ -95,6 +95,7 @@ Features I want to implement in future releases:
 * You can now click anywhere in the result box to go to that result
 * WP E-Commerce is officially supported again
 * Toggle to enable/disable the_content filter.
+* "View more results" is now translatable
 
 = 2.8 =
 * 2012-04-29 Dave Ross <dave@csixty4.com>
