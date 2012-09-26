@@ -24,7 +24,7 @@ This plugin is compatible with the [xLanguage](http://wordpress.org/extend/plugi
 
 This plugin also integrates with the Relevanssi plugin for improved search results.
 
-VERSION 3.0: A big new release is planned for the 1st quarter of 2012. Want to get a sneak peek? [Download the latest alpha release](http://wordpress.org/extend/plugins/daves-wordpress-live-search/download/) and try it out. It should be stable enough, but as it's an alpha there are no promises. Bug reports are always welcome.
+VERSION 3.0: A big new release is coming soon. Want to get a sneak peek? [Download the beta release](http://wordpress.org/extend/plugins/daves-wordpress-live-search/download/) and try it out.
 
 Features of v3.0 include:
 
