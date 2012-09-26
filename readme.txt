@@ -45,9 +45,21 @@ Interested in helping with this plugin's development? The official "trunk" is al
 
 == Installation ==
 
-1. Upload the `daves-wordpress-live-search` directory to your site's `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Configure it! Go to the 'Settings' menu and pick 'Live Search'. Here, you'll find options to control the look of your search results. By default, they're pretty plain, but you can change the color scheme or even tell it to display an excerpt of each post.
+http://www.youtube.com/watch?v=7CGR2bJ1mLM
+
+Dave's WordPress Live Search is a plugin that brings live search, sometimes called "autocomplete", to your WordPress site. Many of the web's most popular destinations use this technique so customers can get right to the information or products they're after, and now you can deliver that same experience to your site's visitors. Like WordPress itself, it's designed to be simple to set up and use right away, but powerful and customizable for advanced users.
+
+You can install the plugin right from WordPress itself by going to the Plugins section, clicking "Add New", and searching for "Dave's WordPress Live Search". Click "install now" to add the plugin to your site. If you prefer to install the plugin manually, it's available for download in the WordPress plugins directory.
+
+After you install the plugin, go to the Settings menu and choose "Live Search". Let's take a look at the main "settings" tab, which controls how the plugin looks and behaves. The "Maximum Results to Display" option lets you limit the number of search results your users see. If you have a large site, you should set this to 5 or less or it might take a long time to display. Remember, your visitors can still click the "search" button like they normally would to get all the matching results. The "Minimum characters" option lets you choose how much people need to type before the plugin starts offering results. The longer you wait before showing results, the better the first set of results will be.
+
+The "Results Direction" setting lets you choose whether the results should grow up or down from the search box. People are used to seeing the results underneath the box, but if space is tight on your site or blog, you should show them above the search box to make sure they fit on the screen.
+
+You can also choose what's included with the search results. They can include a thumnail image, excerpt, even who wrote the content and when. You may want to include the "View more results" link at the bottom of the search results, so users can click through to see more results.
+
+Dave's WordPress Live Search ships with three color schemes: gray, red, and blue. Advanced users and developers can use the other styling options to better match their site's theme.
+
+When you're ready, save your changes, and Dave's WordPress Live Search is ready to use. It automatically attaches itself to any search boxes in your theme, or any search widgets you add, giving your site's visitors a better search experience with a minimum of fuss.
 
 == Screenshots ==
 
