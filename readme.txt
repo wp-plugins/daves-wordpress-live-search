@@ -5,6 +5,8 @@ Tags: search, AJAX, live search
 Requires at least: 2.9
 Tested up to: 3.4
 Stable tag: 2.8
+License: MIT
+License URI: http://www.opensource.org/licenses/mit-license.php
 
 Adds "live search" functionality to your WordPress site. Uses the built-in search and jQuery.
 
