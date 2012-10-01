@@ -17,6 +17,7 @@ Dave's WordPress Live Search adds "live search" functionality to your WordPress 
 The [live search](http://ajaxpatterns.org/Live_Search) technique means that most people will find the results they are looking for before they finish typing their query, and it saves them the step of having to click a submit button to get their search results.
 
 http://www.youtube.com/watch?v=7CGR2bJ1mLM
+[transcript](http://plugins.svn.wordpress.org/daves-wordpress-live-search/assets/intro_video_transcript.txt)
 
 This functionality requires Javascript, but the search box still works normally if Javascript is not available.
 
