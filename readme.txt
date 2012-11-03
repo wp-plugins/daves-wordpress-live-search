@@ -4,7 +4,7 @@ Donate link: http://catguardians.org
 Tags: search, AJAX, live search
 Requires at least: 2.9
 Tested up to: 3.4
-Stable tag: 2.8
+Stable tag: 3.0
 License: MIT
 License URI: http://www.opensource.org/licenses/mit-license.php
 
