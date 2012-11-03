@@ -67,11 +67,6 @@ When you're ready, save your changes, and Dave's WordPress Live Search is ready 
 
 == Frequently Asked Questions ==
 
-Q: It's not working!
-A: Check the following:
-1. This plugin wont work if you password-protected your wp-admin directory. If you want to protect this directory, see http://www.nkuttler.de/post/htaccess-protect-wordpress-admin/ for instructions on locking it down while still allowing AJAX
-1. Make sure no other plugin is including an earlier version of jQuery
-
 == Filters ==
 
 1. dwls_alter_results
