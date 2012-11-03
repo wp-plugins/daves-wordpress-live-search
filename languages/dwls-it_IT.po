@@ -1,0 +1,58 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: \n"
+"X-Poedit-Country: \n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: \n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: DavesWordPressLiveSearch.php:90
+#@ dwls
+msgid "View more results"
+msgstr "Vedi più risultati"
+
+#: DavesWordPressLiveSearch.php:91
+#@ dwls
+msgid "Dave's WordPress Live Search requires jQuery 1.2.6 or higher. WordPress ships with current jQuery versions. But if you are seeing this message, it's likely that another plugin is including an earlier version."
+msgstr "Dave's WordPress Live richiede jQuery 1.2.6 o superiore. Wordpress viene distribuito con la versione corrente di jQuery. Ma se stai vedendo questo messaggio, probabilmente un altro plugin sta includendo una versione precedente."
+
+#: DavesWordPressLiveSearch.php:125
+#@ dwls
+msgid "Live Search"
+msgstr "Live Search"
+
+#: DavesWordPressLiveSearch.php:178
+#: DavesWordPressLiveSearch.php:237
+#@ dwls
+msgid "Options saved."
+msgstr "Opzioni salvate."
+
+#: DavesWordPressLiveSearch.php:244
+#@ mt_trans_domain
+msgid "Cache cleared."
+msgstr "Cache svuotata."
+
+#: DavesWordPressLiveSearch.php:312
+#, php-format
+#@ default
+msgid "The %sDave's WordPress Live Search%s plugin is configured to use a theme-specific CSS file, but the current theme does not contain a daves-wordpress-live-search.css file."
+msgstr "Il plugin %sDave's WordPress Live Search%s è configurato per fare uso di un file CSS specifico per il tema, ma il tema corrente non contiene il file daves-wordpress-live-search.css"
+
+#: daves-wordpress-live-search.php:46
+#@ default
+msgid "Dave's WordPress Live Search requires PHP 5.0 or higher"
+msgstr "Dave's WordPress Live Search richiede PHP 5.0 or superiore"
+
