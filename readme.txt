@@ -111,6 +111,7 @@ Features I want to implement in future releases:
 * WP E-Commerce is officially supported again
 * Toggle to enable/disable the_content filter.
 * "View more results" is now translatable
+* Fix to jQuery dependency definition (great catch by Robert Windisch)
 
 = 2.8 =
 * 2012-04-29 Dave Ross <dave@csixty4.com>
