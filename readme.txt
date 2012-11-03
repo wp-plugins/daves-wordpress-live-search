@@ -18,7 +18,7 @@ The [live search](http://ajaxpatterns.org/Live_Search) technique means that most
 
 This functionality requires Javascript, but the search box still works normally if Javascript is not available.
 
-=== Version 3.0 ===
+**Version 3.0**
 
 Version 3.0 includes many bug fixes and improvements, including:
 
@@ -39,7 +39,7 @@ This plugin is compatible with the [xLanguage](http://wordpress.org/extend/plugi
 
 This plugin also integrates with the Relevanssi plugin for improved search results.
 
-=== Translators Wanted ===
+**Translators Wanted**
 
 Since v2.3, Dave's WordPress Live Search supports multiple languages, but I need native speakers and translators to provide .po files for unsupported languages. [Email Dave if interested](mailto:dave@davidmichaelross.com).
 
@@ -314,20 +314,17 @@ Features I want to implement in future releases:
 
 = 3.0 =
 
-Thank you for upgrading to Dave's WordPress Live Search version 3.0.
+Version 3.0 includes many bug fixes and improvements, including:
 
-This release fixes bugs and adds some exciting new features I've been wanting
-for a long time.
-
-* A Canvas/VML-based spinner replaces the transparent .gif. Looks better, animates more smoothly
-* Italian and Spanish translations (WordPress translators rock!)
-* New hooks & filters for programmers to interface with this plugin
-* Fixed a regex parsing issue when permalinks aren't enabled
-* I improved the method of getting the first thumbnail when no "post thumbnail" is defined
-* There's a new checkbox on the "advanced" screen to enable/disable content filtering when finding thumbnails.
+* New translations: Turkish (tr_TR), French (fr_FR), Dutch (nl_NL) translation, Polish (pl_PL), Portugese (pt_PT), Italian (it_IT), Spanish (es_ES)
+* Canvas/VML-based spinner for better looks on high-DPI displays
+* Added hooks & filters for people to plug into DWLS
 * Support for multiple search boxes (finally!)
-* You can now click anywhere in the result box to go to that result
-* WP E-Commerce is officially supported again, thanks to it's developers adoption of custom post types!
+* You can now click anywhere in the result (instead of just the title)
+* WP E-Commerce is officially supported again
+* Completely rewritten caching for better performance
+
+For a complete list of changes, see [the changelog](http://wordpress.org/extend/plugins/daves-wordpress-live-search/changelog/). 
 
 = 2.6 =
 This release fixes the horizontal positioning bug in v2.5.
