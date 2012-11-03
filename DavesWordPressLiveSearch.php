@@ -202,6 +202,13 @@ class DavesWordPressLiveSearch {
       $applyContentFilter = ("true" == $_POST['daves-wordpress-live-search_apply_content_filter']);
       $enableDebugger = ("true" == $_POST['daves-wordpress-live-search_debug']);
 
+      if (array_key_exists('daves-wordpress-live-search_submit', $_POST) && "Clear Cache" == $_POST['daves-wordpress-live-search_submit'] && current_user_can('manage_options')) {
+        // Clear the cache
+        DWLSTransients::clear();
+        $clearedMessage = __('Cache cleared.', 'mt_trans_domain');
+        echo "<div class=\"updated fade\"><p><strong>$clearedMessage</strong></p></div>";
+      }
+
       update_option('daves-wordpress-live-search_exceptions', $exceptions);
       update_option('daves-wordpress-live-search_xoffset', intval($xOffset));
       update_option('daves-wordpress-live-search_yoffset', intval($yOffset));
@@ -215,14 +222,7 @@ class DavesWordPressLiveSearch {
 
       echo "<div class=\"updated fade\"><p><strong>$updateMessage</strong></p></div>";
     } else {
-      if (array_key_exists('daves-wordpress-live-search_submit', $_POST) && "Clear Cache" == $_POST['daves-wordpress-live-search_submit'] && current_user_can('manage_options')) {
-        // Clear the cache
-        DWLSTransients::clear();
-        $clearedMessage = __('Cache cleared.', 'mt_trans_domain');
-
-        echo "<div class=\"updated fade\"><p><strong>$clearedMessage</strong></p></div>";
-      }
-
+      
       $exceptions = get_option('daves-wordpress-live-search_exceptions');
       $xOffset = intval(get_option('daves-wordpress-live-search_xoffset'));
       $yOffset = intval(get_option('daves-wordpress-live-search_yoffset'));
