@@ -22,62 +22,51 @@
  */
 class DWLSTransients {
 
-  static function clear() {
-    $a = 255;
-    while ($a > -1) {
-      $prefix = dechex($a);
-      $index = get_transient("dwls_index_{$prefix}");
-      if ($index) {
-        foreach ($index as $hash => $value) {
-          delete_transient("dwls_result_{$hash}");
-        }
-        delete_transient("dwls_index_{$prefix}");
+  static function offset($clear = false) {
+    static $offset = null;
+
+    if($offset === null) {
+      $offset = get_transient("dwls_offset");
+      if($offset === false) {
+        $offset = 0;
+        set_transient("dwls_offset", $offset);
       }
-      $a -= 1;
     }
+
+    if($clear) {
+      $offset += 1;
+      if($offset > 99) {
+        $offset = 1;
+      }
+      set_transient("dwls_offset", $offset);      
+    }
+
+    return $offset;
+  }
+
+  static function clear() {
+    self::offset(true);
   }
 
   static function set($key, $value, $expiration) {
+    $offset = self::offset();
     $hash = md5($key);
-    $prefix = substr($hash, 0, 2);
-    $index = get_transient("dwls_index_{$prefix}");
-    if (!$index) {
-      $index = array();
-    }
-    if (!array_key_exists($hash, $index)) {
-      $index[$hash] = $hash;
-      set_transient("dwls_index_{$prefix}", $index);
-    }
-    set_transient("dwls_result_{$hash}", $value);
+    set_transient("dwls_res{$offset}_{$hash}", $value, $expiration);
   }
 
   static function get($key) {
     $hash = md5($key);
-    $prefix = substr($hash, 0, 2);
-    $index = get_transient("dwls_index_{$prefix}");
-    if (!$index) {
-      $index = array();
-    }
-    if (array_key_exists($hash, $index)) {
-      return get_transient("dwls_result_{$hash}");
+    $offset = self::offset();
+    $cache = get_transient("dwls_res{$offset}_{$hash}");
+    if($cache) {
+      return $cache;
     }
 
-    return FALSE;
+    return false;
   }
 
   static function indexes() {
-    $all_indexes = array();
-
-    $a = 255;
-    while ($a > -1) {
-      $prefix = dechex($a);
-      $index = get_transient("dwls_index_{$prefix}");
-      if ($index) {
-        $all_indexes[] = "dwls_index_{$prefix}";
-      }
-      $a -= 1;
-    }
-    return array_reverse($all_indexes);
+    return array();
   }
 
 }
