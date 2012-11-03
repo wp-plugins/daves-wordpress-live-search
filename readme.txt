@@ -16,35 +16,32 @@ Dave's WordPress Live Search adds "live search" functionality to your WordPress 
 
 The [live search](http://ajaxpatterns.org/Live_Search) technique means that most people will find the results they are looking for before they finish typing their query, and it saves them the step of having to click a submit button to get their search results.
 
+This functionality requires Javascript, but the search box still works normally if Javascript is not available.
+
+=== Version 3.0 ===
+
+Version 3.0 includes many bug fixes and improvements, including:
+
+* New translations: Turkish (tr_TR), French (fr_FR), Dutch (nl_NL) translation, Polish (pl_PL), Portugese (pt_PT), Italian (it_IT), Spanish (es_ES)
+* Canvas/VML-based spinner for better looks on high-DPI displays
+* Added hooks & filters for people to plug into DWLS
+* Support for multiple search boxes (finally!)
+* You can now click anywhere in the result (instead of just the title)
+* WP E-Commerce is officially supported again
+* Completely rewritten caching for better performance
+
+For a complete list of changes, see [the changelog](http://wordpress.org/extend/plugins/daves-wordpress-live-search/changelog/). 
+
 http://www.youtube.com/watch?v=7CGR2bJ1mLM
 [transcript](http://plugins.svn.wordpress.org/daves-wordpress-live-search/assets/intro_video_transcript.txt)
-
-This functionality requires Javascript, but the search box still works normally if Javascript is not available.
 
 This plugin is compatible with the [xLanguage](http://wordpress.org/extend/plugins/xlanguage/) and [WPML](http://wpml.org/) plugins for internationalization (i18n) of search results.
 
 This plugin also integrates with the Relevanssi plugin for improved search results.
 
-VERSION 3.0: A big new release is coming soon. Want to get a sneak peek? [Download the beta release](http://wordpress.org/extend/plugins/daves-wordpress-live-search/download/) and try it out.
+=== Translators Wanted ===
 
-Features of v3.0 include:
-
-* Improved method of getting the first thumbnail
-* Canvas/VML-based spinner eliminates the need for the transparent .gif
-* Lots of new translations
-* The "view more results" text is now translatable
-* Added hooks & filters for people to plug into DWLS
-* Fixed regex parsing issue when permalinks aren't enabled
-* Support for multiple search boxes (finally!)
-* You can now click anywhere in the result box to go to that result
-* WP E-Commerce is officially supported again
-* Toggle to enable/disable the_content filter.
-
-TRANSLATORS WANTED: Since v2.3, Dave's WordPress Live Search supports multiple languages, but I need native speakers and translators to provide .po files for unsupported languages. [Email Dave if interested](mailto:dave@davidmichaelross.com).
-
-NOTE: Dave's WordPress Live Search requires PHP 5.0 or higher.
-
-Interested in helping with this plugin's development? The official "trunk" is always in WordPress's SVN repository, but I keep the latest code at [GitHub](https://github.com/daveross/daves-wordpress-live-search) if you want to branch send a pull request.
+Since v2.3, Dave's WordPress Live Search supports multiple languages, but I need native speakers and translators to provide .po files for unsupported languages. [Email Dave if interested](mailto:dave@davidmichaelross.com).
 
 == Installation ==
 
@@ -94,7 +91,7 @@ Features I want to implement in future releases:
 == Changelog ==
 
 = 3.0 =
-* 2012-0?-?? Dave Ross <dave@csixty4.com> and many awesome translators!
+* 2012-11-03 Dave Ross <dave@csixty4.com> and many awesome translators!
 * Turkish (tr_TR) translation
 * French (fr_FR) translation
 * Dutch (nl_NL) translation
