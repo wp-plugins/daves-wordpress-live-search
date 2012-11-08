@@ -85,6 +85,9 @@ Features I want to implement in future releases:
 
 == Changelog ==
 
+= 3.1 =
+* 2012-XX-XX Dave Ross <dave@csixty4.com>
+* German (de_DE) translation
 
 = 3.0.1 =
 * 2012-11-07 Dave Ross <dave@csixty4.com>
