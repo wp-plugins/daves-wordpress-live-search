@@ -4,7 +4,7 @@ Donate link: http://catguardians.org
 Tags: search, AJAX, live search
 Requires at least: 2.9
 Tested up to: 3.4
-Stable tag: 3.0
+Stable tag: 3.0.1
 License: MIT
 License URI: http://www.opensource.org/licenses/mit-license.php
 
@@ -84,6 +84,11 @@ Features I want to implement in future releases:
 1. "No results found" message (optional)
 
 == Changelog ==
+
+
+= 3.0.1 =
+* 2012-11-07 Dave Ross <dave@csixty4.com>
+* Simplified jQuery selector for older jQuery versions
 
 = 3.0 =
 * 2012-11-03 Dave Ross <dave@csixty4.com> and many awesome translators!
