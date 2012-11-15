@@ -41,7 +41,9 @@ This plugin also integrates with the Relevanssi plugin for improved search resul
 
 **Translators Wanted**
 
-Since v2.3, Dave's WordPress Live Search supports multiple languages, but I need native speakers and translators to provide .po files for unsupported languages. [Email Dave if interested](mailto:dave@davidmichaelross.com).
+Since v2.3, Dave's WordPress Live Search supports multiple languages, but I need native speakers and translators.
+
+Interested? Visit [this project's CrowdIn page](http://crowdin.net/project/daves-wordpress-live-search/invite) to get started!
 
 == Installation ==
 
