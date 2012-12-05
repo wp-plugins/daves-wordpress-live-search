@@ -90,6 +90,7 @@ Features I want to implement in future releases:
 = 3.1 =
 * 2012-XX-XX Dave Ross <dave@csixty4.com>
 * German (de_DE) translation
+* Color picker for WP 3.5+
 
 = 3.0.1 =
 * 2012-11-07 Dave Ross <dave@csixty4.com>
