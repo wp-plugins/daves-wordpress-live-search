@@ -3,7 +3,7 @@ Contributors: csixty4
 Donate link: http://catguardians.org
 Tags: search, AJAX, live search
 Requires at least: 2.9
-Tested up to: 3.4
+Tested up to: 3.5
 Stable tag: 3.0.1
 License: MIT
 License URI: http://www.opensource.org/licenses/mit-license.php
