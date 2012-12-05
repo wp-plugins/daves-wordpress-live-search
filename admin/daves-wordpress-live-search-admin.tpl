@@ -48,9 +48,9 @@ if ( function_exists('wp_nonce_field') )
 <tr valign="top">
 <th scope="row"><?php _e("Results Direction", 'dwls'); ?></th>
 
-<td><input type="radio" name="daves-wordpress-live-search_results_direction" id="daves-wordpress-live-search_results_direction_down" value="down" <?php if($resultsDirection == 'down'): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_results_direction_down"><?php _e("Down", 'dwls'); ?></input></label>
+<td><input type="radio" name="daves-wordpress-live-search_results_direction" id="daves-wordpress-live-search_results_direction_down" value="down" <?php if($resultsDirection == 'down'): ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_results_direction_down"><?php _e("Down", 'dwls'); ?></input></label>
 
-<input type="radio" name="daves-wordpress-live-search_results_direction" id="daves-wordpress-live-search_results_direction_up" value="up" <?php if($resultsDirection == 'up'): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_results_direction_up"><?php _e("Up", 'dwls'); ?></label><br /><span class="setting-description"><?php _e("When search results are displayed, in which direction should the results box extend from the search box?", 'dwls'); ?></span></td>
+<input type="radio" name="daves-wordpress-live-search_results_direction" id="daves-wordpress-live-search_results_direction_up" value="up" <?php if($resultsDirection == 'up'): ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_results_direction_up"><?php _e("Up", 'dwls'); ?></label><br /><span class="setting-description"><?php _e("When search results are displayed, in which direction should the results box extend from the search box?", 'dwls'); ?></span></td>
 </tr>
 
 <!-- Display post meta -->
@@ -59,7 +59,7 @@ if ( function_exists('wp_nonce_field') )
 
 <td>
     <input type="hidden" name="daves-wordpress-live-search_display_post_meta" value="" />
-    <input type="checkbox" name="daves-wordpress-live-search_display_post_meta" id="daves-wordpress-live-search_display_post_meta" value="true" <?php if($displayPostMeta): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_display_post_meta"><?php _e("Display author & date for every search result", 'dwls'); ?></label>
+    <input type="checkbox" name="daves-wordpress-live-search_display_post_meta" id="daves-wordpress-live-search_display_post_meta" value="true" <?php if($displayPostMeta): ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_display_post_meta"><?php _e("Display author & date for every search result", 'dwls'); ?></label>
 </td> 
 </tr>
 
@@ -69,7 +69,7 @@ if ( function_exists('wp_nonce_field') )
 
 <td>
     <input type="hidden" name="daves-wordpress-live-search_thumbs" value="" />
-    <input type="checkbox" name="daves-wordpress-live-search_thumbs" id="daves-wordpress-live-search_thumbs" value="true" <?php if($showThumbs): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_thumbs"><?php _e("Display thumbnail images for every search result with at least one image", 'dwls'); ?></label>
+    <input type="checkbox" name="daves-wordpress-live-search_thumbs" id="daves-wordpress-live-search_thumbs" value="true" <?php if($showThumbs): ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_thumbs"><?php _e("Display thumbnail images for every search result with at least one image", 'dwls'); ?></label>
 </td> 
 </tr>
 
@@ -79,7 +79,7 @@ if ( function_exists('wp_nonce_field') )
 
 <td>
     <input type="hidden" name="daves-wordpress-live-search_excerpt" value="" />
-    <input type="checkbox" name="daves-wordpress-live-search_excerpt" id="daves-wordpress-live-search_excerpt" value="true" <?php if($showExcerpt): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_excerpt"><?php printf(__("Display an excerpt for every search result. If the post doesn't have one, use the first %s characters.", 'dwls'), "<input type=\"text\" name=\"daves-wordpress-live-search_excerpt_length\" id=\"daves-wordpress-live-search_excerpt_length\" value=\"$excerptLength\" size=\"3\" />"); ?></label>
+    <input type="checkbox" name="daves-wordpress-live-search_excerpt" id="daves-wordpress-live-search_excerpt" value="true" <?php if($showExcerpt): ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_excerpt"><?php printf(__("Display an excerpt for every search result. If the post doesn't have one, use the first %s characters.", 'dwls'), "<input type=\"text\" name=\"daves-wordpress-live-search_excerpt_length\" id=\"daves-wordpress-live-search_excerpt_length\" value=\"$excerptLength\" size=\"3\" />"); ?></label>
 </td> 
 </tr>
 
@@ -89,7 +89,7 @@ if ( function_exists('wp_nonce_field') )
 
 <td>
     <input type="hidden" name="daves-wordpress-live-search_more_results" value="" />
-    <input type="checkbox" name="daves-wordpress-live-search_more_results" id="daves-wordpress-live-search_more_results" value="true" <?php if($showMoreResultsLink): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_more_results"><?php _e("Display the &quot;View more results&quot; link after the search results.", 'dwls'); ?></label>
+    <input type="checkbox" name="daves-wordpress-live-search_more_results" id="daves-wordpress-live-search_more_results" value="true" <?php if($showMoreResultsLink): ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_more_results"><?php _e("Display the &quot;View more results&quot; link after the search results.", 'dwls'); ?></label>
 </td> 
 </tr>
 
@@ -104,8 +104,8 @@ if ( function_exists('wp_nonce_field') )
 <td>
     <div><span class="setting-description"><?php printf(__("When used with the %sWP E-Commerce%s plugin, Dave&apos;s WordPress Live Search can search your product catalog instead of posts & pages.", 'dwls'), '<a href="http://getshopped.org/">', '</a>'); ?></span></div>
     <table>
-        <tr><td><input type="radio" id="daves-wordpress-live-search_source_1" name="daves-wordpress-live-search_source" value="0" <?php if(0 == $searchSource) : ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_source_1"><?php _e("Search posts &amp; pages", 'dwls'); ?></label></td></tr>
-        <tr><td><input type="radio" id="daves-wordpress-live-search_source_2" name="daves-wordpress-live-search_source" value="1" <?php if(1 == $searchSource) : ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_source_2"><?php _e("Search products", 'dwls'); ?></label></td></tr>
+        <tr><td><input type="radio" id="daves-wordpress-live-search_source_1" name="daves-wordpress-live-search_source" value="0" <?php if(0 == $searchSource) : ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_source_1"><?php _e("Search posts &amp; pages", 'dwls'); ?></label></td></tr>
+        <tr><td><input type="radio" id="daves-wordpress-live-search_source_2" name="daves-wordpress-live-search_source" value="1" <?php if(1 == $searchSource) : ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_source_2"><?php _e("Search products", 'dwls'); ?></label></td></tr>
     </table>
 
 </td>
