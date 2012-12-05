@@ -18,7 +18,5 @@ padding-bottom: 0px;
 <!-- Debugger Body -->
 <div style="width: 500px; height: 800px;overflow-y:auto;border: 1px dotted #aaa;margin: 10px 0;padding: 1em;"><?php echo $debug_output; ?></div>
 
-<!-- Note -->
-
-<p><?php printf(__("Do you find this plugin useful? Consider a donation to %sCat Guardians%s, a wonderful no-kill shelter where I volunteer.", 'dwls'), '<a href="http://catguardians.org">', '</a>'); ?></p>
+<?php include dirname(__FILE__)."/admin_footer.tpl"; ?>
 </div>
