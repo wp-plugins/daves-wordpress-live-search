@@ -37,7 +37,7 @@ class DavesWordPressLiveSearch {
 
   public static function head() {
 
-    if (self::isSearchablePage()) {
+    if (self::isSearchablePage() || is_admin()) {
       $cssOption = get_option('daves-wordpress-live-search_css_option');
       $themeDir = get_bloginfo("stylesheet_directory");
 
