@@ -82,7 +82,6 @@ When you're ready, save your changes, and Dave's WordPress Live Search is ready 
 
 Features I want to implement in future releases:
 
-1. Modify the CSS directly on the admin screen (so it's not tied to a theme).
 1. "No results found" message (optional)
 
 == Changelog ==
@@ -322,6 +321,10 @@ Features I want to implement in future releases:
 * Initial release
 
 == Upgrade Notice ==
+
+= 3.1 =
+
+Tired of default red, gray, and blue? WordPress 3.5 users can now choose their own colors on the admin page. Click the new "design" tab and pick the "custom" style!
 
 = 3.0 =
 
