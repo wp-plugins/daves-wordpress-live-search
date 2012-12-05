@@ -16,6 +16,7 @@ display: block;
 	right: 50%;
 }
 </style>
+<?php global $wp_version; $color_picker_supported = (floatval($wp_version) >= 3.5); ?>
 
 <div class="wrap">
 <h2><?php _e("Dave's WordPress Live Search Options", 'dwls'); ?></h2>
@@ -49,7 +50,11 @@ if ( function_exists('wp_nonce_field') )
 <br /><br />
 <input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_default_blue" value="default_blue" <?php if('default_blue' == $cssOption): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_css_default_blue"><?php _e("Default Blue", 'dwls'); ?></label><br /><span class="setting-description"><?php _e("Default style in blue", 'dwls'); ?></span>
 <br /><br />
+
+<?php if($color_picker_supported) : ?>
+
 <input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_custom" value="custom" <?php if('custom' == $cssOption): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_css_custom"><?php _e("Custom", 'dwls'); ?></label><br /><span class="setting-description"><?php _e("Choose your colors below.", 'dwls'); ?></span>
+
 <div id="custom_colors">
 <div><label>Background</label><input type="text" name="daves-wordpress-live-search_custom[bg]" id="daves-wordpress-live-search_custom_bg" value="<?php if(!empty($customOptions['bg'])) echo $customOptions['bg']; ?>" data-default-color="#ddd" class="dwls_color_picker" pattern="^#[0-9,a-f]{3,6}" /></div>
 <div><label>Hover Background</label><input type="text" name="daves-wordpress-live-search_custom[hoverbg]" id="daves-wordpress-live-search_custom_hoverbg" value="<?php if(!empty($customOptions['hoverbg'])) echo $customOptions['hoverbg']; ?>" data-default-color="#fff" class="dwls_color_picker" pattern="^#[0-9,a-f]{3,6}" /></div>
@@ -62,6 +67,9 @@ if ( function_exists('wp_nonce_field') )
 </div>
 </div>
 <br /><br />
+
+<?php endif; ?>
+
 <input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_theme" value="theme" <?php if('theme' == $cssOption): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_css_theme"><?php _e("Theme-specific", 'dwls'); ?></label><br /><span class="setting-description"><strong><?php _e("For advanced users", 'dwls'); ?>:</strong> <?php _e("Theme must include a CSS file named daves-wordpress-live-search.css. If your theme does not have one, copy daves-wordpress-live-search_default_gray.css from this plugin's directory into your theme's directory and modify as desired.", 'dwls'); ?></span>
 <br /><br />
 <input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_existing_theme" value="notheme" <?php if('notheme' == $cssOption): ?>checked="checked"<?php endif; ?> /><label for="daves-wordpress-live-search_css_theme"><?php _e("Theme-specific (theme's own CSS file)", 'dwls'); ?></label><br /><span class="setting-description"><strong><?php _e("For advanced users", 'dwls'); ?>:</strong> <?php _e("Use the styles contained within your Theme's stylesheet. Don't include a separate stylesheet for Live Search.", 'dwls'); ?>
