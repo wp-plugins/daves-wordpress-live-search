@@ -1,13 +1,4 @@
-<style type="text/css">
-/* Used on the built-in themes page to provide the line under the tabs */
-.settings_page_daves-wordpress-live-search-DavesWordPressLiveSearch .wrap h2 {
-border-bottom: 1px solid #ccc;
-padding-bottom: 0px;
-}
-</style>
-
-<div class="wrap">
-<h2><?php _e("Dave's WordPress Live Search Options", 'dwls'); ?></h2>
+<?php include dirname(__FILE__)."/admin_header.tpl"; ?>
 <h2>
 <a href="<?php echo $_SERVER['REQUEST_URI']."&tab=settings"; ?>" class="nav-tab"><?php _e("Settings", 'dwls'); ?></a>
 <a href="<?php echo $_SERVER['REQUEST_URI']."&tab=design"; ?>" class="nav-tab"><?php _e("Design", 'dwls'); ?></a>
