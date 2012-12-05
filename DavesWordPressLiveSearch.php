@@ -39,7 +39,6 @@ class DavesWordPressLiveSearch {
 
     if (self::isSearchablePage()) {
       $cssOption = get_option('daves-wordpress-live-search_css_option');
-
       $themeDir = get_bloginfo("stylesheet_directory");
 
       switch ($cssOption) {
@@ -50,6 +49,7 @@ class DavesWordPressLiveSearch {
         case 'default_red':
         case 'default_blue':
         case 'default_gray':
+        case 'custom':
           $style = plugin_dir_url(__FILE__) . 'css/daves-wordpress-live-search_' . $cssOption . '.css';
           break;
         case 'notheme':
@@ -58,15 +58,36 @@ class DavesWordPressLiveSearch {
       }
 
       if ($style) {
-        if (function_exists('wp_register_style') && function_exists('wp_enqueue_style')) {
-          // WordPress >= 2.6
-          wp_register_style('daves-wordpress-live-search', $style);
-          wp_enqueue_style('daves-wordpress-live-search');
-          wp_print_styles();
-        } else {
-          // WordPress < 2.6
-          echo('<link rel="stylesheet" href="' . $style . '" type="text/css" media="screen" />');
-        }
+        wp_register_style('daves-wordpress-live-search', $style);
+        wp_enqueue_style('daves-wordpress-live-search');
+        wp_print_styles();
+      }
+
+      if($cssOption === 'custom') {
+        $customOptions = get_option('daves-wordpress-live-search_custom_options');
+        $styleTag = <<<STYLE
+          <style type="text/css">
+            ul.search_results li {
+              color: {$customOptions['fg']};
+              background-color: {$customOptions['bg']};
+            }
+            .search_footer {
+              background-color: {$customOptions['footbg']};
+            }
+            .search_footer a,
+            .search_footer a:visited {
+              color: {$customOptions['footfg']};
+            }
+            ul.search_results li a, ul.search_results li a:visited {
+              color: {$customOptions['title']};
+            }
+            ul.search_results li:hover
+            {
+              background-color: {$customOptions['hoverbg']};
+            }
+          </style>
+STYLE;
+        echo $styleTag;
       }
     }
   }
@@ -117,6 +138,15 @@ class DavesWordPressLiveSearch {
     add_options_page("Dave's WordPress Live Search Options", __('Live Search', 'dwls'), 'manage_options', __FILE__, array('DavesWordPressLiveSearch', 'plugin_options'));
   }
 
+  public static function admin_enqueue_scripts() {
+    global $wp_version;
+    // Color picker was introduced in WP 3.5
+    if(floatval($wp_version) >= 3.5) {
+      wp_enqueue_style( 'wp-color-picker' );
+      wp_enqueue_script( 'my-script-handle', plugins_url('admin/color_picker.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
+    }
+  }
+
   /**
    * Display & process the Live Search admin options
    * @return void
@@ -128,6 +158,8 @@ class DavesWordPressLiveSearch {
         return self::plugin_options_advanced();
       case 'debug':
         return self::plugin_options_debug();
+      case 'design':
+        return self::plugin_options_design();
       case 'settings':
       default:
         return self::plugin_options_settings();
@@ -145,7 +177,6 @@ class DavesWordPressLiveSearch {
       $maxResults = max(intval($_POST['daves-wordpress-live-search_max_results']), 0);
       $resultsDirection = $_POST['daves-wordpress-live-search_results_direction'];
       $displayPostMeta = ("true" == $_POST['daves-wordpress-live-search_display_post_meta']);
-      $cssOption = $_POST['daves-wordpress-live-search_css'];
       $showThumbs = $_POST['daves-wordpress-live-search_thumbs'];
       $showExcerpt = $_POST['daves-wordpress-live-search_excerpt'];
       $excerptLength = $_POST['daves-wordpress-live-search_excerpt_length'];
@@ -157,7 +188,6 @@ class DavesWordPressLiveSearch {
       update_option('daves-wordpress-live-search_max_results', $maxResults);
       update_option('daves-wordpress-live-search_results_direction', $resultsDirection);
       update_option('daves-wordpress-live-search_display_post_meta', (string) $displayPostMeta);
-      update_option('daves-wordpress-live-search_css_option', $cssOption);
       update_option('daves-wordpress-live-search_thumbs', $showThumbs);
       update_option('daves-wordpress-live-search_excerpt', $showExcerpt);
       update_option('daves-wordpress-live-search_excerpt_length', $excerptLength);
@@ -174,7 +204,6 @@ class DavesWordPressLiveSearch {
       $maxResults = intval(get_option('daves-wordpress-live-search_max_results'));
       $resultsDirection = stripslashes(get_option('daves-wordpress-live-search_results_direction'));
       $displayPostMeta = (bool) get_option('daves-wordpress-live-search_display_post_meta');
-      $cssOption = get_option('daves-wordpress-live-search_css_option');
       $showThumbs = (bool) get_option('daves-wordpress-live-search_thumbs');
       $showExcerpt = (bool) get_option('daves-wordpress-live-search_excerpt');
       $excerptLength = intval(get_option('daves-wordpress-live-search_excerpt_length'));
@@ -184,6 +213,34 @@ class DavesWordPressLiveSearch {
     }
 
     include("$thisPluginsDirectory/admin/daves-wordpress-live-search-admin.tpl");
+  }
+
+  private static function plugin_options_design() {
+    $thisPluginsDirectory = dirname(__FILE__);
+    $enableDebugger = (bool) get_option('daves-wordpress-live-search_debug');
+
+    if (array_key_exists('daves-wordpress-live-search_submit', $_POST) && current_user_can('manage_options')) {
+      check_admin_referer('daves-wordpress-live-search-config');
+
+      // Read their posted value
+      $cssOption = $_POST['daves-wordpress-live-search_css'];
+      $customOptions = $_POST['daves-wordpress-live-search_custom'];
+
+      // Save the posted value in the database
+      update_option('daves-wordpress-live-search_css_option', $cssOption);
+      update_option('daves-wordpress-live-search_custom_options', $customOptions);
+
+      // Translate the "Options saved" message...just in case.
+      // You know...the code I was copying for this does it, thought it might be a good idea to leave it
+      $updateMessage = __('Options saved.', 'dwls');
+
+      echo "<div class=\"updated fade\"><p><strong>$updateMessage</strong></p></div>";
+    } else {
+      $cssOption = get_option('daves-wordpress-live-search_css_option');
+      $customOptions = get_option('daves-wordpress-live-search_custom_options');
+    }
+
+    include("$thisPluginsDirectory/admin/daves-wordpress-live-search-admin-design.tpl");
   }
 
   private static function plugin_options_advanced() {
@@ -357,6 +414,15 @@ class DavesWordPressLiveSearch {
     add_option('daves-wordpress-live-search_more_results', 'true');
     add_option('daves-wordpress-live-search_minchars', 3);
     add_option('daves-wordpress-live-search_source', DavesWordPressLiveSearchResults::SEARCH_CONTENT);
+
+    add_option('daves-wordpress-live-search_custom_options', array(
+      'fg' => '#000',
+      'bg' => '#ddd',
+      'hoverbg' => '#fff',
+      'title' => '#000',
+      'footbg' => '#888',
+      'footfg' => '#fff',
+    ));
   }
 
 }

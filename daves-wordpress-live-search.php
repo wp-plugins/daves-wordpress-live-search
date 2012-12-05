@@ -38,7 +38,7 @@ else {
 	add_action('admin_menu', array('DavesWordPressLiveSearch', 'admin_menu'));
 	add_action('wp_head', array('DavesWordPressLiveSearch', 'head'));
         register_activation_hook(__FILE__, array('DavesWordPressLiveSearch', 'activate'));
-
+    add_action('admin_enqueue_scripts', array('DavesWordPressLiveSearch', 'admin_enqueue_scripts'));
 	include_once("DavesWordPressLiveSearch.php");
 	include_once("DavesWordPressLiveSearchResults.php");
 }
