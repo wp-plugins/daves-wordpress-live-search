@@ -36,13 +36,20 @@ if ( function_exists('wp_nonce_field') )
 
 <div id="custom_colors" style="display:none;">
 <div id="custom_colors_options">
-<div><label>Background</label><input type="text" name="daves-wordpress-live-search_custom[bg]" id="daves-wordpress-live-search_custom_bg" value="<?php if(!empty($customOptions['bg'])) echo $customOptions['bg']; ?>" data-default-color="#ddd" class="dwls_color_picker" pattern="^#[0-9,a-f]{3,6}" /></div>
-<div><label>Hover Background</label><input type="text" name="daves-wordpress-live-search_custom[hoverbg]" id="daves-wordpress-live-search_custom_hoverbg" value="<?php if(!empty($customOptions['hoverbg'])) echo $customOptions['hoverbg']; ?>" data-default-color="#fff" class="dwls_color_picker" pattern="^#[0-9,a-f]{3,6}" /></div>
-<div><label>Text</label><input type="text" name="daves-wordpress-live-search_custom[fg]" id="daves-wordpress-live-search_custom_fg" value="<?php if(!empty($customOptions['fg'])) echo $customOptions['fg']; ?>" data-default-color="#000" class="dwls_color_picker" pattern="^#[0-9,a-f]{3,6}" /></div>
-<div><label>Post Title</label><input type="text" name="daves-wordpress-live-search_custom[title]" id="daves-wordpress-live-search_custom_title" value="<?php if(!empty($customOptions['title'])) echo $customOptions['title']; ?>" data-default-color="#000" class="dwls_color_picker" pattern="^#[0-9,a-f]{3,6}" /></div>
-<div><label>Footer Background Color</label><input type="text" name="daves-wordpress-live-search_custom[footbg]" id="daves-wordpress-live-search_custom_footbg" value="<?php if(!empty($customOptions['footbg'])) echo $customOptions['footbg']; ?>" data-default-color="#888" class="dwls_color_picker" pattern="^#[0-9,a-f]{3,6}" /></div>
-<div><label>Footer Text Color</label><input type="text" name="daves-wordpress-live-search_custom[footfg]" id="daves-wordpress-live-search_custom_footfg" value="<?php if(!empty($customOptions['footfg'])) echo $customOptions['footfg']; ?>" data-default-color="#fff" class="dwls_color_picker" pattern="^#[0-9,a-f]{3,6}" /></div>
+
+<div><label><?php _e("Title", 'dwls'); ?></label><input type="text" name="daves-wordpress-live-search_custom[title]" id="daves-wordpress-live-search_custom_title" value="<?php if(!empty($customOptions['title'])) echo $customOptions['title']; ?>" data-default-color="#000" class="dwls_color_picker" pattern="^#[0-9,a-f]{3,6}" /></div>
+
+<div><label><?php _e("Excerpt", 'dwls'); ?></label><input type="text" name="daves-wordpress-live-search_custom[fg]" id="daves-wordpress-live-search_custom_fg" value="<?php if(!empty($customOptions['fg'])) echo $customOptions['fg']; ?>" data-default-color="#000" class="dwls_color_picker" pattern="^#[0-9,a-f]{3,6}" /></div>
+
+<div><label><?php _e("Background", 'dwls'); ?></label><input type="text" name="daves-wordpress-live-search_custom[bg]" id="daves-wordpress-live-search_custom_bg" value="<?php if(!empty($customOptions['bg'])) echo $customOptions['bg']; ?>" data-default-color="#ddd" class="dwls_color_picker" pattern="^#[0-9,a-f]{3,6}" /></div>
+
+<div><label><?php _e("Hover Background", 'dwls'); ?></label><input type="text" name="daves-wordpress-live-search_custom[hoverbg]" id="daves-wordpress-live-search_custom_hoverbg" value="<?php if(!empty($customOptions['hoverbg'])) echo $customOptions['hoverbg']; ?>" data-default-color="#fff" class="dwls_color_picker" pattern="^#[0-9,a-f]{3,6}" /></div>
+
+<div><label><?php _e("Footer Background", 'dwls'); ?></label><input type="text" name="daves-wordpress-live-search_custom[footbg]" id="daves-wordpress-live-search_custom_footbg" value="<?php if(!empty($customOptions['footbg'])) echo $customOptions['footbg']; ?>" data-default-color="#888" class="dwls_color_picker" pattern="^#[0-9,a-f]{3,6}" /></div>
+
+<div><label><?php _e("Footer Text", 'dwls'); ?></label><input type="text" name="daves-wordpress-live-search_custom[footfg]" id="daves-wordpress-live-search_custom_footfg" value="<?php if(!empty($customOptions['footfg'])) echo $customOptions['footfg']; ?>" data-default-color="#fff" class="dwls_color_picker" pattern="^#[0-9,a-f]{3,6}" /></div>
 </div>
+
 <div id="dwls_design_preview">
 <ul class="search_results" style="display: block;"><input type="hidden" name="query" value="sample"><li class="daves-wordpress-live-search_result"><a href="#" class="daves-wordpress-live-search_title">Sample Page</a><p class="excerpt clearfix"></p><p>This is an example page. It’s different from a blog post because it will stay in one place and will [...]</p> <p></p><p class="meta clearfix" id="daves-wordpress-live-search_author">Posted by Admin</p><p id="daves-wordpress-live-search_date" class="meta clearfix">December 5, 2012</p><div class="clearfix"></div></li><div class="clearfix search_footer"><a href="#">View more results</a></div></ul>
 </div>
