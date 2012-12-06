@@ -18,9 +18,6 @@ list-style-position: inside;
 padding: 0px;
 margin: 0px;
 
--moz-box-shadow: 5px 5px 3px #222;
--webkit-box-shadow: 5px 5px 3px #222;
-box-shadow: 5px 5px 3px #222;
 }
 
 ul.search_results li

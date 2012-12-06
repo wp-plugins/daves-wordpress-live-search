@@ -66,7 +66,6 @@ class DavesWordPressLiveSearch {
       if($cssOption === 'custom') {
         $customOptions = get_option('daves-wordpress-live-search_custom_options');
         $styleTag = <<<STYLE
-          <style type="text/css">
             ul.search_results li {
               color: {$customOptions['fg']};
               background-color: {$customOptions['bg']};
@@ -85,9 +84,17 @@ class DavesWordPressLiveSearch {
             {
               background-color: {$customOptions['hoverbg']};
             }
-          </style>
 STYLE;
-        echo $styleTag;
+        if(!empty($customOptions['shadow'])) {
+          $styleTag .= <<<STYLE
+            ul.search_results {
+              -moz-box-shadow: 5px 5px 3px #222;
+              -webkit-box-shadow: 5px 5px 3px #222;
+              box-shadow: 5px 5px 3px #222;
+            }
+STYLE;
+        }
+        echo '<style type="text/css">' . $styleTag . '</style>';
       }
     }
   }
