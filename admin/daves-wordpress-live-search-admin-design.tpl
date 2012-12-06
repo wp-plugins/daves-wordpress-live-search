@@ -32,7 +32,7 @@ if ( function_exists('wp_nonce_field') )
 
 <?php if($color_picker_supported) : ?>
 
-<input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_custom" value="custom" <?php if('custom' == $cssOption): ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_css_custom"><?php _e("Custom", 'dwls'); ?></label><br /><span class="setting-description"><?php _e("Choose your colors below.", 'dwls'); ?></span>
+<input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_custom" value="custom" <?php if('custom' == $cssOption): ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_css_custom"><?php _e("Custom", 'dwls'); ?></label><br /><span class="setting-description"><?php _e("Design your box here.", 'dwls'); ?></span>
 
 <div id="custom_colors" style="display:none;">
 <div id="custom_colors_options">
@@ -56,7 +56,7 @@ if ( function_exists('wp_nonce_field') )
 </div>
 
 <div id="dwls_design_preview">
-<ul class="search_results" style="display: block;"><input type="hidden" name="query" value="sample"><li class="daves-wordpress-live-search_result"><a href="#" class="daves-wordpress-live-search_title">Sample Page</a><p class="excerpt clearfix"></p><p>This is an example page. It’s different from a blog post because it will stay in one place and will [...]</p> <p></p><p class="meta clearfix" id="daves-wordpress-live-search_author">Posted by Admin</p><p id="daves-wordpress-live-search_date" class="meta clearfix">December 5, 2012</p><div class="clearfix"></div></li><div class="clearfix search_footer"><a href="#">View more results</a></div></ul>
+<ul class="search_results dwls_search_results" style="display: block;"><input type="hidden" name="query" value="sample"><li class="daves-wordpress-live-search_result"><a href="#" class="daves-wordpress-live-search_title">Sample Page</a><p class="excerpt clearfix"></p><p>This is an example page. It’s different from a blog post because it will stay in one place and will [...]</p> <p></p><p class="meta clearfix" id="daves-wordpress-live-search_author">Posted by Admin</p><p id="daves-wordpress-live-search_date" class="meta clearfix">December 5, 2012</p><div class="clearfix"></div></li><div class="clearfix search_footer dwls_search_footer"><a href="#">View more results</a></div></ul>
 </div>
 </div>
 <br /><br />

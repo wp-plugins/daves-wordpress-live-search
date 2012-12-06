@@ -28,7 +28,7 @@ class DavesWordPressLiveSearch {
   public static function advanced_search_init() {
     load_plugin_textdomain('dwls', false, dirname(plugin_basename(__FILE__)) . '/languages/');
     if (self::isSearchablePage()) {
-      wp_enqueue_script('daves-wordpress-live-search', plugin_dir_url(__FILE__) . 'js/daves-wordpress-live-search.js', array('jquery'));
+      wp_enqueue_script('daves-wordpress-live-search', plugin_dir_url(__FILE__) . 'js/daves-wordpress-live-search.min.js', array('jquery'));
       wp_enqueue_script('excanvas', plugin_dir_url(__FILE__) . 'js/excanvas.compiled.js', 'jquery');
       wp_enqueue_script('spinners', plugin_dir_url(__FILE__) . 'js/spinners.min.js', 'explorercanvas');
       self::inlineSettings();
