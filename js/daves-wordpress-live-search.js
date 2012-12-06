@@ -49,7 +49,7 @@ var LiveSearch = {
  */
 LiveSearch.init = function() {
 	
-	jQuery("body").append('<ul class="search_results"></ul>');
+	jQuery("body").append('<ul class="search_results dwls_search_results"></ul>');
 	this.resultsElement = jQuery('ul').filter('.search_results');
 	this.resultsElement.hide();
 	
@@ -178,7 +178,7 @@ LiveSearch.handleAJAXResults = function(e) {
                                 }
 
                                 if(e.displayPostMeta) {
-                                        renderedResult += '<p class="meta clearfix" id="daves-wordpress-live-search_author">Posted by ' + searchResult.post_author_nicename + '</p><p id="daves-wordpress-live-search_date" class="meta clearfix">' + searchResult.post_date + '</p>';
+                                        renderedResult += '<p class="meta clearfix daves-wordpress-live-search_author" id="daves-wordpress-live-search_author">Posted by ' + searchResult.post_author_nicename + '</p><p id="daves-wordpress-live-search_date" class="meta clearfix daves-wordpress-live-search_date">' + searchResult.post_date + '</p>';
                                 }
                                 renderedResult += '<div class="clearfix"></div></li>';
                                 searchResultsList.append(renderedResult);
@@ -316,7 +316,7 @@ LiveSearch.displayIndicator = function() {
 		var searchBox = jQuery('input:focus').first();
 		var searchBoxPosition = searchBox.offset();
 
-		jQuery("body").append('<span id="search_results_activity_indicator"  />');
+		jQuery("body").append('<span id="search_results_activity_indicator" class="search_results_activity_indicator" />');
 
 		var spinnerRadius = {outer: Math.ceil((searchBox.height() * 0.9) / 2)};
 		spinnerRadius.inner = Math.floor(spinnerRadius.outer * 0.29);  // 2:7 (0.29) ratio seems ideal
