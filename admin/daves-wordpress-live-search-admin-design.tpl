@@ -32,7 +32,7 @@ if ( function_exists('wp_nonce_field') )
 
 <?php if($color_picker_supported) : ?>
 
-<input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_custom" value="custom" <?php if('custom' == $cssOption): ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_css_custom"><?php _e("Custom", 'dwls'); ?></label><br /><span class="setting-description"><?php _e("Design your box here.", 'dwls'); ?></span>
+<input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_custom" value="custom" <?php if('custom' == $cssOption): ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_css_custom"><?php _e("Custom", 'dwls'); ?></label><br /><span class="setting-description"><?php _e("Customize the search results display here", 'dwls'); ?></span>
 
 <div id="custom_colors" style="display:none;">
 <div id="custom_colors_options">
