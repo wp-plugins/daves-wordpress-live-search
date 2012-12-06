@@ -50,7 +50,7 @@ var LiveSearch = {
 LiveSearch.init = function() {
 	
 	jQuery("body").append('<ul class="search_results dwls_search_results"></ul>');
-	this.resultsElement = jQuery('ul').filter('.search_results');
+	this.resultsElement = jQuery('ul').filter('.dwls_search_results');
 	this.resultsElement.hide();
 	
 	// Add the keypress handler
@@ -128,7 +128,7 @@ LiveSearch.handleAJAXResults = function(e) {
                 return;
         }
 
-        var resultsShownFor = jQuery("ul").filter(".search_results").children("input[name=query]").val();
+        var resultsShownFor = jQuery("ul").filter(".dwls_search_results").children("input[name=query]").val();
         if(resultsShownFor !== "" && resultsSearchTerm == resultsShownFor)
         {
                 if(LiveSearch.activeRequests.length === 0) {
@@ -138,7 +138,7 @@ LiveSearch.handleAJAXResults = function(e) {
                 return;
         }
 
-        var searchResultsList = jQuery("ul").filter(".search_results");
+        var searchResultsList = jQuery("ul").filter(".dwls_search_results");
         searchResultsList.empty();
         searchResultsList.append('<input type="hidden" name="query" value="' + resultsSearchTerm + '" />');
 
@@ -266,7 +266,7 @@ LiveSearch.runQuery = function(terms) {
 };
 
 LiveSearch.hideResults = function() {
-	var visibleResults = jQuery("ul").filter(".search_results:visible");
+	var visibleResults = jQuery("ul").filter(".dwls_search_results:visible");
 	if(visibleResults.size() > 0) {
 		LiveSearch.invokeCallbacks('BeforeHideResults');
 		switch(DavesWordPressLiveSearchConfig.resultsDirection)
@@ -286,20 +286,20 @@ LiveSearch.hideResults = function() {
 };
 
 LiveSearch.showResults = function() {
-	var hiddenResults = jQuery("ul").filter(".search_results:hidden");
+	var hiddenResults = jQuery("ul").filter(".dwls_search_results:hidden");
 	if(hiddenResults.size() > 0) {
 		LiveSearch.invokeCallbacks('BeforeShowResults');
 		this.positionResults();
 		switch(DavesWordPressLiveSearchConfig.resultsDirection)
 		{
 			case 'up':
-              jQuery("ul").filter(".search_results:hidden").fadeIn();
+              jQuery("ul").filter(".dwls_search_results:hidden").fadeIn();
               break;
 			case 'down':
-              jQuery("ul").filter(".search_results:hidden").slideDown();
+              jQuery("ul").filter(".dwls_search_results:hidden").slideDown();
               break;
 			default:
-              jQuery("ul").filter(".search_results:hidden").slideDown();
+              jQuery("ul").filter(".dwls_search_results:hidden").slideDown();
               break;
 		}
 		LiveSearch.invokeCallbacks('AfterShowResults');
@@ -311,7 +311,7 @@ LiveSearch.showResults = function() {
  */
 LiveSearch.displayIndicator = function() {
 
-	if(jQuery("#search_results_activity_indicator").size() === 0) {
+	if(jQuery(".search_results_activity_indicator").size() === 0) {
 
 		var searchBox = jQuery('input:focus').first();
 		var searchBoxPosition = searchBox.offset();
@@ -321,17 +321,17 @@ LiveSearch.displayIndicator = function() {
 		var spinnerRadius = {outer: Math.ceil((searchBox.height() * 0.9) / 2)};
 		spinnerRadius.inner = Math.floor(spinnerRadius.outer * 0.29);  // 2:7 (0.29) ratio seems ideal
 
-		jQuery("#search_results_activity_indicator").css('position', 'absolute');
+		jQuery(".search_results_activity_indicator").css('position', 'absolute');
 		
 		var indicatorY = (searchBoxPosition.top + ((searchBox.outerHeight() - searchBox.innerHeight()) / 2) + 'px');
 		
-		jQuery("#search_results_activity_indicator").css('top', indicatorY);
+		jQuery(".search_results_activity_indicator").css('top', indicatorY);
 
 		var indicatorX = (searchBoxPosition.left + searchBox.outerWidth() - ((spinnerRadius.outer + spinnerRadius.inner) * 2) - 2)  + 'px';
 						
-		jQuery("#search_results_activity_indicator").css('left', indicatorX);
+		jQuery(".search_results_activity_indicator").css('left', indicatorX);
 		
-		Spinners.create('#search_results_activity_indicator', {
+		Spinners.create('.search_results_activity_indicator', {
 			radii:     [spinnerRadius.inner, spinnerRadius.outer],
 			color:     '#888888',
 			dashWidth: 4,
@@ -347,7 +347,7 @@ LiveSearch.displayIndicator = function() {
  * Hide the "spinning wheel" AJAX activity indicator
  */
 LiveSearch.removeIndicator = function() {
-	jQuery("#search_results_activity_indicator").remove();
+	jQuery(".search_results_activity_indicator").remove();
 };
 
 ///////////////////

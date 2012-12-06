@@ -66,7 +66,7 @@ class DavesWordPressLiveSearch {
       if($cssOption === 'custom' && !is_admin()) {
         $customOptions = get_option('daves-wordpress-live-search_custom_options');
         $styleTag = <<<STYLE
-            ul.search_results li {
+            ul.dwls_search_results li {
               color: {$customOptions['fg']};
               background-color: {$customOptions['bg']};
             }
@@ -77,20 +77,20 @@ class DavesWordPressLiveSearch {
             .search_footer a:visited {
               color: {$customOptions['footfg']};
             }
-            ul.search_results li a, ul.search_results li a:visited {
+            ul.dwls_search_results li a, ul.dwls_search_results li a:visited {
               color: {$customOptions['title']};
             }
-            ul.search_results li:hover
+            ul.dwls_search_results li:hover
             {
               background-color: {$customOptions['hoverbg']};
             }
-            ul.search_results li {
+            ul.dwls_search_results li {
               border-bottom: 1px solid {$customOptions['divider']};
             }
 STYLE;
         if(!empty($customOptions['shadow'])) {
           $styleTag .= <<<STYLE
-            ul.search_results {
+            ul.dwls_search_results {
               -moz-box-shadow: 5px 5px 3px #222;
               -webkit-box-shadow: 5px 5px 3px #222;
               box-shadow: 5px 5px 3px #222;
