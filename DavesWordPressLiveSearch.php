@@ -63,7 +63,7 @@ class DavesWordPressLiveSearch {
         wp_print_styles();
       }
 
-      if($cssOption === 'custom') {
+      if($cssOption === 'custom' && !is_admin()) {
         $customOptions = get_option('daves-wordpress-live-search_custom_options');
         $styleTag = <<<STYLE
             ul.search_results li {
