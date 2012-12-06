@@ -84,6 +84,9 @@ class DavesWordPressLiveSearch {
             {
               background-color: {$customOptions['hoverbg']};
             }
+            ul.search_results li {
+              border-bottom: 1px solid {$customOptions['divider']};
+            }
 STYLE;
         if(!empty($customOptions['shadow'])) {
           $styleTag .= <<<STYLE

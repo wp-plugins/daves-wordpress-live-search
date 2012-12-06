@@ -23,6 +23,10 @@ jQuery(document).ready(function($){
 				'#dwls_design_preview ul.search_results li:hover',
 				'{',
 				'  background-color: ' + $('#daves-wordpress-live-search_custom_hoverbg').val() + ';',
+				'}',
+				'#dwls_design_preview ul.search_results li',
+				'{',
+				'  border-bottom: 1px solid ' + $('#daves-wordpress-live-search_custom_divider').val() + ';',
 				'}'];
 
 			// Optional drop shadow

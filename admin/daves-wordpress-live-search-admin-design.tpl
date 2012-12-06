@@ -45,11 +45,14 @@ if ( function_exists('wp_nonce_field') )
 
 <div><label><?php _e("Hover Background", 'dwls'); ?></label><input type="text" name="daves-wordpress-live-search_custom[hoverbg]" id="daves-wordpress-live-search_custom_hoverbg" value="<?php if(!empty($customOptions['hoverbg'])) echo $customOptions['hoverbg']; ?>" data-default-color="#fff" class="dwls_color_picker" pattern="^#[0-9,a-f]{3,6}" /></div>
 
+<div><label><?php _e("Divider", 'dwls'); ?></label><input type="text" name="daves-wordpress-live-search_custom[divider]" id="daves-wordpress-live-search_custom_divider" value="<?php if(!empty($customOptions['divider'])) echo $customOptions['divider']; ?>" data-default-color="#aaa" class="dwls_color_picker" pattern="^#[0-9,a-f]{3,6}" /></div>
+
 <div><label><?php _e("Footer Background", 'dwls'); ?></label><input type="text" name="daves-wordpress-live-search_custom[footbg]" id="daves-wordpress-live-search_custom_footbg" value="<?php if(!empty($customOptions['footbg'])) echo $customOptions['footbg']; ?>" data-default-color="#888" class="dwls_color_picker" pattern="^#[0-9,a-f]{3,6}" /></div>
 
 <div><label><?php _e("Footer Text", 'dwls'); ?></label><input type="text" name="daves-wordpress-live-search_custom[footfg]" id="daves-wordpress-live-search_custom_footfg" value="<?php if(!empty($customOptions['footfg'])) echo $customOptions['footfg']; ?>" data-default-color="#fff" class="dwls_color_picker" pattern="^#[0-9,a-f]{3,6}" /></div>
 
 <div><label><?php _e("Shadow", 'dwls'); ?></label><input type="checkbox" name="daves-wordpress-live-search_custom[shadow]" id="daves-wordpress-live-search_custom_shadow" value="true" class="dwls_design_toggle" <?php if(!empty($customOptions['shadow'])) echo 'checked="checked"'; ?> /></div>
+
 </div>
 
 <div id="dwls_design_preview">
