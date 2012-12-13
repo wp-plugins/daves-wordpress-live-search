@@ -168,7 +168,7 @@ STYLE;
         return self::plugin_options_advanced();
       case 'debug':
         return self::plugin_options_debug();
-      case 'design':
+      case 'appearance':
         return self::plugin_options_design();
       case 'settings':
       default:
@@ -250,7 +250,7 @@ STYLE;
       $customOptions = get_option('daves-wordpress-live-search_custom_options');
     }
 
-    include("$thisPluginsDirectory/admin/daves-wordpress-live-search-admin-design.tpl");
+    include("$thisPluginsDirectory/admin/daves-wordpress-live-search-admin-appearance.tpl");
   }
 
   private static function plugin_options_advanced() {
