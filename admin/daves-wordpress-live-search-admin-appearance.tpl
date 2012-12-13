@@ -15,6 +15,46 @@ if ( function_exists('wp_nonce_field') )
 
 <table class="form-table"><tbody>
 
+<!-- Display post meta -->
+<tr valign="top">
+<th scope="row"><?php _e("Display Metadata", 'dwls'); ?></th>
+
+<td>
+    <input type="hidden" name="daves-wordpress-live-search_display_post_meta" value="" />
+    <input type="checkbox" name="daves-wordpress-live-search_display_post_meta" id="daves-wordpress-live-search_display_post_meta" value="true" <?php if($displayPostMeta): ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_display_post_meta"><?php _e("Display author & date for every search result", 'dwls'); ?></label>
+</td> 
+</tr>
+
+<!-- Display post thumbnail -->
+<tr valign="top">
+<th scope="row"><?php _e("Display Post Thumbnail", 'dwls'); ?></th>
+
+<td>
+    <input type="hidden" name="daves-wordpress-live-search_thumbs" value="" />
+    <input type="checkbox" name="daves-wordpress-live-search_thumbs" id="daves-wordpress-live-search_thumbs" value="true" <?php if($showThumbs): ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_thumbs"><?php _e("Display thumbnail images for every search result with at least one image", 'dwls'); ?></label>
+</td> 
+</tr>
+
+<!-- Display post excerpt -->
+<tr valign="top">
+<th scope="row"><?php _e("Display Post Excerpt", 'dwls'); ?></th>
+
+<td>
+    <input type="hidden" name="daves-wordpress-live-search_excerpt" value="" />
+    <input type="checkbox" name="daves-wordpress-live-search_excerpt" id="daves-wordpress-live-search_excerpt" value="true" <?php if($showExcerpt): ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_excerpt"><?php printf(__("Display an excerpt for every search result. If the post doesn't have one, use the first %s characters.", 'dwls'), "<input type=\"text\" name=\"daves-wordpress-live-search_excerpt_length\" id=\"daves-wordpress-live-search_excerpt_length\" value=\"$excerptLength\" size=\"3\" />"); ?></label>
+</td> 
+</tr>
+
+<!-- Display 'more results' -->
+<tr valign="top">
+<th scope="row"><?php _e("Display &quot;View more results&quot; link", 'dwls'); ?></th>
+
+<td>
+    <input type="hidden" name="daves-wordpress-live-search_more_results" value="" />
+    <input type="checkbox" name="daves-wordpress-live-search_more_results" id="daves-wordpress-live-search_more_results" value="true" <?php if($showMoreResultsLink): ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_more_results"><?php _e("Display the &quot;View more results&quot; link after the search results.", 'dwls'); ?></label>
+</td> 
+</tr>
+
 <!-- CSS styles -->
 <tr valign="top">
 <td colspan="2"><h3><?php _e("Styles", 'dwls'); ?></h3></td>

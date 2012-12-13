@@ -186,22 +186,12 @@ STYLE;
       // Read their posted value
       $maxResults = max(intval($_POST['daves-wordpress-live-search_max_results']), 0);
       $resultsDirection = $_POST['daves-wordpress-live-search_results_direction'];
-      $displayPostMeta = ("true" == $_POST['daves-wordpress-live-search_display_post_meta']);
-      $showThumbs = $_POST['daves-wordpress-live-search_thumbs'];
-      $showExcerpt = $_POST['daves-wordpress-live-search_excerpt'];
-      $excerptLength = $_POST['daves-wordpress-live-search_excerpt_length'];
-      $showMoreResultsLink = $_POST['daves-wordpress-live-search_more_results'];
       $minCharsToSearch = intval($_POST['daves-wordpress-live-search_minchars']);
       $searchSource = intval($_POST['daves-wordpress-live-search_source']);
 
       // Save the posted value in the database
       update_option('daves-wordpress-live-search_max_results', $maxResults);
       update_option('daves-wordpress-live-search_results_direction', $resultsDirection);
-      update_option('daves-wordpress-live-search_display_post_meta', (string) $displayPostMeta);
-      update_option('daves-wordpress-live-search_thumbs', $showThumbs);
-      update_option('daves-wordpress-live-search_excerpt', $showExcerpt);
-      update_option('daves-wordpress-live-search_excerpt_length', $excerptLength);
-      update_option('daves-wordpress-live-search_more_results', $showMoreResultsLink);
       update_option('daves-wordpress-live-search_minchars', $minCharsToSearch);
       update_option('daves-wordpress-live-search_source', $searchSource);
 
@@ -213,11 +203,6 @@ STYLE;
     } else {
       $maxResults = intval(get_option('daves-wordpress-live-search_max_results'));
       $resultsDirection = stripslashes(get_option('daves-wordpress-live-search_results_direction'));
-      $displayPostMeta = (bool) get_option('daves-wordpress-live-search_display_post_meta');
-      $showThumbs = (bool) get_option('daves-wordpress-live-search_thumbs');
-      $showExcerpt = (bool) get_option('daves-wordpress-live-search_excerpt');
-      $excerptLength = intval(get_option('daves-wordpress-live-search_excerpt_length'));
-      $showMoreResultsLink = intval("true" == get_option('daves-wordpress-live-search_more_results'));
       $minCharsToSearch = intval(get_option('daves-wordpress-live-search_minchars'));
       $searchSource = intval(get_option('daves-wordpress-live-search_source'));
     }
@@ -233,10 +218,21 @@ STYLE;
       check_admin_referer('daves-wordpress-live-search-config');
 
       // Read their posted value
+      $displayPostMeta = ("true" == $_POST['daves-wordpress-live-search_display_post_meta']);
+      $showThumbs = $_POST['daves-wordpress-live-search_thumbs'];
+      $showExcerpt = $_POST['daves-wordpress-live-search_excerpt'];
+      $excerptLength = $_POST['daves-wordpress-live-search_excerpt_length'];
+      $showMoreResultsLink = $_POST['daves-wordpress-live-search_more_results'];
+
       $cssOption = $_POST['daves-wordpress-live-search_css'];
       $customOptions = $_POST['daves-wordpress-live-search_custom'];
 
       // Save the posted value in the database
+      update_option('daves-wordpress-live-search_display_post_meta', (string) $displayPostMeta);
+      update_option('daves-wordpress-live-search_thumbs', $showThumbs);
+      update_option('daves-wordpress-live-search_excerpt', $showExcerpt);
+      update_option('daves-wordpress-live-search_excerpt_length', $excerptLength);
+      update_option('daves-wordpress-live-search_more_results', $showMoreResultsLink);
       update_option('daves-wordpress-live-search_css_option', $cssOption);
       update_option('daves-wordpress-live-search_custom_options', $customOptions);
 
@@ -246,6 +242,11 @@ STYLE;
 
       echo "<div class=\"updated fade\"><p><strong>$updateMessage</strong></p></div>";
     } else {
+      $displayPostMeta = (bool) get_option('daves-wordpress-live-search_display_post_meta');
+      $showThumbs = (bool) get_option('daves-wordpress-live-search_thumbs');
+      $showExcerpt = (bool) get_option('daves-wordpress-live-search_excerpt');
+      $excerptLength = intval(get_option('daves-wordpress-live-search_excerpt_length'));
+      $showMoreResultsLink = intval("true" == get_option('daves-wordpress-live-search_more_results'));      
       $cssOption = get_option('daves-wordpress-live-search_css_option');
       $customOptions = get_option('daves-wordpress-live-search_custom_options');
     }
