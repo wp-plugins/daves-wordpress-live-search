@@ -37,10 +37,19 @@ class DavesWordPressLiveSearch {
 
   public static function head() {
 
-    if (self::isSearchablePage() || is_admin()) {
-      $cssOption = get_option('daves-wordpress-live-search_css_option');
-      $themeDir = get_bloginfo("stylesheet_directory");
+    $cssOption = get_option('daves-wordpress-live-search_css_option');
+    $themeDir = get_bloginfo("stylesheet_directory");
 
+    if (is_admin()) {
+        $style = plugin_dir_url(__FILE__) . 'css/daves-wordpress-live-search_custom.css';
+        if ($style) {
+          wp_register_style('daves-wordpress-live-search', $style);
+          wp_enqueue_style('daves-wordpress-live-search');
+          wp_print_styles();
+        }
+    }
+    elseif (self::isSearchablePage()) {
+      
       switch ($cssOption) {
         case 'theme':
           $style = $themeDir . '/daves-wordpress-live-search.css';

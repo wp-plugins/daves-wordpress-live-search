@@ -4,7 +4,7 @@ Donate link: http://catguardians.org
 Tags: search, AJAX, live search
 Requires at least: 2.9
 Tested up to: 3.5
-Stable tag: 3.1
+Stable tag: 3.1.1
 License: MIT
 License URI: http://www.opensource.org/licenses/mit-license.php
 
@@ -85,6 +85,10 @@ Features I want to implement in future releases:
 1. "No results found" message (optional)
 
 == Changelog ==
+
+= 3.1.1 =
+* 2012-12-21 Dave Ross <dave@csixty4.com>
+* Always include the "custom" css file on admin pages. Ensures customizer preview always looks right.
 
 = 3.1 =
 * 2012-12-21 Dave Ross <dave@csixty4.com>
@@ -321,6 +325,10 @@ Features I want to implement in future releases:
 * Initial release
 
 == Upgrade Notice ==
+
+= 3.1.1 =
+
+If you upgraded to v3.1 in the first 15 minutes or so, this fixes a bug where the customizer preview may not have reflected the right colors if one of the other styling options were selected when the page rendered.
 
 = 3.1 =
 
