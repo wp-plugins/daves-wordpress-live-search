@@ -4,7 +4,7 @@ Donate link: http://catguardians.org
 Tags: search, AJAX, live search
 Requires at least: 2.9
 Tested up to: 3.5
-Stable tag: 3.0.1
+Stable tag: 3.1
 License: MIT
 License URI: http://www.opensource.org/licenses/mit-license.php
 
@@ -87,7 +87,7 @@ Features I want to implement in future releases:
 == Changelog ==
 
 = 3.1 =
-* 2012-XX-XX Dave Ross <dave@csixty4.com>
+* 2012-12-21 Dave Ross <dave@csixty4.com>
 * German (de_DE) translation
 * Color picker for WP 3.5+
 
@@ -324,7 +324,7 @@ Features I want to implement in future releases:
 
 = 3.1 =
 
-Tired of default red, gray, and blue? WordPress 3.5 users can now choose their own colors on the admin page. Click the new "design" tab and pick the "custom" style!
+Tired of default red, gray, and blue? WordPress 3.5 users can now choose their own colors on the admin page. Click the new "appearance" tab and build your own "custom" style!
 
 = 3.0 =
 
