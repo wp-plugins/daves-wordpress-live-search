@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: daves-wordpress-live-search\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-21 15:28-0500\n"
-"PO-Revision-Date: 2012-12-21 21:21-0500\n"
+"PO-Revision-Date: 2012-12-21 21:36-0500\n"
 "Last-Translator: Dave Ross <dave@davidmichaelross.com>\n"
-"Language-Team: English\n"
+"Language-Team: Vietnamese\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,36 +14,36 @@ msgstr ""
 "X-Poedit-Language: English\n"
 "X-Poedit-Country: UNITED STATES\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: crowdin.net\n"
-"Language: en_US\n"
+"Language: vi_VN\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../daves-wordpress-live-search.php:48
 msgid "Dave's WordPress Live Search requires PHP 5.0 or higher"
-msgstr "Dave's WordPress Live Search requires PHP 5.0 or higher"
+msgstr "Dave WordPress Live Search yêu cầu PHP 5.0 hoặc cao hơn"
 
 #: ../DavesWordPressLiveSearch.php:117
 msgid "View more results"
-msgstr "View more results"
+msgstr "Xem thêm kết quả"
 
 #: ../DavesWordPressLiveSearch.php:118
 msgid "Dave's WordPress Live Search requires jQuery 1.2.6 or higher. WordPress ships with current jQuery versions. But if you are seeing this message, it's likely that another plugin is including an earlier version."
-msgstr "Dave's WordPress Live Search requires jQuery 1.2.6 or higher. WordPress ships with current jQuery versions. But if you are seeing this message, it's likely that another plugin is including an earlier version."
+msgstr "Dave WordPress Live Search yêu cầu jQuery 1.2.6 hoặc cao hơn."
 
 #: ../DavesWordPressLiveSearch.php:148
 msgid "Live Search"
-msgstr "Live Search"
+msgstr "Tìm kiếm nhanh"
 
 #: ../DavesWordPressLiveSearch.php:200
 #: ../DavesWordPressLiveSearch.php:241
 #: ../DavesWordPressLiveSearch.php:289
 msgid "Options saved."
-msgstr "Options saved."
+msgstr "Tùy chọn lưu."
 
 #: ../DavesWordPressLiveSearch.php:276
 msgid "Cache cleared."
-msgstr "Cache cleared."
+msgstr "Xóa bộ nhớ cache."
 
 #: ../DavesWordPressLiveSearch.php:359
 #, php-format
@@ -62,14 +62,14 @@ msgstr "Please help make Dave's WordPress Live Search available to people all ov
 
 #: ../admin/admin_header.tpl:5
 msgid "Dave's WordPress Live Search Options"
-msgstr "Dave's WordPress Live Search Options"
+msgstr "Tùy chọn tìm kiếm"
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:3
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:3
 #: ../admin/daves-wordpress-live-search-admin-debug.tpl:3
 #: ../admin/daves-wordpress-live-search-admin.tpl:3
 msgid "Settings"
-msgstr "Settings"
+msgstr "Cài đặt"
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:4
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:4
@@ -83,18 +83,18 @@ msgstr "Appearance"
 #: ../admin/daves-wordpress-live-search-admin-debug.tpl:5
 #: ../admin/daves-wordpress-live-search-admin.tpl:5
 msgid "Advanced"
-msgstr "Advanced"
+msgstr "Nâng cao"
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:6
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:6
 #: ../admin/daves-wordpress-live-search-admin-debug.tpl:6
 #: ../admin/daves-wordpress-live-search-admin.tpl:6
 msgid "Debug"
-msgstr "Debug"
+msgstr "Gỡ lỗi"
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:19
 msgid "Exceptions"
-msgstr "Exceptions"
+msgstr "Trường hợp ngoại lệ"
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:24
 #, c-format
@@ -103,15 +103,15 @@ msgstr "Enter the %s of pages which should not have live searching, one per line
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:26
 msgid "NOTE"
-msgstr "NOTE"
+msgstr "LƯU Ý"
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:26
 msgid "These pages will still be returned in search results. This only disables the Live Search feature for the search box on these pages."
-msgstr "These pages will still be returned in search results. This only disables the Live Search feature for the search box on these pages."
+msgstr "Các trang này vẫn sẽ được trả lại trong kết quả tìm kiếm. Điều này chỉ vô hiệu hóa tính năng Live Search cho hộp tìm kiếm trên các trang của bạn."
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:32
 msgid "Search Results box X offset"
-msgstr "Search Results box X offset"
+msgstr "Kết quả tìm kiếm"
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:35
 msgid "Use this setting to move the search results box left or right to align exactly with your theme's search field. Value is in pixels. Negative values move the box to the left, positive values move it to the right."
