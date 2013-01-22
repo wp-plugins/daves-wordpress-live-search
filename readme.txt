@@ -4,7 +4,7 @@ Donate link: http://catguardians.org
 Tags: search, AJAX, live search
 Requires at least: 2.9
 Tested up to: 3.5
-Stable tag: 3.1.1
+Stable tag: 3.2
 License: MIT
 License URI: http://www.opensource.org/licenses/mit-license.php
 
@@ -17,20 +17,6 @@ Dave's WordPress Live Search adds "live search" functionality to your WordPress 
 The [live search](http://ajaxpatterns.org/Live_Search) technique means that most people will find the results they are looking for before they finish typing their query, and it saves them the step of having to click a submit button to get their search results.
 
 This functionality requires Javascript, but the search box still works normally if Javascript is not available.
-
-**Version 3.0**
-
-Version 3.0 includes many bug fixes and improvements, including:
-
-* New translations: Turkish (tr_TR), French (fr_FR), Dutch (nl_NL) translation, Polish (pl_PL), Portugese (pt_PT), Italian (it_IT), Spanish (es_ES)
-* Canvas/VML-based spinner for better looks on high-DPI displays
-* Added hooks & filters for people to plug into DWLS
-* Support for multiple search boxes (finally!)
-* You can now click anywhere in the result (instead of just the title)
-* WP E-Commerce is officially supported again
-* Completely rewritten caching for better performance
-
-For a complete list of changes, see [the changelog](http://wordpress.org/extend/plugins/daves-wordpress-live-search/changelog/). 
 
 http://www.youtube.com/watch?v=7CGR2bJ1mLM
 [transcript](http://plugins.svn.wordpress.org/daves-wordpress-live-search/assets/intro_video_transcript.txt)
@@ -85,6 +71,12 @@ Features I want to implement in future releases:
 1. "No results found" message (optional)
 
 == Changelog ==
+
+= 3.2 =
+* 2012-01-22 Dave Ross <dave@csixty4.com>
+* Fixed a Javascript error when resizing a window
+* Removed the "debug" tab - wasn't very useful
+* Force a high z-index on the spinner
 
 = 3.1.1 =
 * 2012-12-21 Dave Ross <dave@csixty4.com>
