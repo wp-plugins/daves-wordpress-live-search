@@ -325,7 +325,7 @@ LiveSearch.displayIndicator = function() {
 		var spinnerRadius = {outer: Math.ceil((searchBox.height() * 0.9) / 2)};
 		spinnerRadius.inner = Math.floor(spinnerRadius.outer * 0.29);  // 2:7 (0.29) ratio seems ideal
 
-		jQuery(".search_results_activity_indicator").css('position', 'absolute');
+		jQuery(".search_results_activity_indicator").css('position', 'absolute').css('z-index', 9999);
 		
 		var indicatorY = (searchBoxPosition.top + ((searchBox.outerHeight() - searchBox.innerHeight()) / 2) + 'px');
 		
