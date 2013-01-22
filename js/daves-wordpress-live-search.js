@@ -86,27 +86,31 @@ LiveSearch.positionResults = function() {
 	var topOffset;
 	var searchBox = jQuery('input:focus').first();
 
-	// Position the ul right under the search box
-	var searchBoxPosition = searchBox.offset();
-	searchBoxPosition.left += parseInt(DavesWordPressLiveSearchConfig.xOffset, 10);
-	searchBoxPosition.top  += parseInt(DavesWordPressLiveSearchConfig.yOffset, 10);
-	this.resultsElement.css('left', searchBoxPosition.left);
-	this.resultsElement.css('top', searchBoxPosition.top);
-	this.resultsElement.css('display', 'block');
-	
-    switch(DavesWordPressLiveSearchConfig.resultsDirection)
-    {
-      case 'up':
-        topOffset = searchBoxPosition.top - this.resultsElement.height();
-        break;
-      case 'down':
-        topOffset = searchBoxPosition.top + LiveSearch.searchBoxes.outerHeight();
-        break;
-      default:
-        topOffset = searchBoxPosition.top + LiveSearch.searchBoxes.outerHeight();
-    }
-	
-	this.resultsElement.css('top', topOffset + 'px');
+	if(searchBox.size() > 0) {
+
+		// Position the ul right under the search box
+		var searchBoxPosition = searchBox.offset();
+		searchBoxPosition.left += parseInt(DavesWordPressLiveSearchConfig.xOffset, 10);
+		searchBoxPosition.top  += parseInt(DavesWordPressLiveSearchConfig.yOffset, 10);
+		this.resultsElement.css('left', searchBoxPosition.left);
+		this.resultsElement.css('top', searchBoxPosition.top);
+		this.resultsElement.css('display', 'block');
+		
+		switch(DavesWordPressLiveSearchConfig.resultsDirection)
+		{
+			case 'up':
+				topOffset = searchBoxPosition.top - this.resultsElement.height();
+				break;
+			case 'down':
+				topOffset = searchBoxPosition.top + LiveSearch.searchBoxes.outerHeight();
+				break;
+			default:
+				topOffset = searchBoxPosition.top + LiveSearch.searchBoxes.outerHeight();
+		}
+		
+		this.resultsElement.css('top', topOffset + 'px');
+		
+	}
 };
 
 /**
