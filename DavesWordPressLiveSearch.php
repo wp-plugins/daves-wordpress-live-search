@@ -175,8 +175,6 @@ STYLE;
     switch ($tab) {
       case 'advanced':
         return self::plugin_options_advanced();
-      case 'debug':
-        return self::plugin_options_debug();
       case 'appearance':
         return self::plugin_options_design();
       case 'settings':
@@ -187,7 +185,6 @@ STYLE;
 
   private static function plugin_options_settings() {
     $thisPluginsDirectory = dirname(__FILE__);
-    $enableDebugger = (bool) get_option('daves-wordpress-live-search_debug');
 
     if (array_key_exists('daves-wordpress-live-search_submit', $_POST) && current_user_can('manage_options')) {
       check_admin_referer('daves-wordpress-live-search-config');
@@ -221,7 +218,6 @@ STYLE;
 
   private static function plugin_options_design() {
     $thisPluginsDirectory = dirname(__FILE__);
-    $enableDebugger = (bool) get_option('daves-wordpress-live-search_debug');
 
     if (array_key_exists('daves-wordpress-live-search_submit', $_POST) && current_user_can('manage_options')) {
       check_admin_referer('daves-wordpress-live-search-config');
@@ -277,7 +273,6 @@ STYLE;
         $cacheLifetime = 3600;
       }
       $applyContentFilter = ("true" == $_POST['daves-wordpress-live-search_apply_content_filter']);
-      $enableDebugger = ("true" == $_POST['daves-wordpress-live-search_debug']);
 
       if (array_key_exists('daves-wordpress-live-search_submit', $_POST) && "Clear Cache" == $_POST['daves-wordpress-live-search_submit'] && current_user_can('manage_options')) {
         // Clear the cache
@@ -291,7 +286,6 @@ STYLE;
       update_option('daves-wordpress-live-search_yoffset', intval($yOffset));
       update_option('daves-wordpress-live-search_cache_lifetime', intval($cacheLifetime));
       update_option('daves-wordpress-live-search_apply_content_filter', $applyContentFilter);
-      update_option('daves-wordpress-live-search_debug', $enableDebugger);
 
       // Translate the "Options saved" message...just in case.
       // You know...the code I was copying for this does it, thought it might be a good idea to leave it
@@ -311,51 +305,10 @@ STYLE;
       }
 
       $applyContentFilter = (bool) get_option('daves-wordpress-live-search_apply_content_filter');
-      $enableDebugger = (bool) get_option('daves-wordpress-live-search_debug');
+      
     }
 
     include("$thisPluginsDirectory/admin/daves-wordpress-live-search-admin-advanced.tpl");
-  }
-
-  private static function plugin_options_debug() {
-    $thisPluginsDirectory = dirname(__FILE__);
-    $enableDebugger = (bool) get_option('daves-wordpress-live-search_debug');
-
-    $debug_output = array();
-
-    $debug_output[] = "Cache contents:";
-    $cache_indexes = DWLSTransients::indexes();
-
-    // Output the cache indexes
-    foreach ($cache_indexes as $cache_index) {
-      $debug_output[] = $cache_index;
-    }
-
-    $debug_output[] = "----------";
-
-    foreach ($cache_indexes as $cache_index) {
-      $debug_output[] = "{$cache_index}:";
-      $hashes = get_transient($cache_index);
-      foreach ($hashes as $hash) {
-        $debug_output[] = $hash;
-      }
-    }
-
-    $debug_output[] = "----------";
-
-    // Output the cache contents for each index
-    foreach ($cache_indexes as $cache_index) {
-      $hashes = get_transient($cache_index);
-      foreach ($hashes as $hash) {
-        $contents = get_transient("dwls_result_{$hash}");
-        $debug_output[] = "dwls_result_{$hash}:";
-        $debug_output[] = var_export($contents, TRUE);
-      }
-    }
-
-    $debug_output = implode("<br><br>", $debug_output);
-
-    include("$thisPluginsDirectory/admin/daves-wordpress-live-search-admin-debug.tpl");
   }
 
   public static function admin_notices() {
