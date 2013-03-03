@@ -83,7 +83,7 @@ class DavesWordPressLiveSearch {
 
         $styleTag = <<<STYLE
             ul.dwls_search_results {
-              width: {$customOptions['width']};
+              width: {$customOptions['width']}px;
             }
             ul.dwls_search_results li {
               color: {$customOptions['fg']};
