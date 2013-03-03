@@ -73,7 +73,14 @@ class DavesWordPressLiveSearch {
       }
 
       if($cssOption === 'custom' && !is_admin()) {
+        
         $customOptions = get_option('daves-wordpress-live-search_custom_options');
+
+        // Default width if none was provided
+        if(!isset($customOptions['width']) || empty($customOptions['width'])) {
+          $customOptions['width'] = 250;
+        }
+
         $styleTag = <<<STYLE
             ul.dwls_search_results {
               width: {$customOptions['width']};
