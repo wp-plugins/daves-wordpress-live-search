@@ -80,7 +80,7 @@ class DavesWordPressLiveSearchResults {
     $wpQueryResults = apply_filters( 'dwls_alter_results', $wpQueryResults, $maxResults );
 
     foreach ( $wp_query->posts as $result ) {
-      
+
       // Add author names & permalinks
       if ( $displayPostMeta ) {
         $result->post_author_nicename = $this->authorName( $result->post_author );
@@ -130,6 +130,7 @@ class DavesWordPressLiveSearchResults {
       $result->show_more = true;
 
       $this->results[] = $result;
+      
     }
   }
 
