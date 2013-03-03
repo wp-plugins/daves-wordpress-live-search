@@ -2,9 +2,16 @@ jQuery(document).ready(function($){
 
 	function dwls_admin_color_change() {
 		setTimeout(function() {
+
+			$('#daves-wordpress-live-search_custom_width').val(
+				Math.abs(parseInt($('#daves-wordpress-live-search_custom_width').val(), 10))
+			);
+
 			var input = $(this),
 			preview = $('.dwls_search_results');
+
 			$('#dwls_custom_styles').remove();
+
 			var styles =
 				['.dwls_search_results {',
 				'  width: ' + $('#daves-wordpress-live-search_custom_width').val() + 'px;',

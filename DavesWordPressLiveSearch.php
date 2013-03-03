@@ -237,6 +237,9 @@ STYLE;
       $cssOption = $_POST['daves-wordpress-live-search_css'];
       $customOptions = $_POST['daves-wordpress-live-search_custom'];
 
+      // Force the width to be something we can work with
+      $customOptions['width'] = max(abs(intval($customOptions['width'])), 1);
+
       // Save the posted value in the database
       update_option('daves-wordpress-live-search_display_post_meta', (string) $displayPostMeta);
       update_option('daves-wordpress-live-search_thumbs', $showThumbs);
