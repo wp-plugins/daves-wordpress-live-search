@@ -43,13 +43,6 @@ class DavesWordPressLiveSearchResults {
 
     $dateFormat = get_option('date_format');
 
-    // Some other plugin threw a fit once if I didn't instantiate
-    // WP_Query once to initialize everything and then call it
-    // for real. Might have been "Search Everything". I think there's
-    // a comment about it in an old version of DWLS.
-    $wp_query = $wpQueryResults = new WP_Query();
-    $wp_query = $wpQueryResults = new WP_Query();
-
     if (function_exists('relevanssi_do_query')) {
       // Relevanssi isn't treating 0 as "unlimited" results
       // like WordPress's native search does. So we'll replace
@@ -72,13 +65,13 @@ class DavesWordPressLiveSearchResults {
     $wpQueryParams['post_status'] = 'publish';
     $queryString = http_build_query($wpQueryParams);
 
-    $wpQueryResults->query($queryString);
+    $wp_query->query($queryString);
 
-    $this->searchTerms = $wpQueryResults->query_vars['s'];
+    $this->searchTerms = $wp_query->query_vars['s'];
 
     $wpQueryResults = apply_filters('dwls_alter_results', $wpQueryResults, $maxResults);
 
-    foreach ($wpQueryResults->posts as $result) {
+    foreach ($wp_query->posts as $result) {
       // Add author names & permalinks
       if ($displayPostMeta) {
         $result->post_author_nicename = $this->authorName($result->post_author);
@@ -90,7 +83,7 @@ class DavesWordPressLiveSearchResults {
         // Support for WP 2.9 post thumbnails
         $postImageID = get_post_thumbnail_id($result->ID);
         $postImageData = wp_get_attachment_image_src($postImageID, apply_filters('post_image_size', 'thumbnail'));
-	    $hasThumbnailSet = ($postImageData !== false);
+	      $hasThumbnailSet = ($postImageData !== false);
       }
       else {
       	// No support for post thumbnails
@@ -191,6 +184,8 @@ class DavesWordPressLiveSearchResults {
   }
 
   public function ajaxSearch() {
+    global $wp_query;
+
     $maxResults = intval(get_option('daves-wordpress-live-search_max_results'));
     if ($maxResults === 0)
       $maxResults = -1;
@@ -212,9 +207,9 @@ class DavesWordPressLiveSearchResults {
       // See class WP in classes.php
       // The Relevanssi plugin is using this instead of
       // the global $wp_query object
-      $wp = & new WP();
-      $wp->init();  // Sets up current user.
-      $wp->parse_request();
+      // $wp = & new WP();
+      // $wp->init();  // Sets up current user.
+      // $wp->parse_request();
 
       $displayPostMeta = (bool) get_option('daves-wordpress-live-search_display_post_meta');
       if (array_key_exists('search_source', $_REQUEST)) {
