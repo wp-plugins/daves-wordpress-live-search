@@ -72,6 +72,10 @@ Features I want to implement in future releases:
 
 == Changelog ==
 
+= 3.3 =
+* 2012-??-?? Dave Ross <dave@csixty4.com>
+* Added search results width to the customizer
+
 = 3.2 =
 * 2012-01-22 Dave Ross <dave@csixty4.com>
 * Fixed a Javascript error when resizing a window
