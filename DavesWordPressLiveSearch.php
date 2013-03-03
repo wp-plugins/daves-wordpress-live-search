@@ -190,6 +190,7 @@ STYLE;
     $thisPluginsDirectory = dirname(__FILE__);
 
     if (array_key_exists('daves-wordpress-live-search_submit', $_POST) && current_user_can('manage_options')) {
+
       check_admin_referer('daves-wordpress-live-search-config');
 
       // Read their posted value
@@ -204,16 +205,17 @@ STYLE;
       update_option('daves-wordpress-live-search_minchars', $minCharsToSearch);
       update_option('daves-wordpress-live-search_source', $searchSource);
 
-      // Translate the "Options saved" message...just in case.
-      // You know...the code I was copying for this does it, thought it might be a good idea to leave it
       $updateMessage = __('Options saved.', 'dwls');
-
       echo "<div class=\"updated fade\"><p><strong>$updateMessage</strong></p></div>";
-    } else {
+
+    }
+    else {
+
       $maxResults = intval(get_option('daves-wordpress-live-search_max_results'));
       $resultsDirection = stripslashes(get_option('daves-wordpress-live-search_results_direction'));
       $minCharsToSearch = intval(get_option('daves-wordpress-live-search_minchars'));
       $searchSource = intval(get_option('daves-wordpress-live-search_source'));
+
     }
 
     include("$thisPluginsDirectory/admin/daves-wordpress-live-search-admin.tpl");
