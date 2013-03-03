@@ -56,17 +56,27 @@ class DavesWordPressLiveSearchResults {
 
     $wpQueryParams = $_GET;
     $wpQueryParams['showposts'] = $maxResults;
-    if(self::SEARCH_WPCOMMERCE === $source) {
-        $wpQueryParams['post_type'] = 'wpsc-product';
+
+    // Override post_type if none provided
+    if(!isset($wpQueryParams['post_type'])) {
+      if(self::SEARCH_WPCOMMERCE === $source) {
+          $wpQueryParams['post_type'] = 'wpsc-product';
+      }
+      else {
+          $wpQueryParams['post_type'] = 'any';
+      }
     }
-    else {
-        $wpQueryParams['post_type'] = 'any';
+
+    // Override post_status if none provided
+    if(!isset($wpQueryParams['post_status'])) {
+      $wpQueryParams['post_status'] = 'publish';
     }
-    $wpQueryParams['post_status'] = 'publish';
+
     $queryString = http_build_query($wpQueryParams);
 
     $wp_query->query($queryString);
 
+    // Get the search terms to include in the AJAX response
     $this->searchTerms = $wp_query->query_vars['s'];
 
     $wpQueryResults = apply_filters('dwls_alter_results', $wpQueryResults, $maxResults);
