@@ -6,7 +6,7 @@ include "DWLSTransients.php";
  * Value object class
  */
 class DavesWordPressLiveSearchResults {
-  
+
   // Search sources
   const SEARCH_CONTENT = 0;
   const SEARCH_WPCOMMERCE = 1;
@@ -70,11 +70,6 @@ class DavesWordPressLiveSearchResults {
       }
     }
 
-    // Override post_status if none provided
-    if ( !isset( $wpQueryParams['post_status'] ) ) {
-      $wpQueryParams['post_status'] = 'publish';
-    }
-
     $queryString = http_build_query( $wpQueryParams );
 
     $wp_query->query( $queryString );
@@ -85,6 +80,7 @@ class DavesWordPressLiveSearchResults {
     $wpQueryResults = apply_filters( 'dwls_alter_results', $wpQueryResults, $maxResults );
 
     foreach ( $wp_query->posts as $result ) {
+      
       // Add author names & permalinks
       if ( $displayPostMeta ) {
         $result->post_author_nicename = $this->authorName( $result->post_author );
