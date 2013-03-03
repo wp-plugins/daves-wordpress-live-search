@@ -74,9 +74,14 @@ if ( function_exists('wp_nonce_field') )
 <input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_custom" value="custom" <?php if('custom' == $cssOption): ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_css_custom"><?php _e("Custom", 'dwls'); ?></label><br /><span class="setting-description"><?php _e("Customize the search results display here", 'dwls'); ?></span>
 
 <div id="custom_colors" style="display:none;">
+
+<div id="dwls_design_preview">
+<ul class="search_results dwls_search_results" style="display: block;"><input type="hidden" name="query" value="sample"><li class="daves-wordpress-live-search_result"><a href="#" class="daves-wordpress-live-search_title">Sample Page</a><p class="excerpt clearfix"></p><p>This is an example page. It’s different from a blog post because it will stay in one place and will [...]</p> <p></p><p class="meta clearfix" id="daves-wordpress-live-search_author">Posted by Admin</p><p id="daves-wordpress-live-search_date" class="meta clearfix">December 5, 2012</p><div class="clearfix"></div></li><div class="clearfix search_footer dwls_search_footer"><a href="#">View more results</a></div></ul>
+</div>
+
 <div id="custom_colors_options">
 
-<div><label><?php _e("Width", 'dwls'); ?></label><input type="number" name="daves-wordpress-live-search_custom[width]" id="daves-wordpress-live-search_custom_width" value="<?php if(!empty($customOptions['width'])) echo $customOptions['width']; else echo "250" ?>" /></div>
+<div><label><?php _e("Width (in pixels)", 'dwls'); ?></label><input type="number" name="daves-wordpress-live-search_custom[width]" id="daves-wordpress-live-search_custom_width" value="<?php if(!empty($customOptions['width'])) echo $customOptions['width']; else echo "250" ?>" /></div>
 
 <div><label><?php _e("Title", 'dwls'); ?></label><input type="text" name="daves-wordpress-live-search_custom[title]" id="daves-wordpress-live-search_custom_title" value="<?php if(!empty($customOptions['title'])) echo $customOptions['title']; ?>" data-default-color="#000" class="dwls_color_picker" pattern="^#[0-9,a-f]{3,6}" /></div>
 
@@ -96,9 +101,6 @@ if ( function_exists('wp_nonce_field') )
 
 </div>
 
-<div id="dwls_design_preview">
-<ul class="search_results dwls_search_results" style="display: block;"><input type="hidden" name="query" value="sample"><li class="daves-wordpress-live-search_result"><a href="#" class="daves-wordpress-live-search_title">Sample Page</a><p class="excerpt clearfix"></p><p>This is an example page. It’s different from a blog post because it will stay in one place and will [...]</p> <p></p><p class="meta clearfix" id="daves-wordpress-live-search_author">Posted by Admin</p><p id="daves-wordpress-live-search_date" class="meta clearfix">December 5, 2012</p><div class="clearfix"></div></li><div class="clearfix search_footer dwls_search_footer"><a href="#">View more results</a></div></ul>
-</div>
 </div>
 <br /><br />
 
