@@ -75,6 +75,9 @@ class DavesWordPressLiveSearch {
       if($cssOption === 'custom' && !is_admin()) {
         $customOptions = get_option('daves-wordpress-live-search_custom_options');
         $styleTag = <<<STYLE
+            ul.dwls_search_results {
+              width: {$customOptions['width']};
+            }
             ul.dwls_search_results li {
               color: {$customOptions['fg']};
               background-color: {$customOptions['bg']};
@@ -395,6 +398,7 @@ STYLE;
       'title' => '#000',
       'footbg' => '#888',
       'footfg' => '#fff',
+      'width' => '250',
     ));
   }
 

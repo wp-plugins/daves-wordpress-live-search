@@ -76,6 +76,8 @@ if ( function_exists('wp_nonce_field') )
 <div id="custom_colors" style="display:none;">
 <div id="custom_colors_options">
 
+<div><label><?php _e("Width", 'dwls'); ?></label><input type="number" name="daves-wordpress-live-search_custom[width]" id="daves-wordpress-live-search_custom_width" value="<?php if(!empty($customOptions['width'])) echo $customOptions['width']; else echo "250" ?>" /></div>
+
 <div><label><?php _e("Title", 'dwls'); ?></label><input type="text" name="daves-wordpress-live-search_custom[title]" id="daves-wordpress-live-search_custom_title" value="<?php if(!empty($customOptions['title'])) echo $customOptions['title']; ?>" data-default-color="#000" class="dwls_color_picker" pattern="^#[0-9,a-f]{3,6}" /></div>
 
 <div><label><?php _e("Excerpt", 'dwls'); ?></label><input type="text" name="daves-wordpress-live-search_custom[fg]" id="daves-wordpress-live-search_custom_fg" value="<?php if(!empty($customOptions['fg'])) echo $customOptions['fg']; ?>" data-default-color="#000" class="dwls_color_picker" pattern="^#[0-9,a-f]{3,6}" /></div>

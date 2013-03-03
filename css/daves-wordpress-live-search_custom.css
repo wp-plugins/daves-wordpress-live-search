@@ -2,7 +2,6 @@
 ul.dwls_search_results {
 display: block;
 background-color:#fff;
-width:250px;
 max-height: 500px;
 position:absolute;
 top:20px;
