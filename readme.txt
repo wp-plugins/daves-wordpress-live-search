@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== Dave's WordPress Live Search ===
 Contributors: csixty4
 Donate link: http://catguardians.org
 Tags: search, AJAX, live search
