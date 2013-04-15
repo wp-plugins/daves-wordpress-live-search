@@ -5,7 +5,7 @@
 <a href="<?php echo $_SERVER['REQUEST_URI']."&tab=advanced"; ?>" class="nav-tab"><?php _e("Advanced", 'dwls'); ?></a>
 </h2>
 <form method="post" action="">
-<input type="hidden" name="tab" value="<?php echo $_REQUEST['tab']; ?>" />
+<input type="hidden" name="tab" value="<?php if(isset($_REQUEST['tab'])) { echo $_REQUEST['tab']; } ?>" />
 
 <?php
 if ( function_exists('wp_nonce_field') )

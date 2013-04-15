@@ -181,7 +181,7 @@ STYLE;
    * @return void
    */
   public static function plugin_options() {
-    $tab = $_REQUEST['tab'];
+    $tab = isset($_REQUEST['tab']) ? $_REQUEST['tab'] : '';
     switch ($tab) {
       case 'advanced':
         return self::plugin_options_advanced();
