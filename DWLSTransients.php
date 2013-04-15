@@ -12,8 +12,8 @@
  * Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
- * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR 
- * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
+ * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  * */
 
@@ -22,51 +22,51 @@
  */
 class DWLSTransients {
 
-  static function offset($clear = false) {
-    static $offset = null;
+	static function offset( $clear = false ) {
+		static $offset = null;
 
-    if($offset === null) {
-      $offset = get_transient("dwls_offset");
-      if($offset === false) {
-        $offset = 0;
-        set_transient("dwls_offset", $offset);
-      }
-    }
+		if ( $offset === null ) {
+			$offset = get_transient( "dwls_offset" );
+			if ( $offset === false ) {
+				$offset = 0;
+				set_transient( "dwls_offset", $offset );
+			}
+		}
 
-    if($clear) {
-      $offset += 1;
-      if($offset > 99) {
-        $offset = 1;
-      }
-      set_transient("dwls_offset", $offset);      
-    }
+		if ( $clear ) {
+			$offset += 1;
+			if ( $offset > 99 ) {
+				$offset = 1;
+			}
+			set_transient( "dwls_offset", $offset );
+		}
 
-    return $offset;
-  }
+		return $offset;
+	}
 
-  static function clear() {
-    self::offset(true);
-  }
+	static function clear() {
+		self::offset( true );
+	}
 
-  static function set($key, $value, $expiration) {
-    $offset = self::offset();
-    $hash = md5($key);
-    set_transient("dwls_res{$offset}_{$hash}", $value, $expiration);
-  }
+	static function set( $key, $value, $expiration ) {
+		$offset = self::offset();
+		$hash = md5( $key );
+		set_transient( "dwls_res{$offset}_{$hash}", $value, $expiration );
+	}
 
-  static function get($key) {
-    $hash = md5($key);
-    $offset = self::offset();
-    $cache = get_transient("dwls_res{$offset}_{$hash}");
-    if($cache) {
-      return $cache;
-    }
+	static function get( $key ) {
+		$hash = md5( $key );
+		$offset = self::offset();
+		$cache = get_transient( "dwls_res{$offset}_{$hash}" );
+		if ( $cache ) {
+			return $cache;
+		}
 
-    return false;
-  }
+		return false;
+	}
 
-  static function indexes() {
-    return array();
-  }
+	static function indexes() {
+		return array();
+	}
 
 }
