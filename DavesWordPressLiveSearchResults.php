@@ -38,6 +38,7 @@ class DavesWordPressLiveSearchResults {
 
     global $wp_locale;
     global $wp_query;
+    global $post;
 
     $dateFormat = get_option( 'date_format' );
 
@@ -47,20 +48,21 @@ class DavesWordPressLiveSearchResults {
     $wpQueryResults = $wp_query->get_posts();
     $wpQueryResults = apply_filters( 'dwls_alter_results', $wpQueryResults, -1 );
 
-    foreach ( $wpQueryResults as $result ) {
+    while($wp_query->have_posts()) {
+      $wp_query->the_post();
 
       // Add author names & permalinks
       if ( $displayPostMeta ) {
-        $authorName = get_the_author_meta('user_nicename', $result->post_author);
+        $authorName = get_the_author_meta('user_nicename', $post->post_author);
         $authorName = apply_filters( 'dwls_author_name', $authorName );
-        $result->post_author_nicename = $authorName;
+        $post->post_author_nicename = $authorName;
       }
 
-      $result->permalink = get_permalink( $result->ID );
+      $post->permalink = get_permalink( $post->ID );
 
       if ( function_exists( 'get_post_thumbnail_id' ) ) {
         // Support for WP 2.9 post thumbnails
-        $postImageID = get_post_thumbnail_id( $result->ID );
+        $postImageID = get_post_thumbnail_id( $post->ID );
         $postImageData = wp_get_attachment_image_src( $postImageID, apply_filters( 'post_image_size', 'thumbnail' ) );
         $hasThumbnailSet = ( $postImageData !== false );
       }
@@ -70,36 +72,36 @@ class DavesWordPressLiveSearchResults {
       }
 
       if ( $hasThumbnailSet ) {
-        $result->attachment_thumbnail = $postImageData[0];
+        $post->attachment_thumbnail = $postImageData[0];
       } else {
         // If no post thumbnail, grab the first image from the post
         $applyContentFilter = get_option( 'daves-wordpress-live-search_apply_content_filter', false );
-        $content = $result->post_content;
+        $content = $post->post_content;
         if ( $applyContentFilter ) {
           $content = apply_filters( 'the_content', $content );
         }
         $content = str_replace( ']]>', ']]&gt;', $content );
-        $result->attachment_thumbnail = $this->firstImg( $content );
+        $post->attachment_thumbnail = $this->firstImg( $content );
       }
 
-      $result->attachment_thumbnail = apply_filters( 'dwls_attachment_thumbnail', $result->attachment_thumbnail );
+      $post->attachment_thumbnail = apply_filters( 'dwls_attachment_thumbnail', $post->attachment_thumbnail );
 
-      $result->post_excerpt = $this->excerpt( $result );
+      $post->post_excerpt = $this->excerpt( $post );
 
-      $result->post_date = date_i18n( $dateFormat, strtotime( $result->post_date ) );
-      $result->post_date = apply_filters( 'dwls_post_date', $result->post_date );
+      $post->post_date = date_i18n( $dateFormat, strtotime( $post->post_date ) );
+      $post->post_date = apply_filters( 'dwls_post_date', $post->post_date );
 
       // We don't want to send all this content to the browser
-      unset( $result->post_content );
+      unset( $post->post_content );
 
       // xLocalization
-      $result->post_title = apply_filters( "localization", $result->post_title );
+      $post->post_title = apply_filters( "localization", $post->post_title );
 
-      $result->post_title = apply_filters( 'dwls_post_title', $result->post_title );
+      $post->post_title = apply_filters( 'dwls_post_title', $post->post_title );
 
-      $result->show_more = true;
+      $post->show_more = true;
 
-      $this->results[] = $result;
+      $this->results[] = $post;
       
     }
   }
@@ -130,6 +132,7 @@ class DavesWordPressLiveSearchResults {
 
     return $excerpt;
   }
+
 
   public function firstImg( $post_content ) {
     $matches = array();
@@ -185,10 +188,6 @@ class DavesWordPressLiveSearchResults {
   }
 
   public static function pre_get_posts($query) {
-
-    if(!defined('DOING_AJAX') && (!isset($_GET['action']) || $_GET['action'] !== 'dwls_search')) {
-      return;
-    }
 
     // These fields don't seem to be getting set right during an AJAX call
     $query->parse_query( http_build_query($_GET) );
