@@ -66,21 +66,23 @@ if(!function_exists('json_encode')) {
 class DWLS_Relevanssi_Bridge {
 	static function init() {
 		if(function_exists('relevanssi_do_query')) {
-			add_filter('dwls_alter_results', array('DWLS_Relevanssi_Bridge', 'dwls_alter_results'), 10, 2);
+			add_filter('dwls_alter_results', array('DWLS_Relevanssi_Bridge', 'dwls_alter_results'), 10, 3);
 		}
 	}
 	
-	static function dwls_alter_results($wpQueryResults, $maxResults) {
+	static function dwls_alter_results($wpQueryResults, $maxResults, $results) {
+		global $wp_query;
+
 		// WP_Query::query() set everything up
 		// Now have Relevanssi do the query over again
 		// but do it in its own way
 		// Thanks Mikko!
-		relevanssi_do_query($wpQueryResults);
-		$wpQueryResults->relevanssi = true;
+		relevanssi_do_query($wp_query);
+		$results->relevanssi = true;
 				
 		// Mikko says Relevanssi 2.5 doesn't handle limits
 		// when it queries, so I need to handle them on my own.
-		$wpQueryResults->posts = array_slice($wpQueryResults->posts, 0, $maxResults);
+		$wpQueryResults = array_slice($wp_query->posts, 0, $maxResults);
 		
 		return $wpQueryResults;
 	}

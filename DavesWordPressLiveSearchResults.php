@@ -47,7 +47,7 @@ class DavesWordPressLiveSearchResults {
 		$this->searchTerms = $_GET['s'];
 
 		$wpQueryResults = $wp_query->get_posts();
-		$wpQueryResults = apply_filters( 'dwls_alter_results', $wpQueryResults, -1 );
+		$wpQueryResults = apply_filters( 'dwls_alter_results', $wpQueryResults, -1, $this );
 
 		while ( $wp_query->have_posts() ) {
 			$wp_query->the_post();
@@ -199,6 +199,11 @@ class DavesWordPressLiveSearchResults {
 			$searchSource = intval( get_option( 'daves-wordpress-live-search_source' ) );
 		}
 
+		$maxResults = intval( get_option( 'daves-wordpress-live-search_max_results' ) );
+		if ( $maxResults === 0 ) {
+			$maxResults = -1;
+		}
+
 		if ( function_exists( 'relevanssi_do_query' ) ) {
 			// Relevanssi isn't treating 0 as "unlimited" results
 			// like WordPress's native search does. So we'll replace
@@ -208,11 +213,6 @@ class DavesWordPressLiveSearchResults {
 			if ( -1 == $maxResults ) {
 				$maxResults = PHP_INT_MAX;
 			}
-		}
-
-		$maxResults = intval( get_option( 'daves-wordpress-live-search_max_results' ) );
-		if ( $maxResults === 0 ) {
-			$maxResults = -1;
 		}
 
 		$query->set( 'posts_per_page', $maxResults );

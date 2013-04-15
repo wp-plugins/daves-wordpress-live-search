@@ -78,6 +78,7 @@ Features I want to implement in future releases:
 * Faster startup on AJAX requests (fewer includes & hooks registered)
 * If SCRIPT_DEBUG is set, use non-minified scripts
 * Now uses a proper loop to get search results. Hopefully improves compatibilty with other search plugins
+* The parameters to the dwls_alter_results hook have changed: $array_of_results, deprecated (always -1), DavesWordPressLiveSearchResults instance.
 
 
 = 3.2 =
