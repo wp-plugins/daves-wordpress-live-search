@@ -76,6 +76,7 @@ Features I want to implement in future releases:
 * 2012-??-?? Dave Ross <dave@csixty4.com>
 * Added search results width to the customizer
 * Faster startup on AJAX requests
+* If SCRIPT_DEBUG is set, use non-minified scripts
 
 = 3.2 =
 * 2012-01-22 Dave Ross <dave@csixty4.com>
