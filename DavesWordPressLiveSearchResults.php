@@ -63,9 +63,6 @@ class DavesWordPressLiveSearchResults {
       if ( self::SEARCH_WPCOMMERCE === $source ) {
         $wpQueryParams['post_type'] = 'wpsc-product';
       }
-      else {
-        $wpQueryParams['post_type'] = 'any';
-      }
     }
 
     $queryString = http_build_query( $wpQueryParams );
