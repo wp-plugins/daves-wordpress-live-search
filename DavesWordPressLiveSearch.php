@@ -287,7 +287,7 @@ STYLE;
       if ("" == trim($cacheLifetime)) {
         $cacheLifetime = 3600;
       }
-      $applyContentFilter = ("true" == $_POST['daves-wordpress-live-search_apply_content_filter']);
+      $applyContentFilter = (isset($_POST['daves-wordpress-live-search_apply_content_filter']) && "true" == $_POST['daves-wordpress-live-search_apply_content_filter']);
 
       if (array_key_exists('daves-wordpress-live-search_submit', $_POST) && "Clear Cache" == $_POST['daves-wordpress-live-search_submit'] && current_user_can('manage_options')) {
         // Clear the cache
