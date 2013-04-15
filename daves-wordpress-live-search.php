@@ -32,13 +32,14 @@ if(5.0 > floatval(phpversion())) {
 }
 
 add_action('init', 'daves_wp_live_search_init');
+include_once "DWLSTransients.php";
 
 function daves_wp_live_search_init() {
 	if(defined('DOING_AJAX')) {
-		include_once("DavesWordPressLiveSearchResults.php");
+		include_once "DavesWordPressLiveSearchResults.php";
 	}
 	else {
-		include_once("DavesWordPressLiveSearch.php");
+		include_once "DavesWordPressLiveSearch.php";
 		add_action('admin_notices', array('DavesWordPressLiveSearch', 'admin_notices'));
 
 		// Register hooks		
@@ -58,7 +59,7 @@ function daves_wp_live_search_phpver_admin_notice() {
 
 // Provide a json_encode implementation if none exists (PHP < 5.2.0)
 if(!function_exists('json_encode')) {
-    require(ABSPATH."/wp-includes/compat.php");
+    require ABSPATH."/wp-includes/compat.php" ;
 }
 
 // Relevanssi "bridge" plugin

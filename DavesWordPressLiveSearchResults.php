@@ -1,7 +1,5 @@
 <?php
 
-include "DWLSTransients.php";
-
 /**
  * Value object class
  */
