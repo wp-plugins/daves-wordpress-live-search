@@ -59,19 +59,18 @@ class DavesWordPressLiveSearch {
 		elseif ( self::isSearchablePage() ) {
 
 			switch ( $cssOption ) {
-			case 'theme':
-				$style = $themeDir . '/daves-wordpress-live-search.css';
-				break;
-				break;
-			case 'default_red':
-			case 'default_blue':
-			case 'default_gray':
-			case 'custom':
-				$style = plugin_dir_url( __FILE__ ) . 'css/daves-wordpress-live-search_' . $cssOption . '.css';
-				break;
-			case 'notheme':
-			default:
-				$style = false;
+				case 'theme':
+					$style = $themeDir . '/daves-wordpress-live-search.css';
+					break;
+				case 'default_red':
+				case 'default_blue':
+				case 'default_gray':
+				case 'custom':
+					$style = plugin_dir_url( __FILE__ ) . 'css/daves-wordpress-live-search_' . $cssOption . '.css';
+					break;
+				case 'notheme':
+				default:
+					$style = false;
 			}
 
 			if ( $style ) {
@@ -193,13 +192,13 @@ STYLE;
 	public static function plugin_options() {
 		$tab = isset( $_REQUEST['tab'] ) ? $_REQUEST['tab'] : '';
 		switch ( $tab ) {
-		case 'advanced':
-			return self::plugin_options_advanced();
-		case 'appearance':
-			return self::plugin_options_design();
-		case 'settings':
-		default:
-			return self::plugin_options_settings();
+			case 'advanced':
+				return self::plugin_options_advanced();
+			case 'appearance':
+				return self::plugin_options_design();
+			case 'settings':
+			default:
+				return self::plugin_options_settings();
 		}
 	}
 
