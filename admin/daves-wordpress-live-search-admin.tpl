@@ -1,20 +1,4 @@
 <?php include dirname(__FILE__)."/admin_header.tpl"; ?>
-<h2>
-<a href="<?php echo $_SERVER['REQUEST_URI']."&tab=settings"; ?>" class="nav-tab nav-tab-active"><?php _e("Settings", 'dwls'); ?></a>
-<a href="<?php echo $_SERVER['REQUEST_URI']."&tab=appearance"; ?>" class="nav-tab"><?php _e("Appearance", 'dwls'); ?></a>
-<a href="<?php echo $_SERVER['REQUEST_URI']."&tab=advanced"; ?>" class="nav-tab"><?php _e("Advanced", 'dwls'); ?></a>
-</h2>
-<form method="post" action="">
-<input type="hidden" name="tab" value="<?php if(isset($_REQUEST['tab'])) { echo $_REQUEST['tab']; } ?>" />
-
-<?php
-if ( function_exists('wp_nonce_field') )
-	wp_nonce_field('daves-wordpress-live-search-config');
-?>
-
-<table class="form-table"><tbody>
-
-<!-- Maximum results -->
 <tr valign="top">
 <th scope="row"><?php _e("Maximum Results to Display", 'dwls'); ?></th>
 
