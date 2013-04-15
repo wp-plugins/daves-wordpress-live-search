@@ -30,18 +30,25 @@ if(5.0 > floatval(phpversion())) {
 	// Call the special error handler that displays an error
 	add_action('admin_notices', 'daves_wp_live_search_phpver_admin_notice');
 }
-else {
-	add_action('admin_notices', array('DavesWordPressLiveSearch', 'admin_notices'));
 
-	// Register hooks
-	add_action('init', array('DavesWordPressLiveSearch', 'advanced_search_init'));
-	add_action('admin_menu', array('DavesWordPressLiveSearch', 'admin_menu'));
-	add_action('wp_head', array('DavesWordPressLiveSearch', 'head'));
-	add_action('admin_head', array('DavesWordPressLiveSearch', 'head'));
-    register_activation_hook(__FILE__, array('DavesWordPressLiveSearch', 'activate'));
-    add_action('admin_enqueue_scripts', array('DavesWordPressLiveSearch', 'admin_enqueue_scripts'));
-	include_once("DavesWordPressLiveSearch.php");
-	include_once("DavesWordPressLiveSearchResults.php");
+add_action('init', 'daves_wp_live_search_init');
+
+function daves_wp_live_search_init() {
+	if(defined('DOING_AJAX')) {
+		include_once("DavesWordPressLiveSearchResults.php");
+	}
+	else {
+		include_once("DavesWordPressLiveSearch.php");
+		add_action('admin_notices', array('DavesWordPressLiveSearch', 'admin_notices'));
+
+		// Register hooks		
+		add_action('admin_menu', array('DavesWordPressLiveSearch', 'admin_menu'));
+		add_action('wp_head', array('DavesWordPressLiveSearch', 'head'));
+		add_action('admin_head', array('DavesWordPressLiveSearch', 'head'));
+		register_activation_hook(__FILE__, array('DavesWordPressLiveSearch', 'activate'));
+		add_action('admin_enqueue_scripts', array('DavesWordPressLiveSearch', 'admin_enqueue_scripts'));
+		DavesWordPressLiveSearch::advanced_search_init();
+	}
 }
 
 function daves_wp_live_search_phpver_admin_notice() {

@@ -75,6 +75,7 @@ Features I want to implement in future releases:
 = 3.3 =
 * 2012-??-?? Dave Ross <dave@csixty4.com>
 * Added search results width to the customizer
+* Faster startup on AJAX requests
 
 = 3.2 =
 * 2012-01-22 Dave Ross <dave@csixty4.com>
