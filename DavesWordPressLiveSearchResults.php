@@ -179,13 +179,7 @@ class DavesWordPressLiveSearchResults {
 
 		}
 
-		$json = json_encode( $results );
-
-		// If we don't output the text we want outputted here and
-		// then die(), the wp_ajax code will die(0) or die(-1) after
-		// this function returns and that value will get echoed out
-		// to the browser, resulting in a JSON parsing error.
-		die( $json );
+		wp_send_json($results);
 	}
 
 	public static function pre_get_posts( $query ) {
