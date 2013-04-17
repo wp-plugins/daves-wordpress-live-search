@@ -53,7 +53,6 @@ class DavesWordPressLiveSearch {
 			if ( $style ) {
 				wp_register_style( 'daves-wordpress-live-search', $style );
 				wp_enqueue_style( 'daves-wordpress-live-search' );
-				wp_print_styles();
 			}
 		}
 		elseif ( self::isSearchablePage() ) {
