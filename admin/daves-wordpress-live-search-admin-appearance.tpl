@@ -5,7 +5,7 @@
 <td>
     <input type="hidden" name="daves-wordpress-live-search_display_post_meta" value="" />
     <input type="checkbox" name="daves-wordpress-live-search_display_post_meta" id="daves-wordpress-live-search_display_post_meta" value="true" <?php if($displayPostMeta): ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_display_post_meta"><?php _e("Display author & date for every search result", 'dwls'); ?></label>
-</td> 
+</td>
 </tr>
 
 <!-- Display post thumbnail -->
@@ -15,7 +15,7 @@
 <td>
     <input type="hidden" name="daves-wordpress-live-search_thumbs" value="" />
     <input type="checkbox" name="daves-wordpress-live-search_thumbs" id="daves-wordpress-live-search_thumbs" value="true" <?php if($showThumbs): ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_thumbs"><?php _e("Display thumbnail images for every search result with at least one image", 'dwls'); ?></label>
-</td> 
+</td>
 </tr>
 
 <!-- Display post excerpt -->
@@ -25,7 +25,7 @@
 <td>
     <input type="hidden" name="daves-wordpress-live-search_excerpt" value="" />
     <input type="checkbox" name="daves-wordpress-live-search_excerpt" id="daves-wordpress-live-search_excerpt" value="true" <?php if($showExcerpt): ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_excerpt"><?php printf(__("Display an excerpt for every search result. If the post doesn't have one, use the first %s characters.", 'dwls'), "<input type=\"text\" name=\"daves-wordpress-live-search_excerpt_length\" id=\"daves-wordpress-live-search_excerpt_length\" value=\"$excerptLength\" size=\"3\" />"); ?></label>
-</td> 
+</td>
 </tr>
 
 <!-- Display 'more results' -->
@@ -35,7 +35,7 @@
 <td>
     <input type="hidden" name="daves-wordpress-live-search_more_results" value="" />
     <input type="checkbox" name="daves-wordpress-live-search_more_results" id="daves-wordpress-live-search_more_results" value="true" <?php if($showMoreResultsLink): ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_more_results"><?php _e("Display the &quot;View more results&quot; link after the search results.", 'dwls'); ?></label>
-</td> 
+</td>
 </tr>
 
 <!-- CSS styles -->
@@ -93,13 +93,14 @@
 <input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_theme" value="theme" <?php if('theme' == $cssOption): ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_css_theme"><?php _e("Theme-specific", 'dwls'); ?></label><br /><span class="setting-description"><strong><?php _e("For advanced users", 'dwls'); ?>:</strong> <?php _e("Theme must include a CSS file named daves-wordpress-live-search.css. If your theme does not have one, copy daves-wordpress-live-search_default_gray.css from this plugin's directory into your theme's directory and modify as desired.", 'dwls'); ?></span>
 <br /><br />
 <input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_existing_theme" value="notheme" <?php if('notheme' == $cssOption): ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_css_theme"><?php _e("Theme-specific (theme's own CSS file)", 'dwls'); ?></label><br /><span class="setting-description"><strong><?php _e("For advanced users", 'dwls'); ?>:</strong> <?php _e("Use the styles contained within your Theme's stylesheet. Don't include a separate stylesheet for Live Search.", 'dwls'); ?>
-</td> 
+</td>
 </tr>
 
 <!-- Submit buttons -->
 <tr valign="top">
-<?php $saveButtonText = __("Save Changes", 'dwls'); ?>
-<td colspan="2"><div style="border-top: 1px solid #333;margin-top: 15px;padding: 5px;"><input type="submit" name="daves-wordpress-live-search_submit" id="daves-wordpress-live-search_submit" value="<?php echo $saveButtonText; ?>" /></div></td>
+<td colspan="2"><div style="border-top: 1px solid #333;margin-top: 15px;padding: 5px;">
+	<?php submit_button( NULL, 'primary', 'daves-wordpress-live-search_submit', false, array('id' => 'daves-wordpress-live-search_submit') ); ?>
+</div></td>
 </tr>
 
 </tbody></table>

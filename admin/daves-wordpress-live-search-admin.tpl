@@ -50,8 +50,9 @@
 
 <!-- Submit buttons -->
 <tr valign="top">
-<?php $saveButtonText = __("Save Changes", 'dwls'); ?>
-<td colspan="2"><div style="border-top: 1px solid #333;margin-top: 15px;padding: 5px;"><input type="submit" name="daves-wordpress-live-search_submit" id="daves-wordpress-live-search_submit" value="<?php echo $saveButtonText; ?>" /></div></td>
+<td colspan="2"><div style="border-top: 1px solid #333;margin-top: 15px;padding: 5px;">
+	<?php submit_button( NULL, 'primary', 'daves-wordpress-live-search_submit', false, array('id' => 'daves-wordpress-live-search_submit') ); ?>
+</div></td>
 </tr>
 
 </tbody></table>
