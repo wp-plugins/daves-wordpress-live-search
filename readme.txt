@@ -79,6 +79,7 @@ Features I want to implement in future releases:
 * If SCRIPT_DEBUG is set, use non-minified scripts
 * Now uses a proper loop to get search results. Hopefully improves compatibilty with other search plugins
 * The parameters to the dwls_alter_results hook have changed: array of results (instead of a query object), deprecated (always -1), DavesWordPressLiveSearchResults instance.
+* Now uses WordPress's native submit_button() function to generate submit buttons in the admin interface for more consistent styling with the rest of admin
 
 
 = 3.2 =
