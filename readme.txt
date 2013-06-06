@@ -73,17 +73,17 @@ Features I want to implement in future releases:
 == Changelog ==
 
 = 3.3 =
-* 2012-??-?? Dave Ross <dave@csixty4.com>
+* 2013-06-05 Dave Ross <dave@csixty4.com>
 * Added search results width to the customizer
 * Faster startup on AJAX requests (fewer includes & hooks registered)
 * If SCRIPT_DEBUG is set, use non-minified scripts
-* Now uses a proper loop to get search results. Hopefully improves compatibilty with other search plugins
+* Now uses a proper loop to get search results. Hopefully improves compatibility with other search plugins
 * The parameters to the dwls_alter_results hook have changed: array of results (instead of a query object), deprecated (always -1), DavesWordPressLiveSearchResults instance.
 * Now uses WordPress's native submit_button() function to generate submit buttons in the admin interface for more consistent styling with the rest of admin
 
 
 = 3.2 =
-* 2012-01-22 Dave Ross <dave@csixty4.com>
+* 2013-01-22 Dave Ross <dave@csixty4.com>
 * Fixed a Javascript error when resizing a window
 * Removed the "debug" tab - wasn't very useful
 * Force a high z-index on the spinner
