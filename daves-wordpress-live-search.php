@@ -3,7 +3,7 @@
 /*
 Plugin Name: Dave's WordPress Live Search
 Description: Adds "live search" functionality to your WordPress site. Uses the built-in search and jQuery.
-Version: 3.2
+Version: 3.3
 Author: Dave Ross
 Author URI: http://davidmichaelross.com/
 Plugin URI: http://wordpress.org/extend/plugins/daves-wordpress-live-search/
@@ -21,11 +21,11 @@ Plugin URI: http://wordpress.org/extend/plugins/daves-wordpress-live-search/
  * Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
- * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR 
- * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
+ * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  **/
- 
+
 if(5.0 > floatval(phpversion())) {
 	// Call the special error handler that displays an error
 	add_action('admin_notices', 'daves_wp_live_search_phpver_admin_notice');
@@ -42,7 +42,7 @@ function daves_wp_live_search_init() {
 		include_once "DavesWordPressLiveSearch.php";
 		add_action('admin_notices', array('DavesWordPressLiveSearch', 'admin_notices'));
 
-		// Register hooks		
+		// Register hooks
 		add_action('admin_menu', array('DavesWordPressLiveSearch', 'admin_menu'));
 		add_action('wp_head', array('DavesWordPressLiveSearch', 'head'));
 		add_action('admin_head', array('DavesWordPressLiveSearch', 'head'));
@@ -69,7 +69,7 @@ class DWLS_Relevanssi_Bridge {
 			add_filter('dwls_alter_results', array('DWLS_Relevanssi_Bridge', 'dwls_alter_results'), 10, 3);
 		}
 	}
-	
+
 	static function dwls_alter_results($wpQueryResults, $maxResults, $results) {
 		global $wp_query;
 
@@ -79,11 +79,11 @@ class DWLS_Relevanssi_Bridge {
 		// Thanks Mikko!
 		relevanssi_do_query($wp_query);
 		$results->relevanssi = true;
-				
+
 		// Mikko says Relevanssi 2.5 doesn't handle limits
 		// when it queries, so I need to handle them on my own.
 		$wpQueryResults = array_slice($wp_query->posts, 0, $maxResults);
-		
+
 		return $wpQueryResults;
 	}
 }

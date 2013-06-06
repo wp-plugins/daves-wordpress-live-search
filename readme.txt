@@ -2,9 +2,9 @@
 Contributors: csixty4
 Donate link: http://catguardians.org
 Tags: search, AJAX, live search
-Requires at least: 2.9
-Tested up to: 3.5
-Stable tag: 3.2
+Requires at least: 3.5
+Tested up to: 3.6
+Stable tag: 3.3
 License: MIT
 License URI: http://www.opensource.org/licenses/mit-license.php
 
@@ -84,7 +84,7 @@ Features I want to implement in future releases:
 * Now uses a proper loop to get search results. Hopefully improves compatibility with other search plugins
 * The parameters to the dwls_alter_results hook have changed: array of results (instead of a query object), deprecated (always -1), DavesWordPressLiveSearchResults instance.
 * Now uses WordPress's native submit_button() function to generate submit buttons in the admin interface for more consistent styling with the rest of admin
-
+* Requires WordPress 3.5 or higher
 
 = 3.2 =
 * 2013-01-22 Dave Ross <dave@csixty4.com>
@@ -331,6 +331,10 @@ Features I want to implement in future releases:
 * Initial release
 
 == Upgrade Notice ==
+
+= 3.3 =
+
+Dave's WordPress Live Search v3.3 requires WordPress 3.5 or higher. Older versions of the plugin are still available from http://wordpress.org/plugins/daves-wordpress-live-search/developers/ if needed.
 
 = 3.1.1 =
 
