@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: daves-wordpress-live-search\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-21 15:28-0500\n"
-"PO-Revision-Date: 2012-12-21 21:16-0500\n"
+"PO-Revision-Date: 2013-06-05 21:28-0500\n"
 "Last-Translator: Dave Ross <dave@davidmichaelross.com>\n"
 "Language-Team: Arabic\n"
 "MIME-Version: 1.0\n"
@@ -69,7 +69,7 @@ msgstr "Dave's WordPress Live Search Options"
 #: ../admin/daves-wordpress-live-search-admin-debug.tpl:3
 #: ../admin/daves-wordpress-live-search-admin.tpl:3
 msgid "Settings"
-msgstr "Settings"
+msgstr "إعدادات"
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:4
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:4
@@ -83,18 +83,18 @@ msgstr "Appearance"
 #: ../admin/daves-wordpress-live-search-admin-debug.tpl:5
 #: ../admin/daves-wordpress-live-search-admin.tpl:5
 msgid "Advanced"
-msgstr "Advanced"
+msgstr "إعدادات متقدمة"
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:6
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:6
 #: ../admin/daves-wordpress-live-search-admin-debug.tpl:6
 #: ../admin/daves-wordpress-live-search-admin.tpl:6
 msgid "Debug"
-msgstr "Debug"
+msgstr "التصحيح"
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:19
 msgid "Exceptions"
-msgstr "Exceptions"
+msgstr "استثناءات"
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:24
 #, c-format
@@ -103,11 +103,11 @@ msgstr "Enter the %s of pages which should not have live searching, one per line
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:26
 msgid "NOTE"
-msgstr "NOTE"
+msgstr "ملاحظة"
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:26
 msgid "These pages will still be returned in search results. This only disables the Live Search feature for the search box on these pages."
-msgstr "These pages will still be returned in search results. This only disables the Live Search feature for the search box on these pages."
+msgstr "سوف لا يزال يتم إرجاع هذه الصفحات في نتائج البحث. يؤدي هذا إلى تعطيل ميزة \"لايف البحث\" في مربع البحث في هذه الصفحات فقط."
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:32
 msgid "Search Results box X offset"
@@ -127,7 +127,7 @@ msgstr "Use this setting to move the search results box up or down to align exac
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:52
 msgid "Cache Lifetime"
-msgstr "Cache Lifetime"
+msgstr "عمر ذاكرة التخزين المؤقت"
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:54
 msgid "Enter &quot;0&quot; to disable caching"
@@ -197,15 +197,15 @@ msgstr "Styles"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:66
 msgid "Default Gray"
-msgstr "Default Gray"
+msgstr "رمادي الافتراضي"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:66
 msgid "Default style in gray."
-msgstr "Default style in gray."
+msgstr "النمط الافتراضي باللون الرمادي."
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:68
 msgid "Default Red"
-msgstr "Default Red"
+msgstr "الأحمر الافتراضي"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:68
 msgid "Default style in red"

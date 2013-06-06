@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: daves-wordpress-live-search\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-21 15:28-0500\n"
-"PO-Revision-Date: 2012-12-21 21:17-0500\n"
+"PO-Revision-Date: 2013-06-05 21:28-0500\n"
 "Last-Translator: Dave Ross <dave@davidmichaelross.com>\n"
 "Language-Team: Catalan\n"
 "MIME-Version: 1.0\n"
@@ -39,11 +39,11 @@ msgstr "Live Search"
 #: ../DavesWordPressLiveSearch.php:241
 #: ../DavesWordPressLiveSearch.php:289
 msgid "Options saved."
-msgstr "Options saved."
+msgstr "Opcions desades"
 
 #: ../DavesWordPressLiveSearch.php:276
 msgid "Cache cleared."
-msgstr "Cache cleared."
+msgstr "Memòria cau esborrada."
 
 #: ../DavesWordPressLiveSearch.php:359
 #, php-format
@@ -62,14 +62,14 @@ msgstr "Please help make Dave's WordPress Live Search available to people all ov
 
 #: ../admin/admin_header.tpl:5
 msgid "Dave's WordPress Live Search Options"
-msgstr "Dave's WordPress Live Search Options"
+msgstr "Dave's WordPress Live Search Opcions"
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:3
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:3
 #: ../admin/daves-wordpress-live-search-admin-debug.tpl:3
 #: ../admin/daves-wordpress-live-search-admin.tpl:3
 msgid "Settings"
-msgstr "Settings"
+msgstr "Configuració"
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:4
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:4
@@ -83,7 +83,7 @@ msgstr "Appearance"
 #: ../admin/daves-wordpress-live-search-admin-debug.tpl:5
 #: ../admin/daves-wordpress-live-search-admin.tpl:5
 msgid "Advanced"
-msgstr "Advanced"
+msgstr "Avançat"
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:6
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:6

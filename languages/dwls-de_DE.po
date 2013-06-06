@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: daves-wordpress-live-search\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-21 15:28-0500\n"
-"PO-Revision-Date: 2012-12-21 21:20-0500\n"
+"PO-Revision-Date: 2013-06-05 21:30-0500\n"
 "Last-Translator: Dave Ross <dave@davidmichaelross.com>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -58,7 +58,7 @@ msgstr "Finden Sie dieses Plugin n&uuml;tzlich? Falls ja, ziehen Sie bitte eine 
 #: ../admin/admin_footer.tpl:4
 #, c-format
 msgid "Please help make Dave's WordPress Live Search available to people all over the world. Visit %sour translation tool%s and help translate. Thanks Crowdin for hosting this project's translation efforts!"
-msgstr "Please help make Dave's WordPress Live Search available to people all over the world. Visit %sour translation tool%s and help translate. Thanks Crowdin for hosting this project's translation efforts!"
+msgstr "Bitte helfen Sie mit Dave's WordPress Live Suche für Menschen in der ganzen Welt zugänglich zu machen. Besuchen Sie unser %sour Übersetzungs-Tool%s und helfen Sie mit zu übersetzen. Danke an Crowdin für das Bereitstellen der Übersetzungen dieses Projekts!"
 
 #: ../admin/admin_header.tpl:5
 msgid "Dave's WordPress Live Search Options"
@@ -76,7 +76,7 @@ msgstr "Einstellungen"
 #: ../admin/daves-wordpress-live-search-admin-debug.tpl:4
 #: ../admin/daves-wordpress-live-search-admin.tpl:4
 msgid "Appearance"
-msgstr "Appearance"
+msgstr "Erscheinungsbild"
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:5
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:5
@@ -221,43 +221,43 @@ msgstr "blauer Standard-Stil."
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:75
 msgid "Custom"
-msgstr "Custom"
+msgstr "Benutzerdefiniert"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:75
 msgid "Customize the search results display here"
-msgstr "Customize the search results display here"
+msgstr "Passe die Suchergebnisse an und siehe die Vorschau"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:80
 msgid "Title"
-msgstr "Title"
+msgstr "Titel"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:82
 msgid "Excerpt"
-msgstr "Excerpt"
+msgstr "Auszug"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:84
 msgid "Background"
-msgstr "Background"
+msgstr "Hintergrund"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:86
 msgid "Hover Background"
-msgstr "Hover Background"
+msgstr "Aktiver Hintergrund"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:88
 msgid "Divider"
-msgstr "Divider"
+msgstr "Trennung"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:90
 msgid "Footer Background"
-msgstr "Footer Background"
+msgstr "Fußzeile Hintergrund"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:92
 msgid "Footer Text"
-msgstr "Footer Text"
+msgstr "Fußzeile Text"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:94
 msgid "Shadow"
-msgstr "Shadow"
+msgstr "Schatten"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:106
 msgid "Theme-specific"

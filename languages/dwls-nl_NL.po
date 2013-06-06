@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: daves-wordpress-live-search\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-21 15:28-0500\n"
-"PO-Revision-Date: 2012-12-21 21:26-0500\n"
+"PO-Revision-Date: 2013-06-05 21:36-0500\n"
 "Last-Translator: Dave Ross <dave@davidmichaelross.com>\n"
 "Language-Team: Dutch\n"
 "MIME-Version: 1.0\n"
@@ -58,7 +58,7 @@ msgstr "Vind u deze plugin nuttig? Overweg een donatie voor %sCat Guardians%s."
 #: ../admin/admin_footer.tpl:4
 #, c-format
 msgid "Please help make Dave's WordPress Live Search available to people all over the world. Visit %sour translation tool%s and help translate. Thanks Crowdin for hosting this project's translation efforts!"
-msgstr "Please help make Dave's WordPress Live Search available to people all over the world. Visit %sour translation tool%s and help translate. Thanks Crowdin for hosting this project's translation efforts!"
+msgstr "Help a.u.b. met het vertalen van Dave zijn WordPress Live Search tool."
 
 #: ../admin/admin_header.tpl:5
 msgid "Dave's WordPress Live Search Options"
@@ -76,7 +76,7 @@ msgstr "Instellingen"
 #: ../admin/daves-wordpress-live-search-admin-debug.tpl:4
 #: ../admin/daves-wordpress-live-search-admin.tpl:4
 msgid "Appearance"
-msgstr "Appearance"
+msgstr "Uiterlijk"
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:5
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:5
@@ -119,11 +119,11 @@ msgstr "Gebruik deze instelling om de zoek resultaten naar rechts of links te ve
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:42
 msgid "Search Results box Y offset"
-msgstr "Search Results box Y offset"
+msgstr "Zoekresultaten veld Y compensatie"
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:45
 msgid "Use this setting to move the search results box up or down to align exactly with your theme's search field. Value is in pixels. Negative values move the box up, positive values move it down."
-msgstr "Use this setting to move the search results box up or down to align exactly with your theme's search field. Value is in pixels. Negative values move the box up, positive values move it down."
+msgstr "Gebruik deze instelling om het zoekresultaten blok omhoog of omlaag te plaatsen. Op deze manier kunt u de resultaten uitlijnen met het zoekveld. Negatieve waarden voor omhoog, positieve voor omlaag. "
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:52
 msgid "Cache Lifetime"
@@ -135,11 +135,11 @@ msgstr "Voer &quot;0&quot; in om cache uit te schakelen"
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:59
 msgid "Enable content filter"
-msgstr "Enable content filter"
+msgstr "Content filter inschakelen"
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:61
 msgid "Allow other plugins to filter the content before looking for a thumbnail. This will affect Live Search performance, so only enable this if you really need it."
-msgstr "Allow other plugins to filter the content before looking for a thumbnail. This will affect Live Search performance, so only enable this if you really need it."
+msgstr "Toestaan dat andere plugins de content filteren voor het zoeken naar een thumbnail. Dit zal negatieve effecten hebben op de prestaties, dus activeer alleen als u het nodig heeft."
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:66
 msgid "Enable debugger"
@@ -225,11 +225,11 @@ msgstr "Custom"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:75
 msgid "Customize the search results display here"
-msgstr "Customize the search results display here"
+msgstr "Pas hier de weergaven van de zoekresultaten aan"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:80
 msgid "Title"
-msgstr "Title"
+msgstr "Titel"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:82
 msgid "Excerpt"
@@ -237,27 +237,27 @@ msgstr "Excerpt"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:84
 msgid "Background"
-msgstr "Background"
+msgstr "Achtergrond"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:86
 msgid "Hover Background"
-msgstr "Hover Background"
+msgstr "Hover achtergrond"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:88
 msgid "Divider"
-msgstr "Divider"
+msgstr "Verdeler"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:90
 msgid "Footer Background"
-msgstr "Footer Background"
+msgstr "Footer achtergrond"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:92
 msgid "Footer Text"
-msgstr "Footer Text"
+msgstr "Footer tekst"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:94
 msgid "Shadow"
-msgstr "Shadow"
+msgstr "Schaduw"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:106
 msgid "Theme-specific"

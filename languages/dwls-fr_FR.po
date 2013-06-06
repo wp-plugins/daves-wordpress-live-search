@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: daves-wordpress-live-search\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-21 15:28-0500\n"
-"PO-Revision-Date: 2012-12-21 21:23-0500\n"
+"PO-Revision-Date: 2013-06-05 21:32-0500\n"
 "Last-Translator: Dave Ross <dave@davidmichaelross.com>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -103,7 +103,7 @@ msgstr "Entrez les %s de pages ne devant pas contenir la recherche live, un par 
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:26
 msgid "NOTE"
-msgstr "NOTE"
+msgstr "REMARQUE"
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:26
 msgid "These pages will still be returned in search results. This only disables the Live Search feature for the search box on these pages."
@@ -135,11 +135,11 @@ msgstr "Entrez &quot;0&quot; pour désactiver la mise en cache"
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:59
 msgid "Enable content filter"
-msgstr "Enable content filter"
+msgstr "Activer le filtrage de contenu"
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:61
 msgid "Allow other plugins to filter the content before looking for a thumbnail. This will affect Live Search performance, so only enable this if you really need it."
-msgstr "Allow other plugins to filter the content before looking for a thumbnail. This will affect Live Search performance, so only enable this if you really need it."
+msgstr "Permettre aux autres plugins de filtrer le contenu avant de chercher une miniature. Cela va affecter les performances de recherche en direct, activer uniquement ceci si vous en avez vraiment besoin."
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:66
 msgid "Enable debugger"
@@ -225,19 +225,19 @@ msgstr "Custom"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:75
 msgid "Customize the search results display here"
-msgstr "Customize the search results display here"
+msgstr "Personnaliser les résultats de recherche à afficher ici"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:80
 msgid "Title"
-msgstr "Title"
+msgstr "Titre"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:82
 msgid "Excerpt"
-msgstr "Excerpt"
+msgstr "Extrait"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:84
 msgid "Background"
-msgstr "Background"
+msgstr "Arrière-plan"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:86
 msgid "Hover Background"
@@ -249,15 +249,15 @@ msgstr "Divider"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:90
 msgid "Footer Background"
-msgstr "Footer Background"
+msgstr "Arrière-plan de pied de page"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:92
 msgid "Footer Text"
-msgstr "Footer Text"
+msgstr "Texte de pied de page"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:94
 msgid "Shadow"
-msgstr "Shadow"
+msgstr "Ombre"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:106
 msgid "Theme-specific"

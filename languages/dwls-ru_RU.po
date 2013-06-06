@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: daves-wordpress-live-search\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-21 15:28-0500\n"
-"PO-Revision-Date: 2012-12-21 21:32-0500\n"
+"PO-Revision-Date: 2013-06-05 21:39-0500\n"
 "Last-Translator: Dave Ross <dave@davidmichaelross.com>\n"
 "Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
@@ -58,7 +58,7 @@ msgstr "Считаете плагин полезным? Вы можете сде
 #: ../admin/admin_footer.tpl:4
 #, c-format
 msgid "Please help make Dave's WordPress Live Search available to people all over the world. Visit %sour translation tool%s and help translate. Thanks Crowdin for hosting this project's translation efforts!"
-msgstr "Please help make Dave's WordPress Live Search available to people all over the world. Visit %sour translation tool%s and help translate. Thanks Crowdin for hosting this project's translation efforts!"
+msgstr "Помогите сделать плагин Dave's WordPress Live Search доступным для людей по всему миру. Посетите %sнаш инструмент перевода%s и помогите перевести плагин. Благодарю Crowdin-а за предоставленный хостинг для файлов локализации!"
 
 #: ../admin/admin_header.tpl:5
 msgid "Dave's WordPress Live Search Options"
@@ -76,7 +76,7 @@ msgstr "Основные"
 #: ../admin/daves-wordpress-live-search-admin-debug.tpl:4
 #: ../admin/daves-wordpress-live-search-admin.tpl:4
 msgid "Appearance"
-msgstr "Appearance"
+msgstr "Оформление"
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:5
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:5
@@ -119,11 +119,11 @@ msgstr "Используйте эту настройку для подстрой
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:42
 msgid "Search Results box Y offset"
-msgstr "Search Results box Y offset"
+msgstr "Сдвиг панели вывода результатов по оси Y"
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:45
 msgid "Use this setting to move the search results box up or down to align exactly with your theme's search field. Value is in pixels. Negative values move the box up, positive values move it down."
-msgstr "Use this setting to move the search results box up or down to align exactly with your theme's search field. Value is in pixels. Negative values move the box up, positive values move it down."
+msgstr "Используйте эту настройку для подстройки панели результатов поиска вверх/вниз, относительно поля поиска. Отрицательное значение в пикселях - перемещение вверх, положительное - вниз."
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:52
 msgid "Cache Lifetime"
@@ -135,11 +135,11 @@ msgstr "Введите &quot;0&quot; для отключения кэша"
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:59
 msgid "Enable content filter"
-msgstr "Enable content filter"
+msgstr "Включить фильтр содержимого"
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:61
 msgid "Allow other plugins to filter the content before looking for a thumbnail. This will affect Live Search performance, so only enable this if you really need it."
-msgstr "Allow other plugins to filter the content before looking for a thumbnail. This will affect Live Search performance, so only enable this if you really need it."
+msgstr "Позволить другим плагинам обрабатывать содержимое вывода до поиска миниатюр. Снижает производительность Live Search, поэтому включайте только при крайней необходимости."
 
 #: ../admin/daves-wordpress-live-search-admin-advanced.tpl:66
 msgid "Enable debugger"
@@ -221,43 +221,43 @@ msgstr "Стиль по умолчанию в синих тонах."
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:75
 msgid "Custom"
-msgstr "Custom"
+msgstr "Собственный"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:75
 msgid "Customize the search results display here"
-msgstr "Customize the search results display here"
+msgstr "Оформить результаты поиска по своему усмотрению"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:80
 msgid "Title"
-msgstr "Title"
+msgstr "Название"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:82
 msgid "Excerpt"
-msgstr "Excerpt"
+msgstr "Цитата"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:84
 msgid "Background"
-msgstr "Background"
+msgstr "Фон"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:86
 msgid "Hover Background"
-msgstr "Hover Background"
+msgstr "Фон при наведении"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:88
 msgid "Divider"
-msgstr "Divider"
+msgstr "Разделитель"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:90
 msgid "Footer Background"
-msgstr "Footer Background"
+msgstr "Фон нижнего колонтитула"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:92
 msgid "Footer Text"
-msgstr "Footer Text"
+msgstr "Текст нижнего колонтитула"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:94
 msgid "Shadow"
-msgstr "Shadow"
+msgstr "Тень"
 
 #: ../admin/daves-wordpress-live-search-admin-appearance.tpl:106
 msgid "Theme-specific"
@@ -331,7 +331,7 @@ msgstr "Как отображать панель с результатами п�
 
 #: ../admin/daves-wordpress-live-search-admin.tpl:50
 msgid "WP E-Commerce"
-msgstr "WP E-Commerce"
+msgstr "Плагин WP E-Commerce"
 
 #: ../admin/daves-wordpress-live-search-admin.tpl:56
 #, c-format
