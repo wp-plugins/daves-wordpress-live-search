@@ -122,7 +122,7 @@ class DavesWordPressLiveSearchResults {
 		if ( empty( $result->post_excerpt ) ) {
 			$content = apply_filters( "localization", $result->post_content );
 			$excerpt = explode( " ", strrev( substr( strip_tags( $content ), 0, $excerptLength ) ), 2 );
-			$excerpt = strrev( $excerpt[1] );
+			$excerpt = strrev( isset($excerpt[1]) ? $excerpt[1] : '' );
 			$excerpt .= " [...]";
 		} else {
 			$excerpt = apply_filters( "localization", $result->post_excerpt );
