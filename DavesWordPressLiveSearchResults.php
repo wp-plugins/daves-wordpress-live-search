@@ -151,6 +151,9 @@ class DavesWordPressLiveSearchResults {
 	public function ajaxSearch() {
 		global $wp_query;
 
+		// This needs to be registered here so it's only invoked when processing a DWLS AJAX request
+		add_action( 'pre_get_posts', array( "DavesWordPressLiveSearchResults", "pre_get_posts" ) );
+
 		$cacheLifetime = intval( get_option( 'daves-wordpress-live-search_cache_lifetime' ) );
 		if ( !is_user_logged_in() && 0 < $cacheLifetime ) {
 			$doCache = TRUE;
@@ -223,4 +226,3 @@ class DavesWordPressLiveSearchResults {
 // Set up the AJAX hooks
 add_action( "wp_ajax_dwls_search", array( "DavesWordPressLiveSearchResults", "ajaxSearch" ) );
 add_action( "wp_ajax_nopriv_dwls_search", array( "DavesWordPressLiveSearchResults", "ajaxSearch" ) );
-add_action( 'pre_get_posts', array( "DavesWordPressLiveSearchResults", "pre_get_posts" ) );
