@@ -4,7 +4,7 @@ Donate link: http://catguardians.org
 Tags: search, AJAX, live search
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 3.3
+Stable tag: 3.3.1
 License: MIT
 License URI: http://www.opensource.org/licenses/mit-license.php
 
@@ -75,6 +75,11 @@ Features I want to implement in future releases:
 1. "No results found" message (optional)
 
 == Changelog ==
+
+= 3.3.1 =
+* 2013-07-07 Dave Ross <dave@csixty4.com>
+* Fix for "undefined offset" notice
+* Fixed issue with WooCommerce's AJAX search (only registers pre_get_posts handler when going DWLS AJAX request)
 
 = 3.3 =
 * 2013-06-05 Dave Ross <dave@csixty4.com>
