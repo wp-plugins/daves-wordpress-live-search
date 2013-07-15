@@ -36,10 +36,10 @@ include_once "DWLSTransients.inc";
 
 function daves_wp_live_search_init() {
 	if(defined('DOING_AJAX')) {
-		include_once "DavesWordPressLiveSearchResults.php";
+		include_once "DavesWordPressLiveSearchResults.inc";
 	}
 	else {
-		include_once "DavesWordPressLiveSearch.php";
+		include_once "DavesWordPressLiveSearch.inc";
 		add_action('admin_notices', array('DavesWordPressLiveSearch', 'admin_notices'));
 
 		// Register hooks
