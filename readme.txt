@@ -76,6 +76,12 @@ Features I want to implement in future releases:
 
 == Changelog ==
 
+= 3.4 =
+* 2013-??-?? Dave Ross <dave@csixty4.com>
+* Renamed .php include files to .inc
+* Removed check for PHP 4
+* Removed caching. It wasn't effective enough & was a support nightmare.
+
 = 3.3.1 =
 * 2013-07-07 Dave Ross <dave@csixty4.com>
 * Fix for "undefined offset" notice
@@ -311,26 +317,26 @@ Features I want to implement in future releases:
 * Building permalinks instead of using post guid (problem with posts imported from another blog)
 
 = 1.3 =
-* 2009-05-22  Dave Ross  <dave@csixty4.com>   
+* 2009-05-22  Dave Ross  <dave@csixty4.com>
 * Fixed an annoying bug where the search results div collapsed and expanded again every time an AJAX request completed
 * Cancel any existing AJAX requests before sending a new one
-* Check for PHP 5.x. Displays an error when you try to activate the plugin on PHP < 5   
+* Check for PHP 5.x. Displays an error when you try to activate the plugin on PHP < 5
 * No longer sends the entire WP_Query object to the browser. This was a potential information disclosure issue, plus it was a lot to serialize on the server and parse in the brower
 * Minor code cleanup & optimizations
-     
+
 = 1.2 =
 * 2009-04-10  Dave Ross  <dave@csixty4.com>
-* Code cleanup & optimizations 
-* Styled the admin screen to fit in with WordPress better 
-* New option: display the results above or below the search box 
+* Code cleanup & optimizations
+* Styled the admin screen to fit in with WordPress better
+* New option: display the results above or below the search box
 * Included a note on the admin screen recommending the Google Libraries plugin
-	 
+
 = 1.1 =
 * 2009-03-30  Dave Ross  <dave@csixty4.com>
 * Code cleanup & optimizations
 * Fixed compatibility issues with PHP < 5.2.0 and PHP < 5.1.2
 * New option: limit the number of results to display
-	 
+
 = 1.0 =
 * 2009-03-13  Dave Ross  <dave@csixty4.com>
 * Initial release
@@ -361,7 +367,7 @@ Version 3.0 includes many bug fixes and improvements, including:
 * WP E-Commerce is officially supported again
 * Completely rewritten caching for better performance
 
-For a complete list of changes, see [the changelog](http://wordpress.org/extend/plugins/daves-wordpress-live-search/changelog/). 
+For a complete list of changes, see [the changelog](http://wordpress.org/extend/plugins/daves-wordpress-live-search/changelog/).
 
 = 2.6 =
 This release fixes the horizontal positioning bug in v2.5.

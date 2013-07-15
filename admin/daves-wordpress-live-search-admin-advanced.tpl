@@ -31,28 +31,11 @@
 <input type="text" name="daves-wordpress-live-search_yoffset" id="daves-wordpress-live-search_yoffset" value="<?php echo $yOffset; ?>"</td>
 </tr>
 
-<!-- Cache lifetime -->
-<tr valign="top">
-<th scope="row"><?php _e("Cache Lifetime", 'dwls'); ?></th>
-
-<td><input type="text" name="daves-wordpress-live-search_cache_lifetime" id="daves-wordpress-live-search_cache_lifetime" value="<?php echo $cacheLifetime; ?>" class="regular-text code" /><span class="setting-description"><?php _e("Enter &quot;0&quot; to disable caching", 'dwls'); ?></span></td>
-</tr>
-
 <!-- Apply the_content filter -->
 <tr valign="top">
 <th scope="row"><?php _e("Enable content filter", 'dwls'); ?></th>
 
 <td><input type="checkbox" name="daves-wordpress-live-search_apply_content_filter" id="daves-wordpress-live-search_apply_content_filter" value="true" <?php if($applyContentFilter): ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_apply_content_filter"><?php _e("Allow other plugins to filter the content before looking for a thumbnail. This will affect Live Search performance, so only enable this if you really need it.", 'dwls'); ?></label></td>
-</tr>
-
-<!-- Clear Cache -->
-<tr valign="top">
-<th scope="row"><?php _e("Clear Cache", 'dwls'); ?></th>
-
-<td>
-	<?php submit_button( __("Clear Cache", 'dwls'), 'secondary', 'daves-wordpress-live-search_submit', false, array('value' => 'Clear Cache') ); ?>
-
-	&nbsp;<label for="daves-wordpress-live-search_submit"><?php _e("If you change settings or post/edit content, your cache will be cleared automatically. Use this button to clear the cache manually if needed.", 'dwls'); ?></label></td>
 </tr>
 
 <!-- Submit buttons -->

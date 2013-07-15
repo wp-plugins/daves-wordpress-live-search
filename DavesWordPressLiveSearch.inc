@@ -291,23 +291,11 @@ STYLE;
 			$xOffset = intval( $_POST['daves-wordpress-live-search_xoffset'] );
 			$yOffset = intval( $_POST['daves-wordpress-live-search_yoffset'] );
 			$exceptions = $_POST['daves-wordpress-live-search_exceptions'];
-			$cacheLifetime = $_POST['daves-wordpress-live-search_cache_lifetime'];
-			if ( "" == trim( $cacheLifetime ) ) {
-				$cacheLifetime = 3600;
-			}
 			$applyContentFilter = ( isset( $_POST['daves-wordpress-live-search_apply_content_filter'] ) && "true" == $_POST['daves-wordpress-live-search_apply_content_filter'] );
-
-			if ( array_key_exists( 'daves-wordpress-live-search_submit', $_POST ) && "Clear Cache" == $_POST['daves-wordpress-live-search_submit'] && current_user_can( 'manage_options' ) ) {
-				// Clear the cache
-				DWLSTransients::clear();
-				$clearedMessage = __( 'Cache cleared.', 'mt_trans_domain' );
-				echo "<div class=\"updated fade\"><p><strong>$clearedMessage</strong></p></div>";
-			}
 
 			update_option( 'daves-wordpress-live-search_exceptions', $exceptions );
 			update_option( 'daves-wordpress-live-search_xoffset', intval( $xOffset ) );
 			update_option( 'daves-wordpress-live-search_yoffset', intval( $yOffset ) );
-			update_option( 'daves-wordpress-live-search_cache_lifetime', intval( $cacheLifetime ) );
 			update_option( 'daves-wordpress-live-search_apply_content_filter', $applyContentFilter );
 
 			// Translate the "Options saved" message...just in case.
@@ -320,13 +308,6 @@ STYLE;
 			$exceptions = get_option( 'daves-wordpress-live-search_exceptions' );
 			$xOffset = intval( get_option( 'daves-wordpress-live-search_xoffset' ) );
 			$yOffset = intval( get_option( 'daves-wordpress-live-search_yoffset' ) );
-			$cacheLifetime = get_option( 'daves-wordpress-live-search_cache_lifetime' );
-			if ( "" == trim( $cacheLifetime ) ) {
-				$cacheLifetime = 3600;
-			} else {
-				$cacheLifetime = intval( $cacheLifetime );
-			}
-
 			$applyContentFilter = (bool) get_option( 'daves-wordpress-live-search_apply_content_filter' );
 
 		}
@@ -422,19 +403,4 @@ STYLE;
 			) );
 	}
 
-}
-
-// Set up hooks to clear the cache when a post is
-// created, deleted, or edited
-$dwls_update_hooks = array(
-	'delete_post',
-	'edit_post',
-	'save_post',
-	'trash_post',
-	'untrash_post',
-	'update_postmeta',
-	'xmlrpc_publish_post',
-);
-foreach ( $dwls_update_hooks as $dwls_update_hook ) {
-	add_action( $dwls_update_hook, array( "DWLSTransients", "clear" ) );
 }

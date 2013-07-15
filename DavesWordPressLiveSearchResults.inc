@@ -154,33 +154,8 @@ class DavesWordPressLiveSearchResults {
 		// This needs to be registered here so it's only invoked when processing a DWLS AJAX request
 		add_action( 'pre_get_posts', array( "DavesWordPressLiveSearchResults", "pre_get_posts" ) );
 
-		$cacheLifetime = intval( get_option( 'daves-wordpress-live-search_cache_lifetime' ) );
-		if ( !is_user_logged_in() && 0 < $cacheLifetime ) {
-			$doCache = TRUE;
-		} else {
-			$doCache = FALSE;
-		}
-
-		if ( $doCache ) {
-			$cachedResults = DWLSTransients::get( $_REQUEST['s'] );
-		}
-
-		if ( ( !$doCache ) || ( FALSE === $cachedResults ) ) {
-
-			$displayPostMeta = (bool) get_option( 'daves-wordpress-live-search_display_post_meta' );
-
-			$results = new DavesWordPressLiveSearchResults( $_GET['s'], $displayPostMeta );
-
-			if ( $doCache ) {
-				DWLSTransients::set( $_REQUEST['s'], $results, $cacheLifetime );
-			}
-
-		} else {
-
-			// Found it in the cache. Return the results.
-			$results = $cachedResults;
-
-		}
+		$displayPostMeta = (bool) get_option( 'daves-wordpress-live-search_display_post_meta' );
+		$results = new DavesWordPressLiveSearchResults( $_GET['s'], $displayPostMeta );
 
 		wp_send_json($results);
 	}

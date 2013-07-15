@@ -27,7 +27,6 @@ Plugin URI: http://wordpress.org/extend/plugins/daves-wordpress-live-search/
  **/
 
 add_action('init', 'daves_wp_live_search_init');
-include_once "DWLSTransients.inc";
 
 function daves_wp_live_search_init() {
 	if(defined('DOING_AJAX')) {
