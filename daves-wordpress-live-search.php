@@ -32,7 +32,7 @@ if(5.0 > floatval(phpversion())) {
 }
 
 add_action('init', 'daves_wp_live_search_init');
-include_once "DWLSTransients.php";
+include_once "DWLSTransients.inc";
 
 function daves_wp_live_search_init() {
 	if(defined('DOING_AJAX')) {
