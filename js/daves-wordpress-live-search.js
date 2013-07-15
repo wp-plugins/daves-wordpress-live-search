@@ -14,7 +14,7 @@
  * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  **/
- 
+
 ///////////////////////
 // LiveSearch
 ///////////////////////
@@ -48,11 +48,11 @@ var LiveSearch = {
  * Sets up the key handler and creates the search results list.
  */
 LiveSearch.init = function() {
-	
+
 	jQuery("body").append('<ul class="search_results dwls_search_results"></ul>');
 	this.resultsElement = jQuery('ul').filter('.dwls_search_results');
 	this.resultsElement.hide();
-	
+
 	// Add the keypress handler
 	// Using keyup because keypress doesn't recognize the backspace key
 	// and that's kind of important.
@@ -63,10 +63,10 @@ LiveSearch.init = function() {
 	if(!LiveSearch.searchBoxes.outerHeight) {
 		alert(DavesWordPressLiveSearchConfig.outdatedJQuery);
 	}
-	
+
 	// Prevent browsers from doing autocomplete on the search field
 	LiveSearch.searchBoxes.parents('form').attr('autocomplete', 'off');
-	
+
 	// Hide the search results when the search box loses focus
 	jQuery("html").click(LiveSearch.hideResults);
 	LiveSearch.searchBoxes.add(this.resultsElement).click(function(e) {e.stopPropagation();});
@@ -82,7 +82,7 @@ LiveSearch.init = function() {
 }
 
 LiveSearch.positionResults = function() {
-	
+
 	var topOffset;
 	var searchBox = jQuery('input:focus').first();
 
@@ -95,7 +95,7 @@ LiveSearch.positionResults = function() {
 		this.resultsElement.css('left', searchBoxPosition.left);
 		this.resultsElement.css('top', searchBoxPosition.top);
 		this.resultsElement.css('display', 'block');
-		
+
 		switch(DavesWordPressLiveSearchConfig.resultsDirection)
 		{
 			case 'up':
@@ -107,9 +107,9 @@ LiveSearch.positionResults = function() {
 			default:
 				topOffset = searchBoxPosition.top + LiveSearch.searchBoxes.outerHeight();
 		}
-		
+
 		this.resultsElement.css('top', topOffset + 'px');
-		
+
 	}
 };
 
@@ -176,7 +176,7 @@ LiveSearch.handleAJAXResults = function(e) {
                                 renderedResult += '<a href="' + searchResult.permalink + '" class="daves-wordpress-live-search_title">' + searchResult.post_title + '</a>';
 
                                 if(searchResult.post_price !== undefined) {renderedResult += '<p class="price">' + searchResult.post_price + '</p>';}
-                                
+
                                 if(DavesWordPressLiveSearchConfig.showExcerpt == "true" && searchResult.post_excerpt) {
                                         renderedResult += '<p class="excerpt clearfix">' + searchResult.post_excerpt + '</p>';
                                 }
@@ -200,7 +200,7 @@ LiveSearch.handleAJAXResults = function(e) {
                 searchResultsList.find('li.daves-wordpress-live-search_result').bind('click.dwls', function() {
                    window.location.href = jQuery(this).find('a.daves-wordpress-live-search_title').attr('href');
                 });
-                
+
                 // Show the search results
                 LiveSearch.showResults();
 
@@ -240,7 +240,7 @@ LiveSearch.runQuery = function(terms) {
 	else {
 		// Do an autocomplete lookup
 		LiveSearch.displayIndicator();
-		
+
 		// Clear out the old requests in the queue
 		while(LiveSearch.activeRequests.length > 0)
 		{
@@ -257,13 +257,13 @@ LiveSearch.runQuery = function(terms) {
                         parameters[field.attr('name')] = field.val();
                     }
                 }
-     
+
 		// For wp_ajax
 		parameters.action = "dwls_search";
 
         // Do the AJAX call
 		req = jQuery.get( DavesWordPressLiveSearchConfig.ajaxURL, parameters, LiveSearch.handleAJAXResults, "json");
-		
+
 		// Add this request to the queue
 		LiveSearch.activeRequests.push(req);
 	}
@@ -326,15 +326,15 @@ LiveSearch.displayIndicator = function() {
 		spinnerRadius.inner = Math.floor(spinnerRadius.outer * 0.29);  // 2:7 (0.29) ratio seems ideal
 
 		jQuery(".search_results_activity_indicator").css('position', 'absolute').css('z-index', 9999);
-		
+
 		var indicatorY = (searchBoxPosition.top + ((searchBox.outerHeight() - searchBox.innerHeight()) / 2) + 'px');
-		
+
 		jQuery(".search_results_activity_indicator").css('top', indicatorY);
 
 		var indicatorX = (searchBoxPosition.left + searchBox.outerWidth() - ((spinnerRadius.outer + spinnerRadius.inner) * 2) - 2)  + 'px';
-						
+
 		jQuery(".search_results_activity_indicator").css('left', indicatorX);
-		
+
 		Spinners.create('.search_results_activity_indicator', {
 			radii:     [spinnerRadius.inner, spinnerRadius.outer],
 			color:     '#888888',
