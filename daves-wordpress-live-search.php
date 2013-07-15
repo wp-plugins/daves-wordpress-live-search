@@ -26,11 +26,6 @@ Plugin URI: http://wordpress.org/extend/plugins/daves-wordpress-live-search/
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  **/
 
-if(5.0 > floatval(phpversion())) {
-	// Call the special error handler that displays an error
-	add_action('admin_notices', 'daves_wp_live_search_phpver_admin_notice');
-}
-
 add_action('init', 'daves_wp_live_search_init');
 include_once "DWLSTransients.inc";
 
@@ -50,11 +45,6 @@ function daves_wp_live_search_init() {
 		add_action('admin_enqueue_scripts', array('DavesWordPressLiveSearch', 'admin_enqueue_scripts'));
 		DavesWordPressLiveSearch::advanced_search_init();
 	}
-}
-
-function daves_wp_live_search_phpver_admin_notice() {
-	$alertMessage = __("Dave's WordPress Live Search requires PHP 5.0 or higher");
-	echo "<div class=\"updated\"><p><strong>$alertMessage</strong></p></div>";
 }
 
 // Provide a json_encode implementation if none exists (PHP < 5.2.0)
