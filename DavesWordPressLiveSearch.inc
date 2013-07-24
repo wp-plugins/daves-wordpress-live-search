@@ -138,7 +138,7 @@ STYLE;
 		$minCharsToSearch = intval( get_option( 'daves-wordpress-live-search_minchars' ) );
 		$xOffset = intval( get_option( 'daves-wordpress-live-search_xoffset' ) );
 		$yOffset = intval( get_option( 'daves-wordpress-live-search_yoffset' ) );
-		$resultTemplate = file_get_contents(dirname(__FILE__) . "/js/dwls-results.tpl");
+		$resultTemplate = apply_filters('dwls_alter_result_template', file_get_contents(dirname(__FILE__) . "/js/dwls-results.tpl"));
 
 		// Translations
 		$moreResultsText = __( 'View more results', 'dwls' );
