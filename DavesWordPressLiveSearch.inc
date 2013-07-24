@@ -129,8 +129,6 @@ STYLE;
 	}
 
 	private static function inlineSettings() {
-		global $wps_subdomains;
-
 		$resultsDirection = stripslashes( get_option( 'daves-wordpress-live-search_results_direction' ) );
 		$showThumbs = intval( ( "true" == get_option( 'daves-wordpress-live-search_thumbs' ) ) );
 		$showExcerpt = intval( ( "true" == get_option( 'daves-wordpress-live-search_excerpt' ) ) );
