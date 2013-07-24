@@ -71,6 +71,8 @@ LiveSearch.init = function() {
 	jQuery("html").click(LiveSearch.hideResults);
 	LiveSearch.searchBoxes.add(this.resultsElement).click(function(e) {e.stopPropagation();});
 
+	LiveSearch.compiledResultTemplate = _.template(DavesWordPressLiveSearchConfig.resultTemplate);
+
 	jQuery(window).resize(function() {
 		var wasVisible = LiveSearch.resultsElement.is(':visible');
 		LiveSearch.positionResults(this);
@@ -156,7 +158,7 @@ LiveSearch.handleAJAXResults = function(e) {
                         if(searchResult.post_title !== undefined) {
 
                                 var renderedResult = '';
-                                var liClass;
+                                var liClass = '';
 
                                 // Thumbnails
                                 if(DavesWordPressLiveSearchConfig.showThumbs == "true" && searchResult.attachment_thumbnail) {
@@ -166,25 +168,13 @@ LiveSearch.handleAJAXResults = function(e) {
                                         liClass = "";
                                 }
 
-                                renderedResult += '<li class="daves-wordpress-live-search_result ' + liClass + '">';
+                                // Render the result template
+                                renderedResult = LiveSearch.compiledResultTemplate({
+									'liClass': liClass,
+									'searchResult': searchResult,
+									'e': e
+                                });
 
-                                // Render thumbnail
-                                if(DavesWordPressLiveSearchConfig.showThumbs == "true" && searchResult.attachment_thumbnail) {
-                                        renderedResult += '<img src="' + searchResult.attachment_thumbnail + '" class="post_thumb" />';
-                                }
-
-                                renderedResult += '<a href="' + searchResult.permalink + '" class="daves-wordpress-live-search_title">' + searchResult.post_title + '</a>';
-
-                                if(searchResult.post_price !== undefined) {renderedResult += '<p class="price">' + searchResult.post_price + '</p>';}
-
-                                if(DavesWordPressLiveSearchConfig.showExcerpt == "true" && searchResult.post_excerpt) {
-                                        renderedResult += '<p class="excerpt clearfix">' + searchResult.post_excerpt + '</p>';
-                                }
-
-                                if(e.displayPostMeta) {
-                                        renderedResult += '<p class="meta clearfix daves-wordpress-live-search_author" id="daves-wordpress-live-search_author">Posted by ' + searchResult.post_author_nicename + '</p><p id="daves-wordpress-live-search_date" class="meta clearfix daves-wordpress-live-search_date">' + searchResult.post_date + '</p>';
-                                }
-                                renderedResult += '<div class="clearfix"></div></li>';
                                 searchResultsList.append(renderedResult);
                         }
                 }
