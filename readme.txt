@@ -68,6 +68,7 @@ When you're ready, save your changes, and Dave's WordPress Live Search is ready 
 1. dwls_post_date
 1. dwls_author_name
 1. dwls_alter_result_template
+1. dwls_post_custom
 
 == Wish List ==
 

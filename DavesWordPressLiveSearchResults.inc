@@ -102,6 +102,9 @@ class DavesWordPressLiveSearchResults {
 
 			$post->show_more = true;
 
+			// Let plugins & themes define their own template variables
+			$post = apply_filters('dwls_post_custom', $post);
+
 			$this->results[] = $post;
 
 		}
