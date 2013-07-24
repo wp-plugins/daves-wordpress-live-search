@@ -20,7 +20,6 @@
 ///////////////////////
 
 var LiveSearch = {
-	resultsElement : '',
 	searchBoxes : '',
 	activeRequests : [],
 	callbacks : [],
@@ -49,9 +48,8 @@ var LiveSearch = {
  */
 LiveSearch.init = function() {
 
-	jQuery("body").append('<ul class="search_results dwls_search_results"></ul>');
-	this.resultsElement = jQuery('ul').filter('.dwls_search_results');
-	this.resultsElement.hide();
+	// jQuery("body").append('<ul class="search_results dwls_search_results"></ul>');
+	// this.resultsElement = jQuery('ul').filter('.dwls_search_results');
 
 	// Add the keypress handler
 	// Using keyup because keypress doesn't recognize the backspace key
@@ -69,17 +67,12 @@ LiveSearch.init = function() {
 
 	// Hide the search results when the search box loses focus
 	jQuery("html").click(LiveSearch.hideResults);
-	LiveSearch.searchBoxes.add(this.resultsElement).click(function(e) {e.stopPropagation();});
+	LiveSearch.searchBoxes.click(function(e) {e.stopPropagation();});
 
 	LiveSearch.compiledResultTemplate = _.template(DavesWordPressLiveSearchConfig.resultTemplate);
 
 	jQuery(window).resize(function() {
-		var wasVisible = LiveSearch.resultsElement.is(':visible');
 		LiveSearch.positionResults(this);
-		// Resizing the window was making the results visible again
-		if(!wasVisible) {
-			LiveSearch.resultsElement.hide();
-		}
 	});
 }
 
@@ -87,21 +80,23 @@ LiveSearch.positionResults = function() {
 
 	var topOffset;
 	var searchBox = jQuery('input:focus').first();
+	var resultsElement = jQuery('#dwls_search_results');
 
-	if(searchBox.size() > 0) {
+	if(resultsElement && searchBox.size() > 0) {
 
 		// Position the ul right under the search box
 		var searchBoxPosition = searchBox.offset();
+
 		searchBoxPosition.left += parseInt(DavesWordPressLiveSearchConfig.xOffset, 10);
 		searchBoxPosition.top  += parseInt(DavesWordPressLiveSearchConfig.yOffset, 10);
-		this.resultsElement.css('left', searchBoxPosition.left);
-		this.resultsElement.css('top', searchBoxPosition.top);
-		this.resultsElement.css('display', 'block');
+		resultsElement.css('left', searchBoxPosition.left);
+		resultsElement.css('top', searchBoxPosition.top);
+		resultsElement.css('display', 'block');
 
 		switch(DavesWordPressLiveSearchConfig.resultsDirection)
 		{
 			case 'up':
-				topOffset = searchBoxPosition.top - this.resultsElement.height();
+				topOffset = searchBoxPosition.top - resultsElement.height();
 				break;
 			case 'down':
 				topOffset = searchBoxPosition.top + LiveSearch.searchBoxes.outerHeight();
@@ -110,7 +105,7 @@ LiveSearch.positionResults = function() {
 				topOffset = searchBoxPosition.top + LiveSearch.searchBoxes.outerHeight();
 		}
 
-		this.resultsElement.css('top', topOffset + 'px');
+		resultsElement.css('top', topOffset + 'px');
 
 	}
 };
@@ -120,7 +115,7 @@ LiveSearch.positionResults = function() {
  */
 LiveSearch.handleAJAXResults = function(e) {
 
-	var searchResult;
+	var renderedResult = '';
     LiveSearch.activeRequests.pop();
 
     if(e) {
@@ -134,7 +129,7 @@ LiveSearch.handleAJAXResults = function(e) {
                 return;
         }
 
-        var resultsShownFor = jQuery("ul").filter(".dwls_search_results").children("input[name=query]").val();
+        var resultsShownFor = jQuery('#dwls_search_results').children("input[name=query]").val();
         if(resultsShownFor !== "" && resultsSearchTerm == resultsShownFor)
         {
                 if(LiveSearch.activeRequests.length === 0) {
@@ -144,56 +139,42 @@ LiveSearch.handleAJAXResults = function(e) {
                 return;
         }
 
-        var searchResultsList = jQuery("ul").filter(".dwls_search_results");
-        searchResultsList.empty();
-        searchResultsList.append('<input type="hidden" name="query" value="' + resultsSearchTerm + '" />');
+        // var searchResultsList = jQuery("ul").filter(".dwls_search_results");
+        // searchResultsList.empty();
+        // searchResultsList.append('');
 
         if(e.results.length === 0) {
                 // Hide the search results, no results to show
                 LiveSearch.hideResults();
         }
         else {
-                for(var postIndex = 0; postIndex < e.results.length; postIndex++) {
-                        searchResult = e.results[postIndex];
-                        if(searchResult.post_title !== undefined) {
+                // Render the result template
+                renderedResult = LiveSearch.compiledResultTemplate({
+					'searchResults': e.results,
+					'e': e,
+					'resultsSearchTerm': resultsSearchTerm
+                });
 
-                                var renderedResult = '';
-                                var liClass = '';
 
-                                // Thumbnails
-                                if(DavesWordPressLiveSearchConfig.showThumbs == "true" && searchResult.attachment_thumbnail) {
-                                        liClass = "post_with_thumb";
-                                }
-                                else {
-                                        liClass = "";
-                                }
-
-                                // Render the result template
-                                renderedResult = LiveSearch.compiledResultTemplate({
-									'liClass': liClass,
-									'searchResult': searchResult,
-									'e': e
-                                });
-
-                                searchResultsList.append(renderedResult);
-                        }
-                }
-
-				if(searchResult.show_more !== undefined && searchResult.show_more && DavesWordPressLiveSearchConfig.showMoreResultsLink == "true") {
-                    // "more" link
-                    searchResultsList.append('<div class="clearfix search_footer"><a href="' + DavesWordPressLiveSearchConfig.blogURL + '/?s=' + resultsSearchTerm + '">' + DavesWordPressLiveSearchConfig.viewMoreText + '</a></div>');
+				// if(searchResult.show_more !== undefined && searchResult.show_more && DavesWordPressLiveSearchConfig.showMoreResultsLink == "true") {
+    //                 // "more" link
+    //                 renderedResult += '<div class="clearfix search_footer"><a href="' + DavesWordPressLiveSearchConfig.blogURL + '/?s=' + resultsSearchTerm + '">' + DavesWordPressLiveSearchConfig.viewMoreText + '</a></div>';
+				// }
+				var existingResultsElement = jQuery('#dwls_search_results');
+				if(existingResultsElement.size() > 0) {
+					jQuery('#dwls_search_results').replaceWith(renderedResult);
 				}
+				else {
+					jQuery('body').append(renderedResult);
+				}
+				LiveSearch.positionResults();
 
                 // I'm not comfortable changing the HTML for the results list yet
                 // so I'm using this click handler to make clicking the result li act the
                 // same as clicking the title link
-                searchResultsList.find('li.daves-wordpress-live-search_result').bind('click.dwls', function() {
+                jQuery('#dwls_search_results').bind('click.dwls', function() {
                    window.location.href = jQuery(this).find('a.daves-wordpress-live-search_title').attr('href');
                 });
-
-                // Show the search results
-                LiveSearch.showResults();
-
         }
 
         if(LiveSearch.activeRequests.length === 0) {
@@ -260,43 +241,30 @@ LiveSearch.runQuery = function(terms) {
 };
 
 LiveSearch.hideResults = function() {
-	var visibleResults = jQuery("ul").filter(".dwls_search_results:visible");
+	var visibleResults = jQuery("#dwls_search_results");
+
 	if(visibleResults.size() > 0) {
 		LiveSearch.invokeCallbacks('BeforeHideResults');
 		switch(DavesWordPressLiveSearchConfig.resultsDirection)
 		{
 			case 'up':
-              visibleResults.fadeOut();
+              visibleResults.fadeOut('normal', function() {
+				visibleResults.remove();
+				LiveSearch.invokeCallbacks('AfterHideResults');
+              });
               break;
 			case 'down':
-              visibleResults.slideUp();
+              visibleResults.slideUp('normal', function() {
+				visibleResults.remove();
+				LiveSearch.invokeCallbacks('AfterHideResults');
+              });
               break;
 			default:
-              visibleResults.slideUp();
-              break;
+              visibleResults.slideUp('normal', function() {
+				visibleResults.remove();
+				LiveSearch.invokeCallbacks('AfterHideResults');
+              });
 		}
-		LiveSearch.invokeCallbacks('AfterHideResults');
-	}
-};
-
-LiveSearch.showResults = function() {
-	var hiddenResults = jQuery("ul").filter(".dwls_search_results:hidden");
-	if(hiddenResults.size() > 0) {
-		LiveSearch.invokeCallbacks('BeforeShowResults');
-		this.positionResults();
-		switch(DavesWordPressLiveSearchConfig.resultsDirection)
-		{
-			case 'up':
-              jQuery("ul").filter(".dwls_search_results:hidden").fadeIn();
-              break;
-			case 'down':
-              jQuery("ul").filter(".dwls_search_results:hidden").slideDown();
-              break;
-			default:
-              jQuery("ul").filter(".dwls_search_results:hidden").slideDown();
-              break;
-		}
-		LiveSearch.invokeCallbacks('AfterShowResults');
 	}
 };
 
