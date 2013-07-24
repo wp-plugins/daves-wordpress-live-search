@@ -77,11 +77,12 @@ Features I want to implement in future releases:
 
 == Changelog ==
 
-= 3.4 =
+= 4.0 =
 * 2013-??-?? Dave Ross <dave@csixty4.com>
 * Renamed .php include files to .inc
 * Removed check for PHP 4
 * Removed caching. It wasn't effective enough & was a support nightmare.
+* Using an Underscore template to render search results
 
 = 3.3.1 =
 * 2013-07-07 Dave Ross <dave@csixty4.com>
