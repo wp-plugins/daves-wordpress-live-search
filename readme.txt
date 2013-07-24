@@ -80,8 +80,8 @@ Features I want to implement in future releases:
 
 = 4.0 =
 * 2013-??-?? Dave Ross <dave@csixty4.com>
-* Renamed .php include files to .inc
-* Removed check for PHP 4
+* Renamed .php include files to .inc which most web servers won't  execute directly.
+* Removed check for PHP 4. WordPress 3.5 is the minimum and that needs PHP 5 anyway.
 * Removed caching. It wasn't effective enough & was a support nightmare.
 * Using an Underscore template to render search results
 
