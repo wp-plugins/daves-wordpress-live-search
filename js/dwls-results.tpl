@@ -28,12 +28,11 @@
         <% if(e.displayPostMeta) { %>
                 <p class="meta clearfix daves-wordpress-live-search_author" id="daves-wordpress-live-search_author">Posted by <%= searchResult.post_author_nicename %></p><p id="daves-wordpress-live-search_date" class="meta clearfix daves-wordpress-live-search_date"><%= searchResult.post_date %></p>
         <% } %>
-
-        <% if(searchResult.show_more !== undefined && searchResult.show_more && DavesWordPressLiveSearchConfig.showMoreResultsLink == "true") { %>
-                <div class="clearfix search_footer"><a href="' + DavesWordPressLiveSearchConfig.blogURL + '/?s=' + resultsSearchTerm + '"><%= DavesWordPressLiveSearchConfig.viewMoreText %></a></div>
-        <% } %>
-
         <div class="clearfix"></div></li>
 <% }); %>
+
+<% if(searchResults[0].show_more !== undefined && searchResults[0].show_more && DavesWordPressLiveSearchConfig.showMoreResultsLink == "true") { %>
+        <div class="clearfix search_footer"><a href="<%= DavesWordPressLiveSearchConfig.blogURL %>/?s=<%=  resultsSearchTerm %>"><%= DavesWordPressLiveSearchConfig.viewMoreText %></a></div>
+<% } %>
 
 </ul>
