@@ -22,7 +22,7 @@
 <tr valign="top">
 <th scope="row"><?php _e("Results Direction", 'dwls'); ?></th>
 
-<td><input type="radio" name="daves-wordpress-live-search_results_direction" id="daves-wordpress-live-search_results_direction_down" value="down" <?php checked(empty($resultsDirection), true); checked($resultsDirection, 'down'); ?> /> <label for="daves-wordpress-live-search_results_direction_down"><?php _e("Down", 'dwls'); ?></input></label>
+<td><input type="radio" name="daves-wordpress-live-search_results_direction" id="daves-wordpress-live-search_results_direction_down" value="down" <?php checked(empty($resultsDirection)); checked($resultsDirection, 'down'); ?> /> <label for="daves-wordpress-live-search_results_direction_down"><?php _e("Down", 'dwls'); ?></input></label>
 
 <input type="radio" name="daves-wordpress-live-search_results_direction" id="daves-wordpress-live-search_results_direction_up" value="up" <?php checked($resultsDirection, 'up'); ?> /> <label for="daves-wordpress-live-search_results_direction_up"><?php _e("Up", 'dwls'); ?></label><br /><span class="setting-description"><?php _e("When search results are displayed, in which direction should the results box extend from the search box?", 'dwls'); ?></span></td>
 </tr>
