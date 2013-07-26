@@ -10,10 +10,10 @@
 
 <td>
 <select name="daves-wordpress-live-search_minchars">
-<option value="1" <?php if($minCharsToSearch == 1) echo 'selected="selected"'; ?>><?php _e("Search right away", 'dwls'); ?></option>
-<option value="2" <?php if($minCharsToSearch == 2) echo 'selected="selected"'; ?>><?php _e("Wait for two characters", 'dwls'); ?></option>
-<option value="3" <?php if($minCharsToSearch == 3) echo 'selected="selected"'; ?>><?php _e("Wait for three characters", 'dwls'); ?></option>
-<option value="4" <?php if($minCharsToSearch == 4) echo 'selected="selected"'; ?>><?php _e("Wait for four characters", 'dwls'); ?></option>
+<option value="1" <?php selected($minCharsToSearch, 1); ?>><?php _e("Search right away", 'dwls'); ?></option>
+<option value="2" <?php selected($minCharsToSearch, 2); ?>><?php _e("Wait for two characters", 'dwls'); ?></option>
+<option value="3" <?php selected($minCharsToSearch, 3); ?>><?php _e("Wait for three characters", 'dwls'); ?></option>
+<option value="4" <?php selected($minCharsToSearch, 4); ?>><?php _e("Wait for four characters", 'dwls'); ?></option>
 </select>
 </td>
 </tr>
@@ -22,9 +22,9 @@
 <tr valign="top">
 <th scope="row"><?php _e("Results Direction", 'dwls'); ?></th>
 
-<td><input type="radio" name="daves-wordpress-live-search_results_direction" id="daves-wordpress-live-search_results_direction_down" value="down" <?php if(empty($resultsDirection) || $resultsDirection == 'down'): ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_results_direction_down"><?php _e("Down", 'dwls'); ?></input></label>
+<td><input type="radio" name="daves-wordpress-live-search_results_direction" id="daves-wordpress-live-search_results_direction_down" value="down" <?php checked(empty($resultsDirection), true); checked($resultsDirection, 'down'); ?> /> <label for="daves-wordpress-live-search_results_direction_down"><?php _e("Down", 'dwls'); ?></input></label>
 
-<input type="radio" name="daves-wordpress-live-search_results_direction" id="daves-wordpress-live-search_results_direction_up" value="up" <?php if($resultsDirection == 'up'): ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_results_direction_up"><?php _e("Up", 'dwls'); ?></label><br /><span class="setting-description"><?php _e("When search results are displayed, in which direction should the results box extend from the search box?", 'dwls'); ?></span></td>
+<input type="radio" name="daves-wordpress-live-search_results_direction" id="daves-wordpress-live-search_results_direction_up" value="up" <?php checked($resultsDirection, 'up'); ?> /> <label for="daves-wordpress-live-search_results_direction_up"><?php _e("Up", 'dwls'); ?></label><br /><span class="setting-description"><?php _e("When search results are displayed, in which direction should the results box extend from the search box?", 'dwls'); ?></span></td>
 </tr>
 
 <!-- WP E-Commerce -->
@@ -38,8 +38,8 @@
 <td>
     <div><span class="setting-description"><?php printf(__("When used with the %sWP E-Commerce%s plugin, Dave&apos;s WordPress Live Search can search your product catalog instead of posts & pages.", 'dwls'), '<a href="http://getshopped.org/">', '</a>'); ?></span></div>
     <table>
-        <tr><td><input type="radio" id="daves-wordpress-live-search_source_1" name="daves-wordpress-live-search_source" value="0" <?php if(0 == $searchSource) : ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_source_1"><?php _e("Search posts &amp; pages", 'dwls'); ?></label></td></tr>
-        <tr><td><input type="radio" id="daves-wordpress-live-search_source_2" name="daves-wordpress-live-search_source" value="1" <?php if(1 == $searchSource) : ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_source_2"><?php _e("Search products", 'dwls'); ?></label></td></tr>
+        <tr><td><input type="radio" id="daves-wordpress-live-search_source_1" name="daves-wordpress-live-search_source" value="0" <?php checked($searchSource, 0); ?> /> <label for="daves-wordpress-live-search_source_1"><?php _e("Search posts &amp; pages", 'dwls'); ?></label></td></tr>
+        <tr><td><input type="radio" id="daves-wordpress-live-search_source_2" name="daves-wordpress-live-search_source" value="1" <?php checked($searchSource, 1); ?> /> <label for="daves-wordpress-live-search_source_2"><?php _e("Search products", 'dwls'); ?></label></td></tr>
     </table>
 
 </td>

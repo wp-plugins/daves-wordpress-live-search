@@ -35,7 +35,7 @@
 <tr valign="top">
 <th scope="row"><?php _e("Enable content filter", 'dwls'); ?></th>
 
-<td><input type="checkbox" name="daves-wordpress-live-search_apply_content_filter" id="daves-wordpress-live-search_apply_content_filter" value="true" <?php if($applyContentFilter): ?>checked="checked"<?php endif; ?> /> <label for="daves-wordpress-live-search_apply_content_filter"><?php _e("Allow other plugins to filter the content before looking for a thumbnail. This will affect Live Search performance, so only enable this if you really need it.", 'dwls'); ?></label></td>
+<td><input type="checkbox" name="daves-wordpress-live-search_apply_content_filter" id="daves-wordpress-live-search_apply_content_filter" value="true" <?php checked($applyContentFilter, true); ?> /> <label for="daves-wordpress-live-search_apply_content_filter"><?php _e("Allow other plugins to filter the content before looking for a thumbnail. This will affect Live Search performance, so only enable this if you really need it.", 'dwls'); ?></label></td>
 </tr>
 
 <!-- Submit buttons -->
