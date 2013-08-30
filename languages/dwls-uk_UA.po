@@ -2,347 +2,459 @@ msgid ""
 msgstr ""
 "Project-Id-Version: daves-wordpress-live-search\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-21 15:28-0500\n"
-"PO-Revision-Date: 2013-06-05 21:44-0500\n"
-"Last-Translator: Dave Ross <dave@davidmichaelross.com>\n"
+"POT-Creation-Date: 2013-06-05 23:26-0500\n"
+"PO-Revision-Date: 2013-08-29 22:37-0500\n"
+"Last-Translator: \n"
 "Language-Team: Ukrainian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-Language: English\n"
-"X-Poedit-Country: UNITED STATES\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10< =4 && (n%100<10 or n%100>=20) ? 1 : 2);\n"
-"X-Generator: crowdin.net\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10< =4 && (n%100<10 or n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 1.5.7\n"
 "Language: uk_UA\n"
-"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SearchPath-0: /Users/dave/Desktop/daves-wordpress-live-search "
+"(trunk)\n"
 
-#: ../daves-wordpress-live-search.php:48
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/daves-wordpress-live-search.php:56
 msgid "Dave's WordPress Live Search requires PHP 5.0 or higher"
-msgstr "Dave's WordPress Live Search requires PHP 5.0 or higher"
+msgstr "Для Dave's WordPress Live Search потрібна версія PHP 5.0 і вище"
 
-#: ../DavesWordPressLiveSearch.php:117
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/DavesWordPressLiveSearch.php:142
 msgid "View more results"
-msgstr "View more results"
+msgstr "Переглянути більше результатів"
 
-#: ../DavesWordPressLiveSearch.php:118
-msgid "Dave's WordPress Live Search requires jQuery 1.2.6 or higher. WordPress ships with current jQuery versions. But if you are seeing this message, it's likely that another plugin is including an earlier version."
-msgstr "Dave's WordPress Live Search requires jQuery 1.2.6 or higher. WordPress ships with current jQuery versions. But if you are seeing this message, it's likely that another plugin is including an earlier version."
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/DavesWordPressLiveSearch.php:143
+msgid ""
+"Dave's WordPress Live Search requires jQuery 1.2.6 or higher. WordPress "
+"ships with current jQuery versions. But if you are seeing this message, it's "
+"likely that another plugin is including an earlier version."
+msgstr ""
+"Для Dave's WordPress Live Search потрібна версія jQuery не нижче 1.2.6. "
+"Зазвичай, WordPress вже має необхідну версію jQuery в ядрі, але, якщо Ви "
+"бачите це повідомлення, отже інший плагін підключив більш ранню версію."
 
-#: ../DavesWordPressLiveSearch.php:148
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/DavesWordPressLiveSearch.php:174
 msgid "Live Search"
 msgstr "Live Search"
 
-#: ../DavesWordPressLiveSearch.php:200
-#: ../DavesWordPressLiveSearch.php:241
-#: ../DavesWordPressLiveSearch.php:289
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/DavesWordPressLiveSearch.php:223
+#: (trunk)/DavesWordPressLiveSearch.php:269
+#: (trunk)/DavesWordPressLiveSearch.php:315
 msgid "Options saved."
-msgstr "Options saved."
+msgstr "Опції збережені."
 
-#: ../DavesWordPressLiveSearch.php:276
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/DavesWordPressLiveSearch.php:303
 msgid "Cache cleared."
-msgstr "Cache cleared."
+msgstr "Кеш очищено."
 
-#: ../DavesWordPressLiveSearch.php:359
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/DavesWordPressLiveSearch.php:344
 #, php-format
-msgid "The %sDave's WordPress Live Search%s plugin is configured to use a theme-specific CSS file, but the current theme does not contain a daves-wordpress-live-search.css file."
-msgstr "The %sDave's WordPress Live Search%s plugin is configured to use a theme-specific CSS file, but the current theme does not contain a daves-wordpress-live-search.css file."
+msgid ""
+"The %sDave's WordPress Live Search%s plugin is configured to use a theme-"
+"specific CSS file, but the current theme does not contain a daves-wordpress-"
+"live-search.css file."
+msgstr ""
+"%sDave's WordPress Live Search%s налаштований на використання CSS файлу в "
+"темі оформлення, але поточна тема не містить файлу daves-wordpress-live-"
+"search.css. Внесіть необхідні зміни."
 
-#: ../admin/admin_footer.tpl:3
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/admin_footer.tpl:3
 #, c-format
-msgid "Do you find this plugin useful? Consider a donation to %sCat Guardians%s, a wonderful no-kill shelter where I volunteer."
-msgstr "Do you find this plugin useful? Consider a donation to %sCat Guardians%s, a wonderful no-kill shelter where I volunteer."
+msgid ""
+"Do you find this plugin useful? Consider a donation to %sCat Guardians%s, a "
+"wonderful no-kill shelter where I volunteer."
+msgstr ""
+"Вважаєте цей плагін корисним? Ви можете зробити пожертвування в організацію "
+"%sCat Guardians%s, де я працюю волонтером."
 
-#: ../admin/admin_footer.tpl:4
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/admin_footer.tpl:4
 #, c-format
-msgid "Please help make Dave's WordPress Live Search available to people all over the world. Visit %sour translation tool%s and help translate. Thanks Crowdin for hosting this project's translation efforts!"
-msgstr "Please help make Dave's WordPress Live Search available to people all over the world. Visit %sour translation tool%s and help translate. Thanks Crowdin for hosting this project's translation efforts!"
+msgid ""
+"Please help make Dave's WordPress Live Search available to people all over "
+"the world. Visit %sour translation tool%s and help translate. Thanks Crowdin "
+"for hosting this project's translation efforts!"
+msgstr ""
+"Допоможіть зробити плагін Dave's WordPress Live Search доступним для людей "
+"по всьому світу. Відвідайте %sнаш інструмент перекладу%s і допоможіть "
+"перекласти плагін. Спасибі Crowdin-у за наданий хостинг для файлів "
+"локалізації!"
 
-#: ../admin/admin_header.tpl:5
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/admin_header.tpl:15
 msgid "Dave's WordPress Live Search Options"
-msgstr "Dave's WordPress Live Search Options"
+msgstr "Налаштування Dave's WordPress Live Search"
 
-#: ../admin/daves-wordpress-live-search-admin-advanced.tpl:3
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:3
-#: ../admin/daves-wordpress-live-search-admin-debug.tpl:3
-#: ../admin/daves-wordpress-live-search-admin.tpl:3
-msgid "Settings"
-msgstr "Settings"
-
-#: ../admin/daves-wordpress-live-search-admin-advanced.tpl:4
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:4
-#: ../admin/daves-wordpress-live-search-admin-debug.tpl:4
-#: ../admin/daves-wordpress-live-search-admin.tpl:4
-msgid "Appearance"
-msgstr "Appearance"
-
-#: ../admin/daves-wordpress-live-search-admin-advanced.tpl:5
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:5
-#: ../admin/daves-wordpress-live-search-admin-debug.tpl:5
-#: ../admin/daves-wordpress-live-search-admin.tpl:5
-msgid "Advanced"
-msgstr "Advanced"
-
-#: ../admin/daves-wordpress-live-search-admin-advanced.tpl:6
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:6
-#: ../admin/daves-wordpress-live-search-admin-debug.tpl:6
-#: ../admin/daves-wordpress-live-search-admin.tpl:6
-msgid "Debug"
-msgstr "Debug"
-
-#: ../admin/daves-wordpress-live-search-admin-advanced.tpl:19
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-advanced.tpl:3
 msgid "Exceptions"
-msgstr "Exceptions"
+msgstr "Винятки"
 
-#: ../admin/daves-wordpress-live-search-admin-advanced.tpl:24
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-advanced.tpl:8
 #, c-format
-msgid "Enter the %s of pages which should not have live searching, one per line. The * wildcard can be used at the start or end of a line. For example: %s"
-msgstr "Enter the %s of pages which should not have live searching, one per line. The * wildcard can be used at the start or end of a line. For example: %s"
+msgid ""
+"Enter the %s of pages which should not have live searching, one per line. "
+"The * wildcard can be used at the start or end of a line. For example: %s"
+msgstr ""
+"Введіть %s сторінок, які не повинні виводитися в панелі пошуку, по одній на "
+"рядок. Символ * означає множину і може розміщуватися на початку або "
+"наприкінці адреси сторінки. Наприклад: %s"
 
-#: ../admin/daves-wordpress-live-search-admin-advanced.tpl:26
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-advanced.tpl:10
 msgid "NOTE"
-msgstr "NOTE"
+msgstr "ЗВЕРНІТЬ УВАГУ"
 
-#: ../admin/daves-wordpress-live-search-admin-advanced.tpl:26
-msgid "These pages will still be returned in search results. This only disables the Live Search feature for the search box on these pages."
-msgstr "These pages will still be returned in search results. This only disables the Live Search feature for the search box on these pages."
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-advanced.tpl:10
+msgid ""
+"These pages will still be returned in search results. This only disables the "
+"Live Search feature for the search box on these pages."
+msgstr ""
+"Ці сторінки як і раніше будуть відображатися в результатах пошуку, але "
+"функція Live Search для них буде відключена."
 
-#: ../admin/daves-wordpress-live-search-admin-advanced.tpl:32
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-advanced.tpl:16
 msgid "Search Results box X offset"
-msgstr "Search Results box X offset"
+msgstr "Зсув панелі виводу результатів по осі X"
 
-#: ../admin/daves-wordpress-live-search-admin-advanced.tpl:35
-msgid "Use this setting to move the search results box left or right to align exactly with your theme's search field. Value is in pixels. Negative values move the box to the left, positive values move it to the right."
-msgstr "Use this setting to move the search results box left or right to align exactly with your theme's search field. Value is in pixels. Negative values move the box to the left, positive values move it to the right."
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-advanced.tpl:19
+msgid ""
+"Use this setting to move the search results box left or right to align "
+"exactly with your theme's search field. Value is in pixels. Negative values "
+"move the box to the left, positive values move it to the right."
+msgstr ""
+"Призначено для переміщення панелі результатів пошуку вліво / вправо, "
+"відносно поля пошуку. Від'ємне значення в пікселях - переміщення вліво, "
+"додатнє - вправо."
 
-#: ../admin/daves-wordpress-live-search-admin-advanced.tpl:42
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-advanced.tpl:26
 msgid "Search Results box Y offset"
-msgstr "Search Results box Y offset"
+msgstr "Зсув панелі виводу результатів по осі Y"
 
-#: ../admin/daves-wordpress-live-search-admin-advanced.tpl:45
-msgid "Use this setting to move the search results box up or down to align exactly with your theme's search field. Value is in pixels. Negative values move the box up, positive values move it down."
-msgstr "Use this setting to move the search results box up or down to align exactly with your theme's search field. Value is in pixels. Negative values move the box up, positive values move it down."
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-advanced.tpl:29
+msgid ""
+"Use this setting to move the search results box up or down to align exactly "
+"with your theme's search field. Value is in pixels. Negative values move the "
+"box up, positive values move it down."
+msgstr ""
+"Призначено для переміщення панелі результатів пошуку вгору / вниз, "
+"відноснополя пошуку. Від'ємне значення в пікселях - переміщення вгору, "
+"додатнє - вниз."
 
-#: ../admin/daves-wordpress-live-search-admin-advanced.tpl:52
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-advanced.tpl:36
 msgid "Cache Lifetime"
-msgstr "Cache Lifetime"
+msgstr "Тривалість зберігання кешу"
 
-#: ../admin/daves-wordpress-live-search-admin-advanced.tpl:54
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-advanced.tpl:38
 msgid "Enter &quot;0&quot; to disable caching"
-msgstr "Enter &quot;0&quot; to disable caching"
+msgstr "Введіть  &quot;0&quot; для вимкнення кешування"
 
-#: ../admin/daves-wordpress-live-search-admin-advanced.tpl:59
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-advanced.tpl:43
 msgid "Enable content filter"
-msgstr "Enable content filter"
+msgstr "Включити фільтрування вмісту"
 
-#: ../admin/daves-wordpress-live-search-admin-advanced.tpl:61
-msgid "Allow other plugins to filter the content before looking for a thumbnail. This will affect Live Search performance, so only enable this if you really need it."
-msgstr "Allow other plugins to filter the content before looking for a thumbnail. This will affect Live Search performance, so only enable this if you really need it."
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-advanced.tpl:45
+msgid ""
+"Allow other plugins to filter the content before looking for a thumbnail. "
+"This will affect Live Search performance, so only enable this if you really "
+"need it."
+msgstr ""
+"Дозволити іншим плагінам обробляти вміст виведення до пошуку мініатюр. "
+"Знижує продуктивність Live Search, тому включайте тільки при крайній "
+"необхідності."
 
-#: ../admin/daves-wordpress-live-search-admin-advanced.tpl:66
-msgid "Enable debugger"
-msgstr "Enable debugger"
-
-#: ../admin/daves-wordpress-live-search-admin-advanced.tpl:68
-msgid "Enable the Debug tab."
-msgstr "Enable the Debug tab."
-
-#: ../admin/daves-wordpress-live-search-admin-advanced.tpl:73
-#: ../admin/daves-wordpress-live-search-admin-advanced.tpl:75
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-advanced.tpl:50
+#: (trunk)/admin/daves-wordpress-live-search-admin-advanced.tpl:53
 msgid "Clear Cache"
-msgstr "Clear Cache"
+msgstr "Очистити Кеш"
 
-#: ../admin/daves-wordpress-live-search-admin-advanced.tpl:75
-msgid "If you change settings or post/edit content, your cache will be cleared automatically. Use this button to clear the cache manually if needed."
-msgstr "If you change settings or post/edit content, your cache will be cleared automatically. Use this button to clear the cache manually if needed."
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-advanced.tpl:55
+msgid ""
+"If you change settings or post/edit content, your cache will be cleared "
+"automatically. Use this button to clear the cache manually if needed."
+msgstr ""
+"Якщо змінити налаштування чи редагували вміст, кеш буде очищено автоматично. "
+"Використайте цю кнопку, щоб очистити кеш вручну, якщо це необхідно."
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:20
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:3
 msgid "Display Metadata"
-msgstr "Display Metadata"
+msgstr "Відобразити Метадані (Metadata)"
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:24
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:7
 msgid "Display author & date for every search result"
-msgstr "Display author & date for every search result"
+msgstr "Відображати автора і дату для кожного знайденого результату"
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:30
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:13
 msgid "Display Post Thumbnail"
-msgstr "Display Post Thumbnail"
+msgstr "Відображати ілюстрації"
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:34
-msgid "Display thumbnail images for every search result with at least one image"
-msgstr "Display thumbnail images for every search result with at least one image"
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:17
+msgid ""
+"Display thumbnail images for every search result with at least one image"
+msgstr ""
+"Відображати мініатюри зображень для кожного знайденого результату з, "
+"принаймні, одним зображенням"
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:40
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:23
 msgid "Display Post Excerpt"
-msgstr "Display Post Excerpt"
+msgstr "Відображати цитати"
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:44
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:27
 #, c-format
-msgid "Display an excerpt for every search result. If the post doesn't have one, use the first %s characters."
-msgstr "Display an excerpt for every search result. If the post doesn't have one, use the first %s characters."
+msgid ""
+"Display an excerpt for every search result. If the post doesn't have one, "
+"use the first %s characters."
+msgstr ""
+"Показувати цитати для кожного знайденого запису. Якщо цитати немає, "
+"відображати перші %s символів."
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:50
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:33
 msgid "Display &quot;View more results&quot; link"
-msgstr "Display &quot;View more results&quot; link"
+msgstr "Відображати посилання &quot;Показати більше результатів пошуку&quot;"
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:54
-msgid "Display the &quot;View more results&quot; link after the search results."
-msgstr "Display the &quot;View more results&quot; link after the search results."
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:37
+msgid ""
+"Display the &quot;View more results&quot; link after the search results."
+msgstr ""
+"Відображати посилання &quot;Решта результатів пошуку&quot; після результатів "
+"пошуку."
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:60
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:43
 msgid "Styles"
-msgstr "Styles"
+msgstr "Стилі"
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:66
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:49
 msgid "Default Gray"
-msgstr "Default Gray"
+msgstr "Сірий стандартний"
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:66
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:49
 msgid "Default style in gray."
-msgstr "Default style in gray."
+msgstr "Стандартний стиль в сірих тонах."
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:68
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:51
 msgid "Default Red"
-msgstr "Default Red"
+msgstr "Червоний стандартний"
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:68
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:51
 msgid "Default style in red"
-msgstr "Default style in red"
+msgstr "Стандартний стиль в червоних тонах."
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:70
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:53
 msgid "Default Blue"
-msgstr "Default Blue"
+msgstr "Синій стандартний"
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:70
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:53
 msgid "Default style in blue"
-msgstr "Default style in blue"
+msgstr "Стандартний стиль в синіх тонах."
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:75
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:58
 msgid "Custom"
-msgstr "Custom"
+msgstr "Власний"
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:75
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:58
 msgid "Customize the search results display here"
-msgstr "Customize the search results display here"
+msgstr "Оформити результати пошуку на власний смак"
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:80
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:68
+msgid "Width (in pixels)"
+msgstr "Ширина (в пікселях)"
+
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:70
 msgid "Title"
-msgstr "Title"
+msgstr "Заголовок"
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:82
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:72
 msgid "Excerpt"
-msgstr "Excerpt"
+msgstr "Цитата"
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:84
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:74
 msgid "Background"
-msgstr "Background"
+msgstr "Задній фон"
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:86
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:76
 msgid "Hover Background"
-msgstr "Hover Background"
+msgstr "Фон при наведенні"
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:88
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:78
 msgid "Divider"
-msgstr "Divider"
+msgstr "Роздільник"
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:90
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:80
 msgid "Footer Background"
-msgstr "Footer Background"
+msgstr "Фон нижнього колонтитулу"
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:92
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:82
 msgid "Footer Text"
-msgstr "Footer Text"
+msgstr "Текст нижнього колонтитулу"
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:94
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:84
 msgid "Shadow"
-msgstr "Shadow"
+msgstr "Тінь"
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:106
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:93
 msgid "Theme-specific"
-msgstr "Theme-specific"
+msgstr "Включений в тему оформлення"
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:106
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:108
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:93
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:95
 msgid "For advanced users"
-msgstr "For advanced users"
+msgstr "Для досвідчених користувачів"
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:106
-msgid "Theme must include a CSS file named daves-wordpress-live-search.css. If your theme does not have one, copy daves-wordpress-live-search_default_gray.css from this plugin's directory into your theme's directory and modify as desired."
-msgstr "Theme must include a CSS file named daves-wordpress-live-search.css. If your theme does not have one, copy daves-wordpress-live-search_default_gray.css from this plugin's directory into your theme's directory and modify as desired."
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:93
+msgid ""
+"Theme must include a CSS file named daves-wordpress-live-search.css. If your "
+"theme does not have one, copy daves-wordpress-live-search_default_gray.css "
+"from this plugin's directory into your theme's directory and modify as "
+"desired."
+msgstr ""
+"Ви повинні включити CSS файл daves-wordpress-live-search.css в каталог з "
+"темою оформлення. Можна просто скопіювати файл з каталогу плагіну і "
+"перейменувати його."
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:108
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:95
 msgid "Theme-specific (theme's own CSS file)"
-msgstr "Theme-specific (theme's own CSS file)"
+msgstr "Вбудований в тему оформлення (частина основного CSS-файлу теми)"
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:108
-msgid "Use the styles contained within your Theme's stylesheet. Don't include a separate stylesheet for Live Search."
-msgstr "Use the styles contained within your Theme's stylesheet. Don't include a separate stylesheet for Live Search."
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin-appearance.tpl:95
+msgid ""
+"Use the styles contained within your Theme's stylesheet. Don't include a "
+"separate stylesheet for Live Search."
+msgstr ""
+"Використовуйте стилі, що вбудовані і в таблицю стилів Вашої теми. Не "
+"підключайте окрему таблицю стилів для Live Search."
 
-#: ../admin/daves-wordpress-live-search-admin-appearance.tpl:114
-#: ../admin/daves-wordpress-live-search-admin.tpl:70
-msgid "Save Changes"
-msgstr "Save Changes"
-
-#: ../admin/daves-wordpress-live-search-admin.tpl:20
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin.tpl:3
 msgid "Maximum Results to Display"
-msgstr "Maximum Results to Display"
+msgstr "Максимум результатів для відображення"
 
-#: ../admin/daves-wordpress-live-search-admin.tpl:22
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin.tpl:5
 msgid "Enter &quot;0&quot; to display all matching results"
-msgstr "Enter &quot;0&quot; to display all matching results"
+msgstr "Введіть &quot;0&quot; для відображення всіх результатів"
 
-#: ../admin/daves-wordpress-live-search-admin.tpl:26
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin.tpl:9
 msgid "Minimum characters before searching"
-msgstr "Minimum characters before searching"
+msgstr "Мінімум символів перед початком пошуку"
 
-#: ../admin/daves-wordpress-live-search-admin.tpl:30
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin.tpl:13
 msgid "Search right away"
-msgstr "Search right away"
+msgstr "Шукати зразу"
 
-#: ../admin/daves-wordpress-live-search-admin.tpl:31
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin.tpl:14
 msgid "Wait for two characters"
-msgstr "Wait for two characters"
+msgstr "Чекати вводу двох символів"
 
-#: ../admin/daves-wordpress-live-search-admin.tpl:32
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin.tpl:15
 msgid "Wait for three characters"
-msgstr "Wait for three characters"
+msgstr "Чекати вводу трьох символів"
 
-#: ../admin/daves-wordpress-live-search-admin.tpl:33
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin.tpl:16
 msgid "Wait for four characters"
-msgstr "Wait for four characters"
+msgstr "Чекати вводу чотирьох символів"
 
-#: ../admin/daves-wordpress-live-search-admin.tpl:40
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin.tpl:23
 msgid "Results Direction"
-msgstr "Results Direction"
+msgstr "Напрямок виводу"
 
-#: ../admin/daves-wordpress-live-search-admin.tpl:42
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin.tpl:25
 msgid "Down"
-msgstr "Down"
+msgstr "Вниз"
 
-#: ../admin/daves-wordpress-live-search-admin.tpl:44
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin.tpl:27
 msgid "Up"
-msgstr "Up"
+msgstr "Вверх"
 
-#: ../admin/daves-wordpress-live-search-admin.tpl:44
-msgid "When search results are displayed, in which direction should the results box extend from the search box?"
-msgstr "When search results are displayed, in which direction should the results box extend from the search box?"
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin.tpl:27
+msgid ""
+"When search results are displayed, in which direction should the results box "
+"extend from the search box?"
+msgstr "Як відображати панель з результатами пошуку щодо форми пошуку?"
 
-#: ../admin/daves-wordpress-live-search-admin.tpl:50
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin.tpl:33
 msgid "WP E-Commerce"
 msgstr "WP E-Commerce"
 
-#: ../admin/daves-wordpress-live-search-admin.tpl:56
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin.tpl:39
 #, c-format
-msgid "When used with the %sWP E-Commerce%s plugin, Dave&apos;s WordPress Live Search can search your product catalog instead of posts & pages."
-msgstr "When used with the %sWP E-Commerce%s plugin, Dave&apos;s WordPress Live Search can search your product catalog instead of posts & pages."
+msgid ""
+"When used with the %sWP E-Commerce%s plugin, Dave&apos;s WordPress Live "
+"Search can search your product catalog instead of posts & pages."
+msgstr ""
+"Коли використовується плагін %sWP E-Commerce%s, Dave&apos;s WordPress Live "
+"Search може відображати товари замість записів і сторінок."
 
-#: ../admin/daves-wordpress-live-search-admin.tpl:58
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin.tpl:41
 msgid "Search posts &amp; pages"
-msgstr "Search posts &amp; pages"
+msgstr "Шукати записи і сторінки"
 
-#: ../admin/daves-wordpress-live-search-admin.tpl:59
+#: /Users/dave/Desktop/daves-wordpress-live-search
+#: (trunk)/admin/daves-wordpress-live-search-admin.tpl:42
 msgid "Search products"
-msgstr "Search products"
-
+msgstr "Шукати товари"

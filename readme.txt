@@ -84,6 +84,7 @@ Features I want to implement in future releases:
 * Removed check for PHP 4. WordPress 3.5 is the minimum and that needs PHP 5 anyway.
 * Removed caching. It wasn't effective enough & was a support nightmare.
 * Using an Underscore template to render search results
+* Ukranian translation by Paul Mall (zlyton)
 
 = 3.3.1 =
 * 2013-07-07 Dave Ross <dave@csixty4.com>
