@@ -151,7 +151,7 @@ class DavesWordPressLiveSearchResults {
 		return $first_img;
 	}
 
-	public function ajaxSearch() {
+	public static function ajaxSearch() {
 		global $wp_query;
 
 		// This needs to be registered here so it's only invoked when processing a DWLS AJAX request
