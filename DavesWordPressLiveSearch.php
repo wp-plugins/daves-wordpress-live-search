@@ -1,5 +1,7 @@
 <?php
 
+if ( !defined( 'ABSPATH' ) ) die( "Cannot access files directly." );
+
 /**
  * Copyright (c) 2009 Dave Ross <dave@csixty4.com>
  *

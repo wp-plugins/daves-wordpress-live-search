@@ -1,3 +1,5 @@
+<?php if ( !defined( 'ABSPATH' ) ) die( "Cannot access files directly." ); ?>
+
 <link rel="stylesheet" href="<?php echo plugin_dir_url(__FILE__) . 'dwls_admin.css' ?>" />
 <?php
 global $wp_version;

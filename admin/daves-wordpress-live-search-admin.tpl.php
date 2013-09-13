@@ -1,3 +1,5 @@
+<?php if ( !defined( 'ABSPATH' ) ) die( "Cannot access files directly." ); ?>
+
 <?php include dirname(__FILE__)."/admin_header.tpl.php"; ?>
 <tr valign="top">
 <th scope="row"><?php _e("Maximum Results to Display", 'dwls'); ?></th>

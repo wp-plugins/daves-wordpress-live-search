@@ -1,8 +1,7 @@
 <?php
 
-/**
- * Value object class
- */
+if ( !defined( 'ABSPATH' ) ) die( "Cannot access files directly." );
+
 class DavesWordPressLiveSearchResults {
 
 	// Search sources
