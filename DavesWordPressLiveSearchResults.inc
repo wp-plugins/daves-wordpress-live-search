@@ -198,7 +198,14 @@ class DavesWordPressLiveSearchResults {
 				$query->set( 'post_type', 'wpsc-product' );
 			}
 		}
+
+		// Tell WordPress not to bother updating post caches
+		$query->set( 'cache_results', false );
+
+		// Tell WordPress not to get SQL_CALC_FOUND_ROWS
+		$query->set( 'no_found_rows', true );
 	}
+
 }
 
 // Set up the AJAX hooks
