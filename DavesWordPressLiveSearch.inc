@@ -234,7 +234,7 @@ STYLE;
 
 		}
 
-		include "$thisPluginsDirectory/admin/daves-wordpress-live-search-admin.tpl";
+		include "$thisPluginsDirectory/admin/daves-wordpress-live-search-admin.tpl.php";
 	}
 
 	private static function plugin_options_design() {
@@ -280,7 +280,7 @@ STYLE;
 			$customOptions = get_option( 'daves-wordpress-live-search_custom_options' );
 		}
 
-		include "$thisPluginsDirectory/admin/daves-wordpress-live-search-admin-appearance.tpl";
+		include "$thisPluginsDirectory/admin/daves-wordpress-live-search-admin-appearance.tpl.php";
 	}
 
 	private static function plugin_options_advanced() {
@@ -313,7 +313,7 @@ STYLE;
 
 		}
 
-		include "$thisPluginsDirectory/admin/daves-wordpress-live-search-admin-advanced.tpl";
+		include "$thisPluginsDirectory/admin/daves-wordpress-live-search-admin-advanced.tpl.php";
 	}
 
 	public static function admin_notices() {
