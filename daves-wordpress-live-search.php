@@ -30,10 +30,10 @@ add_action('init', 'daves_wp_live_search_init');
 
 function daves_wp_live_search_init() {
 	if(defined('DOING_AJAX')) {
-		include_once "DavesWordPressLiveSearchResults.inc";
+		include_once "DavesWordPressLiveSearchResults.php";
 	}
 	else {
-		include_once "DavesWordPressLiveSearch.inc";
+		include_once "DavesWordPressLiveSearch.php";
 		add_action('admin_notices', array('DavesWordPressLiveSearch', 'admin_notices'));
 
 		// Register hooks
