@@ -1,4 +1,4 @@
-<?php include dirname( __FILE__ ) . "/admin_header.tpl"; ?>
+<?php include dirname( __FILE__ ) . "/admin_header.tpl.php"; ?>
 <tr valign="top">
 <th scope="row"><?php _e( "Exceptions", 'dwls' ); ?></th>
 
@@ -48,5 +48,5 @@
 </tbody></table>
 
 </form>
-<?php include dirname( __FILE__ ) . "/admin_footer.tpl"; ?>
+<?php include dirname( __FILE__ ) . "/admin_footer.tpl.php"; ?>
 </div>
