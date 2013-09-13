@@ -1,61 +1,61 @@
-<?php include dirname(__FILE__)."/admin_header.tpl"; ?>
+<?php include dirname( __FILE__ ) . "/admin_header.tpl"; ?>
 <tr valign="top">
-<th scope="row"><?php _e("Display Metadata", 'dwls'); ?></th>
+<th scope="row"><?php _e( "Display Metadata", 'dwls' ); ?></th>
 
 <td>
     <input type="hidden" name="daves-wordpress-live-search_display_post_meta" value="" />
-    <input type="checkbox" name="daves-wordpress-live-search_display_post_meta" id="daves-wordpress-live-search_display_post_meta" value="true" <?php checked($displayPostMeta); ?> /> <label for="daves-wordpress-live-search_display_post_meta"><?php _e("Display author & date for every search result", 'dwls'); ?></label>
+    <input type="checkbox" name="daves-wordpress-live-search_display_post_meta" id="daves-wordpress-live-search_display_post_meta" value="true" <?php checked( $displayPostMeta ); ?> /> <label for="daves-wordpress-live-search_display_post_meta"><?php _e( "Display author & date for every search result", 'dwls' ); ?></label>
 </td>
 </tr>
 
 <!-- Display post thumbnail -->
 <tr valign="top">
-<th scope="row"><?php _e("Display Post Thumbnail", 'dwls'); ?></th>
+<th scope="row"><?php _e( "Display Post Thumbnail", 'dwls' ); ?></th>
 
 <td>
     <input type="hidden" name="daves-wordpress-live-search_thumbs" value="" />
-    <input type="checkbox" name="daves-wordpress-live-search_thumbs" id="daves-wordpress-live-search_thumbs" value="true" <?php checked($showThumbs); ?> /> <label for="daves-wordpress-live-search_thumbs"><?php _e("Display thumbnail images for every search result with at least one image", 'dwls'); ?></label>
+    <input type="checkbox" name="daves-wordpress-live-search_thumbs" id="daves-wordpress-live-search_thumbs" value="true" <?php checked( $showThumbs ); ?> /> <label for="daves-wordpress-live-search_thumbs"><?php _e( "Display thumbnail images for every search result with at least one image", 'dwls' ); ?></label>
 </td>
 </tr>
 
 <!-- Display post excerpt -->
 <tr valign="top">
-<th scope="row"><?php _e("Display Post Excerpt", 'dwls'); ?></th>
+<th scope="row"><?php _e( "Display Post Excerpt", 'dwls' ); ?></th>
 
 <td>
     <input type="hidden" name="daves-wordpress-live-search_excerpt" value="" />
-    <input type="checkbox" name="daves-wordpress-live-search_excerpt" id="daves-wordpress-live-search_excerpt" value="true" <?php checked($showExcerpt); ?> /> <label for="daves-wordpress-live-search_excerpt"><?php printf(__("Display an excerpt for every search result. If the post doesn't have one, use the first %s characters.", 'dwls'), "<input type=\"text\" name=\"daves-wordpress-live-search_excerpt_length\" id=\"daves-wordpress-live-search_excerpt_length\" value=\"$excerptLength\" size=\"3\" />"); ?></label>
+    <input type="checkbox" name="daves-wordpress-live-search_excerpt" id="daves-wordpress-live-search_excerpt" value="true" <?php checked( $showExcerpt ); ?> /> <label for="daves-wordpress-live-search_excerpt"><?php printf( __( "Display an excerpt for every search result. If the post doesn't have one, use the first %s characters.", 'dwls' ), "<input type=\"text\" name=\"daves-wordpress-live-search_excerpt_length\" id=\"daves-wordpress-live-search_excerpt_length\" value=\"$excerptLength\" size=\"3\" />"); ?></label>
 </td>
 </tr>
 
 <!-- Display 'more results' -->
 <tr valign="top">
-<th scope="row"><?php _e("Display &quot;View more results&quot; link", 'dwls'); ?></th>
+<th scope="row"><?php _e( "Display &quot;View more results&quot; link", 'dwls' ); ?></th>
 
 <td>
     <input type="hidden" name="daves-wordpress-live-search_more_results" value="" />
-    <input type="checkbox" name="daves-wordpress-live-search_more_results" id="daves-wordpress-live-search_more_results" value="true" <?php checked($showMoreResultsLink); ?> /> <label for="daves-wordpress-live-search_more_results"><?php _e("Display the &quot;View more results&quot; link after the search results.", 'dwls'); ?></label>
+    <input type="checkbox" name="daves-wordpress-live-search_more_results" id="daves-wordpress-live-search_more_results" value="true" <?php checked( $showMoreResultsLink ); ?> /> <label for="daves-wordpress-live-search_more_results"><?php _e( "Display the &quot;View more results&quot; link after the search results.", 'dwls' ); ?></label>
 </td>
 </tr>
 
 <!-- CSS styles -->
 <tr valign="top">
-<td colspan="2"><h3><?php _e("Styles", 'dwls'); ?></h3></td>
+<td colspan="2"><h3><?php _e( "Styles", 'dwls' ); ?></h3></td>
 </tr>
 
 <tr valign="top">
 <th scope="row"> </th>
 <td>
-<input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_default_gray" value="default_gray" <?php checked($cssOption, 'default_gray'); ?> /> <label for="daves-wordpress-live-search_css_default_gray"><?php _e("Default Gray", 'dwls'); ?></label><br /><span class="setting-description"><?php _e("Default style in gray.", 'dwls'); ?></span>
+<input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_default_gray" value="default_gray" <?php checked( $cssOption, 'default_gray' ); ?> /> <label for="daves-wordpress-live-search_css_default_gray"><?php _e( "Default Gray", 'dwls' ); ?></label><br /><span class="setting-description"><?php _e( "Default style in gray.", 'dwls' ); ?></span>
 <br /><br />
-<input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_default_red" value="default_red" <?php checked($cssOption, 'default_red'); ?> /> <label for="daves-wordpress-live-search_css_default_red"><?php _e("Default Red", 'dwls'); ?></label><br /><span class="setting-description"><?php _e("Default style in red", 'dwls'); ?></span>
+<input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_default_red" value="default_red" <?php checked( $cssOption, 'default_red' ); ?> /> <label for="daves-wordpress-live-search_css_default_red"><?php _e( "Default Red", 'dwls' ); ?></label><br /><span class="setting-description"><?php _e( "Default style in red", 'dwls' ); ?></span>
 <br /><br />
-<input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_default_blue" value="default_blue" <?php checked($cssOption, 'default_blue'); ?> /> <label for="daves-wordpress-live-search_css_default_blue"><?php _e("Default Blue", 'dwls'); ?></label><br /><span class="setting-description"><?php _e("Default style in blue", 'dwls'); ?></span>
+<input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_default_blue" value="default_blue" <?php checked( $cssOption, 'default_blue' ); ?> /> <label for="daves-wordpress-live-search_css_default_blue"><?php _e( "Default Blue", 'dwls' ); ?></label><br /><span class="setting-description"><?php _e( "Default style in blue", 'dwls' ); ?></span>
 <br /><br />
 
-<?php if($color_picker_supported) : ?>
+<?php if( $color_picker_supported ) : ?>
 
-<input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_custom" value="custom" <?php checked($cssOption, 'custom'); ?> /> <label for="daves-wordpress-live-search_css_custom"><?php _e("Custom", 'dwls'); ?></label><br /><span class="setting-description"><?php _e("Customize the search results display here", 'dwls'); ?></span>
+<input type="radio" name="daves-wordpress-live-search_css" id="daves-wordpress-live-search_css_custom" value="custom" <?php checked( $cssOption, 'custom' ); ?> /> <label for="daves-wordpress-live-search_css_custom"><?php _e( "Custom", 'dwls' ); ?></label><br /><span class="setting-description"><?php _e( "Customize the search results display here", 'dwls' ); ?></span>
 
 <div id="custom_colors" style="display:none;">
 

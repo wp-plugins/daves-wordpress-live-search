@@ -103,7 +103,7 @@ class DavesWordPressLiveSearchResults {
 			$post->show_more = true;
 
 			// Let plugins & themes define their own template variables
-			$post = apply_filters('dwls_post_custom', $post);
+			$post = apply_filters( 'dwls_post_custom', $post );
 
 			$this->results[] = $post;
 
@@ -125,7 +125,7 @@ class DavesWordPressLiveSearchResults {
 		if ( empty( $result->post_excerpt ) ) {
 			$content = apply_filters( "localization", $result->post_content );
 			$excerpt = explode( " ", strrev( substr( strip_tags( $content ), 0, $excerptLength ) ), 2 );
-			$excerpt = strrev( isset($excerpt[1]) ? $excerpt[1] : '' );
+			$excerpt = strrev( isset( $excerpt[1] ) ? $excerpt[1] : '' );
 			$excerpt .= " [...]";
 		} else {
 			$excerpt = apply_filters( "localization", $result->post_excerpt );
@@ -160,7 +160,7 @@ class DavesWordPressLiveSearchResults {
 		$displayPostMeta = (bool) get_option( 'daves-wordpress-live-search_display_post_meta' );
 		$results = new DavesWordPressLiveSearchResults( $_GET['s'], $displayPostMeta );
 
-		wp_send_json($results);
+		wp_send_json( $results );
 	}
 
 	public static function pre_get_posts( $query ) {
