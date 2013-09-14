@@ -198,6 +198,11 @@ class DavesWordPressLiveSearchResults {
 			}
 		}
 
+		// Limit the WP_Query response to just the fields
+		$query_fields = array( 'ID', 'post_author', 'post_content', 'post_excerpt', 'post_date', 'post_title' );
+		$query_fields = apply_filters( 'dwls_query_fields', $query_fields );
+		$query->set( 'fields', $query_fields );
+
 		// Tell WordPress not to bother updating post caches
 		$query->set( 'cache_results', false );
 
