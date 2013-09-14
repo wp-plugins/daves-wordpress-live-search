@@ -69,6 +69,7 @@ When you're ready, save your changes, and Dave's WordPress Live Search is ready 
 1. dwls_author_name
 1. dwls_alter_result_template
 1. dwls_post_custom
+1. dwls_query_fields
 
 == Wish List ==
 
@@ -80,11 +81,11 @@ Features I want to implement in future releases:
 
 = 4.0 =
 * 2013-??-?? Dave Ross <dave@csixty4.com>
-* Renamed .php include files to .inc which most web servers won't  execute directly.
 * Removed check for PHP 4. WordPress 3.5 is the minimum and that needs PHP 5 anyway.
 * Removed caching. It wasn't effective enough & was a support nightmare.
 * Using an Underscore template to render search results
 * Ukranian translation by Paul Mall (zlyton)
+* Passing extra parameters to WP_Query for faster search queries
 
 = 3.3.1 =
 * 2013-07-07 Dave Ross <dave@csixty4.com>
