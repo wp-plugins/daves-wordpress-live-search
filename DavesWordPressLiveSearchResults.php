@@ -72,16 +72,20 @@ class DavesWordPressLiveSearchResults {
 			}
 
 			if ( $hasThumbnailSet ) {
+
 				$post->attachment_thumbnail = $postImageData[0];
+
 			} else {
-				// If no post thumbnail, grab the first image from the post
-				$applyContentFilter = get_option( 'daves-wordpress-live-search_apply_content_filter', false );
-				$content = $post->post_content;
-				if ( $applyContentFilter ) {
-					$content = apply_filters( 'the_content', $content );
+
+				$firstImageMeta = get_post_meta( $post->ID, '_dwls_first_image', true );
+				if ( $firstImageMeta ) {
+					$post->attachment_thumbnail = $firstImageMeta;
 				}
-				$content = str_replace( ']]>', ']]&gt;', $content );
-				$post->attachment_thumbnail = $this->firstImg( $content );
+				else {
+					// If no post thumbnail, grab the first image from the post_date
+					$post->attachment_thumbnail = DWLS_Util::updateFirstImagePostmeta( $post->ID, $post );
+				}
+
 			}
 
 			$post->attachment_thumbnail = apply_filters( 'dwls_attachment_thumbnail', $post->attachment_thumbnail );
@@ -134,20 +138,6 @@ class DavesWordPressLiveSearchResults {
 		$excerpt = apply_filters( 'dwls_the_excerpt', $excerpt );
 
 		return $excerpt;
-	}
-
-
-	public function firstImg( $post_content ) {
-		$matches = array();
-		$output = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post_content, $matches );
-		if ( isset( $matches[1][0] ) ) {
-			$first_img = $matches[1][0];
-		}
-
-		if ( empty( $first_img ) ) {
-			return '';
-		}
-		return $first_img;
 	}
 
 	public static function ajaxSearch() {
