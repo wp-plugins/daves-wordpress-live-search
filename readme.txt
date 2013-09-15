@@ -86,6 +86,7 @@ Features I want to implement in future releases:
 * Using an Underscore template to render search results
 * Ukranian translation by Paul Mall (zlyton)
 * Passing extra parameters to WP_Query for faster search queries
+* Store "first image" in postmeta
 
 = 3.3.1 =
 * 2013-07-07 Dave Ross <dave@csixty4.com>
@@ -347,6 +348,16 @@ Features I want to implement in future releases:
 * Initial release
 
 == Upgrade Notice ==
+
+= 4.0 =
+
+Welcome to Dave's WordPress Live Search 4.0!
+
+If you have been using caching, please note that the caching functionality has been removed from this plugin. WordPress's Transient API just doesn't work in a way that's appropriate for caching Live Search results unless you're using an object caching plugin. If you've experienced a big increase in the size of your database's wp_options table and you want to clean out the excess, try the [Delete Expired Transients](http://wordpress.org/plugins/delete-expired-transients/) plugin. It'll remove expired cache entries since WordPress itself does not.
+
+In place of caching, I've added optimizations to the query WordPress runs when each search request comes in from the browser. I've also optimized how thumbnails are determined for posts that don't have featured images, so the plugin doesn't need to figure that out every time it goes to display a result. Searches are still snappy, even on a site with 1,000 posts.
+
+Now, something special for the theme developers: two new filters that will help you customize the way search results look for your visitors. First, 'dwls_post_custom' passes a minimal $post object, with the fields I'm currently displaying plus $post->ID which you can use to fetch whatever meta fields or what you want before everything gets JSON-ified and sent to the browser. The 'dwls_alter_result_template' filter passes an [Underscore.js template](http://underscorejs.org/#template) used to render the search results box every time new results are displayed. The combination of these filters, plus the existing "custom CSS" settings, give you ultimate control over how the search results look.
 
 = 3.3 =
 
