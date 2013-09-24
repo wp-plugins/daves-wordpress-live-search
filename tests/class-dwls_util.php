@@ -1,9 +1,10 @@
 <?php
 
+// Bootstrap WP
 include "../../../../wp-load.php";
 
 /**
- * Tests for the DWLS_Util class
+ * Unit tests for the DWLS_Util class
  */
 class Tests_DWLS_Util extends PHPUnit_Framework_TestCase {
 
@@ -94,6 +95,5 @@ TEST;
 		$first_image = DWLS_Util::firstImg( $test_content );
 		$this->assertEquals($first_image, 'test.jpg');
 	}
-
 
 }
