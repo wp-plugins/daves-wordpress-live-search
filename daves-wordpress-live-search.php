@@ -48,7 +48,7 @@ function daves_wp_live_search_init() {
 
 // Provide a json_encode implementation if none exists (PHP < 5.2.0)
 if ( !function_exists( 'json_encode' ) ) {
-	require ABSPATH."/wp-includes/compat.php" ;
+	require ABSPATH . "/wp-includes/compat.php" ;
 }
 
 // Relevanssi "bridge" plugin
