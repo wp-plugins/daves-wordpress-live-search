@@ -234,10 +234,19 @@ LiveSearch.runQuery = function(terms) {
 
         // Do the AJAX call
 		req = jQuery.get( DavesWordPressLiveSearchConfig.ajaxURL, parameters, LiveSearch.handleAJAXResults, "json");
+		req.fail = LiveSearch.ajaxFailHandler;
 
 		// Add this request to the queue
 		LiveSearch.activeRequests.push(req);
 	}
+};
+
+LiveSearch.ajaxFailHandler = function(data) {
+
+	console.log("Dave's WordPress Live Search: There was an error retrieving or parsing search results");
+	console.log("The data returned was:");
+	console.log(data);
+
 };
 
 LiveSearch.hideResults = function() {
