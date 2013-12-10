@@ -157,6 +157,12 @@ class DavesWordPressLiveSearchResults {
 		// These fields don't seem to be getting set right during an AJAX call
 		$query->parse_query( http_build_query( $_GET ) );
 
+		// Force post status to 'publish' because admin-ajax.php runs in an admin context
+		$query->set( 'post_status', 'publish' );
+
+		// Ignore sticky posts
+		$query->set( 'ignore_sticky_posts', true );
+
 		if ( array_key_exists( 'search_source', $_REQUEST ) ) {
 			$searchSource = $_GET['search_source'];
 		} else {
