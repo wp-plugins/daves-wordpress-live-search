@@ -1,6 +1,6 @@
 <?php
 
-if ( !defined( 'ABSPATH' ) ) die( "Cannot access files directly." );
+if ( !defined( 'ABSPATH' ) ) die( 'Cannot access files directly.' );
 
 /**
  * Copyright (c) 2009 Dave Ross <dave@csixty4.com>
@@ -30,6 +30,7 @@ class DavesWordPressLiveSearch {
 	 * @return void
 	 */
 	public static function advanced_search_init() {
+
 		load_plugin_textdomain( 'dwls', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 		if ( self::isSearchablePage() ) {
 			wp_enqueue_script( 'underscore' );
@@ -45,6 +46,7 @@ class DavesWordPressLiveSearch {
 			}
 			self::inlineSettings();
 		}
+
 	}
 
 	public static function head() {
@@ -60,7 +62,6 @@ class DavesWordPressLiveSearch {
 			}
 		}
 		elseif ( self::isSearchablePage() ) {
-
 			switch ( $cssOption ) {
 				case 'theme':
 					$style = $themeDir . '/daves-wordpress-live-search.css';
@@ -83,7 +84,6 @@ class DavesWordPressLiveSearch {
 			}
 
 			if ( $cssOption === 'custom' && !is_admin() ) {
-
 				$customOptions = get_option( 'daves-wordpress-live-search_custom_options' );
 
 				// Default width if none was provided
@@ -129,9 +129,11 @@ STYLE;
 				echo '<style type="text/css">' . $styleTag . '</style>';
 			}
 		}
+
 	}
 
 	private static function inlineSettings() {
+
 		$resultsDirection = stripslashes( get_option( 'daves-wordpress-live-search_results_direction' ) );
 		$showThumbs = intval( ( "true" == get_option( 'daves-wordpress-live-search_thumbs' ) ) );
 		$showExcerpt = intval( ( "true" == get_option( 'daves-wordpress-live-search_excerpt' ) ) );
@@ -163,6 +165,7 @@ STYLE;
 				'outdatedJQuery' => $outdatedJQueryText,
 				'resultTemplate' => $resultTemplate,
 			) );
+
 	}
 
 	///////////////
@@ -175,16 +178,20 @@ STYLE;
 	 * @return void
 	 */
 	public static function admin_menu() {
+
 		add_options_page( "Dave's WordPress Live Search Options", __( 'Live Search', 'dwls' ), 'manage_options', __FILE__, array( 'DavesWordPressLiveSearch', 'plugin_options' ) );
+
 	}
 
 	public static function admin_enqueue_scripts() {
+
 		global $wp_version;
 		// Color picker was introduced in WP 3.5
 		if ( floatval( $wp_version ) >= 3.5 ) {
 			wp_enqueue_style( 'wp-color-picker' );
 			wp_enqueue_script( 'my-script-handle', plugins_url( 'admin/color_picker.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
 		}
+
 	}
 
 	/**
@@ -193,7 +200,9 @@ STYLE;
 	 * @return void
 	 */
 	public static function plugin_options() {
+
 		$tab = isset( $_REQUEST['tab'] ) ? $_REQUEST['tab'] : '';
+
 		switch ( $tab ) {
 			case 'advanced':
 				return self::plugin_options_advanced();
@@ -203,13 +212,14 @@ STYLE;
 			default:
 				return self::plugin_options_settings();
 		}
+
 	}
 
 	private static function plugin_options_settings() {
+
 		$thisPluginsDirectory = dirname( __FILE__ );
 
 		if ( array_key_exists( 'daves-wordpress-live-search_submit', $_POST ) && current_user_can( 'manage_options' ) ) {
-
 			check_admin_referer( 'daves-wordpress-live-search-config' );
 
 			// Read their posted value
@@ -226,21 +236,20 @@ STYLE;
 
 			$updateMessage = __( 'Options saved.', 'dwls' );
 			echo "<div class=\"updated fade\"><p><strong>$updateMessage</strong></p></div>";
-
 		}
 		else {
-
 			$maxResults = intval( get_option( 'daves-wordpress-live-search_max_results' ) );
 			$resultsDirection = stripslashes( get_option( 'daves-wordpress-live-search_results_direction' ) );
 			$minCharsToSearch = intval( get_option( 'daves-wordpress-live-search_minchars' ) );
 			$searchSource = intval( get_option( 'daves-wordpress-live-search_source' ) );
-
 		}
 
 		include "$thisPluginsDirectory/admin/daves-wordpress-live-search-admin.tpl.php";
+
 	}
 
 	private static function plugin_options_design() {
+
 		$thisPluginsDirectory = dirname( __FILE__ );
 
 		if ( array_key_exists( 'daves-wordpress-live-search_submit', $_POST ) && current_user_can( 'manage_options' ) ) {
@@ -284,10 +293,13 @@ STYLE;
 		}
 
 		include "$thisPluginsDirectory/admin/daves-wordpress-live-search-admin-appearance.tpl.php";
+
 	}
 
 	private static function plugin_options_advanced() {
+
 		$thisPluginsDirectory = dirname( __FILE__ );
+
 		if ( array_key_exists( 'daves-wordpress-live-search_submit', $_POST ) && current_user_can( 'manage_options' ) ) {
 			check_admin_referer( 'daves-wordpress-live-search-config' );
 
@@ -317,10 +329,13 @@ STYLE;
 		}
 
 		include "$thisPluginsDirectory/admin/daves-wordpress-live-search-admin-advanced.tpl.php";
+
 	}
 
 	public static function admin_notices() {
+
 		$cssOption = get_option( 'daves-wordpress-live-search_css_option' );
+
 		if ( 'theme' == $cssOption ) {
 			$themeDir = get_theme_root() . '/' . get_stylesheet();
 
@@ -330,17 +345,19 @@ STYLE;
 				echo "<div class=\"updated fade\"><p><strong>$alertMessage</strong></p></div>";
 			}
 		}
+
 	}
 
 	private static function isSearchablePage() {
-		if ( is_admin() )
+
+		if ( is_admin() ) {
 			return false;
+		}
 
 		$searchable = true;
 		$exceptions = explode( "\n", get_option( 'daves-wordpress-live-search_exceptions' ) );
 
 		foreach ( $exceptions as $exception ) {
-
 			$regexp = trim( $exception );
 
 			// Blank paths were slipping through. Ignore them.
@@ -378,6 +395,7 @@ STYLE;
 
 		// Fall-through, search everything by default
 		return true;
+
 	}
 
 	/**
@@ -405,6 +423,7 @@ STYLE;
 				'footfg' => '#fff',
 				'width' => '250',
 			) );
+		
 	}
 
 }
