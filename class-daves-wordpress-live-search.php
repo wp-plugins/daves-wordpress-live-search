@@ -34,7 +34,7 @@ class DavesWordPressLiveSearch {
 		load_plugin_textdomain( 'dwls', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 		if ( self::isSearchablePage() ) {
 			wp_enqueue_script( 'underscore' );
-			if ( defined( 'SCRIPT_DEBUG' ) ) {
+			if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
 				wp_enqueue_script( 'daves-wordpress-live-search', plugin_dir_url( __FILE__ ) . 'js/daves-wordpress-live-search.js', array( 'jquery' ) );
 				wp_enqueue_script( 'excanvas', plugin_dir_url( __FILE__ ) . 'js/excanvas.js', 'jquery' );
 				wp_enqueue_script( 'spinners', plugin_dir_url( __FILE__ ) . 'js/spinners.js', 'explorercanvas' );
@@ -423,7 +423,7 @@ STYLE;
 				'footfg' => '#fff',
 				'width' => '250',
 			) );
-		
+
 	}
 
 }
