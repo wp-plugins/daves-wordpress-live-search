@@ -64,6 +64,9 @@ LiveSearch.init = function() {
 
 	// Prevent browsers from doing autocomplete on the search field
 	LiveSearch.searchBoxes.parents('form').attr('autocomplete', 'off');
+	LiveSearch.searchBoxes.each( function() {
+		this.autocomplete = 'off';
+	} );
 
 	// Hide the search results when the search box loses focus
 	jQuery("html").click(LiveSearch.hideResults);
