@@ -3,7 +3,7 @@ Contributors: csixty4
 Donate link: http://catguardians.org
 Tags: search, AJAX, live search
 Requires at least: 3.5
-Tested up to: 3.6
+Tested up to: 3.8
 Stable tag: 3.3.1
 License: MIT
 License URI: http://www.opensource.org/licenses/mit-license.php
@@ -31,7 +31,7 @@ Since v2.3, Dave's WordPress Live Search supports multiple languages, but I need
 
 Interested? Visit [this project's CrowdIn page](http://crowdin.net/project/daves-wordpress-live-search/invite) to get started!
 
-BIG THANKS to all these CrowdIn users who submitted translations already: abibouba, andreio, baky1er, bps, bugmeniet, cinetrailer, Jess-Nielsen, jganer, kabboch, Kriszta, levati, malaa83, rebelidea, Remco_Landegge, sella, thambaru, tunglam, and vderLinden AS WELL AS everyone who submitted a translation before the switch to CrowdIn: Klemen Tušar, Jesper Hessius, Daniele of W3B.it, Andreu Llos, Utku Sönmez, Maxime Chevasson, Paul Göttgens, Łukasz Wilkowski, Sociedade Euromilhoes, and Norbert Grund.
+BIG THANKS to all these CrowdIn users who submitted translations already: abibouba, andreio, baky1er, bps, bugmeniet, cinetrailer, Jess-Nielsen, jganer, kabboch, Kriszta, levati, malaa83, rebelidea, Remco_Landegge, sella, thambaru, tunglam vderLinden, and zlyton AS WELL AS everyone who submitted a translation before the switch to CrowdIn: Klemen Tušar, Jesper Hessius, Daniele of W3B.it, Andreu Llos, Utku Sönmez, Maxime Chevasson, Paul Göttgens, Łukasz Wilkowski, Sociedade Euromilhoes, and Norbert Grund.
 
 You guys rock.
 
@@ -87,6 +87,10 @@ Features I want to implement in future releases:
 * Ukranian translation by Paul Mall (zlyton)
 * Passing extra parameters to WP_Query for faster search queries
 * Store "first image" in postmeta
+* Query post status "publish" because admin-ajax.php runs in an admin context (oy!)
+* Ignore sticky posts.
+* Prevent browser autocomplete on individual input fields, not just the <form>
+* Tested with WordPress 3.8!
 
 = 3.3.1 =
 * 2013-07-07 Dave Ross <dave@csixty4.com>
