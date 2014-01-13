@@ -4,9 +4,9 @@ Donate link: http://catguardians.org
 Tags: search, AJAX, live search
 Requires at least: 3.5
 Tested up to: 3.8
-Stable tag: 3.3.1
+Stable tag: 4.0
 License: MIT
-License URI: http://www.opensource.org/licenses/mit-license.php
+License URI: http://daveross.mit-license.org
 
 Adds "live search" functionality to your WordPress site. Uses the built-in search and jQuery.
 
@@ -80,7 +80,7 @@ Features I want to implement in future releases:
 == Changelog ==
 
 = 4.0 =
-* 2013-??-?? Dave Ross <dave@csixty4.com>
+* 2014-01-12 Dave Ross <dave@csixty4.com>
 * Removed check for PHP 4. WordPress 3.5 is the minimum and that needs PHP 5 anyway.
 * Removed caching. It wasn't effective enough & was a support nightmare.
 * Using an Underscore template to render search results
@@ -357,11 +357,17 @@ Features I want to implement in future releases:
 
 Welcome to Dave's WordPress Live Search 4.0!
 
-If you have been using caching, please note that the caching functionality has been removed from this plugin. WordPress's Transient API just doesn't work in a way that's appropriate for caching Live Search results unless you're using an object caching plugin. If you've experienced a big increase in the size of your database's wp_options table and you want to clean out the excess, try the [Delete Expired Transients](http://wordpress.org/plugins/delete-expired-transients/) plugin. It'll remove expired cache entries since WordPress itself does not.
+If you've been using this plugin's caching option, please note that it's been removed. WordPress's Transient API just doesn't work in a way that's appropriate for caching Live Search results unless you're using an object caching plugin. If you've experienced a big increase in the size of your database's wp_options table and you want to clean out the excess, try the [Delete Expired Transients](http://wordpress.org/plugins/delete-expired-transients/) plugin. It'll remove expired cache entries since WordPress itself does not.
 
-In place of caching, I've added optimizations to the query WordPress runs when each search request comes in from the browser. I've also optimized how thumbnails are determined for posts that don't have featured images, so the plugin doesn't need to figure that out every time it goes to display a result. Searches are still snappy, even on a site with 1,000 posts.
+In place of caching, I've added optimizations to the query WordPress runs for each search request. I've also optimized how thumbnails are determined for posts that don't have featured images, so the plugin doesn't need to figure that out every time it goes to display a result. Searches are still snappy, even on a site with 1,000 posts.
 
-Now, something special for the theme developers: two new filters that will help you customize the way search results look for your visitors. First, 'dwls_post_custom' passes a minimal $post object, with the fields I'm currently displaying plus $post->ID which you can use to fetch whatever meta fields or what you want before everything gets JSON-ified and sent to the browser. The 'dwls_alter_result_template' filter passes an [Underscore.js template](http://underscorejs.org/#template) used to render the search results box every time new results are displayed. The combination of these filters, plus the existing "custom CSS" settings, give you ultimate control over how the search results look.
+Now, something special for the theme developers: two new filters that will help you customize the way search results look for your visitors:
+
+* The 'dwls_alter_result_template' filter lets you customize the new [Underscore.js template](http://underscorejs.org/#template) used to render the search results box.
+
+* The 'dwls_post_custom' filter lets you modify the search results before they're passed to the Javascript templating engine. You can edit the values that get sent, or add additional fields to the results (such as pricing on an e-commerce site).
+
+The combination of these filters, plus the existing "custom CSS" settings, give you ultimate control over how the search results look.
 
 = 3.3 =
 
