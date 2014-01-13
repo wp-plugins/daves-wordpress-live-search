@@ -89,7 +89,7 @@ Features I want to implement in future releases:
 * Store "first image" in postmeta
 * Query post status "publish" because admin-ajax.php runs in an admin context (oy!)
 * Ignore sticky posts.
-* Prevent browser autocomplete on individual input fields, not just the <form>
+* Prevent browser autocomplete on individual input fields, not just the form
 * Tested with WordPress 3.8!
 
 = 3.3.1 =
