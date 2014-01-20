@@ -54,7 +54,7 @@ LiveSearch.init = function() {
 	// Add the keypress handler
 	// Using keyup because keypress doesn't recognize the backspace key
 	// and that's kind of important.
-	LiveSearch.searchBoxes = jQuery("input").filter("[name='s']");
+	LiveSearch.searchBoxes = jQuery("input").filter("[name='s']").not('.no-livesearch');
 	LiveSearch.searchBoxes.keyup(LiveSearch.handleKeypress);
 	LiveSearch.searchBoxes.focus(LiveSearch.hideResults);
 
