@@ -256,11 +256,11 @@ STYLE;
 			check_admin_referer( 'daves-wordpress-live-search-config' );
 
 			// Read their posted value
-			$displayPostMeta = ( "true" == $_POST['daves-wordpress-live-search_display_post_meta'] );
-			$showThumbs = $_POST['daves-wordpress-live-search_thumbs'];
-			$showExcerpt = $_POST['daves-wordpress-live-search_excerpt'];
-			$excerptLength = $_POST['daves-wordpress-live-search_excerpt_length'];
-			$showMoreResultsLink = $_POST['daves-wordpress-live-search_more_results'];
+			$displayPostMeta     = ( 'true' === $_POST['daves-wordpress-live-search_display_post_meta'] );
+			$showThumbs          = ( 'true' === $_POST['daves-wordpress-live-search_thumbs'] );
+			$showExcerpt         = ( 'true' === $_POST['daves-wordpress-live-search_excerpt'] );
+			$excerptLength       = $_POST['daves-wordpress-live-search_excerpt_length'];
+			$showMoreResultsLink = ( 'true' === $_POST['daves-wordpress-live-search_more_results'] );
 
 			$cssOption = $_POST['daves-wordpress-live-search_css'];
 			$customOptions = $_POST['daves-wordpress-live-search_custom'];

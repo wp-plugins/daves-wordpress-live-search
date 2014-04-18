@@ -82,6 +82,7 @@ Features I want to implement in future releases:
 = 4.1 =
 * 2014-04-17 Dave Ross <dave@csixty4.com>
 * Use class="no-livesearch" to disable live search on a particular search box
+* Fixed a bug saving checkboxes on the "Appearance" tab
 
 = 4.0 =
 * 2014-01-12 Dave Ross <dave@csixty4.com>
