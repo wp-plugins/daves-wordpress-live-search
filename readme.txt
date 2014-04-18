@@ -3,8 +3,8 @@ Contributors: csixty4
 Donate link: http://catguardians.org
 Tags: search, AJAX, live search
 Requires at least: 3.5
-Tested up to: 3.8
-Stable tag: 4.0
+Tested up to: 3.9
+Stable tag: 4.1
 License: MIT
 License URI: http://daveross.mit-license.org
 
@@ -78,6 +78,10 @@ Features I want to implement in future releases:
 1. "No results found" message (optional)
 
 == Changelog ==
+
+= 4.1 =
+* 2014-04-17 Dave Ross <dave@csixty4.com>
+* Use class="no-livesearch" to disable live search on a particular search box
 
 = 4.0 =
 * 2014-01-12 Dave Ross <dave@csixty4.com>
@@ -352,6 +356,10 @@ Features I want to implement in future releases:
 * Initial release
 
 == Upgrade Notice ==
+
+= 4.1 =
+
+By popular demand, now you can use the class "no-livesearch" on your search input so live search isn't added to it.
 
 = 4.0 =
 
