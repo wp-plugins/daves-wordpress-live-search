@@ -132,10 +132,27 @@ STYLE;
 
 	}
 
+	/**
+	 * Working around the fact either the $_POST parameters are unreliable (may be true or "true")
+	 * or I just can't keep them straight. Probably the latter, but best to be safe.
+	 * 
+	 * @param mixed  $value value to be tested for truthiness
+	 * @return boolean truthiness
+	 */
+	private static function isTruthy($value) {
+
+		if(true === $value) { return true; } // Check for boolean true
+		if(0 !== $value) { return true; } // Check for nonzero
+		if('true' === $value) { return true; } // Check for the word 'true'
+
+		return false;
+
+	}
+
 	private static function inlineSettings() {
 
 		$resultsDirection = stripslashes( get_option( 'daves-wordpress-live-search_results_direction' ) );
-		$showThumbs = intval( ( "true" == get_option( 'daves-wordpress-live-search_thumbs' ) ) );
+		$showThumbs = (true === self::isTruthy( get_option( 'daves-wordpress-live-search_thumbs' ) ) );
 		$showExcerpt = intval( ( "true" == get_option( 'daves-wordpress-live-search_excerpt' ) ) );
 		$showMoreResultsLink = intval( ( "true" == get_option( 'daves-wordpress-live-search_more_results', true ) ) );
 		$minCharsToSearch = intval( get_option( 'daves-wordpress-live-search_minchars' ) );

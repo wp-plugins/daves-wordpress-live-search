@@ -79,6 +79,10 @@ Features I want to implement in future releases:
 
 == Changelog ==
 
+= 4.2 =
+* 2014-05-10 Dave Ross <dave@csixty4.com>
+* Fixed a bug parsing the "display thumbnails" setting
+
 = 4.1 =
 * 2014-04-17 Dave Ross <dave@csixty4.com>
 * Use class="no-livesearch" to disable live search on a particular search box
