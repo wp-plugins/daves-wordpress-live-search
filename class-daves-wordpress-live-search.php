@@ -154,7 +154,7 @@ STYLE;
 		$resultsDirection = stripslashes( get_option( 'daves-wordpress-live-search_results_direction' ) );
 		$showThumbs = (true === self::isTruthy( get_option( 'daves-wordpress-live-search_thumbs' ) ) );
 		$showExcerpt = intval( ( "true" == get_option( 'daves-wordpress-live-search_excerpt' ) ) );
-		$showMoreResultsLink = intval( ( "true" == get_option( 'daves-wordpress-live-search_more_results', true ) ) );
+		$showMoreResultsLink = (true === self::isTruthy( get_option( 'daves-wordpress-live-search_more_results', true ) ) );
 		$minCharsToSearch = intval( get_option( 'daves-wordpress-live-search_minchars' ) );
 		$xOffset = intval( get_option( 'daves-wordpress-live-search_xoffset' ) );
 		$yOffset = intval( get_option( 'daves-wordpress-live-search_yoffset' ) );
@@ -304,7 +304,7 @@ STYLE;
 			$showThumbs = (bool) get_option( 'daves-wordpress-live-search_thumbs' );
 			$showExcerpt = (bool) get_option( 'daves-wordpress-live-search_excerpt' );
 			$excerptLength = intval( get_option( 'daves-wordpress-live-search_excerpt_length' ) );
-			$showMoreResultsLink = intval( "true" == get_option( 'daves-wordpress-live-search_more_results' ) );
+			$showMoreResultsLink = (bool) get_option( 'daves-wordpress-live-search_more_results' );
 			$cssOption = get_option( 'daves-wordpress-live-search_css_option' );
 			$customOptions = get_option( 'daves-wordpress-live-search_custom_options' );
 		}

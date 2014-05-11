@@ -81,7 +81,7 @@ Features I want to implement in future releases:
 
 = 4.2 =
 * 2014-05-10 Dave Ross <dave@csixty4.com>
-* Fixed a bug parsing the "display thumbnails" setting
+* Fixed a bug parsing the "display thumbnails" and "view more results" settings
 
 = 4.1 =
 * 2014-04-17 Dave Ross <dave@csixty4.com>
