@@ -139,10 +139,10 @@ STYLE;
 	 * @param mixed  $value value to be tested for truthiness
 	 * @return boolean truthiness
 	 */
-	private static function isTruthy($value) {
+	private static function isTruthy( $value ) {
 
 		if(true === $value) { return true; } // Check for boolean true
-		if(0 !== $value) { return true; } // Check for nonzero
+		if(is_numeric( $value ) && 0 !== $value) { return true; } // Check for nonzero
 		if('true' === $value) { return true; } // Check for the word 'true'
 
 		return false;
@@ -170,9 +170,9 @@ STYLE;
 		// @see http://www.garyc40.com/2010/03/5-tips-for-using-ajax-in-wordpress/#js-global
 		wp_localize_script( 'daves-wordpress-live-search', 'DavesWordPressLiveSearchConfig', array(
 				'resultsDirection' => $resultsDirection,
-				'showThumbs' => ( $showThumbs == 1 ) ? 'true' : 'false',
+				'showThumbs' => ( $showThumbs ) ? 'true' : 'false',
 				'showExcerpt' => ( $showExcerpt == 1 ) ? 'true' : 'false',
-				'showMoreResultsLink' => ( $showMoreResultsLink == 1 ) ? 'true' : 'false',
+				'showMoreResultsLink' => ( $showMoreResultsLink ) ? 'true' : 'false',
 				'minCharsToSearch' => $minCharsToSearch,
 				'xOffset' => $xOffset,
 				'yOffset' => $yOffset,
