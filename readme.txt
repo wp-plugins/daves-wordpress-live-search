@@ -2,8 +2,8 @@
 Contributors: csixty4
 Donate link: http://catguardians.org
 Tags: search, AJAX, live search
-Requires at least: 3.5
-Tested up to: 3.9
+Requires at least: 3.6
+Tested up to: 3.9.1
 Stable tag: 4.1
 License: MIT
 License URI: http://daveross.mit-license.org
@@ -361,6 +361,10 @@ Features I want to implement in future releases:
 * Initial release
 
 == Upgrade Notice ==
+
+= 4.2 =
+
+I've dropped support for WordPress 3.5.x in this plugin. There's a good chance that Dave's WordPress Live Search will continue to work with WordPress 3.5.x for a long time, but I've become aware of another plugin which loads the jQuery UI that ships with WordPress and introduces issues with this plugin. Dave's WordPress Live Search now requires WordPress 3.6 or higher, which ships with jQuery UI 1.10 and works great. (Besides, you really should upgrade WordPress anyway to take advantage of the latest features, bugfixes, and security patches).
 
 = 4.1 =
 
