@@ -35,12 +35,12 @@ class DavesWordPressLiveSearch {
 		if ( self::isSearchablePage() ) {
 			wp_enqueue_script( 'underscore' );
 			if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-				wp_enqueue_script( 'daves-wordpress-live-search', plugin_dir_url( __FILE__ ) . 'js/daves-wordpress-live-search.js', array( 'jquery' ) );
+				wp_enqueue_script( 'daves-wordpress-live-search', plugin_dir_url( __FILE__ ) . 'js/daves-wordpress-live-search.js', array( 'jquery', 'underscore' ) );
 				wp_enqueue_script( 'excanvas', plugin_dir_url( __FILE__ ) . 'js/excanvas.js', 'jquery' );
 				wp_enqueue_script( 'spinners', plugin_dir_url( __FILE__ ) . 'js/spinners.js', 'explorercanvas' );
 			}
 			else {
-				wp_enqueue_script( 'daves-wordpress-live-search', plugin_dir_url( __FILE__ ) . 'js/daves-wordpress-live-search.min.js', array( 'jquery' ) );
+				wp_enqueue_script( 'daves-wordpress-live-search', plugin_dir_url( __FILE__ ) . 'js/daves-wordpress-live-search.min.js', array( 'jquery', 'underscore' ) );
 				wp_enqueue_script( 'excanvas', plugin_dir_url( __FILE__ ) . 'js/excanvas.compiled.js', 'jquery' );
 				wp_enqueue_script( 'spinners', plugin_dir_url( __FILE__ ) . 'js/spinners.min.js', 'explorercanvas' );
 			}
