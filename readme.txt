@@ -61,6 +61,10 @@ When you're ready, save your changes, and Dave's WordPress Live Search is ready 
 
 == Filters ==
 
+See [filter_examples.php](http://plugins.svn.wordpress.org/daves-wordpress-live-search/trunk/filter_examples.php) in
+the plugin files for examples of how to use these filters. Remember, these filters only affect the
+Dave's WordPress Live Search display, not the normal WordPress search results or the posts themselves.
+
 1. dwls_alter_results
 1. dwls_attachment_thumbnail
 1. dwls_post_title
@@ -78,6 +82,12 @@ Features I want to implement in future releases:
 1. "No results found" message (optional)
 
 == Changelog ==
+
+= 4.3 =
+* 2014-08-XX Dave Ross <dave@csixty4.com>
+* Added 'underscore' as a dependency for the plugin's JavaScript files
+* Updated Copyright dates (yay?)
+* Added a file with examples of how to use the different filters
 
 = 4.2 =
 * 2014-05-10 Dave Ross <dave@csixty4.com>
