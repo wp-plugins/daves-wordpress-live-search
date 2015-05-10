@@ -84,11 +84,12 @@ Features I want to implement in future releases:
 == Changelog ==
 
 = 4.3 =
-* 2014-08-XX Dave Ross <dave@csixty4.com>
+* 2015-05-10 Dave Ross <dave@csixty4.com>
 * Added 'underscore' as a dependency for the plugin's JavaScript files
 * Updated Copyright dates (yay?)
 * Added a file with examples of how to use the different filters
 * Don’t specify a schema for admin_url(), let it default to 'admin'
+* firstImg() using fixed regex from dwlstng
 
 = 4.2 =
 * 2014-05-10 Dave Ross <dave@csixty4.com>

@@ -102,7 +102,8 @@ class DWLS_Util {
 
 	public static function firstImg( $post_content ) {
 		$matches = array();
-		$output = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post_content, $matches );
+		$output  = preg_match_all( '/<img [^>]*src=["|\']([^"|\']+)/i', $post_content, $matches );
+
 		if ( isset( $matches[1][0] ) ) {
 			$first_img = $matches[1][0];
 		}
@@ -110,6 +111,7 @@ class DWLS_Util {
 		if ( empty( $first_img ) ) {
 			return '';
 		}
+
 		return $first_img;
 	}
 
