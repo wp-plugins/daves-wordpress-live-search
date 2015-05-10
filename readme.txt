@@ -88,6 +88,7 @@ Features I want to implement in future releases:
 * Added 'underscore' as a dependency for the plugin's JavaScript files
 * Updated Copyright dates (yay?)
 * Added a file with examples of how to use the different filters
+* Don’t specify a schema for admin_url(), let it default to 'admin'
 
 = 4.2 =
 * 2014-05-10 Dave Ross <dave@csixty4.com>
