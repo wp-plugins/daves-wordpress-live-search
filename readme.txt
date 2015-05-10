@@ -90,6 +90,7 @@ Features I want to implement in future releases:
 * Added a file with examples of how to use the different filters
 * Don’t specify a schema for admin_url(), let it default to 'admin'
 * firstImg() using fixed regex from dwlstng
+* Using HTML-escaped tags in Underscore.js template (where appropriate)
 
 = 4.2 =
 * 2014-05-10 Dave Ross <dave@csixty4.com>
