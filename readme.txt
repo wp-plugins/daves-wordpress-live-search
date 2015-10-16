@@ -4,7 +4,7 @@ Donate link: http://catguardians.org
 Tags: search, AJAX, live search
 Requires at least: 3.6
 Tested up to: 4.3
-Stable tag: 4.4
+Stable tag: 4.4.1
 License: MIT
 License URI: http://daveross.mit-license.org
 
@@ -22,18 +22,6 @@ http://www.youtube.com/watch?v=7CGR2bJ1mLM
 [transcript](http://plugins.svn.wordpress.org/daves-wordpress-live-search/assets/intro_video_transcript.txt)
 
 This plugin is compatible with the [xLanguage](http://wordpress.org/extend/plugins/xlanguage/) and [WPML](http://wpml.org/) plugins for internationalization (i18n) of search results.
-
-This plugin also integrates with the Relevanssi plugin for improved search results.
-
-**Translators Wanted**
-
-Since v2.3, Dave's WordPress Live Search supports multiple languages, but I need native speakers and translators.
-
-Interested? Visit [this project's CrowdIn page](http://crowdin.net/project/daves-wordpress-live-search/invite) to get started!
-
-BIG THANKS to all these CrowdIn users who submitted translations already: abibouba, andreio, baky1er, bps, bugmeniet, cinetrailer, Jess-Nielsen, jganer, kabboch, Kriszta, levati, malaa83, rebelidea, Remco_Landegge, sella, thambaru, tunglam vderLinden, and zlyton AS WELL AS everyone who submitted a translation before the switch to CrowdIn: Klemen Tušar, Jesper Hessius, Daniele of W3B.it, Andreu Llos, Utku Sönmez, Maxime Chevasson, Paul Göttgens, Łukasz Wilkowski, Sociedade Euromilhoes, and Norbert Grund.
-
-You rock.
 
 == Installation ==
 
@@ -82,6 +70,15 @@ Features I want to implement in future releases:
 1. "No results found" message (optional)
 
 == Changelog ==
+
+= 4.4.1 =
+* 2015-10-15 Dave Ross <dave@davidmichaelross.com>
+* Changed text domain to 'daves-wordpress-live-search'
+* Added "Text Domain:" plugin header declaration
+* Removed link to CrowdIn for translations
+* Removed CrowdIn references from readme
+* ^ All this in preparation for WordPress plugin language packs
+* Removed Relevanssi reference from readme
 
 = 4.4 =
 * 2015-08-19 Dave Ross <dave@csixty4.com>
