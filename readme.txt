@@ -3,8 +3,8 @@ Contributors: csixty4
 Donate link: http://catguardians.org
 Tags: search, AJAX, live search
 Requires at least: 3.6
-Tested up to: 4.2.2
-Stable tag: 4.3
+Tested up to: 4.3
+Stable tag: 4.4
 License: MIT
 License URI: http://daveross.mit-license.org
 
@@ -82,6 +82,12 @@ Features I want to implement in future releases:
 1. "No results found" message (optional)
 
 == Changelog ==
+
+= 4.4 =
+* 2015-08-19 Dave Ross <dave@csixty4.com>
+* Fixed issue excerpts not displaying
+* Scripts are now enqueued in the footer
+* Admin screen titles are now h1 instead of h2 in WordPress 4.3+
 
 = 4.3 =
 * 2015-05-10 Dave Ross <dave@csixty4.com>

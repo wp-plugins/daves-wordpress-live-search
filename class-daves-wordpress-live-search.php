@@ -17,23 +17,23 @@ class DavesWordPressLiveSearch {
 	 */
 	public static function advanced_search_init() {
 
-		load_plugin_textdomain( 'dwls', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		load_plugin_textdomain( 'daves-wordpress-live-search', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 		if ( self::isSearchablePage() ) {
 			wp_enqueue_script( 'underscore' );
 			if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
 				wp_enqueue_script( 'daves-wordpress-live-search', plugin_dir_url( __FILE__ ) . 'js/daves-wordpress-live-search.js', array(
 					'jquery',
 					'underscore'
-				) );
-				wp_enqueue_script( 'excanvas', plugin_dir_url( __FILE__ ) . 'js/excanvas.js', 'jquery' );
-				wp_enqueue_script( 'spinners', plugin_dir_url( __FILE__ ) . 'js/spinners.js', 'explorercanvas' );
+				), false, true );
+				wp_enqueue_script( 'excanvas', plugin_dir_url( __FILE__ ) . 'js/excanvas.js', array( 'jquery' ), false, true );
+				wp_enqueue_script( 'spinners', plugin_dir_url( __FILE__ ) . 'js/spinners.js', array( 'excanvas' ), false, true );
 			} else {
 				wp_enqueue_script( 'daves-wordpress-live-search', plugin_dir_url( __FILE__ ) . 'js/daves-wordpress-live-search.min.js', array(
 					'jquery',
 					'underscore'
-				) );
-				wp_enqueue_script( 'excanvas', plugin_dir_url( __FILE__ ) . 'js/excanvas.compiled.js', 'jquery' );
-				wp_enqueue_script( 'spinners', plugin_dir_url( __FILE__ ) . 'js/spinners.min.js', 'explorercanvas' );
+				), false, true );
+				wp_enqueue_script( 'excanvas', plugin_dir_url( __FILE__ ) . 'js/excanvas.compiled.js', array( 'jquery' ), false, true );
+				wp_enqueue_script( 'spinners', plugin_dir_url( __FILE__ ) . 'js/spinners.min.js', array( 'excanvas' ), false, true );
 			}
 			self::inlineSettings();
 		}
@@ -150,7 +150,7 @@ STYLE;
 
 		$resultsDirection    = stripslashes( get_option( 'daves-wordpress-live-search_results_direction' ) );
 		$showThumbs          = ( true === self::isTruthy( get_option( 'daves-wordpress-live-search_thumbs' ) ) );
-		$showExcerpt         = intval( ( "true" == get_option( 'daves-wordpress-live-search_excerpt' ) ) );
+		$showExcerpt         = ( true === self::isTruthy( get_option( 'daves-wordpress-live-search_excerpt' ) ) );
 		$showMoreResultsLink = ( true === self::isTruthy( get_option( 'daves-wordpress-live-search_more_results', true ) ) );
 		$minCharsToSearch    = intval( get_option( 'daves-wordpress-live-search_minchars' ) );
 		$xOffset             = intval( get_option( 'daves-wordpress-live-search_xoffset' ) );
@@ -158,8 +158,8 @@ STYLE;
 		$resultTemplate      = apply_filters( 'dwls_alter_result_template', file_get_contents( dirname( __FILE__ ) . "/js/dwls-results.tpl" ) );
 
 		// Translations
-		$moreResultsText    = __( 'View more results', 'dwls' );
-		$outdatedJQueryText = __( "Dave's WordPress Live Search requires jQuery 1.2.6 or higher. WordPress ships with current jQuery versions. But if you are seeing this message, it's likely that another plugin is including an earlier version.", 'dwls' );
+		$moreResultsText    = __( 'View more results', 'daves-wordpress-live-search' );
+		$outdatedJQueryText = __( "Dave's WordPress Live Search requires jQuery 1.2.6 or higher. WordPress ships with current jQuery versions. But if you are seeing this message, it's likely that another plugin is including an earlier version.", 'daves-wordpress-live-search' );
 
 		// Neat trick: use wp_localize_script to generate the config object
 		// "This way, you won’t have to use PHP to print out JavaScript code,
@@ -193,7 +193,7 @@ STYLE;
 	 */
 	public static function admin_menu() {
 
-		add_options_page( "Dave's WordPress Live Search Options", __( 'Live Search', 'dwls' ), 'manage_options', __FILE__, array(
+		add_options_page( "Dave's WordPress Live Search Options", __( 'Live Search', 'daves-wordpress-live-search' ), 'manage_options', __FILE__, array(
 			'DavesWordPressLiveSearch',
 			'plugin_options'
 		) );
@@ -251,7 +251,7 @@ STYLE;
 			update_option( 'daves-wordpress-live-search_minchars', $minCharsToSearch );
 			update_option( 'daves-wordpress-live-search_source', $searchSource );
 
-			$updateMessage = __( 'Options saved.', 'dwls' );
+			$updateMessage = __( 'Options saved.', 'daves-wordpress-live-search' );
 			echo "<div class=\"updated fade\"><p><strong>$updateMessage</strong></p></div>";
 		} else {
 			$maxResults       = intval( get_option( 'daves-wordpress-live-search_max_results' ) );
@@ -259,6 +259,8 @@ STYLE;
 			$minCharsToSearch = intval( get_option( 'daves-wordpress-live-search_minchars' ) );
 			$searchSource     = intval( get_option( 'daves-wordpress-live-search_source' ) );
 		}
+
+		$wp_pre_4_3 = version_compare( $GLOBALS['wp_version'], '4.3', 'lt' );
 
 		include "$thisPluginsDirectory/admin/daves-wordpress-live-search-admin.tpl.php";
 
@@ -295,7 +297,7 @@ STYLE;
 
 			// Translate the "Options saved" message...just in case.
 			// You know...the code I was copying for this does it, thought it might be a good idea to leave it
-			$updateMessage = __( 'Options saved.', 'dwls' );
+			$updateMessage = __( 'Options saved.', 'daves-wordpress-live-search' );
 
 			echo "<div class=\"updated fade\"><p><strong>$updateMessage</strong></p></div>";
 		} else {
@@ -307,6 +309,8 @@ STYLE;
 			$cssOption           = get_option( 'daves-wordpress-live-search_css_option' );
 			$customOptions       = get_option( 'daves-wordpress-live-search_custom_options' );
 		}
+
+		$wp_pre_4_3 = version_compare( $GLOBALS['wp_version'], '4.3', 'lt' );
 
 		include "$thisPluginsDirectory/admin/daves-wordpress-live-search-admin-appearance.tpl.php";
 
@@ -332,7 +336,7 @@ STYLE;
 
 			// Translate the "Options saved" message...just in case.
 			// You know...the code I was copying for this does it, thought it might be a good idea to leave it
-			$updateMessage = __( 'Options saved.', 'dwls' );
+			$updateMessage = __( 'Options saved.', 'daves-wordpress-live-search' );
 
 			echo "<div class=\"updated fade\"><p><strong>$updateMessage</strong></p></div>";
 		} else {
@@ -343,6 +347,8 @@ STYLE;
 			$applyContentFilter = (bool) get_option( 'daves-wordpress-live-search_apply_content_filter' );
 
 		}
+
+		$wp_pre_4_3 = version_compare( $GLOBALS['wp_version'], '4.3', 'lt' );
 
 		include "$thisPluginsDirectory/admin/daves-wordpress-live-search-admin-advanced.tpl.php";
 
@@ -364,9 +370,18 @@ STYLE;
 
 	}
 
+	/**
+	 * Check if the current page is the login or registration page
+	 *
+	 * @return bool
+	 */
+	private static function is_login_page() {
+		return in_array( $GLOBALS['pagenow'], array( 'wp-login.php', 'wp-register.php' ) );
+	}
+
 	private static function isSearchablePage() {
 
-		if ( is_admin() ) {
+		if ( is_admin() || self::is_login_page() ) {
 			return false;
 		}
 
